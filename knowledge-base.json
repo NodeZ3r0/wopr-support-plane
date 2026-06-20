@@ -1,0 +1,484 @@
+{
+  "_meta": {
+    "version": "3.0",
+    "description": "WOPR Support Plane Knowledge Base v3.0 - Known issues, patterns, remediation, log noise filters",
+    "updated": "2026-06-19",
+    "format": "Each entry has a pattern (what the support plane detects), root_cause (why it happens), fix (automated remediation), and notes (context for AI reasoning)",
+    "auto_synced": "2026-06-19T03:08:59.945412"
+  },
+  "service_issues": [
+    {
+      "id": "SVC-001",
+      "pattern": "wopr-nodemin service failed/inactive",
+      "host": "nodez3r0",
+      "root_cause": "Service crashes due to missing Python dependencies or stale PID. Gunicorn on port 5042 but Caddy proxies to 3001 (Forgejo).",
+      "fix": "systemctl restart wopr-nodemin",
+      "notes": "nodemin.wopr.systems Caddy config points to port 3001 which is Forgejo, not nodemin. Caddy config may be stale. Service runs fine after restart."
+    },
+    {
+      "id": "SVC-002",
+      "pattern": "wopr-reactor service restart loop on Hetzner",
+      "host": "wopr-test-server",
+      "root_cause": "Port 8600 conflict - wopr-ai-engine container already bound to 127.0.0.1:8600. Reactor service is a duplicate trying to launch the same image on the same port.",
+      "fix": "systemctl stop wopr-reactor && systemctl disable wopr-reactor",
+      "notes": "wopr-reactor and wopr-ai-engine are the same app (localhost/wopr-ai-engine:latest). The standalone container was deployed first. Service is a duplicate. Disable the service, keep the container."
+    },
+    {
+      "id": "SVC-003",
+      "pattern": "wopr-woodpecker service crash - forge not configured",
+      "host": "wopr-test-server",
+      "root_cause": "Woodpecker CI requires a forge (git provider like Forgejo/GitHub) to be configured. Missing WOODPECKER_FORGEJO_URL and WOODPECKER_FORGEJO_CLIENT/SECRET env vars.",
+      "fix": "systemctl disable wopr-woodpecker",
+      "notes": "Needs manual configuration: requires Forgejo OAuth app created on the git server, then WOODPECKER_FORGEJO_URL, WOODPECKER_FORGEJO_CLIENT, WOODPECKER_FORGEJO_SECRET added to service file. Keep disabled until configured."
+    },
+    {
+      "id": "SVC-004",
+      "pattern": "wopr-flask auto-restart loop on nodez3r0",
+      "host": "nodez3r0",
+      "root_cause": "Flask app crashes immediately on startup. Usually missing config, database connection failure, or import error.",
+      "fix": "systemctl disable wopr-flask",
+      "notes": "Check if the flask app is still in use. If the working directory or venv is missing, the service will loop forever."
+    },
+    {
+      "id": "SVC-005",
+      "pattern": "oauth2-proxy@ai-wopr failed on nodez3r0",
+      "host": "nodez3r0",
+      "root_cause": "oauth2-proxy template service for ai-wopr instance. Replaced by Authentik forward_auth in Caddy.",
+      "fix": "systemctl disable oauth2-proxy@ai-wopr",
+      "notes": "WOPR migrated from oauth2-proxy to Authentik forward_auth. Most oauth2-proxy instances are now redundant."
+    },
+    {
+      "id": "SVC-006",
+      "pattern": "wopr-control-plane.service failed/not-found",
+      "host": "wopr-test-server",
+      "root_cause": "Control plane service unit exists but the binary or script it references is missing. Ghost systemd unit.",
+      "fix": "systemctl disable wopr-control-plane",
+      "notes": "If the service binary doesn't exist at the ExecStart path, disable the unit. It will spam journal errors otherwise."
+    },
+    {
+      "id": "SVC-007",
+      "pattern": "wopr-mesh-agent stuck in activating/restart loop",
+      "host": "wopr-test-server",
+      "root_cause": "Mesh agent can't connect to mesh network (nebula not configured or peer unreachable).",
+      "fix": "systemctl restart wopr-mesh-agent",
+      "notes": "If it keeps restarting, check nebula config and peer connectivity. May need nebula reload first."
+    },
+    {
+      "id": "AUTO-008",
+      "pattern": "service_restart_failed on dmesg",
+      "host": "nodez3ro",
+      "root_cause": "",
+      "fix": "docker restart wopr-ai-engine",
+      "notes": "Auto-learned by support plane. Success rate: 9/9. First seen: 2026-04-02T17:07:13.311740"
+    }
+  ],
+  "container_issues": [
+    {
+      "id": "CTR-001",
+      "pattern": "elk-nginx container exited/stopped",
+      "host": "wopr-prod",
+      "root_cause": "elk-nginx was a standalone nginx container for Netdata status monitoring. Orphaned when elk stack was redeployed.",
+      "fix": "docker rm elk-nginx",
+      "notes": "Safe to remove. elk-web container runs fine without it."
+    },
+    {
+      "id": "CTR-002",
+      "pattern": "peertube-postgres FATAL: database 'peertube' does not exist",
+      "host": "wopr-prod",
+      "root_cause": "PeerTube deployed with database name 'peertube_group7' but something tries to connect to 'peertube'.",
+      "fix": "docker exec peertube-postgres psql -U peertube -d postgres -c 'CREATE DATABASE peertube OWNER peertube'",
+      "notes": "FATAL log noise from connection attempts to non-existent db. Creating it eliminates noise. Container stays healthy regardless."
+    },
+    {
+      "id": "CTR-003",
+      "pattern": "authentik-server-1 log contains 'ooM' substring pattern",
+      "host": "all",
+      "root_cause": "False positive - v2 log scanner matched 'ooM' case-insensitively in authentik variable names. Fixed in v3 with word boundary regex.",
+      "fix": "No action needed - false positive. v3 uses \\bOOM\\b pattern.",
+      "notes": "v3 support plane uses tighter regex that won't match substrings."
+    },
+    {
+      "id": "CTR-004",
+      "pattern": "promtail container stopped",
+      "host": "wopr-test-server",
+      "root_cause": "Promtail crashes when log files rotate or disk fills up.",
+      "fix": "docker restart promtail",
+      "notes": "Auto-restartable. If it keeps crashing, check disk space and Loki endpoint."
+    },
+    {
+      "id": "CTR-005",
+      "pattern": "seo-db container FATAL logs",
+      "host": "wopr-test-server",
+      "root_cause": "PostgreSQL FATAL entries from connection auth failures. Not a crash.",
+      "fix": "No action needed - client connection rejections, not crashes.",
+      "notes": "FATAL in PostgreSQL doesn't mean database crash. v3 distinguishes PG FATAL (client rejection) from actual service crashes."
+    },
+    {
+      "id": "CTR-006",
+      "pattern": "authentik containers OOM killed / not responding",
+      "host": "all",
+      "root_cause": "Authentik server process consumed too much memory and was OOM-killed by the kernel. When Authentik dies, ALL services behind its forward_auth proxy return timeouts.",
+      "fix": "Restart the full authentik stack: docker restart authentik-server-1 authentik-worker-1 authentik-outpost-1 (or podman restart on beacon hosts)",
+      "notes": "CRITICAL: Authentik is a dependency for 18+ services. The support plane v3 handles this via restart_group in the manifest and dependency chain ordering - it restarts Authentik FIRST before checking downstream services. Proactive memory monitoring restarts Authentik before it OOMs."
+    },
+    {
+      "id": "CTR-007",
+      "pattern": "alertmanager/ntopng container restart loop",
+      "host": "wopr-test-server",
+      "root_cause": "Container keeps restarting - usually config error or missing volume mount.",
+      "fix": "Check container logs: podman logs --tail 20 <container>. If config error, fix config. If volume missing, recreate.",
+      "notes": "Some monitoring containers are non-critical. If they keep restart-looping, the support plane will detect and report but won't disable them."
+    }
+  ],
+  "http_issues": [
+    {
+      "id": "HTTP-001",
+      "pattern": "nodemin.wopr.systems returns HTTP 525",
+      "host": "nodez3r0",
+      "root_cause": "HTTP 525 is Cloudflare SSL Handshake Failed. Cloudflare SSL mode mismatch or Caddy cert renewal issue.",
+      "fix": "Check Cloudflare SSL mode is 'Full'. Verify Caddy cert: caddy validate --config /etc/caddy/Caddyfile",
+      "notes": "Caddy uses dns cloudflare challenge for TLS. If the Cloudflare API token expires, certs won't renew."
+    },
+    {
+      "id": "HTTP-002",
+      "pattern": "matrix-request.wopr.systems HTTP 501",
+      "host": "nodez3r0",
+      "root_cause": "App doesn't support HEAD method. Fixed in v3 with HEAD->GET fallback.",
+      "fix": "No action needed - v3 support plane falls back to GET automatically.",
+      "notes": "v3 retries with GET when HEAD returns 501 or 405."
+    },
+    {
+      "id": "HTTP-003",
+      "pattern": "testbeacon.wopr.systems subdomains unreachable (NXDOMAIN)",
+      "host": "wopr-test-server",
+      "root_cause": "DNS records for testbeacon subdomains don't exist in Cloudflare.",
+      "fix": "Either add DNS records in Cloudflare or remove Caddy site configs.",
+      "notes": "Test services that may not be actively used. Expected if DNS isn't configured."
+    },
+    {
+      "id": "HTTP-004",
+      "pattern": "shop/printful/multiverse.wopr.systems unreachable",
+      "host": "wopr-prod",
+      "root_cause": "DNS not resolving for these domains.",
+      "fix": "Add DNS A records in Cloudflare or remove Caddy configs if deprecated.",
+      "notes": "May be planned services not yet deployed."
+    },
+    {
+      "id": "HTTP-005",
+      "pattern": "HTTP 403 from auth-protected endpoints",
+      "host": "all",
+      "root_cause": "Authentik forward_auth returns 403 for unauthenticated requests. Normal behavior.",
+      "fix": "No action needed - 403 from SSO-protected endpoints is expected.",
+      "notes": "v3 treats 403 as healthy for auth-protected endpoints."
+    },
+    {
+      "id": "HTTP-006",
+      "pattern": "Multiple services timing out simultaneously",
+      "host": "all",
+      "root_cause": "Root cause is usually Authentik being down. When Authentik dies, all SSO-protected services behind forward_auth return timeouts. This is NOT 18 separate failures - it's 1 failure (Authentik) with 18 symptoms.",
+      "fix": "Restart Authentik containers first: docker restart authentik-server-1 authentik-worker-1 authentik-outpost-1. Then recheck downstream services.",
+      "notes": "v3 support plane handles this via dependency chain ordering - checks and restarts Authentik before evaluating downstream HTTP endpoints."
+    },
+    {
+      "id": "AUTO-001",
+      "pattern": "http_check_failed on auth.wopr.systems",
+      "host": "nodez3ro",
+      "root_cause": "",
+      "fix": "systemctl restart ai-tunnel-whisper",
+      "notes": "Auto-learned by support plane. Success rate: 3/3. First seen: 2026-03-12T11:25:35.524208"
+    },
+    {
+      "id": "AUTO-002",
+      "pattern": "http_check_failed on comfyui.wopr.systems",
+      "host": "nodez3ro",
+      "root_cause": "",
+      "fix": "systemctl restart comfyui",
+      "notes": "Auto-learned by support plane. Success rate: 3/3. First seen: 2026-03-12T11:25:40.532175"
+    },
+    {
+      "id": "AUTO-003",
+      "pattern": "http_check_failed on pinokio.wopr.systems",
+      "host": "nodez3ro",
+      "root_cause": "",
+      "fix": "systemctl restart ai-tunnel-whisper",
+      "notes": "Auto-learned by support plane. Success rate: 3/3. First seen: 2026-03-12T11:25:45.542295"
+    },
+    {
+      "id": "AUTO-004",
+      "pattern": "http_check_failed on ollamachat.wopr.systems",
+      "host": "nodez3ro",
+      "root_cause": "",
+      "fix": "systemctl restart ai-tunnel-ollama",
+      "notes": "Auto-learned by support plane. Success rate: 3/3. First seen: 2026-03-11T13:47:37.954834"
+    },
+    {
+      "id": "AUTO-005",
+      "pattern": "http_check_failed on rag.wopr.systems",
+      "host": "nodez3ro",
+      "root_cause": "",
+      "fix": "systemctl restart caddy",
+      "notes": "Auto-learned by support plane. Success rate: 3/3. First seen: 2026-03-12T11:25:30.515433"
+    }
+  ],
+  "auth_issues": [
+    {
+      "id": "AUTH-001",
+      "pattern": "Authentik permission denied for application",
+      "host": "nodez3r0",
+      "root_cause": "Expression policy binding on authorization flow blocking users.",
+      "fix": "Remove restrictive policy binding via Authentik API: DELETE /api/v3/policies/bindings/{binding_pk}/",
+      "notes": "Common fix: remove group-check policies from apps that should be accessible to all authenticated users."
+    },
+    {
+      "id": "AUTH-002",
+      "pattern": "NULL policy bindings causing auth failures",
+      "host": "nodez3r0",
+      "root_cause": "Policy bindings with policy=null (policy deleted but binding remains).",
+      "fix": "Find and delete null bindings: GET /api/v3/policies/bindings/?page_size=200, DELETE any where policy is null.",
+      "notes": "Run periodic cleanup of orphaned policy bindings."
+    },
+    {
+      "id": "AUTH-003",
+      "pattern": "SSO creates duplicate Matrix account",
+      "host": "nodez3r0",
+      "root_cause": "Synapse OIDC localpart_template generates duplicate username when manually-created account exists.",
+      "fix": "In Synapse PostgreSQL: UPDATE user_external_ids SET user_id = '@correct_user:domain'",
+      "notes": "Access Synapse DB: docker exec -it synapse-db psql -U synapse"
+    }
+  ],
+  "infrastructure_issues": [
+    {
+      "id": "INFRA-001",
+      "pattern": "Caddy duplicate site definition error",
+      "host": "all",
+      "root_cause": "Multiple .caddy files define the same domain.",
+      "fix": "Find duplicates: grep -rl 'domain' /etc/caddy/sites-enabled/. Rename duplicate to .bak.",
+      "notes": "Common when old .caddy file left alongside new one."
+    },
+    {
+      "id": "INFRA-002",
+      "pattern": "Caddy replace directive quoting issues",
+      "host": "all",
+      "root_cause": "Caddy replace values containing HTML/quotes must use backtick quoting.",
+      "fix": "Use Python scripts to write Caddy configs. Never use heredoc or sed.",
+      "notes": "Backticks are critical for values containing quotes, angles, or special chars."
+    },
+    {
+      "id": "INFRA-003",
+      "pattern": "Caddy wopr-nav-inject snippet conflicts",
+      "host": "all",
+      "root_cause": "wopr-nav-inject snippet replaces </head> and </body>. Conflicts with site-level replace blocks.",
+      "fix": "Don't use 'import wopr-nav-inject' in sites with custom replace blocks.",
+      "notes": "Sites needing custom replace must include all injections in their own block."
+    },
+    {
+      "id": "INFRA-004",
+      "pattern": "Excessive SSH auth failures from own IP",
+      "host": "wopr-prod",
+      "root_cause": "SSH brute force from WOPR's own IP. Misconfigured service or cron job.",
+      "fix": "Check: ss -tnp | grep ':22' and crontab -l",
+      "notes": "Generates hundreds of journal errors per hour."
+    },
+    {
+      "id": "INFRA-005",
+      "pattern": "chat.service working directory not found",
+      "host": "wopr-prod",
+      "root_cause": "systemd service has WorkingDirectory pointing to missing path.",
+      "fix": "Create the missing directory or fix the WorkingDirectory path.",
+      "notes": "Generates errors every few seconds in journalctl."
+    },
+    {
+      "id": "AUTO-006",
+      "pattern": "backend_unhealthy on http://127.0.0.1:8188/",
+      "host": "nodez3ro",
+      "root_cause": "",
+      "fix": "systemctl restart ai-tunnel-whisper",
+      "notes": "Auto-learned by support plane. Success rate: 3/4. First seen: 2026-03-25T09:49:21.070775"
+    },
+    {
+      "id": "AUTO-007",
+      "pattern": "backend_unhealthy on http://127.0.0.1:8081/",
+      "host": "nodez3ro",
+      "root_cause": "",
+      "fix": "systemctl restart ai-tunnel-whisper",
+      "notes": "Auto-learned by support plane. Success rate: 3/4. First seen: 2026-03-25T17:05:34.123628"
+    },
+    {
+      "id": "AUTO-009",
+      "pattern": "backend_unhealthy on http://127.0.0.1:13002/health",
+      "host": "nodez3ro",
+      "root_cause": "",
+      "fix": "systemctl restart defcon-backend",
+      "notes": "Auto-learned by support plane. Success rate: 3/3. First seen: 2026-06-09T06:37:39.609779"
+    },
+    {
+      "id": "AUTO-010",
+      "pattern": "backend_unhealthy on http://127.0.0.1:18065/",
+      "host": "nodez3ro",
+      "root_cause": "",
+      "fix": "systemctl restart defcon-backend",
+      "notes": "Auto-learned by support plane. Success rate: 3/5. First seen: 2026-06-09T07:34:11.708157"
+    },
+    {
+      "id": "AUTO-011",
+      "pattern": "backend_unhealthy on http://127.0.0.1:18099/health",
+      "host": "nodez3ro",
+      "root_cause": "",
+      "fix": "systemctl restart defcon-backend",
+      "notes": "Auto-learned by support plane. Success rate: 3/4. First seen: 2026-06-09T08:42:07.142414"
+    },
+    {
+      "id": "AUTO-012",
+      "pattern": "backend_unhealthy on http://127.0.0.1:18789/health",
+      "host": "nodez3ro",
+      "root_cause": "",
+      "fix": "systemctl restart defcon-backend",
+      "notes": "Auto-learned by support plane. Success rate: 4/6. First seen: 2026-06-10T07:19:51.795307"
+    },
+    {
+      "id": "AUTO-013",
+      "pattern": "backend_unhealthy on http://127.0.0.1:18791/health",
+      "host": "nodez3ro",
+      "root_cause": "",
+      "fix": "systemctl restart defcon-backend",
+      "notes": "Auto-learned by support plane. Success rate: 4/6. First seen: 2026-06-14T18:20:05.293693"
+    },
+    {
+      "id": "AUTO-014",
+      "pattern": "backend_unhealthy on http://127.0.0.1:18792/",
+      "host": "nodez3ro",
+      "root_cause": "",
+      "fix": "systemctl restart defcon-backend",
+      "notes": "Auto-learned by support plane. Success rate: 3/4. First seen: 2026-06-14T21:05:05.257934"
+    },
+    {
+      "id": "AUTO-015",
+      "pattern": "backend_unhealthy on http://127.0.0.1:18099/",
+      "host": "nodez3ro",
+      "root_cause": "",
+      "fix": "systemctl restart defcon-backend",
+      "notes": "Auto-learned by support plane. Success rate: 3/4. First seen: 2026-06-09T08:25:35.986997"
+    },
+    {
+      "id": "AUTO-016",
+      "pattern": "backend_unhealthy on http://127.0.0.1:8091/health",
+      "host": "nodez3ro",
+      "root_cause": "",
+      "fix": "systemctl restart defcon-backend",
+      "notes": "Auto-learned by support plane. Success rate: 3/4. First seen: 2026-06-15T05:47:59.602829"
+    },
+    {
+      "id": "AUTO-017",
+      "pattern": "backend_unhealthy on http://127.0.0.1:8091/",
+      "host": "nodez3ro",
+      "root_cause": "",
+      "fix": "systemctl restart defcon-backend",
+      "notes": "Auto-learned by support plane. Success rate: 3/4. First seen: 2026-06-09T08:25:30.978237"
+    },
+    {
+      "id": "AUTO-018",
+      "pattern": "backend_unhealthy on http://127.0.0.1:8081/api/health",
+      "host": "nodez3ro",
+      "root_cause": "",
+      "fix": "systemctl restart defcon-backend",
+      "notes": "Auto-learned by support plane. Success rate: 3/4. First seen: 2026-06-10T07:19:46.784548"
+    }
+  ],
+  "theme_and_branding": [
+    {
+      "id": "THEME-001",
+      "pattern": "Element Call / Element Web not CRT themed",
+      "host": "nodez3r0",
+      "root_cause": "Caddy replace directive not injecting CRT CSS.",
+      "fix": "Ensure Caddy config has replace block injecting CSS before </head>",
+      "notes": "CRT theme files at /etc/caddy/pages/"
+    },
+    {
+      "id": "THEME-002",
+      "pattern": "Washed out buttons on CRT theme",
+      "root_cause": "Button CSS using solid #00ff41 background.",
+      "fix": "Use dark background with green border: background: #0d0d0d; color: #00ff41; border: 2px solid #00ff41;",
+      "notes": "WOPR CRT theme palette: primary green #00ff41, backgrounds #0a0a0a/#0d0d0d"
+    },
+    {
+      "id": "THEME-003",
+      "pattern": "Missing WOPR nav bar / AI button",
+      "root_cause": "wopr-global-nav-v6.4.js not injected via Caddy replace.",
+      "fix": "Add to Caddy replace: </body> -> <script src='https://wopr.systems/static/js/wopr-global-nav-v6.4.js' defer></script></body>",
+      "notes": "Global nav JS served from WOPR prod. Host-aware."
+    },
+    {
+      "id": "THEME-004",
+      "pattern": "SSO shows 'Authentik SSO' instead of 'WOPR SSO'",
+      "host": "nodez3r0",
+      "root_cause": "Synapse homeserver.yaml has idp_name set to 'Authentik SSO'.",
+      "fix": "Change idp_name to 'WOPR SSO' in homeserver.yaml, then docker restart synapse",
+      "notes": "homeserver.yaml at /opt/matrix/synapse-data/homeserver.yaml"
+    }
+  ],
+  "support_plane_self_issues": [
+    {
+      "id": "SP-001",
+      "pattern": "AI analysis returns HTTP 404",
+      "host": "all",
+      "root_cause": "Ollama model (phi3:mini) not pulled.",
+      "fix": "Pull model: ollama pull phi3:mini. Or ignore - AI analysis is optional.",
+      "notes": "v3 caches Ollama availability check and only logs once instead of every scan."
+    },
+    {
+      "id": "SP-002",
+      "pattern": "Email alerts fail with connection refused",
+      "host": "wopr-test-server",
+      "root_cause": "No local SMTP server installed.",
+      "fix": "apt install postfix -y (select 'Internet Site')",
+      "notes": "Email alerts are non-fatal. Issues still logged."
+    },
+    {
+      "id": "SP-003",
+      "pattern": "False positive OOM detection in container logs",
+      "root_cause": "Regex too broad - catches substrings and PG client rejections.",
+      "fix": "Fixed in v3 - uses \\bOOM\\b word boundary and excludes PG FATAL client rejections.",
+      "notes": "v3 distinguishes PostgreSQL FATAL (normal client rejection) from actual service crashes."
+    },
+    {
+      "id": "SP-004",
+      "pattern": "HTTP endpoint check returns 501/405 for HEAD",
+      "root_cause": "Some apps don't implement HEAD method.",
+      "fix": "Fixed in v3 - automatically falls back to GET when HEAD returns 501/405.",
+      "notes": "matrix-request.wopr.systems was the primary trigger for this."
+    },
+    {
+      "id": "SP-005",
+      "pattern": "Support plane counts SSH brute force as WOPR errors",
+      "root_cause": "v2 log scanner counted all lines matching 'error' in journalctl including SSH auth failures from random IPs.",
+      "fix": "Fixed in v3 - log noise filter excludes sshd auth failures, ntfy stats, and other known noise patterns.",
+      "notes": "v3 filters out SSH brute force, ntfy stats lines, and other noise before counting errors. Only genuine WOPR service errors are counted."
+    }
+  ],
+  "log_noise_issues": [
+    {
+      "id": "LOG-001",
+      "pattern": "SSH brute force attempts in journalctl",
+      "host": "all",
+      "root_cause": "Random IPs trying SSH password auth. Normal internet noise on any public server.",
+      "fix": "No action needed - filtered out by v3 support plane.",
+      "notes": "Patterns filtered: Failed password, Invalid user, authentication failure, kex_protocol_error. These are NOT WOPR errors."
+    },
+    {
+      "id": "LOG-002",
+      "pattern": "ntfy Server stats lines containing 'failure' fields",
+      "host": "all",
+      "root_cause": "ntfy logs stats every 60s with fields like emails_received_failure=0. The word 'failure' in field names triggers error detection.",
+      "fix": "No action needed - filtered out by v3 support plane.",
+      "notes": "These are INFO-level stats, not errors. The 'failure' is a field name showing count=0."
+    },
+    {
+      "id": "LOG-003",
+      "pattern": "systemd session open/close for SSH connections",
+      "host": "all",
+      "root_cause": "Normal systemd session management for SSH connections. Not errors.",
+      "fix": "No action needed - filtered out by v3 support plane.",
+      "notes": "Lines like 'Session 43789 logged out', 'Removed session', 'session-XXXX.scope' are normal."
+    }
+  ]
+}

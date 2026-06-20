@@ -1,0 +1,48 @@
+# venvs / vendor / caches
+venv/
+venv-*/
+.venv/
+env/
+__pycache__/
+*.pyc
+*.pyo
+node_modules/
+# logs
+*.log
+logs/
+# backups / dead files
+*.bak
+*.bak.*
+*.old
+*.orig
+*.BROKEN
+*.BROKEN-*
+*.SYNTAX-ERROR*
+*.backup-*
+*~
+# secrets (defensive)
+.env
+*.env
+*.env.*
+*secret*
+*token*
+*.pem
+*.key
+*credential*
+accounts.json
+# model weights / large binaries (never in git)
+*.pth
+*.pt
+*.ckpt
+*.safetensors
+*.bin
+*.onnx
+*.h5
+*.gguf
+gfpgan/
+weights/
+# extra backups / runtime state
+*.bak-*
+*.pre-*
+*state*.json
+*.state.json

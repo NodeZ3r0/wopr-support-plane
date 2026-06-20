@@ -1,0 +1,5398 @@
+{
+  "version": "5.0-autodiscovery",
+  "host": "nodez3ro",
+  "generated": "2026-06-20T06:59:14.160485",
+  "container_runtime": "docker",
+  "autodiscovery": true,
+  "services": [
+    {
+      "name": "accounts-daemon",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "alsa-restore",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "alsa-state",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "anacron",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "apparmor",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "apport",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "atd",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "\u25cf",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "avahi-daemon",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "blackoutlabs-storefront",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "blk-availability",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "blueman-mechanism",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "bluetooth",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "bolt",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "brainjoos-api",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "caddy",
+      "type": "systemd",
+      "critical": true
+    },
+    {
+      "name": "chatterbox-ui",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "cloudflared",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "colord",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "comfyui",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "containerd",
+      "type": "systemd",
+      "critical": true
+    },
+    {
+      "name": "cron",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "crowdsec",
+      "type": "systemd",
+      "critical": true
+    },
+    {
+      "name": "cups-browsed",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "cups",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "deepseek",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "defcon-backend",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "defcon-ui",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "dm-event",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "dmesg",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "docker",
+      "type": "systemd",
+      "critical": true
+    },
+    {
+      "name": "dudeabides-og-prerender",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "dudeabides-reg",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "epmd",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "fail2ban",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "falken-canary-monitor",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "falken-flink-consumer",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "falken-gdelt",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "falken-miniflux-bridge",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "falken-osint-scraper",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "falken-pg-tunnel",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "falken-topic-matcher",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "falken-tor-scraper",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "finalrd",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "flink",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "forgejo-runner",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "forgejo",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "fwupd",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "gdm",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "gnome-remote-desktop",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "gpu-scheduler-watchdog",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "gpu-scheduler",
+      "type": "systemd",
+      "critical": true
+    },
+    {
+      "name": "group-admin-daemon",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "haveged",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "iopaint-fwd",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "iopaint",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "iscsid",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "joshcore",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "kafka",
+      "type": "systemd",
+      "critical": true
+    },
+    {
+      "name": "kerneloops",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "lm-sensors",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "lvm2-lvmpolld",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "lvm2-monitor",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "mcp-server",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "mcp",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "ModemManager",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "mosquitto",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "multipathd",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "nebula",
+      "type": "systemd",
+      "critical": true
+    },
+    {
+      "name": "nedry-abuse",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "nedry-dashboard",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "nedry-honeypot",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "netdata",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "networkd-dispatcher",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "NetworkManager-wait-online",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "NetworkManager",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "nmbd",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "nodemin",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "noip2",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "nvidia-persistenced",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "ollama",
+      "type": "systemd",
+      "critical": true
+    },
+    {
+      "name": "open-vm-tools",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "openvpn",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "pftp-flask",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "php8.3-fpm",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "polkit",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "postfix",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "postfix@-",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "postgresql@16-main",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "power-profiles-daemon",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "printful-notifications",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "project2032-outreach",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "prometheus-node-exporter",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "protonbridge-fwd",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "protonmail-bridge",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "rabbitmq-server",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "rag",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "reactor-backend",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "redis-server",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "rsyslog",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "rtkit-daemon",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "samba-ad-dc",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "setvtrgb",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "shopify-enrichment",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "signal-boost",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "smartmontools",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "smbd",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "snap.canonical-livepatch.canonical-livepatchd",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "snap.etcd.etcd",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "snap.keepalived.daemon",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "snap.microk8s.daemon-apiserver-kicker",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "snap.microk8s.daemon-apiserver-proxy",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "snap.microk8s.daemon-cluster-agent",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "snap.microk8s.daemon-containerd",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "snap.microk8s.daemon-etcd",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "snap.microk8s.daemon-flanneld",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "snap.microk8s.daemon-k8s-dqlite",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "snap.microk8s.daemon-kubelite",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "snap.prometheus.prometheus",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "snap.sabnzbd.sabnzbd",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "snap.wekan.mongodb",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "snapd.apparmor",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "snapd.seeded",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "snapd",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "spec-kit",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "ssh",
+      "type": "systemd",
+      "critical": true
+    },
+    {
+      "name": "sso-notifications",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "sssd-autofs",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "sssd-nss",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "sssd-pac",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "sssd-pam",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "sssd-ssh",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "sssd-sudo",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "sssd",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "swarmui",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "switcheroo-control",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "sysstat",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "thermald",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "tor",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "tor@default",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "tpm-udev",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "ubuntu-advantage",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "udisks2",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "ufw",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "unattended-upgrades",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "unsubscribe",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "upower",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "user-runtime-dir@1000",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "uuidd",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "vgauth",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "wazuh-agent",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "whoopsie",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "wopr-alert-sms",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "wopr-deploy-webhook",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "wopr-falken-pipeline",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "wopr-falken-web",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "wopr-form",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "wopr-log-sentinel",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "wopr-mesh-bridge",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "wopr-nodez3r0",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "wopr-nostr-health",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "wopr-openclaw",
+      "type": "systemd",
+      "critical": true
+    },
+    {
+      "name": "wopr-rag-ui",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "wopr-seo-proxy",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "wopr-sms-bridge",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "wopr-sms-gateway",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "wopr-sms-proxy",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "wopr-social-monitor",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "wopr-sp-autodiscovery",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "wopr-sp-metrics",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "wopr-stats",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "wopr-support-plane",
+      "type": "systemd",
+      "critical": true
+    },
+    {
+      "name": "wopr-tracking-webhook",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "wopr-user-registry",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "wopr-web",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "wopr",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "wpa_supplicant",
+      "type": "systemd",
+      "critical": false
+    }
+  ],
+  "containers": [
+    {
+      "name": "lovejoos-api",
+      "image": "registry.wopr.systems/lovejoos/api:latest",
+      "critical": false
+    },
+    {
+      "name": "mastodon-web",
+      "image": "tootsuite/mastodon:v4.3.3",
+      "critical": false
+    },
+    {
+      "name": "mastodon-streaming",
+      "image": "ghcr.io/mastodon/mastodon-streaming:v4.3.3",
+      "critical": false
+    },
+    {
+      "name": "mastodon-sidekiq",
+      "image": "tootsuite/mastodon:v4.3.3",
+      "critical": false
+    },
+    {
+      "name": "mastodon-redis",
+      "image": "redis:7-alpine",
+      "critical": false
+    },
+    {
+      "name": "mastodon-db",
+      "image": "postgres:15-alpine",
+      "critical": false
+    },
+    {
+      "name": "akkoma",
+      "image": "akkoma:latest",
+      "critical": false
+    },
+    {
+      "name": "artjoos-artjoos-storefront-1",
+      "image": "wopr-systems/artjoos-storefront:latest",
+      "critical": false
+    },
+    {
+      "name": "brainjoos-api-node",
+      "image": "node:20",
+      "critical": false
+    },
+    {
+      "name": "brainjoos-api",
+      "image": "backend-api",
+      "critical": false
+    },
+    {
+      "name": "wopr-bind",
+      "image": "internetsystemsconsortium/bind9:9.20",
+      "critical": false
+    },
+    {
+      "name": "lovejoos-postgres",
+      "image": "postgres:16-alpine",
+      "critical": false
+    },
+    {
+      "name": "saleor-worker-dude",
+      "image": "ghcr.io/saleor/saleor:3.20",
+      "critical": false
+    },
+    {
+      "name": "saleor-api-dude",
+      "image": "ghcr.io/saleor/saleor:3.20",
+      "critical": false
+    },
+    {
+      "name": "authentik-worker-1",
+      "image": "ghcr.io/goauthentik/server:2025.12",
+      "critical": false
+    },
+    {
+      "name": "authentik-server-1",
+      "image": "ghcr.io/goauthentik/server:2025.12",
+      "critical": false
+    },
+    {
+      "name": "wopr-flink-taskmanager",
+      "image": "apache/flink:1.19.1-scala_2.12-java17",
+      "critical": false
+    },
+    {
+      "name": "wopr-flink-jobmanager",
+      "image": "apache/flink:1.19.1-scala_2.12-java17",
+      "critical": false
+    },
+    {
+      "name": "wopr_ollama_chat-postgres-1",
+      "image": "ankane/pgvector:latest",
+      "critical": false
+    },
+    {
+      "name": "searxng",
+      "image": "searxng/searxng:latest",
+      "critical": false
+    },
+    {
+      "name": "wopr-pds",
+      "image": "ghcr.io/bluesky-social/pds:latest",
+      "critical": false
+    },
+    {
+      "name": "akkoma-db",
+      "image": "postgres:15-alpine",
+      "critical": false
+    },
+    {
+      "name": "theblock-api",
+      "image": "wopr-theblock-theblock-api",
+      "critical": false
+    },
+    {
+      "name": "group7-peertube",
+      "image": "chocobozzz/peertube:v8.0.1",
+      "critical": false
+    },
+    {
+      "name": "peertube-postgres",
+      "image": "postgres:15",
+      "critical": false
+    },
+    {
+      "name": "peertube-redis",
+      "image": "redis:7",
+      "critical": false
+    },
+    {
+      "name": "theblock-db",
+      "image": "postgres:16-alpine",
+      "critical": false
+    },
+    {
+      "name": "crowdsec-dashboard-metabase-1",
+      "image": "metabase/metabase:latest",
+      "critical": false
+    },
+    {
+      "name": "single-node-wazuh.indexer-1",
+      "image": "wazuh/wazuh-indexer:4.7.5",
+      "critical": false
+    },
+    {
+      "name": "single-node-wazuh.dashboard-1",
+      "image": "wazuh/wazuh-dashboard:4.7.5",
+      "critical": false
+    },
+    {
+      "name": "single-node-wazuh.manager-1",
+      "image": "wazuh/wazuh-manager:4.7.5",
+      "critical": false
+    },
+    {
+      "name": "wopr-caddy-rig",
+      "image": "wopr-caddy-replace:latest",
+      "critical": false
+    },
+    {
+      "name": "greenbone-gsa-1",
+      "image": "registry.community.greenbone.net/community/gsa:stable",
+      "critical": false
+    },
+    {
+      "name": "greenbone-gvmd-1",
+      "image": "registry.community.greenbone.net/community/gvmd:stable",
+      "critical": false
+    },
+    {
+      "name": "greenbone-pg-gvm-1",
+      "image": "registry.community.greenbone.net/community/pg-gvm:stable",
+      "critical": false
+    },
+    {
+      "name": "app",
+      "image": "local_discourse/app",
+      "critical": false
+    },
+    {
+      "name": "printful-sync-printful-sync-1",
+      "image": "printful-sync-printful-sync",
+      "critical": false
+    },
+    {
+      "name": "infisical",
+      "image": "infisical/infisical:latest",
+      "critical": false
+    },
+    {
+      "name": "infisical-redis",
+      "image": "redis:7-alpine",
+      "critical": false
+    },
+    {
+      "name": "artjoos-artjoos-provenance-1",
+      "image": "wopr-systems/artjoos-provenance:latest",
+      "critical": false
+    },
+    {
+      "name": "artjoos-artjoos-verification-1",
+      "image": "wopr-systems/artjoos-verification:latest",
+      "critical": false
+    },
+    {
+      "name": "artjoos-artjoos-commissions-1",
+      "image": "wopr-systems/artjoos-commissions:latest",
+      "critical": false
+    },
+    {
+      "name": "artjoos-artjoos-analytics-1",
+      "image": "wopr-systems/artjoos-analytics:latest",
+      "critical": false
+    },
+    {
+      "name": "artjoos-artjoos-federation-1",
+      "image": "wopr-systems/artjoos-federation:latest",
+      "critical": false
+    },
+    {
+      "name": "reactor_ui",
+      "image": "reactor-ui-reactor-ui",
+      "critical": false
+    },
+    {
+      "name": "castopod-mariadb",
+      "image": "mariadb:11",
+      "critical": false
+    },
+    {
+      "name": "wopr-sydent",
+      "image": "matrixdotorg/sydent:latest",
+      "critical": false
+    },
+    {
+      "name": "lk-jwt-service",
+      "image": "ghcr.io/element-hq/lk-jwt-service:0.4.1",
+      "critical": false
+    },
+    {
+      "name": "wopr-matrix-onboard",
+      "image": "matrix-onboard-matrix-onboard:latest",
+      "critical": false
+    },
+    {
+      "name": "matrix-meshbot",
+      "image": "matrix-mqtt-bridge-meshbot:latest",
+      "critical": false
+    },
+    {
+      "name": "matrix-element",
+      "image": "vectorim/element-web:latest",
+      "critical": false
+    },
+    {
+      "name": "matrix-synapse",
+      "image": "matrix-synapse-wopr:latest",
+      "critical": false
+    },
+    {
+      "name": "element-call",
+      "image": "ghcr.io/element-hq/element-call:v0.16.3",
+      "critical": false
+    },
+    {
+      "name": "synapse-admin",
+      "image": "awesometechnologies/synapse-admin:latest",
+      "critical": false
+    },
+    {
+      "name": "livekit-server",
+      "image": "livekit/livekit-server:v1.9.11",
+      "critical": false
+    },
+    {
+      "name": "matrix-postgres",
+      "image": "postgres:15-alpine",
+      "critical": false
+    },
+    {
+      "name": "folkmoot-api",
+      "image": "folkmoot-foundation-folkmoot-api",
+      "critical": false
+    },
+    {
+      "name": "folkmoot-web",
+      "image": "folkmoot-foundation-folkmoot-web",
+      "critical": false
+    },
+    {
+      "name": "folkmoot-falken-bridge",
+      "image": "folkmoot-foundation-falken-bridge",
+      "critical": false
+    },
+    {
+      "name": "folkmoot-trust-graph",
+      "image": "folkmoot-foundation-trust-graph",
+      "critical": false
+    },
+    {
+      "name": "folkmoot-nedry-ingest",
+      "image": "folkmoot-foundation-nedry-ingest",
+      "critical": false
+    },
+    {
+      "name": "folkmoot-deliberation",
+      "image": "folkmoot-foundation-deliberation",
+      "critical": false
+    },
+    {
+      "name": "folkmoot-canary",
+      "image": "folkmoot-foundation-canary",
+      "critical": false
+    },
+    {
+      "name": "folkmoot-proposal-review",
+      "image": "folkmoot-foundation-proposal-review",
+      "critical": false
+    },
+    {
+      "name": "folkmoot-redis",
+      "image": "redis:7-alpine",
+      "critical": false
+    },
+    {
+      "name": "folkmoot-db",
+      "image": "postgres:16-alpine",
+      "critical": false
+    },
+    {
+      "name": "nostr-relay",
+      "image": "scsibug/nostr-rs-relay:latest",
+      "critical": false
+    },
+    {
+      "name": "nostr-toolkit",
+      "image": "nostr-toolkit-nostr-toolkit",
+      "critical": false
+    },
+    {
+      "name": "lnbits",
+      "image": "lnbits/lnbits:latest",
+      "critical": false
+    },
+    {
+      "name": "n8n",
+      "image": "n8nio/n8n:latest",
+      "critical": false
+    },
+    {
+      "name": "miniflux",
+      "image": "miniflux/miniflux:latest",
+      "critical": false
+    },
+    {
+      "name": "miniflux-db",
+      "image": "postgres:16-alpine",
+      "critical": false
+    },
+    {
+      "name": "brainjoos-db",
+      "image": "postgres:16-alpine",
+      "critical": false
+    },
+    {
+      "name": "castopod-app",
+      "image": "castopod/castopod:latest",
+      "critical": false
+    },
+    {
+      "name": "buylocal-postgres",
+      "image": "buylocal-postgres-custom:latest",
+      "critical": false
+    },
+    {
+      "name": "buylocal",
+      "image": "buylocal-buylocal:latest",
+      "critical": false
+    },
+    {
+      "name": "buylocal-redis",
+      "image": "redis:7-alpine",
+      "critical": false
+    },
+    {
+      "name": "barter-web-1",
+      "image": "barter-web:latest",
+      "critical": false
+    },
+    {
+      "name": "barter-redis-1",
+      "image": "redis:7-alpine",
+      "critical": false
+    },
+    {
+      "name": "barter-scanner-1",
+      "image": "barter-scanner:latest",
+      "critical": false
+    },
+    {
+      "name": "barter-postgres",
+      "image": "postgres:16-alpine",
+      "critical": false
+    },
+    {
+      "name": "elk-web",
+      "image": "elk-wopr:latest",
+      "critical": false
+    },
+    {
+      "name": "flowise",
+      "image": "flowiseai/flowise:latest",
+      "critical": false
+    },
+    {
+      "name": "wopr-multiverse",
+      "image": "wopr-multiverse-multiverse",
+      "critical": false
+    },
+    {
+      "name": "sonicforge-redis-1",
+      "image": "redis:7-alpine",
+      "critical": false
+    },
+    {
+      "name": "sonicforge-frontend-1",
+      "image": "sonicforge-frontend",
+      "critical": false
+    },
+    {
+      "name": "sonicforge-backend-1",
+      "image": "sonicforge-backend",
+      "critical": false
+    },
+    {
+      "name": "sst-frontend",
+      "image": "statestreettheater-frontend",
+      "critical": false
+    },
+    {
+      "name": "sst-backend",
+      "image": "statestreettheater-backend",
+      "critical": false
+    },
+    {
+      "name": "saleor-dashboard-dude",
+      "image": "ghcr.io/saleor/saleor-dashboard:3.20",
+      "critical": false
+    },
+    {
+      "name": "saleor-redis-dude",
+      "image": "redis:7",
+      "critical": false
+    },
+    {
+      "name": "saleor-postgres-dude",
+      "image": "postgres:16-alpine",
+      "critical": false
+    },
+    {
+      "name": "gsc-puller",
+      "image": "wopr-seo-gsc-puller",
+      "critical": false
+    },
+    {
+      "name": "seonaut",
+      "image": "ghcr.io/stjudewashere/seonaut:latest",
+      "critical": false
+    },
+    {
+      "name": "serpbear",
+      "image": "towfiqi/serpbear:latest",
+      "critical": false
+    },
+    {
+      "name": "seo-db",
+      "image": "d7ead3a9d3fe",
+      "critical": false
+    },
+    {
+      "name": "seonaut-db",
+      "image": "mysql:8.4",
+      "critical": false
+    },
+    {
+      "name": "wopr-ntfy",
+      "image": "binwiederhier/ntfy:v2.8.0",
+      "critical": false
+    },
+    {
+      "name": "wopr-umami",
+      "image": "ghcr.io/umami-software/umami:postgresql-latest",
+      "critical": false
+    },
+    {
+      "name": "wopr-umami-db",
+      "image": "d7ead3a9d3fe",
+      "critical": false
+    },
+    {
+      "name": "folkmoot-backend-1",
+      "image": "folkmoot-backend",
+      "critical": false
+    },
+    {
+      "name": "folkmoot-prometheus-1",
+      "image": "prom/prometheus:v2.51.2",
+      "critical": false
+    },
+    {
+      "name": "folkmoot-redis-1",
+      "image": "redis:7-alpine",
+      "critical": false
+    },
+    {
+      "name": "folkmoot-frontend-1",
+      "image": "folkmoot-frontend",
+      "critical": false
+    },
+    {
+      "name": "folkmoot-grafana-1",
+      "image": "grafana/grafana:11.4.0",
+      "critical": false
+    },
+    {
+      "name": "folkmoot-postgres-1",
+      "image": "d7ead3a9d3fe",
+      "critical": false
+    },
+    {
+      "name": "lovejoos-frontend",
+      "image": "registry.wopr.systems/lovejoos/frontend:latest",
+      "critical": false
+    },
+    {
+      "name": "lovejoos-redis",
+      "image": "redis:7-alpine",
+      "critical": false
+    },
+    {
+      "name": "lovejoos-minio",
+      "image": "minio/minio:latest",
+      "critical": false
+    },
+    {
+      "name": "lovejoos-emqx",
+      "image": "emqx/emqx:5.8",
+      "critical": false
+    },
+    {
+      "name": "wopr-static-multi",
+      "image": "nginx:alpine",
+      "critical": false
+    },
+    {
+      "name": "wopr-nodez3r0-static",
+      "image": "nginx:alpine",
+      "critical": false
+    },
+    {
+      "name": "authentik-postgresql-1",
+      "image": "postgres:15",
+      "critical": false
+    },
+    {
+      "name": "authentik_redis",
+      "image": "redis:7",
+      "critical": false
+    },
+    {
+      "name": "nextcloud",
+      "image": "nextcloud:30-apache",
+      "critical": false
+    },
+    {
+      "name": "nextcloud-redis",
+      "image": "487efc061638",
+      "critical": false
+    },
+    {
+      "name": "nextcloud-db",
+      "image": "52f87503b2fe",
+      "critical": false
+    },
+    {
+      "name": "wopr-meme-engine",
+      "image": "meme-engine-meme-engine",
+      "critical": false
+    },
+    {
+      "name": "wopr-ai-engine",
+      "image": "wopr-ai-engine:latest",
+      "critical": false
+    },
+    {
+      "name": "open-webui",
+      "image": "ghcr.io/open-webui/open-webui:main",
+      "critical": false
+    },
+    {
+      "name": "promtail",
+      "image": "grafana/promtail:latest",
+      "critical": false
+    },
+    {
+      "name": "wopr_ollama_chat-ollama-1",
+      "image": "ollama/ollama",
+      "critical": false
+    }
+  ],
+  "http_endpoints": {
+    "public": [
+      {
+        "url": "https://rag.wopr.systems/",
+        "name": "rag",
+        "expected_status": [
+          200,
+          301,
+          302,
+          403
+        ],
+        "critical": false
+      }
+    ],
+    "backend": [
+      {
+        "url": "http://127.0.0.1:8086/",
+        "name": "rag-backend",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "caddy"
+      },
+      {
+        "url": "http://127.0.0.1:1338/",
+        "name": "containerd-1338",
+        "expected_status": [
+          200,
+          404
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://127.0.0.1:2583/",
+        "name": "wopr-pds-2583",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan",
+        "container": "wopr-pds"
+      },
+      {
+        "url": "http://127.0.0.1:3000/health",
+        "name": "node-3000",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://127.0.0.1:3001/health",
+        "name": "node-3001",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://127.0.0.1:3004/health",
+        "name": "node-3004",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://127.0.0.1:3010/",
+        "name": "forgejo-3010",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://127.0.0.1:3011/health",
+        "name": "open-webui-3011",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan",
+        "container": "open-webui"
+      },
+      {
+        "url": "http://127.0.0.1:3101/api/health",
+        "name": "node-3101",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://127.0.0.1:3110/api/health",
+        "name": "brainjoos-api-3110",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan",
+        "container": "brainjoos-api"
+      },
+      {
+        "url": "http://127.0.0.1:3200/",
+        "name": "folkmoot-frontend-1-3200",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan",
+        "container": "folkmoot-frontend-1"
+      },
+      {
+        "url": "http://127.0.0.1:3201/api/health",
+        "name": "folkmoot-grafana-1-3201",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan",
+        "container": "folkmoot-grafana-1"
+      },
+      {
+        "url": "http://127.0.0.1:3300/",
+        "name": "folkmoot-web-3300",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan",
+        "container": "folkmoot-web"
+      },
+      {
+        "url": "http://127.0.0.1:3333/health",
+        "name": "mastodon-web-3333",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan",
+        "container": "mastodon-web"
+      },
+      {
+        "url": "http://127.0.0.1:3400/health",
+        "name": "lovejoos-frontend-3400",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan",
+        "container": "lovejoos-frontend"
+      },
+      {
+        "url": "http://127.0.0.1:3801/",
+        "name": "serpbear-3801",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan",
+        "container": "serpbear"
+      },
+      {
+        "url": "http://127.0.0.1:3802/health",
+        "name": "seonaut-3802",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan",
+        "container": "seonaut"
+      },
+      {
+        "url": "http://127.0.0.1:4000/health",
+        "name": "akkoma-4000",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan",
+        "container": "akkoma"
+      },
+      {
+        "url": "http://127.0.0.1:4001/",
+        "name": "mastodon-streaming-4001",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan",
+        "container": "mastodon-streaming"
+      },
+      {
+        "url": "http://127.0.0.1:5000/",
+        "name": "wopr-matrix-onboard-5000",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan",
+        "container": "wopr-matrix-onboard"
+      },
+      {
+        "url": "http://127.0.0.1:5001/api/v1/health",
+        "name": "lnbits-5001",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan",
+        "container": "lnbits"
+      },
+      {
+        "url": "http://127.0.0.1:5032/health",
+        "name": "python3-5032",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://127.0.0.1:5042/",
+        "name": "unknown-5042",
+        "expected_status": [
+          200,
+          404
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://127.0.0.1:5047/health",
+        "name": "python3-5047",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://127.0.0.1:5173/health",
+        "name": "sonicforge-frontend-1-5173",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan",
+        "container": "sonicforge-frontend-1"
+      },
+      {
+        "url": "http://127.0.0.1:5174/health",
+        "name": "reactor_ui-5174",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan",
+        "container": "reactor_ui"
+      },
+      {
+        "url": "http://127.0.0.1:5314/health",
+        "name": "elk-web-5314",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan",
+        "container": "elk-web"
+      },
+      {
+        "url": "http://127.0.0.1:5555/health",
+        "name": "python3-5555",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://127.0.0.1:5556/",
+        "name": "python3-5556",
+        "expected_status": [
+          200,
+          404
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://127.0.0.1:5557/health",
+        "name": "python3-5557",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://127.0.0.1:5580/health",
+        "name": "python-5580",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://127.0.0.1:5599/health",
+        "name": "unknown-5599",
+        "expected_status": [
+          200,
+          404
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://127.0.0.1:5678/healthz",
+        "name": "n8n-5678",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan",
+        "container": "n8n"
+      },
+      {
+        "url": "http://127.0.0.1:7100/health",
+        "name": "python3-7100",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://127.0.0.1:7101/",
+        "name": "node-7101",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://127.0.0.1:7777/",
+        "name": "nostr-relay-7777",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan",
+        "container": "nostr-relay"
+      },
+      {
+        "url": "http://127.0.0.1:7778/health",
+        "name": "gunicorn-7778",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://127.0.0.1:7801/api/health",
+        "name": "SwarmUI-7801",
+        "expected_status": [
+          200,
+          302
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://127.0.0.1:7880/",
+        "name": "livekit-server-7880",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://127.0.0.1:7890/health",
+        "name": "python3-7890",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://127.0.0.1:8000/health",
+        "name": "uvicorn-8000",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://127.0.0.1:8003/",
+        "name": "uvicorn-8003",
+        "expected_status": [
+          200,
+          404
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://127.0.0.1:8008/health",
+        "name": "matrix-synapse-8008",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan",
+        "container": "matrix-synapse"
+      },
+      {
+        "url": "http://127.0.0.1:8009/",
+        "name": "matrix-element-8009",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan",
+        "container": "matrix-element"
+      },
+      {
+        "url": "http://127.0.0.1:8010/",
+        "name": "synapse-admin-8010",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan",
+        "container": "synapse-admin"
+      },
+      {
+        "url": "http://127.0.0.1:8055/health",
+        "name": "printful-sync-printful-sync-1-8055",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan",
+        "container": "printful-sync-printful-sync-1"
+      },
+      {
+        "url": "http://127.0.0.1:8070/",
+        "name": "barter-web-1-8070",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan",
+        "container": "barter-web-1"
+      },
+      {
+        "url": "http://127.0.0.1:8080/api/health",
+        "name": "python3-8080",
+        "expected_status": [
+          200,
+          401,
+          403
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://127.0.0.1:8081/api/health",
+        "name": "socat-8081",
+        "expected_status": [
+          200,
+          401,
+          403
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://127.0.0.1:8082/health",
+        "name": "python3-8082",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://127.0.0.1:8083/",
+        "name": "lovejoos-emqx-8083",
+        "expected_status": [
+          200,
+          404
+        ],
+        "critical": false,
+        "discovered_via": "port_scan",
+        "container": "lovejoos-emqx"
+      },
+      {
+        "url": "http://127.0.0.1:8085/",
+        "name": "wopr-nodez3r0-static-8085",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan",
+        "container": "wopr-nodez3r0-static"
+      },
+      {
+        "url": "http://127.0.0.1:8087/health",
+        "name": "uvicorn-8087",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://127.0.0.1:8088/health",
+        "name": "python-8088",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://127.0.0.1:8091/health",
+        "name": "uvicorn-8091",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://127.0.0.1:8093/",
+        "name": "caddy-8093",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://127.0.0.1:8095/health",
+        "name": "uvicorn-8095",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://127.0.0.1:8096/health",
+        "name": "lovejoos-api-8096",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan",
+        "container": "lovejoos-api"
+      },
+      {
+        "url": "http://127.0.0.1:8098/health",
+        "name": "uvicorn-8098",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://127.0.0.1:8099/",
+        "name": "python3-8099",
+        "expected_status": [
+          200,
+          404
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://127.0.0.1:8100/",
+        "name": "sst-backend-8100",
+        "expected_status": [
+          200,
+          404
+        ],
+        "critical": false,
+        "discovered_via": "port_scan",
+        "container": "sst-backend"
+      },
+      {
+        "url": "http://127.0.0.1:8101/",
+        "name": "sst-frontend-8101",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan",
+        "container": "sst-frontend"
+      },
+      {
+        "url": "http://127.0.0.1:8188/",
+        "name": "python3-8188",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://127.0.0.1:8199/",
+        "name": "python3-8199",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://127.0.0.1:8201/",
+        "name": "python-8201",
+        "expected_status": [
+          200,
+          404
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://127.0.0.1:8202/",
+        "name": "python3-8202",
+        "expected_status": [
+          200,
+          404
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://127.0.0.1:8203/",
+        "name": "python3-8203",
+        "expected_status": [
+          200,
+          404
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://127.0.0.1:8580/healthz",
+        "name": "lk-jwt-service-8580",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan",
+        "container": "lk-jwt-service"
+      },
+      {
+        "url": "http://127.0.0.1:8581/health",
+        "name": "node-8581",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://127.0.0.1:8600/health",
+        "name": "wopr-ai-engine-8600",
+        "expected_status": [
+          200,
+          404
+        ],
+        "critical": false,
+        "discovered_via": "port_scan",
+        "container": "wopr-ai-engine"
+      },
+      {
+        "url": "http://127.0.0.1:8680/health",
+        "name": "element-call-8680",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan",
+        "container": "element-call"
+      },
+      {
+        "url": "http://127.0.0.1:8787/api/health",
+        "name": "sonicforge-backend-1-8787",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan",
+        "container": "sonicforge-backend-1"
+      },
+      {
+        "url": "http://127.0.0.1:8803/health",
+        "name": "folkmoot-falken-bridge-8803",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan",
+        "container": "folkmoot-falken-bridge"
+      },
+      {
+        "url": "http://127.0.0.1:8806/health",
+        "name": "folkmoot-nedry-ingest-8806",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan",
+        "container": "folkmoot-nedry-ingest"
+      },
+      {
+        "url": "http://127.0.0.1:8888/healthz",
+        "name": "searxng-8888",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan",
+        "container": "searxng"
+      },
+      {
+        "url": "http://127.0.0.1:8900/health",
+        "name": "castopod-app-8900",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan",
+        "container": "castopod-app"
+      },
+      {
+        "url": "http://127.0.0.1:9003/health",
+        "name": "group7-peertube-9003",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan",
+        "container": "group7-peertube"
+      },
+      {
+        "url": "http://127.0.0.1:9080/ready",
+        "name": "promtail-9080",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://127.0.0.1:9090/status",
+        "name": "prometheus-9090",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://127.0.0.1:9091/",
+        "name": "authentik-server-1-9091",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan",
+        "container": "authentik-server-1"
+      },
+      {
+        "url": "http://127.0.0.1:9100/health",
+        "name": "prometheus-node-9100",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://127.0.0.1:9101/health",
+        "name": "python3-9101",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://127.0.0.1:9190/status",
+        "name": "folkmoot-prometheus-1-9190",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan",
+        "container": "folkmoot-prometheus-1"
+      },
+      {
+        "url": "http://127.0.0.1:9201/health",
+        "name": "lovejoos-minio-9201",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan",
+        "container": "lovejoos-minio"
+      },
+      {
+        "url": "http://127.0.0.1:9445/",
+        "name": "authentik-server-1-9445",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan",
+        "container": "authentik-server-1"
+      },
+      {
+        "url": "http://127.0.0.1:10248/healthz",
+        "name": "kubelite-10248",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://127.0.0.1:10249/healthz",
+        "name": "kubelite-10249",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://127.0.0.1:10256/healthz",
+        "name": "kubelite-10256",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://127.0.0.1:13000/",
+        "name": "unknown-13000",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://127.0.0.1:13001/",
+        "name": "wopr-umami-13001",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan",
+        "container": "wopr-umami"
+      },
+      {
+        "url": "http://127.0.0.1:13002/health",
+        "name": "crowdsec-dashboard-metabase-1-13002",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan",
+        "container": "crowdsec-dashboard-metabase-1"
+      },
+      {
+        "url": "http://127.0.0.1:13033/health",
+        "name": "flowise-13033",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan",
+        "container": "flowise"
+      },
+      {
+        "url": "http://127.0.0.1:13201/health",
+        "name": "uvicorn-13201",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://127.0.0.1:14000/api/health",
+        "name": "artjoos-artjoos-storefront-1-14000",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan",
+        "container": "artjoos-artjoos-storefront-1"
+      },
+      {
+        "url": "http://127.0.0.1:16000/health",
+        "name": "gunicorn-16000",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://127.0.0.1:18000/health",
+        "name": "folkmoot-backend-1-18000",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan",
+        "container": "folkmoot-backend-1"
+      },
+      {
+        "url": "http://127.0.0.1:18070/health",
+        "name": "miniflux-18070",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan",
+        "container": "miniflux"
+      },
+      {
+        "url": "http://127.0.0.1:18080/",
+        "name": "caddy-18080",
+        "expected_status": [
+          200,
+          404
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://127.0.0.1:18081/health",
+        "name": "wopr-ntfy-18081",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan",
+        "container": "wopr-ntfy"
+      },
+      {
+        "url": "http://127.0.0.1:18082/health",
+        "name": "python3-18082",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://127.0.0.1:18083/status",
+        "name": "lovejoos-emqx-18083",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan",
+        "container": "lovejoos-emqx"
+      },
+      {
+        "url": "http://127.0.0.1:18090/",
+        "name": "wopr-sydent-18090",
+        "expected_status": [
+          200,
+          404
+        ],
+        "critical": false,
+        "discovered_via": "port_scan",
+        "container": "wopr-sydent"
+      },
+      {
+        "url": "http://127.0.0.1:18095/api/health",
+        "name": "uvicorn-18095",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://127.0.0.1:18096/",
+        "name": "buylocal-18096",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan",
+        "container": "buylocal"
+      },
+      {
+        "url": "http://127.0.0.1:18099/health",
+        "name": "uvicorn-18099",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://127.0.0.1:18789/health",
+        "name": "openclaw-gatewa-18789",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://127.0.0.1:18791/health",
+        "name": "openclaw-gatewa-18791",
+        "expected_status": [
+          200,
+          401,
+          403
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://127.0.0.1:18792/",
+        "name": "openclaw-gatewa-18792",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://127.0.0.1:19002/health",
+        "name": "saleor-dashboard-dude-19002",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan",
+        "container": "saleor-dashboard-dude"
+      },
+      {
+        "url": "http://127.0.0.1:20241/ready",
+        "name": "cloudflared-20241",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://127.0.0.1:28000/",
+        "name": "saleor-api-dude-28000",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan",
+        "container": "saleor-api-dude"
+      },
+      {
+        "url": "http://127.0.0.1:28100/health",
+        "name": "folkmoot-api-28100",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan",
+        "container": "folkmoot-api"
+      },
+      {
+        "url": "http://127.0.0.1:29001/",
+        "name": "unknown-29001",
+        "expected_status": [
+          200,
+          404
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://192.168.80.1:32914/",
+        "name": "rygel-32914",
+        "expected_status": [
+          200,
+          404
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://10.220.0.1:33768/",
+        "name": "rygel-33768",
+        "expected_status": [
+          200,
+          404
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://192.168.112.1:35202/",
+        "name": "rygel-35202",
+        "expected_status": [
+          200,
+          404
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://192.168.208.1:35711/",
+        "name": "rygel-35711",
+        "expected_status": [
+          200,
+          404
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://192.168.96.1:36578/",
+        "name": "rygel-36578",
+        "expected_status": [
+          200,
+          404
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://192.168.64.1:37952/",
+        "name": "rygel-37952",
+        "expected_status": [
+          200,
+          404
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://192.168.176.1:37999/",
+        "name": "rygel-37999",
+        "expected_status": [
+          200,
+          404
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://192.168.240.1:38863/",
+        "name": "rygel-38863",
+        "expected_status": [
+          200,
+          404
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://127.0.0.1:39079/",
+        "name": "containerd-39079",
+        "expected_status": [
+          200,
+          404
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://127.0.0.1:41141/",
+        "name": "forgejo-runner-41141",
+        "expected_status": [
+          200,
+          404
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://127.0.0.1:41333/",
+        "name": "forgejo-runner-41333",
+        "expected_status": [
+          200,
+          404
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://192.168.192.1:45892/",
+        "name": "rygel-45892",
+        "expected_status": [
+          200,
+          404
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://10.211.0.1:47210/",
+        "name": "rygel-47210",
+        "expected_status": [
+          200,
+          404
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://192.168.128.1:47634/",
+        "name": "rygel-47634",
+        "expected_status": [
+          200,
+          404
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://192.168.224.1:48226/",
+        "name": "rygel-48226",
+        "expected_status": [
+          200,
+          404
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://192.168.48.1:49773/",
+        "name": "rygel-49773",
+        "expected_status": [
+          200,
+          404
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://10.210.0.1:50262/",
+        "name": "rygel-50262",
+        "expected_status": [
+          200,
+          404
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://192.168.16.1:50819/",
+        "name": "rygel-50819",
+        "expected_status": [
+          200,
+          404
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://192.168.32.1:51268/",
+        "name": "rygel-51268",
+        "expected_status": [
+          200,
+          404
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://10.220.2.1:53457/",
+        "name": "rygel-53457",
+        "expected_status": [
+          200,
+          404
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://::1:54542/",
+        "name": "rygel-54542",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://10.220.3.1:54610/",
+        "name": "rygel-54610",
+        "expected_status": [
+          200,
+          404
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://10.220.1.1:55838/",
+        "name": "rygel-55838",
+        "expected_status": [
+          200,
+          404
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://192.168.160.1:58966/",
+        "name": "rygel-58966",
+        "expected_status": [
+          200,
+          404
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://192.168.144.1:59517/",
+        "name": "rygel-59517",
+        "expected_status": [
+          200,
+          404
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://10.212.0.1:59539/",
+        "name": "rygel-59539",
+        "expected_status": [
+          200,
+          404
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      }
+    ]
+  },
+  "timers": [
+    {
+      "timer": "wopr-sp-watchdog.timer",
+      "service": "wopr-sp-watchdog"
+    },
+    {
+      "timer": "wopr-watchdog.timer",
+      "service": "wopr-watchdog"
+    },
+    {
+      "timer": "sysstat-collect.timer",
+      "service": "sysstat-collect"
+    },
+    {
+      "timer": "comfyui-idle-release.timer",
+      "service": "comfyui-idle-release"
+    },
+    {
+      "timer": "phpsessionclean.timer",
+      "service": "phpsessionclean"
+    },
+    {
+      "timer": "prometheus-node-exporter-apt.timer",
+      "service": "prometheus-node-exporter-apt"
+    },
+    {
+      "timer": "prometheus-node-exporter-nvme.timer",
+      "service": "prometheus-node-exporter-nvme"
+    },
+    {
+      "timer": "fwupd-refresh.timer",
+      "service": "fwupd-refresh"
+    },
+    {
+      "timer": "anacron.timer",
+      "service": "anacron"
+    },
+    {
+      "timer": "apport-autoreport.timer",
+      "service": "apport-autoreport"
+    },
+    {
+      "timer": "meme-engine.timer",
+      "service": "meme-engine"
+    },
+    {
+      "timer": "update-notifier-download.timer",
+      "service": "update-notifier-download"
+    },
+    {
+      "timer": "systemd-tmpfiles-clean.timer",
+      "service": "systemd-tmpfiles-clean"
+    },
+    {
+      "timer": "certbot.timer",
+      "service": "certbot"
+    },
+    {
+      "timer": "motd-news.timer",
+      "service": "motd-news"
+    },
+    {
+      "timer": "dpkg-db-backup.timer",
+      "service": "dpkg-db-backup"
+    },
+    {
+      "timer": "logrotate.timer",
+      "service": "logrotate"
+    },
+    {
+      "timer": "crowdsec-hubupdate.timer",
+      "service": "crowdsec-hubupdate"
+    },
+    {
+      "timer": "sysstat-summary.timer",
+      "service": "sysstat-summary"
+    },
+    {
+      "timer": "man-db.timer",
+      "service": "man-db"
+    },
+    {
+      "timer": "e2scrub_all.timer",
+      "service": "e2scrub_all"
+    },
+    {
+      "timer": "apt-daily.timer",
+      "service": "apt-daily"
+    },
+    {
+      "timer": "apt-daily-upgrade.timer",
+      "service": "apt-daily-upgrade"
+    },
+    {
+      "timer": "fstrim.timer",
+      "service": "fstrim"
+    },
+    {
+      "timer": "update-notifier-motd.timer",
+      "service": "update-notifier-motd"
+    },
+    {
+      "timer": "gpu-scheduler-watchdog.timer",
+      "service": "gpu-scheduler-watchdog"
+    },
+    {
+      "timer": "prometheus-node-exporter-ipmitool-sensor.timer",
+      "service": "prometheus-node-exporter-ipmitool-sensor"
+    },
+    {
+      "timer": "prometheus-node-exporter-mellanox-hca-temp.timer",
+      "service": "prometheus-node-exporter-mellanox-hca-temp"
+    },
+    {
+      "timer": "prometheus-node-exporter-smartmon.timer",
+      "service": "prometheus-node-exporter-smartmon"
+    },
+    {
+      "timer": "snapd.snap-repair.timer",
+      "service": "snapd.snap-repair"
+    },
+    {
+      "timer": "ua-timer.timer",
+      "service": "ua-timer"
+    },
+    {
+      "timer": "wopr-sp-autodiscovery.timer",
+      "service": "wopr-sp-autodiscovery"
+    }
+  ],
+  "cron_jobs": [
+    {
+      "user": "root",
+      "command": "5 2 * * * /usr/local/sbin/wopr-unban-expired.sh >/dev/null 2>&1\\r",
+      "source": "crontab"
+    },
+    {
+      "user": "root",
+      "command": "* * * * * /bin/bash /opt/wopr-health/dns_tor_health.sh >/dev/null 2>&1",
+      "source": "crontab"
+    },
+    {
+      "user": "root",
+      "command": "*/5 * * * * /usr/bin/python3 /opt/wopr/support-plane/wopr-ddns-firewall-sync.py >/dev/null 2>&1",
+      "source": "crontab"
+    },
+    {
+      "user": "root",
+      "command": "*/5 * * * * docker exec -u www-data nextcloud php -f cron.php > /dev/null 2>&1",
+      "source": "crontab"
+    },
+    {
+      "user": "root",
+      "command": "*/5 * * * * /usr/bin/python3 /opt/wopr/support-plane/synthetic_probe.py >/dev/null 2>&1",
+      "source": "crontab"
+    },
+    {
+      "user": "root",
+      "command": "*/30 * * * * /usr/bin/python3 /opt/wopr/support-plane/image_probe.py >> /opt/wopr/support-plane/image_probe.log 2>&1",
+      "source": "crontab"
+    },
+    {
+      "user": "root",
+      "command": "17 6 * * * /usr/bin/python3 /opt/wopr/support-plane/og_audit.py --alert >> /opt/wopr/support-plane/og_audit.log 2>&1",
+      "source": "crontab"
+    },
+    {
+      "user": "nodez3r0",
+      "command": "0 3 * * * . /etc/wopr-dns.env && /usr/local/bin/validate_wopr_dns.py >> /var/log/wopr_dns_check.log 2>&1",
+      "source": "crontab"
+    },
+    {
+      "user": "nodez3r0",
+      "command": "*/10 3-22 * * * /usr/local/bin/comprehensive-backup.sh >/dev/null 2>&1",
+      "source": "crontab"
+    },
+    {
+      "user": "nodez3r0",
+      "command": "0 2 * * 0 /opt/openclaw/scripts/refresh-personas.sh",
+      "source": "crontab"
+    },
+    {
+      "user": "nodez3r0",
+      "command": "0 6 * * * cd /opt/asscast && /opt/asscast/venv/bin/python3 /opt/asscast/daily_pipeline.py >> /opt/asscast/cron.log 2>&1",
+      "source": "crontab"
+    },
+    {
+      "user": "nodez3r0",
+      "command": "*/5 * * * * /usr/bin/python3 /opt/gpu-scheduler/vram_reaper.py >> /opt/gpu-scheduler/reaper.log 2>&1",
+      "source": "crontab"
+    },
+    {
+      "user": "system",
+      "command": "5-55/10 * * * * root command -v debian-sa1 > /dev/null && debian-sa1 1 1",
+      "source": "/etc/cron.d/sysstat"
+    },
+    {
+      "user": "system",
+      "command": "59 23 * * * root command -v debian-sa1 > /dev/null && debian-sa1 60 2",
+      "source": "/etc/cron.d/sysstat"
+    },
+    {
+      "user": "system",
+      "command": "30 7-23 * * *   root\t[ -x /etc/init.d/anacron ] && if [ ! -d /run/systemd/system ]; then /usr/sbin/invoke-rc.d anacron start >/dev/null; fi",
+      "source": "/etc/cron.d/anacron"
+    },
+    {
+      "user": "system",
+      "command": "*/2 * * * * root /usr/bin/python3 /opt/wopr/support-plane/wopr-failsafe.py >> /var/log/wopr-failsafe.log 2>&1",
+      "source": "/etc/cron.d/wopr-failsafe"
+    },
+    {
+      "user": "system",
+      "command": "30 3 * * 0 root test -e /run/systemd/system || SERVICE_MODE=1 /usr/lib/x86_64-linux-gnu/e2fsprogs/e2scrub_all_cron",
+      "source": "/etc/cron.d/e2scrub_all"
+    },
+    {
+      "user": "system",
+      "command": "10 3 * * * root test -e /run/systemd/system || SERVICE_MODE=1 /sbin/e2scrub_all -A -r",
+      "source": "/etc/cron.d/e2scrub_all"
+    },
+    {
+      "user": "system",
+      "command": "*/15 * * * * root /usr/bin/python3 /opt/wopr-disk-watchdog.py >> /var/log/wopr-disk-watchdog.log 2>&1",
+      "source": "/etc/cron.d/wopr-disk-watchdog"
+    },
+    {
+      "user": "system",
+      "command": "0 */12 * * * root test -x /usr/bin/certbot -a \\! -d /run/systemd/system && perl -e 'sleep int(rand(43200))' && certbot -q renew --no-random-sleep-on-renew",
+      "source": "/etc/cron.d/certbot"
+    },
+    {
+      "user": "system",
+      "command": "30 4 * * 1 root /opt/seo/seonaut_crawl_all.sh >> /var/log/seonaut-crawl.log 2>&1",
+      "source": "/etc/cron.d/seonaut-weekly"
+    },
+    {
+      "user": "system",
+      "command": "09,39 *     * * *     root   [ -x /usr/lib/php/sessionclean ] && if [ ! -d /run/systemd/system ]; then /usr/lib/php/sessionclean; fi",
+      "source": "/etc/cron.d/php"
+    },
+    {
+      "user": "system",
+      "command": "test -x /usr/sbin/anacron || exit 0",
+      "source": "/etc/cron.daily/0anacron"
+    },
+    {
+      "user": "system",
+      "command": "anacron -u cron.daily",
+      "source": "/etc/cron.daily/0anacron"
+    },
+    {
+      "user": "system",
+      "command": "set -e",
+      "source": "/etc/cron.daily/sysstat"
+    },
+    {
+      "user": "system",
+      "command": "DEFAULT=/etc/default/sysstat",
+      "source": "/etc/cron.daily/sysstat"
+    },
+    {
+      "user": "system",
+      "command": "ENABLED=false",
+      "source": "/etc/cron.daily/sysstat"
+    },
+    {
+      "user": "system",
+      "command": "[ ! -d /run/systemd/system ] || exit 0",
+      "source": "/etc/cron.daily/sysstat"
+    },
+    {
+      "user": "system",
+      "command": "[ -x /usr/lib/sysstat/sa2 ] || exit 0",
+      "source": "/etc/cron.daily/sysstat"
+    },
+    {
+      "user": "system",
+      "command": "[ -r \"$DEFAULT\" ] && . \"$DEFAULT\"",
+      "source": "/etc/cron.daily/sysstat"
+    },
+    {
+      "user": "system",
+      "command": "[ \"$ENABLED\" = \"true\" ]  || exit 0",
+      "source": "/etc/cron.daily/sysstat"
+    },
+    {
+      "user": "system",
+      "command": "exec /usr/lib/sysstat/sa2 -A",
+      "source": "/etc/cron.daily/sysstat"
+    },
+    {
+      "user": "system",
+      "command": "set -e",
+      "source": "/etc/cron.daily/apt-compat"
+    },
+    {
+      "user": "system",
+      "command": "if [ -d /run/systemd/system ]; then",
+      "source": "/etc/cron.daily/apt-compat"
+    },
+    {
+      "user": "system",
+      "command": "exit 0",
+      "source": "/etc/cron.daily/apt-compat"
+    },
+    {
+      "user": "system",
+      "command": "fi",
+      "source": "/etc/cron.daily/apt-compat"
+    },
+    {
+      "user": "system",
+      "command": "check_power()",
+      "source": "/etc/cron.daily/apt-compat"
+    },
+    {
+      "user": "system",
+      "command": "{",
+      "source": "/etc/cron.daily/apt-compat"
+    },
+    {
+      "user": "system",
+      "command": "if command -v on_ac_power >/dev/null; then",
+      "source": "/etc/cron.daily/apt-compat"
+    },
+    {
+      "user": "system",
+      "command": "if on_ac_power; then",
+      "source": "/etc/cron.daily/apt-compat"
+    },
+    {
+      "user": "system",
+      "command": ":",
+      "source": "/etc/cron.daily/apt-compat"
+    },
+    {
+      "user": "system",
+      "command": "elif [ $? -eq 1 ]; then",
+      "source": "/etc/cron.daily/apt-compat"
+    },
+    {
+      "user": "system",
+      "command": "return 1",
+      "source": "/etc/cron.daily/apt-compat"
+    },
+    {
+      "user": "system",
+      "command": "fi",
+      "source": "/etc/cron.daily/apt-compat"
+    },
+    {
+      "user": "system",
+      "command": "fi",
+      "source": "/etc/cron.daily/apt-compat"
+    },
+    {
+      "user": "system",
+      "command": "return 0",
+      "source": "/etc/cron.daily/apt-compat"
+    },
+    {
+      "user": "system",
+      "command": "}",
+      "source": "/etc/cron.daily/apt-compat"
+    },
+    {
+      "user": "system",
+      "command": "random_sleep()",
+      "source": "/etc/cron.daily/apt-compat"
+    },
+    {
+      "user": "system",
+      "command": "{",
+      "source": "/etc/cron.daily/apt-compat"
+    },
+    {
+      "user": "system",
+      "command": "RandomSleep=1800",
+      "source": "/etc/cron.daily/apt-compat"
+    },
+    {
+      "user": "system",
+      "command": "eval $(apt-config shell RandomSleep APT::Periodic::RandomSleep)",
+      "source": "/etc/cron.daily/apt-compat"
+    },
+    {
+      "user": "system",
+      "command": "if [ $RandomSleep -eq 0 ]; then",
+      "source": "/etc/cron.daily/apt-compat"
+    },
+    {
+      "user": "system",
+      "command": "return",
+      "source": "/etc/cron.daily/apt-compat"
+    },
+    {
+      "user": "system",
+      "command": "fi",
+      "source": "/etc/cron.daily/apt-compat"
+    },
+    {
+      "user": "system",
+      "command": "if [ -z \"$RANDOM\" ] ; then",
+      "source": "/etc/cron.daily/apt-compat"
+    },
+    {
+      "user": "system",
+      "command": "RANDOM=$(( $(dd if=/dev/urandom bs=2 count=1 2> /dev/null | cksum | cut -d' ' -f1) % 32767 ))",
+      "source": "/etc/cron.daily/apt-compat"
+    },
+    {
+      "user": "system",
+      "command": "fi",
+      "source": "/etc/cron.daily/apt-compat"
+    },
+    {
+      "user": "system",
+      "command": "TIME=$(($RANDOM % $RandomSleep))",
+      "source": "/etc/cron.daily/apt-compat"
+    },
+    {
+      "user": "system",
+      "command": "sleep $TIME",
+      "source": "/etc/cron.daily/apt-compat"
+    },
+    {
+      "user": "system",
+      "command": "}",
+      "source": "/etc/cron.daily/apt-compat"
+    },
+    {
+      "user": "system",
+      "command": "random_sleep",
+      "source": "/etc/cron.daily/apt-compat"
+    },
+    {
+      "user": "system",
+      "command": "check_power || exit 0",
+      "source": "/etc/cron.daily/apt-compat"
+    },
+    {
+      "user": "system",
+      "command": "exec /usr/lib/apt/apt.systemd.daily",
+      "source": "/etc/cron.daily/apt-compat"
+    },
+    {
+      "user": "system",
+      "command": "[ -d /var/crash ] || exit 0",
+      "source": "/etc/cron.daily/apport"
+    },
+    {
+      "user": "system",
+      "command": "find /var/crash/. ! -name . -prune -type f \\( \\( -size 0 -a \\! -name '*.upload*' -a \\! -name '*.drkonqi*' \\) -o -mtime +7 \\) -exec rm -f -- '{}' \\;",
+      "source": "/etc/cron.daily/apport"
+    },
+    {
+      "user": "system",
+      "command": "find /var/crash/. ! -name . -prune -type d -regextype posix-extended -regex '.*/[0-9]{12}$' \\( -mtime +7 \\) -exec rm -Rf -- '{}' \\;",
+      "source": "/etc/cron.daily/apport"
+    },
+    {
+      "user": "system",
+      "command": "if [ -d /run/systemd/system ]; then",
+      "source": "/etc/cron.daily/logrotate"
+    },
+    {
+      "user": "system",
+      "command": "exit 0",
+      "source": "/etc/cron.daily/logrotate"
+    },
+    {
+      "user": "system",
+      "command": "fi",
+      "source": "/etc/cron.daily/logrotate"
+    },
+    {
+      "user": "system",
+      "command": "if [ ! -x /usr/sbin/logrotate ]; then",
+      "source": "/etc/cron.daily/logrotate"
+    },
+    {
+      "user": "system",
+      "command": "exit 0",
+      "source": "/etc/cron.daily/logrotate"
+    },
+    {
+      "user": "system",
+      "command": "fi",
+      "source": "/etc/cron.daily/logrotate"
+    },
+    {
+      "user": "system",
+      "command": "/usr/sbin/logrotate /etc/logrotate.conf",
+      "source": "/etc/cron.daily/logrotate"
+    },
+    {
+      "user": "system",
+      "command": "EXITVALUE=$?",
+      "source": "/etc/cron.daily/logrotate"
+    },
+    {
+      "user": "system",
+      "command": "if [ $EXITVALUE != 0 ]; then",
+      "source": "/etc/cron.daily/logrotate"
+    },
+    {
+      "user": "system",
+      "command": "/usr/bin/logger -t logrotate \"ALERT exited abnormally with [$EXITVALUE]\"",
+      "source": "/etc/cron.daily/logrotate"
+    },
+    {
+      "user": "system",
+      "command": "fi",
+      "source": "/etc/cron.daily/logrotate"
+    },
+    {
+      "user": "system",
+      "command": "exit $EXITVALUE",
+      "source": "/etc/cron.daily/logrotate"
+    },
+    {
+      "user": "system",
+      "command": "DEFAULTS_FILE=\"/etc/default/google-chrome\"",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "REPOCONFIG=\"deb [arch=amd64] https://dl.google.com/linux/chrome/deb/ stable main\"",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "REPOCONFIGREGEX=\"deb (\\[arch=[^]]*\\bamd64\\b[^]]*\\][[:space:]]*) https?://dl.google.com/linux/chrome/deb/ stable main\"",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "PGP_KEY_VERSION=3",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "PGP_KEY_DATA=$(cat <<KEYDATA",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "mQINBFcMjNMBEAC6Wr5QuLIFgz1V1EFPlg8ty2TsjQEl4VWftUAqWlMevJFWvYEx",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "BOsOZ6kNFfBfjAxgJNWTkxZrHzDl74R7KW/nUx6X57bpFjUyRaB8F3/NpWKSeIGS",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "pJT+0m2SgUNhLAn1WY/iNJGNaMl7lgUnaP+/ZsSNT9hyTBiH3Ev5VvAtMGhVI/u8",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "P0EtTjXp4o2U+VqFTBGmZ6PJVhCFjZUeRByloHw8dGOshfXKgriebpioHvU8iQ2U",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "GV3WNIirB2Rq1wkKxXJ/9Iw+4l5m4GmXMs7n3XaYQoBj28H86YA1cYWSm5LR5iU2",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "TneI1fJ3vwF2vpSXVBUUDk67PZhg6ZwGRT7GFWskC0z8PsWd5jwK20mA8EVKq0vN",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "BFmMK6i4fJU+ux17Rgvnc9tDSCzFZ1/4f43EZ41uTmmNXIDsaPCqwjvSS5ICadt2",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "xeqTWDlzONUpOs5yBjF1cfJSdVxsfshvln2JXUwgIdKl4DLbZybuNFXnPffNLb2v",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "PtRJHO48O2UbeXS8n27PcuMoLRd7+r7TsqG2vBH4t/cB/1vsvWMbqnQlaJ5VsjeW",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "Tp8Gv9FJiKuU8PKiWsF4EGR/kAFyCB8QbJeQ6HrOT0CXLOaYHRu2TvJ4taY9doXn",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "98TgU03XTLcYoSp49cdkkis4K+9hd2dUqARVCG7UVd9PY60VVCKi47BVKQARAQAB",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "tFRHb29nbGUgSW5jLiAoTGludXggUGFja2FnZXMgU2lnbmluZyBBdXRob3JpdHkp",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "IDxsaW51eC1wYWNrYWdlcy1rZXltYXN0ZXJAZ29vZ2xlLmNvbT6JAk4EEwEIADgC",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "GwMCHgECF4AWIQTrTBv9TwQvbd3M7JF3IfY704tHlgUCVwyM0wULCQgHAgYVCgkI",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "CwIEFgIDAQAKCRB3IfY704tHlkGrD/9aIOPxoABbhHDa+GbM1XHSeV99q2UOIsYc",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "A5Jg3k2+Vbjr/006cL9Kk+rdbruZJtERo2z+HVVhkJisvySbsd0UbWfiY5AdHzNP",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "azpitbX9cNYi0ghDZsD5UgP3cWdx21BJPO0v9PBG9U4z1TQ+pmsQphtNzMC4tK+A",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "H/7WTXnVPzKXTYziIEIPgHeassSj7Yfwa8kLiBR5tAehHDNNMi/mMf4d6a+wO46x",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "hhRx/BLjoaIxsZw9f5VxDAqGbCrW8IccwJX8vTc89y+6vpzSurdqYrplZWGpcnfT",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "3SPBxodLhS7wMehdy6NKNO14vDGR/GP43+6oZ91Cyv2CYHSPpZM6+qMwMmGVkHS2",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "6PrCVPhPoDywf/7UeFsC4KZMI6LIGD2YI9UEOlcCAEbRwWVjXCSwRZ9vRkxOxK4Q",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "xNMLAIf3YmUZPnqGVcvNssgsapvjmI3CAWpAPWlP5GTcHxrVGiYz7hNZcA0PfgxF",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "pmB0QXNxr/x737I9Q8FCZasSlNqocaiKF6gKBxFOKfiKx5DRZ63EZ07Z3HE6y+w3",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "+97UIJhjxVrONgb7ZX9paE8NtLG/X0ZldUzqWngfnFVasnCDiQC+ls2Tu9Oa+yMJ",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "rMe3VM4EcZTjYoESUjKzEHP72hn+GoAk7saWWVK6xYUJPM18Ua1mGx8xwoXt/t95",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "W40b92HbJrkCDQRluVp2ARAAxKbVA+3KMCtd0zWLZjrjf0lz8AnLfKRWPFNoOLqf",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "nPuWBCKlpAFKlZvC6fg6nRbl+zW3ytgTaI8D8oqipWgQDejce2zvW40r5W22Qa1S",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "d5i/pO8axXUxi3g0kk5RAXrI+xVytcyu0lvQFd5+OZZjiwF0wtd1UNytEhF2/uvR",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "cF699f4ueDYE3zP9S3CWYSKEejLrRyQkmCrjumR8WGjnX4+PARklo+0SBGxefayB",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "Mw0e6QZOtXy5v9opZU0E8XTBhgXksDY0eBWnXjydLXUXg6CI2kKQBmYlAI+XKnh6",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "Zh/GSKGOH5NkrDopyvHA4LHth5x4orrBa+scevCMnGXaeFq0Mhg0iWdWSpOUGngD",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "2BN0LGZyJnXFdv5CWUvJwFgxaC7aWjUqTjQ059WWMgotq1jzxfCYlTJJgsbJfmR4",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "8jb2Rz7JUbJxgexKCg6XIz9XD4Zd+6P8FGKcoi2MhPFvpgzbnB+GBy1R6v80Bqjt",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "1emsUwNQ7PoLvbR1f9/shKyKqaLtfVTnzyiY2Au8n87yA+fIy2TWBavCEVkOVVgj",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "kCVjHHczCgee0tmW+byISZH5f0uSEjBlw1299p8ilX7wuU5ojG367M3NwywMcIai",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "ZQB/8Zhdsjz/HWIeiilkiH31Rk5t/LHLPZJJtW1QQEdfIpcenRsVYzUjPYt9DDF4",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "1FEAEQEAAYkEcgQYAQoAJhYhBOtMG/1PBC9t3czskXch9jvTi0eWBQJluVp2AhsC",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "BQkFo5qAAkAJEHch9jvTi0eWwXQgBBkBCgAdFiEEDwb/hr7q9OcYZu5SMu5TVaa8",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "bkIFAmW5WnYACgkQMu5TVaa8bkKYHg//VGdcoevKndSVo4Cr9QAXZgoVL00CCBXA",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "fw+GwVzqdmmu5z4IVTWzmPAK5b1qJaBD5OMEW9DSH9sctu6OVNKZ/LLKj8iP7i9L",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "FHOWZRryUc+rKq/t8ixDzYACzxYT+ZXwOJ/biGzElJkQfXfQNORGq2ddLQUHqw5A",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "8aPkQoAW3e/S839nVBFfZ4uZlzaM7tB+R1Gy2u8XduitvvF23br88zyDxGBhob5+",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "ogn820ZAXRcj5ZTG5D6a1EYTJWkviqfDCeiTLGOwzGwm+8Yho9QspHUJqEYkPi0C",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "XITcO82KQxEjZIOiNobKHlzDbiYklVmbHjrtDe0Th3CYC7ykIYKV1RAEbp6mtMv9",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "Zq7IlyaQmvWqxIruDLH5TLybBcRJj+zlvAOTOGXNonRaMHGpd+gcUgSUcl+EtLR5",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "+oivo0WY9S7hwEokqhmgUHBM9NMSZbPu0TaYOBU71npD1+rsLBlLon8ZyGJ5CADL",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "dHGbkGLMFmxaKxjcFDglfXDrAfQJp7itgJ5uS60UVYGDskDePaeSB/OwPeRgdh/k",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "GWUvbJXnz10Shw2M+Kiznq8+LmSD1RA4U7VJpfgR+7V4Cs1w214HEp/mkfyiQNyC",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "OqP3JdlGzp8jZST3PPPRQvrf6JFKpKPwq/qJ6ksLM6mHUMedja0WCGlIViqVrKF2",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "mswlWTsaYsWiJg//WdPrCryT9ENLf9bscQEnxG3GzW8vnWdTR7kruOBtRP2RobYo",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "GaWdFuCQQuO+7SVfrMsWLI9xzkmS8TYDJ9nu3lwh9qc5LiFzRb0LrpFCjZy9TGSf",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "aC0KszsoJNzXojB7+4wLZE0Sd40uIJ63BzkOGmNgTFHn2zPND02nHfWl5+yaRLAp",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "260TPxb3qXb3IdiAgOgthbdvqe4FEF+nicBdDWBap8SYU0WUpkFrak+wo2UWClyE",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "L4SIxD91vUSVU3Jbfwrsg7HqE0akQEnBs+4c15/1ZTefYMgiAwEdMc+9s0eII1N+",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "44zX78ExuYrn1GZbrpNLRRrFmyzAcctm3u803tIrNey95P34DV3rBmVWjLxjeDKQ",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "EqcEcZFoY7TNpdzMe3hixQDgveKzqUCNsiilTkzePYXVEUpGv3n4dlP81c14ZsW+",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "x0qa8/gQu0MC5hUyBhHwaqMjnI/9xxUyyL+aFP5xTE78Xv7ueLHDUajrfsmqv80X",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "mSOOsEPwSIbLxCsabq4FHc0Zp3QGcxYprZihgoXWbcWz968GRzKZH6FLAXORebpZ",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "I5vyHMkhrIVrqQBzu5IrJHmIbTSn+d6JtuozVpQBAMHBXuD3A+Zx1EiMlLYy0rUl",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "cdkJHWBUpv4Q5ty3pEk5XDyznwRLk73AZmZtW0hn4kdNu4f62DQShE1wJvO5Ag0E",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "Z31b7QEQAMEWM0g1KKIxE7q8JK7QblKom7++NYn92E3suHv3WxqzrhRT9tYNDSao",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "OazQP+haNA2BqkdFcB7G4jKdtK2VLFc7RBpcR2rnQEJWgpeP03DHrdZYFdpH9zAB",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "oFsotgZRKwwTOoxdm6XtV+47LEY9yAefPrt1gPJQ4h1SKwWIFSRPChQ1cThBz2QD",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "2LaPAGtjWzr6+0xf0nm4xTDvya0EbdTpMOvtyDCUp7qe41u34RelGxoo0+rmoL/0",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "cTJGCr2L3xWijlvWCMLhp2dgVnvRIpvo+tOSSl/pvTCLgE0nFjNQFbNh3D1Qo/AH",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "hEz3MzbQ9JbEy7MF+fiw83YULRKN1kZ673Z1ng1wLA0m4+EWrh/PpMPp1raYQT0f",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "SqUkiGBo25MfIjdheAuTgUf/4aHKU7vi4yFwxr8DWcKrxiv7g6xxbFvI3p+/wmyD",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "bLXBBh2ciqwQfW/H32TlfL+cXqtapB93L1xR4IPTRvMnIVJBA+J6I/jlqx6RqPAB",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "emHudFvL2sAJu91lQjL5GxEmgVNL7l+UKGsy+h8mg4Sonnw3MI1c1KrvvIhJlkTp",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "qiCqCnaGBBjZQWkuiyVJSq8VLHq2LxlWJd9nt73MpOLgj79ylD5G7OQEVgGBbvKw",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "qdRYvKik8UTYYu7sTolNFVNMvQoCIJxropO/xk17qK0a4LtaZ8oVABEBAAGJBHIE",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "GAEKACYWIQTrTBv9TwQvbd3M7JF3IfY704tHlgUCZ31b7QIbAgUJBaOagAJACRB3",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "IfY704tHlsF0IAQZAQoAHRYhBA4iWRdBRnD0RCwlDf1TPAfCZGSPBQJnfVvtAAoJ",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "EP1TPAfCZGSPphkP/iHWjnYuEXC7uKzt+zvsqjkGkGkXVApXgZGm9h1/ujlab0FK",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "+9VA1JlVuzqw9SBYuwUwkGX0TVVCCc5KAxDa6sYH2IggcC+dN4ZjCMiUrJlEHNVE",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "6f7Fjg59STScr+jWOckKnP5p2x4xmH0kZX/rkZ+90lfniPUvVt/g5aunoEQDvtMO",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "ZBn3Opgx4zOWxqK4vGMtF1bhFUieMtg5B3E5jlNeNwmkDYV3MHGu+oMYy1TFMA3O",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "QuTOz5deD86xE73hK9HQ3DBoETPIuzlYXP0qoQswVKBI4z7HjRLmfBQagXCXj+64",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "LEUaumAZlWWV3zzxZnAk4kzJv51+vESxaMm6Ll5VG18MLrzv3Zi4Ez4BMr7OjbAn",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "xfcgrsITDlwrweCYC7Rq9fWw5USyk93h0kNJ8AVT6CG2a5/LsCztfW4jkg7LFDWW",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "kMISoN/rCaR2sJfvy2aijZ33yAWUnEpWZG6+8811YAFdn9g1bnuWLHx9Z7q8Vjal",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "zJhVFe9f8Mhwk2K764VUL7pnNNYxl4Kj0oTAqVVGDZoMWHCcE7nxqGbzjn8H/unT",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "Y0vtK5k8BPyuUt0Dtel8fspjlDl5o5VbeBQo6cFBEzZSd5rbavXmtixhL7CGKqCW",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "aHbJ6OYTa85W14ndUmRJ5qPdLcYakdl16Uj/DrFuKHOPrulgAbs+hmgm1q/nYdgP",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "/3UUMgaqxU6efsiWi3M3pz9nTu0mcI8kpJzvfov7WINjLLu2+yVRyRbS98473Zr6",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "KS49BFqOXNQBmtZl77bcz5shfhPxoKLd8YJVayvnBQrjCIE1CACvmJBZGDZSNY0v",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "Ea4G+n6WT3DwEan6plZ3/xM6s4caZfP43ZZkEiu1M1svQtgzF98HFxAhX5oLyMPw",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "x8R61X0XtKxmjVbNrTBwRfJf/FRDmmv5qSxoO2g1gpbCcm2VGoGBvoDws95GvPFN",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "lWUes4xQMclIo01JuynJGLyOaEm19TXu4T36ulCTO/b1lGIOLi+25vpFKlwBrD6y",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "q4yrt81t6vGvtI1pZrt1Wcm7hce8CFLrzfzo2D28yHPIsT0YvK7AnwUK/SMKIV1E",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "UNrLIRhnTMBnP+BaOF0HxcAYnlRLSwScPx2pATglHmIvNcRkCsfIZQOXjn8lvFXs",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "7lnkP5KUF5/+ccsJj8kEdzcsYaczQe3wY2N36ibqRPOfPeVmPFAKPQsUdgx47cAP",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "KTm6PxIp73IxceGXbkOXJ7W1lqVPKiwQh09RkwWpMtJA2HSdbmInxBiE71tJqSxQ",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "pp2EfNXOgWTTrs46lkuW39I7dr0NOAGomeaNnOuexMmlTZy2Rf77BfozRZIZ+RAY",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "lZu5/W1Ed2X4iR8i76QET6ICFmgxADKzB4WnpeBaBqAruQINBGmweKcBEAC1/xca",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "t0PuTxtFGEIKOMlQaQZl3NJkvJBFC1AMY0+h8zQtD3FvTeoxc36oI+BC017cXARI",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "SSieMgI/4T16ffYhij1ChX3rraH3UyxBimK+WbYb8ieTYHFMmmYrAVlDByhngSrX",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "A/kpafZUvWqlafJ//zb+U+oSdz/Fce2SzmhjA2JF/kH9U/P78jPNhrIjFGbFpa0F",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "VPowB4OQRxmJkIYhd7BpXaMLvjlJPQyw4u3vylcUe5Xc+WdpT4nNA72AkUiCjKtc",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "AoqRgCq1i5dRB8hmmyKiiv9Yys+cnm/aaLPKAUdjPGHhlWo7J5C7fRM2VOgn/QCz",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "hxcR0Fwyx2jhlaotGlq+g3yTnDE0eKrlejuDJW9PjHalDgJ1zjQ0xL1/DH+t71pQ",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "wr4yRhfSfaeV+AyLJlRqzBLSHBVcJYHCpP3WrNSHolK2dx3q+guwCgqOmcMV6WcN",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "NRQ5epXb8J8t55lKB04XmN6MlyojMV3WZs1SLtBH7/YQFGNO8Ku7MDozvdIkZycV",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "yINU7vRnz5tMipk05ubLYBGbp+UoyyBsg3h7tBE509esQYrFGwsIQxuKYYbkNhc1",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "k/EOS3lOlOLrW2imSSbEqFEgCdQDWeHD7k9oe8bEbBuqMR5ENAkuICoTcEeHSEMI",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "uoltOdarDDjNKO7+vwgIg4FPtbiyoEfTNV+qxwARAQABiQRyBBgBCgAmFiEE60wb",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "/U8EL23dzOyRdyH2O9OLR5YFAmmweKcCGwIFCQWjmoACQAkQdyH2O9OLR5bBdCAE",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "GQEKAB0WIQS42+nMryEW+EoIS9YdCcAVAG/quAUCabB4pwAKCRAdCcAVAG/quHng",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "EACj1W8fovEHBvNSDUdBIiD9gx6XzScxDMAjeN8g9FNILkIdwfTN9mnHq0uNTR4E",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "PwTXuOOns0ET9wwM4aHihzLJlO8b6s32O3OOTkd37hT6PFcXVVxiFi8oM0rZjQGc",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "uFzL6Ste4650/6voJCoIysx3vSzZqmlTbDen6nnCwJNJlXta/Ecd7q1JFSDNDPt7",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "kJqnBXSP9JBBg0m5f2SicsZPqCzUO57nj5TGUFnoG191OAwLsuftrvGe0YbnfegN",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "3wn4sz7bo74zO7+0URl6TBCqV7CNPYjo303TH/m7tw0yidaOJQxlmQS62za6CPOS",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "1G+JG9sO+F0jKN7r7i4eJxMXukFS4txHDy3qiceuyN10Tcj6tbDqOSb7lHmAuKuI",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "CkpLOlGdJ0D3gY3c4KmZaOQ79clOuYpPb86PqusLLGet+z4BCB+h6/t/QHcXdSdE",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "NB9g7daExjOBngKNVKkbJ6+yrlwA9heS/KVEfXnB0njcROhTBiF6DR+/B7EfjWCS",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "NsD5/X5crUuXmC6ymdSGUxNeeL6kVNMWWGNYXuVWeNwbxh7rrKbAiUy5xKEWyxaV",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "8KAVaHyUnHRliM0utxibWoY8ffDhzhFQfkRiZd5vnOxES9ExqoRhN4MhYjjG+D8q",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "wjrqiXFif19zDO5CsKZ1WvNOf0snDwLh3pQuy5et8KG/QJz+D/9whzafoi650yzs",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "8jZ/hhfRo30cdVz/AOBLXex8kla5cXAi21S6kyIp6JDvTzdQovzj/UqG8RUUpAel",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "h4dLn4ulcffUX4khW3SUmOFG5TUjk9xET1a6ppx+oyVq+SbPurxYXoKm4ZAZwcji",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "dJF8lhwxYdW3yzBU8CKIhNT6i7aY7YrfVqinjXVFxn+8WsLkGk9IommwPwa+bzSJ",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "XBkF5FevMlboH/ze2cc0+wzR8ZWiPEOATuJan4O/z2fwGxDmMg3x68cd7Yj9Pol3",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "nOKTud8luTM8IOBE8hCfol6x+k7KfqtRdgrTv7W3/Ise0ybJlMkEEUuqglg4Ta7o",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "mgO7MJFiVl+P0ab+69W2z1ZzAyzjKajm21Tb4tec7AoBVaLNGYsunLCTfjxcB3V0",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "SRDlO/iJNIqXIhClHEqrnSYUrfVbUKNCAZ4zUK1/ctdJyuVViV2jlafQ+YR8RUMH",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "YT2P3iMawH90FFhYAxll7V5dfugB2FAh51bENiMrPL9k1MUuoiDABrC/Foo4uqby",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "kJUJr8eR3zHs94v8IPir5cS6FFqchlqxto/A5LPpxYbXnfY+x1QQkyv3euOH2+9x",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "nYB57gEQf2XL4P+pZQnKy6WMyWnFD6Yb2fQQVFsP0uGTm0v0CsmWxRndaD9rY35w",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "0VKRfNSbDRGP+JSZlxIhNwzxA5IrpQ==",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "KEYDATA",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": ")",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "PGP_KEY_CHECKSUM=\"=djNO\"",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "PGP_SUBKEYS=\"32EE5355A6BC6E42 FD533C07C264648F 1D09C015006FEAB8\"",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "APT_CONFIG=\"$(command -v apt-config 2>/dev/null)\"",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "GPG_FILE=\"/usr/share/keyrings/google-chrome.gpg\"",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "find_apt_trusted() {",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "eval $(\"$APT_CONFIG\" shell APT_TRUSTEDDIR 'Dir::Etc::trustedparts/d')",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "}",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "find_apt_sources() {",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "eval $(\"$APT_CONFIG\" shell APT_SOURCESDIR 'Dir::Etc::sourceparts/d')",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "SOURCES_FILE=\"$APT_SOURCESDIR/google-chrome.sources\"",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "}",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "install_key() {",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "if [ ! -e /usr/share/keyrings ]; then",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "mkdir -p /usr/share/keyrings",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "chmod 755 /usr/share/keyrings",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "fi",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "echo \"$PGP_KEY_DATA\" | base64 -d >\"$GPG_FILE.$$.tmp\"",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "chmod 644 \"$GPG_FILE.$$.tmp\"",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "mv \"$GPG_FILE.$$.tmp\" \"$GPG_FILE\"",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "}",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "uninstall_key() {",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "rm -f \"$GPG_FILE\"",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "}",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "remove_legacy_key() {",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "find_apt_trusted",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "rm -f \"$APT_TRUSTEDDIR/google-chrome.gpg\"",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "}",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "remove_legacy_list() {",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "find_apt_sources",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "LEGACY_LIST=\"$APT_SOURCESDIR/google-chrome.list\"",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "if [ ! -f \"$LEGACY_LIST\" ]; then",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "return",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "fi",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "if grep -E \"^[[:space:]]*#?[[:space:]]*deb\" \"$LEGACY_LIST\" |",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "grep -v -E \\",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "\"^[[:space:]]*#?[[:space:]]*$REPOCONFIGREGEX\" >/dev/null;",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "then",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "sed -i -E \"s|^[[:space:]]*($REPOCONFIGREGEX)|# \\1|\" \"$LEGACY_LIST\"",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "else",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "rm -f \"$LEGACY_LIST\"",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "fi",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "}",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "gen_sources_content() {",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "cat <<EOF",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "X-Repolib-Name: Google Chrome",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "Types: deb",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "URIs: https://dl.google.com/linux/chrome-stable/deb/",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "Suites: stable",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "Components: main",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "Architectures: amd64",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "Signed-By: $GPG_FILE",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "EOF",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "}",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "create_sources_lists() {",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "find_apt_sources",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "gen_sources_content >\"$SOURCES_FILE.$$.tmp\"",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "chmod 644 \"$SOURCES_FILE.$$.tmp\"",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "mv \"$SOURCES_FILE.$$.tmp\" \"$SOURCES_FILE\"",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "if [ -r \"$DEFAULTS_FILE\" ]; then",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "if grep -q \"^[[:space:]]*repo_add_once=\" \"$DEFAULTS_FILE\"; then",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "sed -i -e \\",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "'s/^[[:space:]]*repo_add_once=.*/repo_add_once=\"false\"/' \\",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "\"$DEFAULTS_FILE\"",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "else",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "echo 'repo_add_once=\"false\"' >>\"$DEFAULTS_FILE\"",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "fi",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "fi",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "}",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "clean_sources_lists() {",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "find_apt_sources",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "rm -f \"$SOURCES_FILE\"",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "}",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "install_deb822_sources() {",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "find_apt_sources",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "LEGACY_LIST=\"$APT_SOURCESDIR/google-chrome.list\"",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "SHOULD_INSTALL_SOURCES=0",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "if [ -r \"$DEFAULTS_FILE\" ]; then",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "if grep -E -q \\",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "'^[[:space:]]*repo_add_once=[[:space:]]*[\"'\\'']?true[\"'\\'']?' \\",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "\"$DEFAULTS_FILE\"; then",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "SHOULD_INSTALL_SOURCES=1",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "fi",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "else",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "SHOULD_INSTALL_SOURCES=1",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "echo 'repo_add_once=\"true\"' >\"$DEFAULTS_FILE\"",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "echo 'repo_reenable_on_distupgrade=\"true\"' >>\"$DEFAULTS_FILE\"",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "fi",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "if [ -f \"$SOURCES_FILE\" ]; then",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "SHOULD_INSTALL_SOURCES=1",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "elif [ -f \"$LEGACY_LIST\" ]; then",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "if grep -E -q \"^[[:space:]]*$REPOCONFIGREGEX\" \"$LEGACY_LIST\"; then",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "SHOULD_INSTALL_SOURCES=1",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "elif grep -E -q \\",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "\"^[[:space:]]*#[[:space:]]*$REPOCONFIGREGEX[[:space:]]*# disabled on \\",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "upgrade to .*\" \\",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "\"$LEGACY_LIST\"; then",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "SHOULD_INSTALL_SOURCES=1",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "fi",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "fi",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "if [ \"$SHOULD_INSTALL_SOURCES\" -eq 1 ]; then",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "create_sources_lists",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "fi",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "}",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "if [ -r \"$DEFAULTS_FILE\" ]; then",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": ". \"$DEFAULTS_FILE\"",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "fi",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "install_key",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "if [ \"$repo_add_once\" = \"true\" ]; then",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "create_sources_lists",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "elif [ \"$repo_reenable_on_distupgrade\" = \"true\" ]; then",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "install_deb822_sources",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "fi",
+      "source": "/etc/cron.daily/google-chrome"
+    },
+    {
+      "user": "system",
+      "command": "set -e",
+      "source": "/etc/cron.daily/man-db"
+    },
+    {
+      "user": "system",
+      "command": "if [ -d /run/systemd/system ]; then",
+      "source": "/etc/cron.daily/man-db"
+    },
+    {
+      "user": "system",
+      "command": "exit 0",
+      "source": "/etc/cron.daily/man-db"
+    },
+    {
+      "user": "system",
+      "command": "fi",
+      "source": "/etc/cron.daily/man-db"
+    },
+    {
+      "user": "system",
+      "command": "export PATH=\"$PATH:/usr/local/sbin:/usr/sbin:/sbin\"",
+      "source": "/etc/cron.daily/man-db"
+    },
+    {
+      "user": "system",
+      "command": "iosched_idle=",
+      "source": "/etc/cron.daily/man-db"
+    },
+    {
+      "user": "system",
+      "command": "if ! grep -Eq '(envID|VxID):.*[1-9]' /proc/self/status && \\",
+      "source": "/etc/cron.daily/man-db"
+    },
+    {
+      "user": "system",
+      "command": "{ [ ! -d /proc/vz ] || [ -d /proc/bc ]; }; then",
+      "source": "/etc/cron.daily/man-db"
+    },
+    {
+      "user": "system",
+      "command": "iosched_idle='--iosched idle'",
+      "source": "/etc/cron.daily/man-db"
+    },
+    {
+      "user": "system",
+      "command": "fi",
+      "source": "/etc/cron.daily/man-db"
+    },
+    {
+      "user": "system",
+      "command": "if ! [ -d /var/cache/man ]; then",
+      "source": "/etc/cron.daily/man-db"
+    },
+    {
+      "user": "system",
+      "command": "install -d -o man -g man -m 0755 /var/cache/man",
+      "source": "/etc/cron.daily/man-db"
+    },
+    {
+      "user": "system",
+      "command": "fi",
+      "source": "/etc/cron.daily/man-db"
+    },
+    {
+      "user": "system",
+      "command": "if [ -d /var/cache/man ]; then",
+      "source": "/etc/cron.daily/man-db"
+    },
+    {
+      "user": "system",
+      "command": "cd /",
+      "source": "/etc/cron.daily/man-db"
+    },
+    {
+      "user": "system",
+      "command": "start-stop-daemon --start --pidfile /dev/null --startas /bin/sh \\",
+      "source": "/etc/cron.daily/man-db"
+    },
+    {
+      "user": "system",
+      "command": "--oknodo --chuid man $iosched_idle -- -c \\",
+      "source": "/etc/cron.daily/man-db"
+    },
+    {
+      "user": "system",
+      "command": "\"find /var/cache/man -type f -name '*.gz' -atime +6 -print0 | \\",
+      "source": "/etc/cron.daily/man-db"
+    },
+    {
+      "user": "system",
+      "command": "xargs -r0 rm -f\"",
+      "source": "/etc/cron.daily/man-db"
+    },
+    {
+      "user": "system",
+      "command": "fi",
+      "source": "/etc/cron.daily/man-db"
+    },
+    {
+      "user": "system",
+      "command": "if [ -x /usr/bin/mandb ]; then",
+      "source": "/etc/cron.daily/man-db"
+    },
+    {
+      "user": "system",
+      "command": "start-stop-daemon --start --pidfile /dev/null \\",
+      "source": "/etc/cron.daily/man-db"
+    },
+    {
+      "user": "system",
+      "command": "--startas /usr/bin/mandb --oknodo --chuid man \\",
+      "source": "/etc/cron.daily/man-db"
+    },
+    {
+      "user": "system",
+      "command": "$iosched_idle \\",
+      "source": "/etc/cron.daily/man-db"
+    },
+    {
+      "user": "system",
+      "command": "-- --no-purge --quiet",
+      "source": "/etc/cron.daily/man-db"
+    },
+    {
+      "user": "system",
+      "command": "fi",
+      "source": "/etc/cron.daily/man-db"
+    },
+    {
+      "user": "system",
+      "command": "exit 0",
+      "source": "/etc/cron.daily/man-db"
+    },
+    {
+      "user": "system",
+      "command": "if [ -d /run/systemd/system ]; then",
+      "source": "/etc/cron.daily/dpkg"
+    },
+    {
+      "user": "system",
+      "command": "exit 0",
+      "source": "/etc/cron.daily/dpkg"
+    },
+    {
+      "user": "system",
+      "command": "fi",
+      "source": "/etc/cron.daily/dpkg"
+    },
+    {
+      "user": "system",
+      "command": "/usr/libexec/dpkg/dpkg-db-backup",
+      "source": "/etc/cron.daily/dpkg"
+    }
+  ],
+  "network": {
+    "interfaces": [
+      {
+        "name": "enp13s0",
+        "state": "UP",
+        "addresses": [
+          "192.168.0.250"
+        ],
+        "type": "physical"
+      },
+      {
+        "name": "wwan0",
+        "state": "DOWN",
+        "addresses": [],
+        "type": "physical"
+      },
+      {
+        "name": "nebula0",
+        "state": "UNKNOWN",
+        "addresses": [
+          "10.0.0.3"
+        ],
+        "type": "nebula"
+      }
+    ],
+    "nebula_active": true
+  },
+  "compose_projects": [
+    {
+      "name": "folkmoot-foundation",
+      "path": "/opt/folkmoot-foundation/docker-compose.yml",
+      "directory": "/opt/folkmoot-foundation"
+    },
+    {
+      "name": "bind",
+      "path": "/opt/bind/docker-compose.yml",
+      "directory": "/opt/bind"
+    },
+    {
+      "name": "wopr_ollama_chat",
+      "path": "/opt/wopr_ollama_chat/docker-compose.yml",
+      "directory": "/opt/wopr_ollama_chat"
+    },
+    {
+      "name": "statestreettheater",
+      "path": "/opt/statestreettheater/docker-compose.yml",
+      "directory": "/opt/statestreettheater"
+    },
+    {
+      "name": "wopr-theblock",
+      "path": "/opt/wopr-theblock/docker-compose.yml",
+      "directory": "/opt/wopr-theblock"
+    },
+    {
+      "name": "printful-sync",
+      "path": "/opt/printful-sync/docker-compose.yml",
+      "directory": "/opt/printful-sync"
+    },
+    {
+      "name": "umami",
+      "path": "/opt/wopr-monitoring/umami/docker-compose.yml",
+      "directory": "/opt/wopr-monitoring/umami"
+    },
+    {
+      "name": "ntfy",
+      "path": "/opt/wopr-monitoring/ntfy/docker-compose.yml",
+      "directory": "/opt/wopr-monitoring/ntfy"
+    },
+    {
+      "name": "nostr-toolkit",
+      "path": "/opt/nostr-toolkit/docker-compose.yml",
+      "directory": "/opt/nostr-toolkit"
+    },
+    {
+      "name": "tor",
+      "path": "/opt/tor/docker-compose.yml",
+      "directory": "/opt/tor"
+    },
+    {
+      "name": "matrix",
+      "path": "/opt/matrix/docker-compose.yml",
+      "directory": "/opt/matrix"
+    },
+    {
+      "name": "rig-compose",
+      "path": "/opt/matrix/rig-compose/docker-compose.yml",
+      "directory": "/opt/matrix/rig-compose"
+    },
+    {
+      "name": "livekit",
+      "path": "/opt/livekit/docker-compose.yml",
+      "directory": "/opt/livekit"
+    },
+    {
+      "name": "infisical",
+      "path": "/opt/infisical/docker-compose.yml",
+      "directory": "/opt/infisical"
+    },
+    {
+      "name": "wopr-multiverse",
+      "path": "/opt/wopr-multiverse/docker-compose.yml",
+      "directory": "/opt/wopr-multiverse"
+    },
+    {
+      "name": "meme-engine.bak.20260320081348",
+      "path": "/opt/meme-engine.bak.20260320081348/docker-compose.yml",
+      "directory": "/opt/meme-engine.bak.20260320081348"
+    },
+    {
+      "name": "group7-peertube",
+      "path": "/opt/group7-peertube/docker-compose.yml",
+      "directory": "/opt/group7-peertube"
+    },
+    {
+      "name": "n8n",
+      "path": "/opt/n8n/docker-compose.yml",
+      "directory": "/opt/n8n"
+    },
+    {
+      "name": "printful-sync.preBLT_1779710036",
+      "path": "/opt/printful-sync.preBLT_1779710036/docker-compose.yml",
+      "directory": "/opt/printful-sync.preBLT_1779710036"
+    },
+    {
+      "name": "pftp",
+      "path": "/opt/pftp/docker-compose.yml",
+      "directory": "/opt/pftp"
+    },
+    {
+      "name": "lovejoos",
+      "path": "/opt/lovejoos/docker-compose.yml",
+      "directory": "/opt/lovejoos"
+    },
+    {
+      "name": "crowdsec-dashboard",
+      "path": "/opt/crowdsec-dashboard/docker-compose.yml",
+      "directory": "/opt/crowdsec-dashboard"
+    },
+    {
+      "name": "buylocal",
+      "path": "/opt/buylocal/docker-compose.yml",
+      "directory": "/opt/buylocal"
+    },
+    {
+      "name": "rig-compose",
+      "path": "/opt/buylocal/rig-compose/docker-compose.yml",
+      "directory": "/opt/buylocal/rig-compose"
+    },
+    {
+      "name": "pds",
+      "path": "/opt/pds/compose.yml",
+      "directory": "/opt/pds"
+    },
+    {
+      "name": "miniflux",
+      "path": "/opt/miniflux/docker-compose.yml",
+      "directory": "/opt/miniflux"
+    },
+    {
+      "name": "reactor-ui",
+      "path": "/opt/reactor-ui/docker-compose.yml",
+      "directory": "/opt/reactor-ui"
+    },
+    {
+      "name": "multi-node",
+      "path": "/opt/wazuh-docker/multi-node/docker-compose.yml",
+      "directory": "/opt/wazuh-docker/multi-node"
+    },
+    {
+      "name": "single-node",
+      "path": "/opt/wazuh-docker/single-node/docker-compose.yml",
+      "directory": "/opt/wazuh-docker/single-node"
+    },
+    {
+      "name": "lnbits",
+      "path": "/opt/lnbits/docker-compose.yml",
+      "directory": "/opt/lnbits"
+    },
+    {
+      "name": "searxng",
+      "path": "/opt/wopr-rig-config-snapshot/files/opt/searxng/docker-compose.yml",
+      "directory": "/opt/wopr-rig-config-snapshot/files/opt/searxng"
+    },
+    {
+      "name": "barter",
+      "path": "/opt/barter/docker-compose.yml",
+      "directory": "/opt/barter"
+    },
+    {
+      "name": "rig-compose",
+      "path": "/opt/barter/rig-compose/docker-compose.yml",
+      "directory": "/opt/barter/rig-compose"
+    },
+    {
+      "name": "akkoma",
+      "path": "/opt/akkoma/docker-compose.yml",
+      "directory": "/opt/akkoma"
+    },
+    {
+      "name": "elasticsearch",
+      "path": "/opt/akkoma/deps/elasticsearch/docker-compose.yml",
+      "directory": "/opt/akkoma/deps/elasticsearch"
+    },
+    {
+      "name": "elk",
+      "path": "/opt/elk/docker-compose.yml",
+      "directory": "/opt/elk"
+    },
+    {
+      "name": "meme-engine",
+      "path": "/opt/meme-engine/docker-compose.yml",
+      "directory": "/opt/meme-engine"
+    },
+    {
+      "name": "thedudeabides-store",
+      "path": "/opt/thedudeabides-store/docker-compose.yml",
+      "directory": "/opt/thedudeabides-store"
+    },
+    {
+      "name": "rig-compose",
+      "path": "/opt/thedudeabides-store/rig-compose/docker-compose.yml",
+      "directory": "/opt/thedudeabides-store/rig-compose"
+    },
+    {
+      "name": "sonicforge",
+      "path": "/opt/sonicforge/docker-compose.yml",
+      "directory": "/opt/sonicforge"
+    },
+    {
+      "name": "folkmoot",
+      "path": "/opt/folkmoot/docker-compose.yml",
+      "directory": "/opt/folkmoot"
+    },
+    {
+      "name": "searxng",
+      "path": "/opt/searxng/docker-compose.yml",
+      "directory": "/opt/searxng"
+    },
+    {
+      "name": "matrix-mqtt-bridge",
+      "path": "/opt/matrix-mqtt-bridge/docker-compose.yml",
+      "directory": "/opt/matrix-mqtt-bridge"
+    },
+    {
+      "name": "wopr-sydent",
+      "path": "/opt/wopr-sydent/docker-compose.yml",
+      "directory": "/opt/wopr-sydent"
+    },
+    {
+      "name": "castopod",
+      "path": "/opt/castopod/docker-compose.yml",
+      "directory": "/opt/castopod"
+    },
+    {
+      "name": "greenbone",
+      "path": "/opt/greenbone/docker-compose.yml",
+      "directory": "/opt/greenbone"
+    },
+    {
+      "name": "docker",
+      "path": "/opt/defcon-one/docker/docker-compose.yml",
+      "directory": "/opt/defcon-one/docker"
+    },
+    {
+      "name": "wopr",
+      "path": "/opt/wopr/docker-compose.yml",
+      "directory": "/opt/wopr"
+    },
+    {
+      "name": "nostr-relay",
+      "path": "/opt/nostr-relay/docker-compose.yml",
+      "directory": "/opt/nostr-relay"
+    },
+    {
+      "name": "wopr-mqtt-proxy",
+      "path": "/opt/wopr-modules/wopr-mqtt-proxy/docker-compose.yml",
+      "directory": "/opt/wopr-modules/wopr-mqtt-proxy"
+    },
+    {
+      "name": "mastodon",
+      "path": "/opt/mastodon/docker-compose.yml",
+      "directory": "/opt/mastodon"
+    },
+    {
+      "name": "wopr-seo",
+      "path": "/opt/wopr-seo/docker-compose.yml",
+      "directory": "/opt/wopr-seo"
+    },
+    {
+      "name": "artjoos-infra",
+      "path": "/opt/artjoos/workspace/artjoos-infra/docker-compose.yml",
+      "directory": "/opt/artjoos/workspace/artjoos-infra"
+    },
+    {
+      "name": "deploy",
+      "path": "/opt/artjoos/deploy/docker-compose.yml",
+      "directory": "/opt/artjoos/deploy"
+    },
+    {
+      "name": "printful-sync.preBLT_1779826815",
+      "path": "/opt/printful-sync.preBLT_1779826815/docker-compose.yml",
+      "directory": "/opt/printful-sync.preBLT_1779826815"
+    },
+    {
+      "name": "nodez3r0",
+      "path": "/home/nodez3r0/docker-compose.yml",
+      "directory": "/home/nodez3r0"
+    },
+    {
+      "name": "ComfyUI-3D-Pack",
+      "path": "/home/nodez3r0/comfyui_node_quarantine/ComfyUI-3D-Pack/docker-compose.yml",
+      "directory": "/home/nodez3r0/comfyui_node_quarantine/ComfyUI-3D-Pack"
+    },
+    {
+      "name": "authentik",
+      "path": "/home/nodez3r0/authentik/docker-compose.yml",
+      "directory": "/home/nodez3r0/authentik"
+    },
+    {
+      "name": "scripts",
+      "path": "/home/nodez3r0/authentik/scripts/docker-compose.yml",
+      "directory": "/home/nodez3r0/authentik/scripts"
+    },
+    {
+      "name": "openid_conformance",
+      "path": "/home/nodez3r0/authentik/tests/openid_conformance/compose.yml",
+      "directory": "/home/nodez3r0/authentik/tests/openid_conformance"
+    },
+    {
+      "name": "e2e",
+      "path": "/home/nodez3r0/authentik/tests/e2e/docker-compose.yml",
+      "directory": "/home/nodez3r0/authentik/tests/e2e"
+    },
+    {
+      "name": "ACE-Step",
+      "path": "/home/nodez3r0/ai-apps/ACE-Step/docker-compose.yaml",
+      "directory": "/home/nodez3r0/ai-apps/ACE-Step"
+    },
+    {
+      "name": "GPT-SoVITS",
+      "path": "/home/nodez3r0/ai-apps/GPT-SoVITS/docker-compose.yaml",
+      "directory": "/home/nodez3r0/ai-apps/GPT-SoVITS"
+    },
+    {
+      "name": "Fooocus",
+      "path": "/home/nodez3r0/ai-apps/Fooocus/docker-compose.yml",
+      "directory": "/home/nodez3r0/ai-apps/Fooocus"
+    },
+    {
+      "name": "tts-generation-webui",
+      "path": "/home/nodez3r0/ai-apps/tts-generation-webui/docker-compose.yml",
+      "directory": "/home/nodez3r0/ai-apps/tts-generation-webui"
+    },
+    {
+      "name": "bind",
+      "path": "/home/nodez3r0/prod-rescue-20260617/bind/docker-compose.yml",
+      "directory": "/home/nodez3r0/prod-rescue-20260617/bind"
+    },
+    {
+      "name": "tor",
+      "path": "/home/nodez3r0/prod-rescue-20260617/tor/docker-compose.yml",
+      "directory": "/home/nodez3r0/prod-rescue-20260617/tor"
+    },
+    {
+      "name": "pds",
+      "path": "/home/nodez3r0/prod-rescue-20260617/pds/compose.yml",
+      "directory": "/home/nodez3r0/prod-rescue-20260617/pds"
+    },
+    {
+      "name": "keycloak_2025-08-19_1541",
+      "path": "/home/nodez3r0/prod-rescue-20260617/backups/keycloak_2025-08-19_1541/docker-compose.yml",
+      "directory": "/home/nodez3r0/prod-rescue-20260617/backups/keycloak_2025-08-19_1541"
+    },
+    {
+      "name": "authentik_2025-10-15_05-45-11",
+      "path": "/home/nodez3r0/prod-rescue-20260617/backups/authentik_2025-10-15_05-45-11/docker-compose.yml",
+      "directory": "/home/nodez3r0/prod-rescue-20260617/backups/authentik_2025-10-15_05-45-11"
+    },
+    {
+      "name": "pre-update-verify",
+      "path": "/home/nodez3r0/prod-rescue-20260617/backups/pre-update-verify/docker-compose.yml",
+      "directory": "/home/nodez3r0/prod-rescue-20260617/backups/pre-update-verify"
+    },
+    {
+      "name": "authentik_2025-10-13_12-29-25",
+      "path": "/home/nodez3r0/prod-rescue-20260617/backups/authentik_2025-10-13_12-29-25/docker-compose.yml",
+      "directory": "/home/nodez3r0/prod-rescue-20260617/backups/authentik_2025-10-13_12-29-25"
+    },
+    {
+      "name": "authentik",
+      "path": "/home/nodez3r0/prod-rescue-20260617/root/authentik/docker-compose.yml",
+      "directory": "/home/nodez3r0/prod-rescue-20260617/root/authentik"
+    },
+    {
+      "name": "n8n-data",
+      "path": "/home/nodez3r0/prod-rescue-20260617/root/n8n-data/docker-compose.yml",
+      "directory": "/home/nodez3r0/prod-rescue-20260617/root/n8n-data"
+    },
+    {
+      "name": "authentik-docker",
+      "path": "/home/nodez3r0/prod-rescue-20260617/opt/authentik-docker/docker-compose.yml",
+      "directory": "/home/nodez3r0/prod-rescue-20260617/opt/authentik-docker"
+    },
+    {
+      "name": "authentik-outpost",
+      "path": "/home/nodez3r0/prod-rescue-20260617/opt/authentik-outpost/docker-compose.yml",
+      "directory": "/home/nodez3r0/prod-rescue-20260617/opt/authentik-outpost"
+    },
+    {
+      "name": "statestreettheater",
+      "path": "/home/nodez3r0/prod-rescue-20260617/opt/statestreettheater/docker-compose.yml",
+      "directory": "/home/nodez3r0/prod-rescue-20260617/opt/statestreettheater"
+    },
+    {
+      "name": "printful-sync",
+      "path": "/home/nodez3r0/prod-rescue-20260617/opt/printful-sync/docker-compose.yml",
+      "directory": "/home/nodez3r0/prod-rescue-20260617/opt/printful-sync"
+    },
+    {
+      "name": "authentik",
+      "path": "/home/nodez3r0/prod-rescue-20260617/opt/authentik/docker-compose.yml",
+      "directory": "/home/nodez3r0/prod-rescue-20260617/opt/authentik"
+    },
+    {
+      "name": "matrix",
+      "path": "/home/nodez3r0/prod-rescue-20260617/opt/matrix/docker-compose.yml",
+      "directory": "/home/nodez3r0/prod-rescue-20260617/opt/matrix"
+    },
+    {
+      "name": "infisical",
+      "path": "/home/nodez3r0/prod-rescue-20260617/opt/infisical/docker-compose.yml",
+      "directory": "/home/nodez3r0/prod-rescue-20260617/opt/infisical"
+    },
+    {
+      "name": "wopr-multiverse",
+      "path": "/home/nodez3r0/prod-rescue-20260617/opt/wopr-multiverse/docker-compose.yml",
+      "directory": "/home/nodez3r0/prod-rescue-20260617/opt/wopr-multiverse"
+    },
+    {
+      "name": "pleroma-docker",
+      "path": "/home/nodez3r0/prod-rescue-20260617/opt/pleroma-docker/docker-compose.yml",
+      "directory": "/home/nodez3r0/prod-rescue-20260617/opt/pleroma-docker"
+    },
+    {
+      "name": "chatbot-ui",
+      "path": "/home/nodez3r0/prod-rescue-20260617/opt/chatbot-ui/docker-compose.yml",
+      "directory": "/home/nodez3r0/prod-rescue-20260617/opt/chatbot-ui"
+    },
+    {
+      "name": "oauth2-proxy",
+      "path": "/home/nodez3r0/prod-rescue-20260617/opt/oauth2-proxy/docker-compose.yml",
+      "directory": "/home/nodez3r0/prod-rescue-20260617/opt/oauth2-proxy"
+    },
+    {
+      "name": "flowise",
+      "path": "/home/nodez3r0/prod-rescue-20260617/opt/flowise/docker-compose.yml",
+      "directory": "/home/nodez3r0/prod-rescue-20260617/opt/flowise"
+    },
+    {
+      "name": "group7-peertube",
+      "path": "/home/nodez3r0/prod-rescue-20260617/opt/group7-peertube/docker-compose.yml",
+      "directory": "/home/nodez3r0/prod-rescue-20260617/opt/group7-peertube"
+    },
+    {
+      "name": "wopr-pg-haproxy",
+      "path": "/home/nodez3r0/prod-rescue-20260617/opt/wopr-pg-haproxy/docker-compose.yml",
+      "directory": "/home/nodez3r0/prod-rescue-20260617/opt/wopr-pg-haproxy"
+    },
+    {
+      "name": "wopr-private-data",
+      "path": "/home/nodez3r0/prod-rescue-20260617/opt/wopr-private-data/docker-compose.yml",
+      "directory": "/home/nodez3r0/prod-rescue-20260617/opt/wopr-private-data"
+    },
+    {
+      "name": "wopr-keycloak",
+      "path": "/home/nodez3r0/prod-rescue-20260617/opt/wopr-keycloak/docker-compose.yml",
+      "directory": "/home/nodez3r0/prod-rescue-20260617/opt/wopr-keycloak"
+    },
+    {
+      "name": "nextcloud",
+      "path": "/home/nodez3r0/prod-rescue-20260617/opt/nextcloud/docker-compose.yml",
+      "directory": "/home/nodez3r0/prod-rescue-20260617/opt/nextcloud"
+    },
+    {
+      "name": "pftp",
+      "path": "/home/nodez3r0/prod-rescue-20260617/opt/pftp/docker-compose.yml",
+      "directory": "/home/nodez3r0/prod-rescue-20260617/opt/pftp"
+    },
+    {
+      "name": "buylocal",
+      "path": "/home/nodez3r0/prod-rescue-20260617/opt/buylocal/docker-compose.yml",
+      "directory": "/home/nodez3r0/prod-rescue-20260617/opt/buylocal"
+    },
+    {
+      "name": "caddy-docker",
+      "path": "/home/nodez3r0/prod-rescue-20260617/opt/caddy-docker/docker-compose.yml",
+      "directory": "/home/nodez3r0/prod-rescue-20260617/opt/caddy-docker"
+    },
+    {
+      "name": "barter",
+      "path": "/home/nodez3r0/prod-rescue-20260617/opt/barter/docker-compose.yml",
+      "directory": "/home/nodez3r0/prod-rescue-20260617/opt/barter"
+    },
+    {
+      "name": "akkoma",
+      "path": "/home/nodez3r0/prod-rescue-20260617/opt/akkoma/docker-compose.yml",
+      "directory": "/home/nodez3r0/prod-rescue-20260617/opt/akkoma"
+    },
+    {
+      "name": "authentik-pftp",
+      "path": "/home/nodez3r0/prod-rescue-20260617/opt/authentik-pftp/docker-compose.yml",
+      "directory": "/home/nodez3r0/prod-rescue-20260617/opt/authentik-pftp"
+    },
+    {
+      "name": "elk",
+      "path": "/home/nodez3r0/prod-rescue-20260617/opt/elk/docker-compose.yml",
+      "directory": "/home/nodez3r0/prod-rescue-20260617/opt/elk"
+    },
+    {
+      "name": "thedudeabides",
+      "path": "/home/nodez3r0/prod-rescue-20260617/opt/thedudeabides/docker-compose.yml",
+      "directory": "/home/nodez3r0/prod-rescue-20260617/opt/thedudeabides"
+    },
+    {
+      "name": "thedudeabides-store",
+      "path": "/home/nodez3r0/prod-rescue-20260617/opt/thedudeabides-store/docker-compose.yml",
+      "directory": "/home/nodez3r0/prod-rescue-20260617/opt/thedudeabides-store"
+    },
+    {
+      "name": "lemmy",
+      "path": "/home/nodez3r0/prod-rescue-20260617/opt/lemmy/docker-compose.yml",
+      "directory": "/home/nodez3r0/prod-rescue-20260617/opt/lemmy"
+    },
+    {
+      "name": "wopr-postgres-consolidated",
+      "path": "/home/nodez3r0/prod-rescue-20260617/opt/wopr-postgres-consolidated/docker-compose.yml",
+      "directory": "/home/nodez3r0/prod-rescue-20260617/opt/wopr-postgres-consolidated"
+    },
+    {
+      "name": "friendica-docker",
+      "path": "/home/nodez3r0/prod-rescue-20260617/opt/friendica-docker/docker-compose.yaml",
+      "directory": "/home/nodez3r0/prod-rescue-20260617/opt/friendica-docker"
+    },
+    {
+      "name": "backend",
+      "path": "/home/nodez3r0/prod-rescue-20260617/opt/backend/docker-compose.yml",
+      "directory": "/home/nodez3r0/prod-rescue-20260617/opt/backend"
+    },
+    {
+      "name": "lemmy-docker",
+      "path": "/home/nodez3r0/prod-rescue-20260617/opt/lemmy-docker/docker-compose.yml",
+      "directory": "/home/nodez3r0/prod-rescue-20260617/opt/lemmy-docker"
+    },
+    {
+      "name": "mastodon",
+      "path": "/home/nodez3r0/prod-rescue-20260617/opt/mastodon/docker-compose.yml",
+      "directory": "/home/nodez3r0/prod-rescue-20260617/opt/mastodon"
+    },
+    {
+      "name": "wopr-seo",
+      "path": "/home/nodez3r0/prod-rescue-20260617/opt/wopr-seo/docker-compose.yml",
+      "directory": "/home/nodez3r0/prod-rescue-20260617/opt/wopr-seo"
+    },
+    {
+      "name": "comfyui-docker",
+      "path": "/home/nodez3r0/comfyui-docker/docker-compose.yml",
+      "directory": "/home/nodez3r0/comfyui-docker"
+    },
+    {
+      "name": "n8n",
+      "path": "/home/nodez3r0/n8n/docker-compose.yml",
+      "directory": "/home/nodez3r0/n8n"
+    },
+    {
+      "name": "nextcloud",
+      "path": "/home/nodez3r0/nextcloud/docker-compose.yml",
+      "directory": "/home/nodez3r0/nextcloud"
+    },
+    {
+      "name": "kohya_ss",
+      "path": "/home/nodez3r0/kohya_ss/docker-compose.yaml",
+      "directory": "/home/nodez3r0/kohya_ss"
+    },
+    {
+      "name": "n8n-data",
+      "path": "/home/nodez3r0/n8n-data/docker-compose.yml",
+      "directory": "/home/nodez3r0/n8n-data"
+    }
+  ],
+  "discovery_stats": {
+    "listening_ports": 359,
+    "caddy_backends": 1,
+    "containers_total": 122,
+    "services_total": 177,
+    "timers_total": 32,
+    "cron_jobs_total": 358,
+    "compose_projects": 112,
+    "public_endpoints": 1,
+    "backend_endpoints": 139
+  }
+}
