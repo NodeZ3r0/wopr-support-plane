@@ -1,0 +1,47 @@
+# WOPR ntfy Server Configuration
+# Push notification server for DEFCON alerts
+
+# Listen address
+listen-http: ":80"
+
+# Base URL (for click actions and attachments)
+base-url: "https://ntfy.wopr.systems"
+
+# Cache settings
+cache-file: "/var/lib/ntfy/cache.db"
+cache-duration: "24h"
+
+# Attachment settings
+attachment-cache-dir: "/var/lib/ntfy/attachments"
+attachment-total-size-limit: "1G"
+attachment-file-size-limit: "15M"
+attachment-expiry-duration: "24h"
+
+# Auth (optional - enable for private topics)
+auth-file: "/var/lib/ntfy/auth.db"
+auth-default-access: "read-write"
+
+# Rate limiting
+visitor-subscription-limit: 30
+visitor-request-limit-burst: 60
+visitor-request-limit-replenish: "10s"
+visitor-attachment-total-size-limit: "100M"
+visitor-attachment-daily-bandwidth-limit: "500M"
+
+# Logging
+log-level: "info"
+log-format: "json"
+
+# Upstream server (for UnifiedPush)
+# upstream-base-url: "https://ntfy.sh"
+
+# Web UI
+web-root: "/"
+enable-signup: false
+enable-login: true
+
+# Behind reverse proxy
+behind-proxy: true
+
+# Keepalive for long-polling
+keepalive-interval: "45s"
