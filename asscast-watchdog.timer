@@ -1,0 +1,10 @@
+[Unit]
+Description=Run ASScast health watchdog after the daily run window
+
+[Timer]
+OnCalendar=*-*-* 08:00:00
+OnCalendar=*-*-* 10:00:00
+Persistent=false
+
+[Install]
+WantedBy=timers.target

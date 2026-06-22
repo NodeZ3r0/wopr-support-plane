@@ -1,0 +1,8 @@
+[Unit]
+Description=ASScast pipeline health watchdog (detect failed episode, remediate + alert via ntfy/email)
+After=network.target
+
+[Service]
+Type=oneshot
+User=nodez3r0
+ExecStart=/usr/bin/python3 /opt/wopr/support-plane/asscast_watchdog.py
