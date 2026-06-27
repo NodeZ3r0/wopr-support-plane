@@ -1911,20 +1911,23 @@ def tier2_functional_checks():
     except Exception as e:
         log.warning("T2.5: Meme engine check failed (SSH): %s", str(e)[:200])
 
-    # --- 3. Emailer check on PROD ---
+    # --- 3. Mail relay check (Rig: postfix -> Proton bridge) ---
+    # PROD (10.0.1.1) decommissioned ~June 2026; mail now relays through the Rig.
     try:
-        req = urllib.request.Request("http://10.0.1.1:5032/health", method="GET")
-        req.add_header("User-Agent", "WOPR-SP-Functional/4.2")
-        resp = urllib.request.urlopen(req, timeout=10)
-        status = resp.getcode()
-        if status == 200:
-            log.info("T2.5: Emailer on PROD functional - OK")
+        mail_units = ["postfix", "protonmail-bridge", "protonbridge-fwd"]
+        down = []
+        for unit in mail_units:
+            r = subprocess.run(["systemctl", "is-active", unit],
+                               capture_output=True, text=True, timeout=10)
+            if r.stdout.strip() != "active":
+                down.append(unit)
+        if not down:
+            log.info("T2.5: Mail relay (postfix+Proton bridge) functional - OK")
         else:
-            log.warning("T2.5: Emailer on PROD returned %d", status)
-            _functional_remediate_remote_prod("emailer", issues)
+            log.warning("T2.5: Mail relay units down: %s", down)
+            _functional_remediate_mail(down, issues)
     except Exception as e:
-        log.warning("T2.5: Emailer check FAILED: %s", str(e)[:200])
-        _functional_remediate_remote_prod("emailer", issues)
+        log.warning("T2.5: Mail relay check FAILED: %s", str(e)[:200])
 
     # --- 4. Castopod deep check ---
     try:
@@ -1999,30 +2002,26 @@ def _functional_remediate_local(service_name, container_names, issues):
             "detail": "Functional check failed - all container restarts failed"})
 
 
-def _functional_remediate_remote_prod(service_name, issues):
-    """Try to remediate a service on PROD via SSH."""
-    try:
-        r = subprocess.run(
-            ["ssh", "-o", "ConnectTimeout=10", "-o", "StrictHostKeyChecking=no",
-             "-o", "BatchMode=yes", "root@10.0.1.1",
-             "systemctl restart wopr-emailer 2>/dev/null; "
-             "docker restart wopr-emailer 2>/dev/null; "
-             "systemctl is-active postfix 2>/dev/null || systemctl restart postfix 2>/dev/null; "
-             "echo DONE"],
-            capture_output=True, text=True, timeout=30,
-        )
-        if "DONE" in r.stdout:
-            log.info("T2.5: Emailer remediation attempted on PROD")
-            log_action("functional_remediation", "emailer", "Not responding on PROD", "success", "Restarted emailer+postfix")
-            record_fix("emailer-prod", "functional_check_failed", "restart emailer on PROD", "success")
-        else:
-            log.warning("T2.5: Emailer remediation on PROD failed: %s", r.stderr[:200])
-            issues.append({"tier": 2, "type": "backend_critical", "target": "emailer-prod",
-                "detail": "Emailer down on PROD and remediation failed"})
-    except Exception as e:
-        log.warning("T2.5: Cannot reach PROD for %s: %s", service_name, e)
-        issues.append({"tier": 2, "type": "backend_critical", "target": service_name + "-prod",
-            "detail": "Cannot reach PROD: " + str(e)[:100]})
+def _functional_remediate_mail(down_units, issues):
+    """Restart local mail-relay units (postfix -> Proton bridge) on the Rig."""
+    failed = []
+    for unit in down_units:
+        try:
+            r = subprocess.run(["systemctl", "restart", unit],
+                               capture_output=True, text=True, timeout=30)
+            if r.returncode == 0:
+                log.info("T2.5: Restarted mail unit %s", unit)
+                log_action("functional_remediation", unit, "Mail unit not active", "success", "Restarted unit")
+                record_fix("emailer", "functional_check_failed", "restart " + unit, "success")
+            else:
+                failed.append(unit)
+                record_fix("emailer", "functional_check_failed", "restart " + unit, "failed", r.stderr[:100])
+        except Exception as e:
+            failed.append(unit)
+            log.warning("T2.5: Mail unit restart error %s: %s", unit, e)
+    if failed:
+        issues.append({"tier": 2, "type": "backend_critical", "target": "emailer",
+            "detail": "Mail relay units down and restart failed: " + ", ".join(failed)})
 
 
 
