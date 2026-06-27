@@ -657,6 +657,10 @@ def build_manifest(runtime):
         if bind.startswith("172.") or bind.startswith("fd"):
             continue
 
+        # Skip non-service host processes that bind many ephemeral ports (noise)
+        if info.get("process", "") in ("rygel", "containerd", "forgejo-runner"):
+            continue
+
         probe_bind = "127.0.0.1" if bind in ("0.0.0.0", "*", "::") else bind
         probe = probe_http_port(port, probe_bind, timeout=2)
         if not probe:
@@ -685,6 +689,10 @@ def build_manifest(runtime):
             expected = [200, 401, 403]
         elif probe["status"] == 404:
             expected = [200, 404]
+        elif probe["status"] and probe["status"] not in (502, 503, 504):
+            # Stable non-5xx response => process is alive (e.g. 400 streaming/HTTPS
+            # port, 405/501 POST-only handler); accept it instead of false-alerting.
+            expected = [200, probe["status"]]
         if be_existing:
             expected = be_existing.get("expected_status", expected)
 
