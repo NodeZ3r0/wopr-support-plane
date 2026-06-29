@@ -1,0 +1,13 @@
+# DEPLOY: /etc/caddy-rig/sites-enabled/notify.wopr.systems.caddy
+# Public door for ntfy (container bound 127.0.0.1:18081). basic_auth here = the ONLY
+# public access control; internal publishers post to 127.0.0.1:18081 and bypass this.
+http://notify.wopr.systems:18080 {
+    basic_auth {
+        scott <BCRYPT_HASH_ON_RIG_ONLY>
+    }
+    import wopr-security-headers
+    import block-crawlers
+    reverse_proxy 127.0.0.1:18081 {
+        header_up -Accept-Encoding
+    }
+}

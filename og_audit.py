@@ -61,7 +61,7 @@ for site in SITES:
 # --- support-plane mode: alert on any MISSING (run with --alert) ---
 def _alert_mode():
     import json as _j, time as _t, urllib.request as _u
-    NTFY="https://notify.wopr.systems/wopr-alerts"; ST="/opt/wopr/support-plane/og_audit.state.json"
+    NTFY="http://127.0.0.1:18081/wopr-alerts"; ST="/opt/wopr/support-plane/og_audit.state.json"
     bad=[]
     for site in SITES:
         s,_,body=curl(site,body=True)

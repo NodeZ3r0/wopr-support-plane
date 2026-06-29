@@ -8,7 +8,7 @@ ntfy alerts ONLY on failure-set CHANGE (no spam). Cron */5."""
 import json, os, urllib.request, urllib.error
 
 CADDY      = "http://127.0.0.1:18080"
-NTFY_URL   = os.environ.get("NTFY_URL", "https://notify.wopr.systems")
+NTFY_URL   = os.environ.get("NTFY_URL", "http://127.0.0.1:18081")
 NTFY_TOPIC = os.environ.get("NTFY_TOPIC", "wopr-alerts")
 STATE      = "/opt/wopr/support-plane/.synthetic_probe_state.json"
 LOG        = "/opt/wopr/support-plane/synthetic_probe.log"

@@ -7,7 +7,7 @@ otherwise). Validates the LoveJoos MinIO pipeline. ntfy-alerts (6h per-image coo
 import re, json, os, time, subprocess
 from urllib.parse import urljoin, urlparse
 
-NTFY_URL = os.environ.get("NTFY_URL", "https://notify.wopr.systems")
+NTFY_URL = os.environ.get("NTFY_URL", "http://127.0.0.1:18081")
 NTFY_TOPIC = os.environ.get("NTFY_TOPIC", "wopr-alerts")
 STATE = "/opt/wopr/support-plane/image_probe.state.json"
 TIMEOUT = 15

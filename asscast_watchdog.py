@@ -25,7 +25,7 @@ RERUN_STAMP = f"{ASS}/.sp_asscast_rerun_{TODAY}"
 ESC_STAMP = f"{ASS}/.sp_asscast_escalated_{TODAY}"
 SCHED = "http://127.0.0.1:18099"
 COMFY = "http://127.0.0.1:8188"
-NTFY = "https://notify.wopr.systems/wopr-alerts"
+NTFY = "http://127.0.0.1:18081/wopr-alerts"
 FROM_EMAIL, TO_EMAIL = "asscast@wopr.systems", "stephen.falken@wopr.systems"
 
 
