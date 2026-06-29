@@ -1,7 +1,7 @@
 {
   "version": "5.0-autodiscovery",
   "host": "nodez3ro",
-  "generated": "2026-06-20T06:59:14.160485",
+  "generated": "2026-06-29T07:10:23.585211",
   "container_runtime": "docker",
   "autodiscovery": true,
   "services": [
@@ -186,37 +186,7 @@
       "critical": false
     },
     {
-      "name": "falken-flink-consumer",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "falken-gdelt",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "falken-miniflux-bridge",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "falken-osint-scraper",
-      "type": "systemd",
-      "critical": false
-    },
-    {
       "name": "falken-pg-tunnel",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "falken-topic-matcher",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "falken-tor-scraper",
       "type": "systemd",
       "critical": false
     },
@@ -227,6 +197,11 @@
     },
     {
       "name": "flink",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "folkmoot-ccm",
       "type": "systemd",
       "critical": false
     },
@@ -256,7 +231,7 @@
       "critical": false
     },
     {
-      "name": "gpu-scheduler-watchdog",
+      "name": "gpu-gatekeeper",
       "type": "systemd",
       "critical": false
     },
@@ -264,6 +239,11 @@
       "name": "gpu-scheduler",
       "type": "systemd",
       "critical": true
+    },
+    {
+      "name": "grc-api",
+      "type": "systemd",
+      "critical": false
     },
     {
       "name": "group-admin-daemon",
@@ -292,6 +272,11 @@
     },
     {
       "name": "joshcore",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "joshua",
       "type": "systemd",
       "critical": false
     },
@@ -416,6 +401,11 @@
       "critical": false
     },
     {
+      "name": "opendkim",
+      "type": "systemd",
+      "critical": false
+    },
+    {
       "name": "openvpn",
       "type": "systemd",
       "critical": false
@@ -441,7 +431,7 @@
       "critical": false
     },
     {
-      "name": "postfix@-",
+      "name": "postgresql",
       "type": "systemd",
       "critical": false
     },
@@ -626,11 +616,6 @@
       "critical": false
     },
     {
-      "name": "spec-kit",
-      "type": "systemd",
-      "critical": false
-    },
-    {
       "name": "ssh",
       "type": "systemd",
       "critical": true
@@ -771,6 +756,11 @@
       "critical": false
     },
     {
+      "name": "wopr-control-plane",
+      "type": "systemd",
+      "critical": false
+    },
+    {
       "name": "wopr-deploy-webhook",
       "type": "systemd",
       "critical": false
@@ -893,23 +883,128 @@
   ],
   "containers": [
     {
-      "name": "lovejoos-api",
-      "image": "registry.wopr.systems/lovejoos/api:latest",
+      "name": "folkmoot-web",
+      "image": "folkmoot-foundation-folkmoot-web",
+      "critical": false
+    },
+    {
+      "name": "folkmoot-db",
+      "image": "postgres:16-alpine",
+      "critical": false
+    },
+    {
+      "name": "greenbone-gvmd-1",
+      "image": "registry.community.greenbone.net/community/gvmd:stable",
+      "critical": false
+    },
+    {
+      "name": "greenbone-pg-gvm-1",
+      "image": "registry.community.greenbone.net/community/pg-gvm:stable",
+      "critical": false
+    },
+    {
+      "name": "infisical",
+      "image": "infisical/infisical:latest",
+      "critical": false
+    },
+    {
+      "name": "open-webui",
+      "image": "ghcr.io/open-webui/open-webui:main",
+      "critical": false
+    },
+    {
+      "name": "wopr-ai-engine",
+      "image": "wopr-ai-engine:latest",
+      "critical": false
+    },
+    {
+      "name": "wopr-meme-engine",
+      "image": "meme-engine-meme-engine",
+      "critical": false
+    },
+    {
+      "name": "secondbrain-api",
+      "image": "protovision-secondbrain-api",
+      "critical": false
+    },
+    {
+      "name": "artjoos-artjoos-storefront-1",
+      "image": "wopr-systems/artjoos-storefront:latest",
+      "critical": false
+    },
+    {
+      "name": "protovision-postgres",
+      "image": "pgvector/pgvector:pg16",
+      "critical": false
+    },
+    {
+      "name": "protovision-redis",
+      "image": "redis:7-alpine",
       "critical": false
     },
     {
       "name": "mastodon-web",
-      "image": "tootsuite/mastodon:v4.3.3",
-      "critical": false
-    },
-    {
-      "name": "mastodon-streaming",
-      "image": "ghcr.io/mastodon/mastodon-streaming:v4.3.3",
+      "image": "tootsuite/mastodon:v4.3.23",
       "critical": false
     },
     {
       "name": "mastodon-sidekiq",
-      "image": "tootsuite/mastodon:v4.3.3",
+      "image": "tootsuite/mastodon:v4.3.23",
+      "critical": false
+    },
+    {
+      "name": "mastodon-streaming",
+      "image": "ghcr.io/mastodon/mastodon-streaming:v4.3.23",
+      "critical": false
+    },
+    {
+      "name": "group7-peertube",
+      "image": "chocobozzz/peertube:v8.0.1",
+      "critical": false
+    },
+    {
+      "name": "app",
+      "image": "local_discourse/app",
+      "critical": false
+    },
+    {
+      "name": "artjoos-artjoos-verification-1",
+      "image": "wopr-systems/artjoos-verification:latest",
+      "critical": false
+    },
+    {
+      "name": "artjoos-artjoos-commissions-1",
+      "image": "wopr-systems/artjoos-commissions:latest",
+      "critical": false
+    },
+    {
+      "name": "artjoos-artjoos-federation-1",
+      "image": "wopr-systems/artjoos-federation:latest",
+      "critical": false
+    },
+    {
+      "name": "artjoos-artjoos-analytics-1",
+      "image": "wopr-systems/artjoos-analytics:latest",
+      "critical": false
+    },
+    {
+      "name": "artjoos-artjoos-provenance-1",
+      "image": "wopr-systems/artjoos-provenance:latest",
+      "critical": false
+    },
+    {
+      "name": "listmonk",
+      "image": "listmonk/listmonk:v3.0.0",
+      "critical": false
+    },
+    {
+      "name": "listmonk-db",
+      "image": "postgres:16-alpine",
+      "critical": false
+    },
+    {
+      "name": "lovejoos-api",
+      "image": "registry.wopr.systems/lovejoos/api:latest",
       "critical": false
     },
     {
@@ -925,11 +1020,6 @@
     {
       "name": "akkoma",
       "image": "akkoma:latest",
-      "critical": false
-    },
-    {
-      "name": "artjoos-artjoos-storefront-1",
-      "image": "wopr-systems/artjoos-storefront:latest",
       "critical": false
     },
     {
@@ -949,7 +1039,7 @@
     },
     {
       "name": "lovejoos-postgres",
-      "image": "postgres:16-alpine",
+      "image": "667495ca2ac3",
       "critical": false
     },
     {
@@ -1008,11 +1098,6 @@
       "critical": false
     },
     {
-      "name": "group7-peertube",
-      "image": "chocobozzz/peertube:v8.0.1",
-      "critical": false
-    },
-    {
       "name": "peertube-postgres",
       "image": "postgres:15",
       "critical": false
@@ -1024,7 +1109,7 @@
     },
     {
       "name": "theblock-db",
-      "image": "postgres:16-alpine",
+      "image": "667495ca2ac3",
       "critical": false
     },
     {
@@ -1058,58 +1143,13 @@
       "critical": false
     },
     {
-      "name": "greenbone-gvmd-1",
-      "image": "registry.community.greenbone.net/community/gvmd:stable",
-      "critical": false
-    },
-    {
-      "name": "greenbone-pg-gvm-1",
-      "image": "registry.community.greenbone.net/community/pg-gvm:stable",
-      "critical": false
-    },
-    {
-      "name": "app",
-      "image": "local_discourse/app",
-      "critical": false
-    },
-    {
       "name": "printful-sync-printful-sync-1",
       "image": "printful-sync-printful-sync",
       "critical": false
     },
     {
-      "name": "infisical",
-      "image": "infisical/infisical:latest",
-      "critical": false
-    },
-    {
       "name": "infisical-redis",
       "image": "redis:7-alpine",
-      "critical": false
-    },
-    {
-      "name": "artjoos-artjoos-provenance-1",
-      "image": "wopr-systems/artjoos-provenance:latest",
-      "critical": false
-    },
-    {
-      "name": "artjoos-artjoos-verification-1",
-      "image": "wopr-systems/artjoos-verification:latest",
-      "critical": false
-    },
-    {
-      "name": "artjoos-artjoos-commissions-1",
-      "image": "wopr-systems/artjoos-commissions:latest",
-      "critical": false
-    },
-    {
-      "name": "artjoos-artjoos-analytics-1",
-      "image": "wopr-systems/artjoos-analytics:latest",
-      "critical": false
-    },
-    {
-      "name": "artjoos-artjoos-federation-1",
-      "image": "wopr-systems/artjoos-federation:latest",
       "critical": false
     },
     {
@@ -1178,11 +1218,6 @@
       "critical": false
     },
     {
-      "name": "folkmoot-web",
-      "image": "folkmoot-foundation-folkmoot-web",
-      "critical": false
-    },
-    {
       "name": "folkmoot-falken-bridge",
       "image": "folkmoot-foundation-falken-bridge",
       "critical": false
@@ -1218,11 +1253,6 @@
       "critical": false
     },
     {
-      "name": "folkmoot-db",
-      "image": "postgres:16-alpine",
-      "critical": false
-    },
-    {
       "name": "nostr-relay",
       "image": "scsibug/nostr-rs-relay:latest",
       "critical": false
@@ -1249,12 +1279,12 @@
     },
     {
       "name": "miniflux-db",
-      "image": "postgres:16-alpine",
+      "image": "667495ca2ac3",
       "critical": false
     },
     {
       "name": "brainjoos-db",
-      "image": "postgres:16-alpine",
+      "image": "667495ca2ac3",
       "critical": false
     },
     {
@@ -1294,7 +1324,7 @@
     },
     {
       "name": "barter-postgres",
-      "image": "postgres:16-alpine",
+      "image": "667495ca2ac3",
       "critical": false
     },
     {
@@ -1349,7 +1379,7 @@
     },
     {
       "name": "saleor-postgres-dude",
-      "image": "postgres:16-alpine",
+      "image": "667495ca2ac3",
       "critical": false
     },
     {
@@ -1478,21 +1508,6 @@
       "critical": false
     },
     {
-      "name": "wopr-meme-engine",
-      "image": "meme-engine-meme-engine",
-      "critical": false
-    },
-    {
-      "name": "wopr-ai-engine",
-      "image": "wopr-ai-engine:latest",
-      "critical": false
-    },
-    {
-      "name": "open-webui",
-      "image": "ghcr.io/open-webui/open-webui:main",
-      "critical": false
-    },
-    {
       "name": "promtail",
       "image": "grafana/promtail:latest",
       "critical": false
@@ -1526,16 +1541,6 @@
         ],
         "critical": false,
         "discovered_via": "caddy"
-      },
-      {
-        "url": "http://127.0.0.1:1338/",
-        "name": "containerd-1338",
-        "expected_status": [
-          200,
-          404
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
       },
       {
         "url": "http://127.0.0.1:2583/",
@@ -1696,11 +1701,22 @@
         "url": "http://127.0.0.1:4001/",
         "name": "mastodon-streaming-4001",
         "expected_status": [
-          200
+          200,
+          400
         ],
         "critical": false,
         "discovered_via": "port_scan",
         "container": "mastodon-streaming"
+      },
+      {
+        "url": "http://127.0.0.1:4002/",
+        "name": "app-4002",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan",
+        "container": "app"
       },
       {
         "url": "http://127.0.0.1:5000/",
@@ -1906,6 +1922,16 @@
         "url": "http://127.0.0.1:8000/health",
         "name": "uvicorn-8000",
         "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://127.0.0.1:8001/api/health",
+        "name": "uvicorn-8001",
+        "expected_status": [
+          200,
           200
         ],
         "critical": false,
@@ -2122,6 +2148,7 @@
         "url": "http://127.0.0.1:8188/",
         "name": "python3-8188",
         "expected_status": [
+          200,
           200
         ],
         "critical": false,
@@ -2131,7 +2158,8 @@
         "url": "http://127.0.0.1:8199/",
         "name": "python3-8199",
         "expected_status": [
-          200
+          200,
+          501
         ],
         "critical": false,
         "discovered_via": "port_scan"
@@ -2167,6 +2195,16 @@
         "discovered_via": "port_scan"
       },
       {
+        "url": "http://127.0.0.1:8444/",
+        "name": "python3-8444",
+        "expected_status": [
+          200,
+          404
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
         "url": "http://127.0.0.1:8580/healthz",
         "name": "lk-jwt-service-8580",
         "expected_status": [
@@ -2189,8 +2227,7 @@
         "url": "http://127.0.0.1:8600/health",
         "name": "wopr-ai-engine-8600",
         "expected_status": [
-          200,
-          404
+          200
         ],
         "critical": false,
         "discovered_via": "port_scan",
@@ -2313,6 +2350,16 @@
         "discovered_via": "port_scan"
       },
       {
+        "url": "http://127.0.0.1:9110/health",
+        "name": "listmonk-9110",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan",
+        "container": "listmonk"
+      },
+      {
         "url": "http://127.0.0.1:9190/status",
         "name": "folkmoot-prometheus-1-9190",
         "expected_status": [
@@ -2336,7 +2383,8 @@
         "url": "http://127.0.0.1:9445/",
         "name": "authentik-server-1-9445",
         "expected_status": [
-          200
+          200,
+          400
         ],
         "critical": false,
         "discovered_via": "port_scan",
@@ -2370,6 +2418,16 @@
         "discovered_via": "port_scan"
       },
       {
+        "url": "http://127.0.0.1:11435/api/status",
+        "name": "ollama-11435",
+        "expected_status": [
+          200,
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
         "url": "http://127.0.0.1:13000/",
         "name": "unknown-13000",
         "expected_status": [
@@ -2392,6 +2450,7 @@
         "url": "http://127.0.0.1:13002/health",
         "name": "crowdsec-dashboard-metabase-1-13002",
         "expected_status": [
+          200,
           200
         ],
         "critical": false,
@@ -2407,15 +2466,6 @@
         "critical": false,
         "discovered_via": "port_scan",
         "container": "flowise"
-      },
-      {
-        "url": "http://127.0.0.1:13201/health",
-        "name": "uvicorn-13201",
-        "expected_status": [
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
       },
       {
         "url": "http://127.0.0.1:14000/api/health",
@@ -2445,6 +2495,16 @@
         "critical": false,
         "discovered_via": "port_scan",
         "container": "folkmoot-backend-1"
+      },
+      {
+        "url": "http://127.0.0.1:18065/",
+        "name": "python3-18065",
+        "expected_status": [
+          200,
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
       },
       {
         "url": "http://127.0.0.1:18070/health",
@@ -2564,6 +2624,25 @@
         "discovered_via": "port_scan"
       },
       {
+        "url": "http://127.0.0.1:18900/health",
+        "name": "secondbrain-api-18900",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan",
+        "container": "secondbrain-api"
+      },
+      {
+        "url": "http://127.0.0.1:18910/api/health",
+        "name": "uvicorn-18910",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
         "url": "http://127.0.0.1:19002/health",
         "name": "saleor-dashboard-dude-19002",
         "expected_status": [
@@ -2611,276 +2690,25 @@
         ],
         "critical": false,
         "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://192.168.80.1:32914/",
-        "name": "rygel-32914",
-        "expected_status": [
-          200,
-          404
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://10.220.0.1:33768/",
-        "name": "rygel-33768",
-        "expected_status": [
-          200,
-          404
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://192.168.112.1:35202/",
-        "name": "rygel-35202",
-        "expected_status": [
-          200,
-          404
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://192.168.208.1:35711/",
-        "name": "rygel-35711",
-        "expected_status": [
-          200,
-          404
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://192.168.96.1:36578/",
-        "name": "rygel-36578",
-        "expected_status": [
-          200,
-          404
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://192.168.64.1:37952/",
-        "name": "rygel-37952",
-        "expected_status": [
-          200,
-          404
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://192.168.176.1:37999/",
-        "name": "rygel-37999",
-        "expected_status": [
-          200,
-          404
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://192.168.240.1:38863/",
-        "name": "rygel-38863",
-        "expected_status": [
-          200,
-          404
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:39079/",
-        "name": "containerd-39079",
-        "expected_status": [
-          200,
-          404
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:41141/",
-        "name": "forgejo-runner-41141",
-        "expected_status": [
-          200,
-          404
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:41333/",
-        "name": "forgejo-runner-41333",
-        "expected_status": [
-          200,
-          404
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://192.168.192.1:45892/",
-        "name": "rygel-45892",
-        "expected_status": [
-          200,
-          404
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://10.211.0.1:47210/",
-        "name": "rygel-47210",
-        "expected_status": [
-          200,
-          404
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://192.168.128.1:47634/",
-        "name": "rygel-47634",
-        "expected_status": [
-          200,
-          404
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://192.168.224.1:48226/",
-        "name": "rygel-48226",
-        "expected_status": [
-          200,
-          404
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://192.168.48.1:49773/",
-        "name": "rygel-49773",
-        "expected_status": [
-          200,
-          404
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://10.210.0.1:50262/",
-        "name": "rygel-50262",
-        "expected_status": [
-          200,
-          404
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://192.168.16.1:50819/",
-        "name": "rygel-50819",
-        "expected_status": [
-          200,
-          404
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://192.168.32.1:51268/",
-        "name": "rygel-51268",
-        "expected_status": [
-          200,
-          404
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://10.220.2.1:53457/",
-        "name": "rygel-53457",
-        "expected_status": [
-          200,
-          404
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://::1:54542/",
-        "name": "rygel-54542",
-        "expected_status": [
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://10.220.3.1:54610/",
-        "name": "rygel-54610",
-        "expected_status": [
-          200,
-          404
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://10.220.1.1:55838/",
-        "name": "rygel-55838",
-        "expected_status": [
-          200,
-          404
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://192.168.160.1:58966/",
-        "name": "rygel-58966",
-        "expected_status": [
-          200,
-          404
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://192.168.144.1:59517/",
-        "name": "rygel-59517",
-        "expected_status": [
-          200,
-          404
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://10.212.0.1:59539/",
-        "name": "rygel-59539",
-        "expected_status": [
-          200,
-          404
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
       }
     ]
   },
   "timers": [
     {
-      "timer": "wopr-sp-watchdog.timer",
-      "service": "wopr-sp-watchdog"
+      "timer": "phpsessionclean.timer",
+      "service": "phpsessionclean"
     },
     {
-      "timer": "wopr-watchdog.timer",
-      "service": "wopr-watchdog"
+      "timer": "protovision-ingest.timer",
+      "service": "protovision-ingest"
+    },
+    {
+      "timer": "protovision-tick.timer",
+      "service": "protovision-tick"
+    },
+    {
+      "timer": "gpu-scheduler-watchdog.timer",
+      "service": "gpu-scheduler-watchdog"
     },
     {
       "timer": "sysstat-collect.timer",
@@ -2891,8 +2719,20 @@
       "service": "comfyui-idle-release"
     },
     {
-      "timer": "phpsessionclean.timer",
-      "service": "phpsessionclean"
+      "timer": "fwupd-refresh.timer",
+      "service": "fwupd-refresh"
+    },
+    {
+      "timer": "wopr-watchdog.timer",
+      "service": "wopr-watchdog"
+    },
+    {
+      "timer": "wopr-sp-watchdog.timer",
+      "service": "wopr-sp-watchdog"
+    },
+    {
+      "timer": "protovision-email.timer",
+      "service": "protovision-email"
     },
     {
       "timer": "prometheus-node-exporter-apt.timer",
@@ -2903,16 +2743,12 @@
       "service": "prometheus-node-exporter-nvme"
     },
     {
-      "timer": "fwupd-refresh.timer",
-      "service": "fwupd-refresh"
-    },
-    {
       "timer": "anacron.timer",
       "service": "anacron"
     },
     {
-      "timer": "apport-autoreport.timer",
-      "service": "apport-autoreport"
+      "timer": "asscast-watchdog.timer",
+      "service": "asscast-watchdog"
     },
     {
       "timer": "meme-engine.timer",
@@ -2925,6 +2761,14 @@
     {
       "timer": "systemd-tmpfiles-clean.timer",
       "service": "systemd-tmpfiles-clean"
+    },
+    {
+      "timer": "apport-autoreport.timer",
+      "service": "apport-autoreport"
+    },
+    {
+      "timer": "apt-daily.timer",
+      "service": "apt-daily"
     },
     {
       "timer": "certbot.timer",
@@ -2951,20 +2795,24 @@
       "service": "sysstat-summary"
     },
     {
+      "timer": "falken-overnight-start.timer",
+      "service": "falken-overnight-start"
+    },
+    {
       "timer": "man-db.timer",
       "service": "man-db"
     },
     {
-      "timer": "e2scrub_all.timer",
-      "service": "e2scrub_all"
-    },
-    {
-      "timer": "apt-daily.timer",
-      "service": "apt-daily"
+      "timer": "falken-overnight-stop.timer",
+      "service": "falken-overnight-stop"
     },
     {
       "timer": "apt-daily-upgrade.timer",
       "service": "apt-daily-upgrade"
+    },
+    {
+      "timer": "e2scrub_all.timer",
+      "service": "e2scrub_all"
     },
     {
       "timer": "fstrim.timer",
@@ -2973,10 +2821,6 @@
     {
       "timer": "update-notifier-motd.timer",
       "service": "update-notifier-motd"
-    },
-    {
-      "timer": "gpu-scheduler-watchdog.timer",
-      "service": "gpu-scheduler-watchdog"
     },
     {
       "timer": "prometheus-node-exporter-ipmitool-sensor.timer",
@@ -3037,6 +2881,21 @@
     {
       "user": "root",
       "command": "17 6 * * * /usr/bin/python3 /opt/wopr/support-plane/og_audit.py --alert >> /opt/wopr/support-plane/og_audit.log 2>&1",
+      "source": "crontab"
+    },
+    {
+      "user": "root",
+      "command": "*/5 * * * * /usr/bin/python3 /opt/wopr/support-plane/mesh_probe.py >/dev/null 2>&1",
+      "source": "crontab"
+    },
+    {
+      "user": "root",
+      "command": "*/30 * * * * /usr/bin/python3 /opt/wopr/support-plane/content_probe.py >> /opt/wopr/support-plane/content_probe.log 2>&1",
+      "source": "crontab"
+    },
+    {
+      "user": "root",
+      "command": "*/15 * * * * LISTMONK_PASS=YZb5p0cPJ3Yii24bYXPX56 /usr/bin/python3 /opt/listmonk/ai_tagger.py >> /opt/listmonk/ai_tagger.log 2>&1",
       "source": "crontab"
     },
     {
@@ -4806,18 +4665,18 @@
         "type": "physical"
       },
       {
-        "name": "wwan0",
-        "state": "DOWN",
-        "addresses": [],
-        "type": "physical"
-      },
-      {
         "name": "nebula0",
         "state": "UNKNOWN",
         "addresses": [
           "10.0.0.3"
         ],
         "type": "nebula"
+      },
+      {
+        "name": "wwan0",
+        "state": "DOWN",
+        "addresses": [],
+        "type": "physical"
       }
     ],
     "nebula_active": true
@@ -4847,6 +4706,11 @@
       "name": "wopr-theblock",
       "path": "/opt/wopr-theblock/docker-compose.yml",
       "directory": "/opt/wopr-theblock"
+    },
+    {
+      "name": "protovision",
+      "path": "/opt/protovision/docker-compose.yml",
+      "directory": "/opt/protovision"
     },
     {
       "name": "printful-sync",
@@ -4914,6 +4778,11 @@
       "directory": "/opt/n8n"
     },
     {
+      "name": "listmonk",
+      "path": "/opt/listmonk/docker-compose.yml",
+      "directory": "/opt/listmonk"
+    },
+    {
       "name": "printful-sync.preBLT_1779710036",
       "path": "/opt/printful-sync.preBLT_1779710036/docker-compose.yml",
       "directory": "/opt/printful-sync.preBLT_1779710036"
@@ -4927,6 +4796,11 @@
       "name": "lovejoos",
       "path": "/opt/lovejoos/docker-compose.yml",
       "directory": "/opt/lovejoos"
+    },
+    {
+      "name": "open-webui",
+      "path": "/opt/open-webui/docker-compose.yml",
+      "directory": "/opt/open-webui"
     },
     {
       "name": "crowdsec-dashboard",
@@ -5054,6 +4928,11 @@
       "directory": "/opt/greenbone"
     },
     {
+      "name": "wopr-ai-engine",
+      "path": "/opt/wopr-ai-engine/docker-compose.yml",
+      "directory": "/opt/wopr-ai-engine"
+    },
+    {
       "name": "docker",
       "path": "/opt/defcon-one/docker/docker-compose.yml",
       "directory": "/opt/defcon-one/docker"
@@ -5062,6 +4941,11 @@
       "name": "wopr",
       "path": "/opt/wopr/docker-compose.yml",
       "directory": "/opt/wopr"
+    },
+    {
+      "name": "wtp-rise",
+      "path": "/opt/wopr/orchestrator/installer-deploy/wtp-rise/docker-compose.yml",
+      "directory": "/opt/wopr/orchestrator/installer-deploy/wtp-rise"
     },
     {
       "name": "nostr-relay",
@@ -5364,6 +5248,11 @@
       "directory": "/home/nodez3r0/comfyui-docker"
     },
     {
+      "name": "infisical-config-backup",
+      "path": "/home/nodez3r0/infisical-config-backup/docker-compose.yml",
+      "directory": "/home/nodez3r0/infisical-config-backup"
+    },
+    {
       "name": "n8n",
       "path": "/home/nodez3r0/n8n/docker-compose.yml",
       "directory": "/home/nodez3r0/n8n"
@@ -5385,14 +5274,14 @@
     }
   ],
   "discovery_stats": {
-    "listening_ports": 359,
+    "listening_ports": 388,
     "caddy_backends": 1,
-    "containers_total": 122,
-    "services_total": 177,
-    "timers_total": 32,
-    "cron_jobs_total": 358,
-    "compose_projects": 112,
+    "containers_total": 127,
+    "services_total": 175,
+    "timers_total": 38,
+    "cron_jobs_total": 361,
+    "compose_projects": 118,
     "public_endpoints": 1,
-    "backend_endpoints": 139
+    "backend_endpoints": 119
   }
 }

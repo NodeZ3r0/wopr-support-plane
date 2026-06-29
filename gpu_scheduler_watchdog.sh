@@ -14,6 +14,6 @@ if [ "$c1" != "200" ]; then
     logger -t gpu-scheduler-watchdog "scheduler /health failed twice ($c1,$c2); restarting gpu-scheduler"
     systemctl restart gpu-scheduler
     sleep 8
-    curl -s -H "Title: GPU scheduler wedged" -H "Priority: high"       -d "gpu-scheduler /health failed twice ($c1,$c2); auto-restarted."       https://notify.wopr.systems/wopr-alerts >/dev/null 2>&1
+    curl -s -H "Title: GPU scheduler wedged" -H "Priority: high"       -d "gpu-scheduler /health failed twice ($c1,$c2); auto-restarted."       http://127.0.0.1:18081/wopr-alerts >/dev/null 2>&1
   fi
 fi
