@@ -2,9 +2,9 @@
   "_meta": {
     "version": "3.0",
     "description": "WOPR Support Plane Knowledge Base v3.0 - Known issues, patterns, remediation, log noise filters",
-    "updated": "2026-06-26",
+    "updated": "2026-07-24",
     "format": "Each entry has a pattern (what the support plane detects), root_cause (why it happens), fix (automated remediation), and notes (context for AI reasoning)",
-    "auto_synced": "2026-06-26T03:42:35.887725"
+    "auto_synced": "2026-07-24T06:59:09.439093"
   },
   "service_issues": [
     {
@@ -218,6 +218,14 @@
       "root_cause": "",
       "fix": "systemctl restart caddy",
       "notes": "Auto-learned by support plane. Success rate: 3/3. First seen: 2026-03-12T11:25:30.515433"
+    },
+    {
+      "id": "AUTO-026",
+      "pattern": "http_check_failed on https://rag.wopr.systems/",
+      "host": "nodez3ro",
+      "root_cause": "",
+      "fix": "systemctl restart defcon-backend",
+      "notes": "Auto-learned by support plane. Success rate: 3/4. First seen: 2026-07-10T13:30:50.908834"
     }
   ],
   "auth_issues": [
@@ -414,6 +422,38 @@
       "root_cause": "",
       "fix": "systemctl restart defcon-backend",
       "notes": "Auto-learned by support plane. Success rate: 3/4. First seen: 2026-06-23T04:08:35.446182"
+    },
+    {
+      "id": "AUTO-023",
+      "pattern": "excessive_errors on journalctl",
+      "host": "nodez3ro",
+      "root_cause": "",
+      "fix": "systemctl restart forgejo",
+      "notes": "Auto-learned by support plane. Success rate: 9/9. First seen: 2026-05-05T04:05:34.916484"
+    },
+    {
+      "id": "AUTO-024",
+      "pattern": "backend_critical on falken",
+      "host": "nodez3ro",
+      "root_cause": "",
+      "fix": "systemctl restart falken-canary-monitor",
+      "notes": "Auto-learned by support plane. Success rate: 3/3. First seen: 2026-06-17T08:36:20.001419"
+    },
+    {
+      "id": "AUTO-025",
+      "pattern": "backend_unhealthy on http://127.0.0.1:27099/health",
+      "host": "nodez3ro",
+      "root_cause": "",
+      "fix": "systemctl restart defcon-backend",
+      "notes": "Auto-learned by support plane. Success rate: 3/4. First seen: 2026-07-16T23:20:20.486530"
+    },
+    {
+      "id": "AUTO-027",
+      "pattern": "backend_unhealthy on http://127.0.0.1:20241/",
+      "host": "nodez3ro",
+      "root_cause": "",
+      "fix": "systemctl restart defcon-backend",
+      "notes": "Auto-learned by support plane. Success rate: 3/4. First seen: 2026-07-13T05:02:28.767416"
     }
   ],
   "theme_and_branding": [
