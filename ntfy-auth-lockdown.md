@@ -26,3 +26,22 @@ NOT AFFECTED: LoveJoos SMS / 2FA-OTP -- separate path via SMS gateway http://10.
 
 VERIFIED: anon read wopr-alerts=403, anon read lovejoos=200, anon publish wopr-alerts=200,
 scott read=200, localhost publish=200, SMS pipeline intact.
+
+## 2026-07-31 UPDATE - new topics were never added, and leaked
+
+The June ACL was intact (wopr-alerts/gpu-scheduler/asscast/sms-inbox all 403 to
+anon) but two topics created AFTER it were left world-readable:
+
+  foundation-forms   (contact-form submissions - name/email/message)
+  stonesoup          (Stone Soup signups - name/email/ZIP)
+
+Anyone who guessed the topic name could subscribe and read them live. Fixed with
+the same pattern:
+
+  docker exec wopr-ntfy ntfy access everyone foundation-forms write-only
+  docker exec wopr-ntfy ntfy access everyone stonesoup        write-only
+
+**RULE: every NEW infra/PII topic must get `ntfy access everyone <topic> write-only` at creation time.** Default is read-write, so forgetting = public. Verify with:
+
+  curl -o /dev/null -w "%{http_code}\n" https://notify.wopr.systems/<topic>/json?poll=1
+  # 403 = protected, 200 = LEAKING
