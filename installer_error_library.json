@@ -1,0 +1,416 @@
+{
+  "schema": "wopr.installer.error_library/v1",
+  "description": "Known WOPR beacon-install errors -> verified fixes. The installer self-heal diffs a failing step's log against these signatures BEFORE asking the AI debugger. Seeded from documented install gotchas. Standing file imported by beacons from the Rig (home rig for now; a lighthouse later).",
+  "source_host": "rig (10.0.0.3)",
+  "updated": "2026-07-27",
+  "entries": [
+    {
+      "id": "authentik-before-core-infra",
+      "match_any": [
+        "PostgreSQL must be running before Authentik",
+        "Redis must be running before Authentik",
+        "connection refused.*5432",
+        "could not connect to server.*postgres"
+      ],
+      "context": "authentik ordered before postgres/redis -> SSO wiring fails. Root fix is the wopr_order_core_modules deployer sort.",
+      "fix": "Ensure CORE_INFRASTRUCTURE (postgres, redis) deploy+healthy BEFORE authentik. Do NOT reorder CORE_INFRASTRUCTURE manually; the deployer sort handles it. If seen, wait_ready on postgres/redis then restart authentik.",
+      "auto_apply": false,
+      "severity": "critical",
+      "fix_command": "docker start wopr-postgres wopr-redis 2>/dev/null; for i in 1 2 3 4 5 6 7 8 9 10; do docker exec wopr-postgres pg_isready -q && break; sleep 5; done; docker restart wopr-authentik-server wopr-authentik-worker 2>/dev/null; true"
+    },
+    {
+      "id": "authentik-duplicate-user-on-rerun",
+      "match_any": [
+        "Failed to create user: admin",
+        "This field must be unique"
+      ],
+      "context": "A re-run or resumed install tries to create the admin user again. Authentik rejects the duplicate and the step is logged as an error, but the user already exists so the install is not actually broken - it is noise that masks real failures in the same log.",
+      "fix": "Treat an existing user as success: look the username up first and skip creation if present. Safe to ignore when the account exists - verify with: curl -s -H \"Authorization: Bearer $AK_TOKEN\" http://127.0.0.1:9000/api/v3/core/users/?username=admin",
+      "verified": "2026-07-27, idempotency issue not a failure",
+      "source": "e2e beacon install - authentik"
+    },
+    {
+      "id": "authentik-early-return-drops-api-token",
+      "match_any": [
+        "Authentik API token not configured",
+        "Failed to create Authentik provider",
+        "Authentik is already running"
+      ],
+      "context": "wopr_deploy_authentik() early-returns when the server unit is already active, but wopr_authentik_set_token is only called ~150 lines later on a full deploy. On any re-run/retry/resume the API token is never restored, so EVERY subsequent Authentik API call fails: no OAuth2 providers, no application bindings, SSO broken for the entire bundle - while the install keeps going and looks healthy. Same class as postgres-early-return-skips-db-passwords.",
+      "fix": "Restore the token from the persisted authentik_bootstrap_token BEFORE the early return: `_existing_token=$(wopr_setting_get authentik_bootstrap_token); [ -n \"$_existing_token\" ] && wopr_authentik_set_token \"$_existing_token\"`.",
+      "fix_command": "python3 - <<'PY'\nimport json\np='/etc/wopr/settings.json'\nd=json.load(open(p))\nbt=d.get('authentik_bootstrap_token')\nif bt and not d.get('authentik_token'):\n    d['authentik_token']=bt\n    json.dump(d,open(p,'w'),indent=2)\n    print('restored authentik_token from bootstrap token')\nelse:\n    print('nothing to restore')\nPY",
+      "auto_apply": true,
+      "severity": "critical",
+      "verified_on": "2026-07-25",
+      "verified_host": "contabo test beacon 94.72.114.128",
+      "source": "e2e beacon install from main-based branch",
+      "code_fix": "scripts/modules/authentik.sh - token restore hoisted above the early return",
+      "lesson": "Same as postgres: an 'already installed' guard must not skip side effects later stages depend on."
+    },
+    {
+      "id": "beacon-callback-state-never-applied",
+      "match_any": [
+        "coroutine .*_update_state.* was never awaited",
+        "Unmapped beacon status",
+        "Beacon status update"
+      ],
+      "context": "update_provision_status called orchestrator._update_state(...) without await. It is an async method, so each call built a coroutine and discarded it and no state was ever persisted. Separately the status vocabulary did not match: the installer emits fourteen statuses while the handler recognised three, and bootstrap.sh reports 'completed' while the handler tested for 'complete' - so even a fully successful install never marked the job COMPLETED. The customer's progress ring sat at 10% for the entire install.",
+      "fix": "await every _update_state call, and map the full vocabulary: complete/completed/complete_with_warnings/beacon_active -> COMPLETED; failed -> FAILED; the bootstrap_started/downloading/installing/configuring*/deploying_* family -> DEPLOYING_WOPR. Log anything unmapped instead of ignoring it.",
+      "auto_apply": false,
+      "severity": "high",
+      "fix_command": "true  # code fix in main.py update_provision_status"
+    },
+    {
+      "id": "beacon-callback-wrong-path",
+      "match_any": [
+        "/api/provision/",
+        "outpost.goauthentik.io/callback",
+        "application/o/authorize"
+      ],
+      "context": "bootstrap.sh posted status to /api/provision/{id}/callback while the route is /api/v1/provision/{id}/status. The legacy path matches nothing and is not in Caddy's pre-auth bypass, so every report returned an Authentik login page. The call uses `curl -sf ... || true`, so it failed silently and the customer's progress slideshow never advanced.",
+      "fix": "Post to /api/v1/provision/{id}/status. Keep that path in the orc.wopr Caddy pre-auth bypass - a beacon cannot complete an SSO flow.",
+      "auto_apply": false,
+      "severity": "high",
+      "fix_command": "sed -i 's#/api/provision/${JOB_ID}/callback#/api/v1/provision/${JOB_ID}/status#' /opt/wopr/installer/scripts/bootstrap.sh 2>/dev/null || true"
+    },
+    {
+      "id": "caddy-on-demand-tls-interval-removed",
+      "match_any": [
+        "the on_demand_tls 'interval' option is no longer supported",
+        "adapting config using caddyfile",
+        "caddy.service: Failed with result"
+      ],
+      "context": "modules/caddy.sh wrote `on_demand_tls { ask ...; interval 2m; burst 5 }`. Current Caddy removed the interval/burst rate-limit options and rejects the ENTIRE config over them, so caddy.service exited at boot: nothing listened on 80/443 and no certificate could be issued. The install continued and still reported success.",
+      "fix": "Keep only `ask` inside on_demand_tls - it is the authorisation gate that stops strangers obtaining certificates for arbitrary hostnames pointed at the box. Drop interval/burst.",
+      "auto_apply": true,
+      "severity": "critical",
+      "fix_command": "python3 - <<'EOF'\nimport re\np = '/etc/caddy/Caddyfile'\ns = open(p).read()\ns = re.sub(r'^\\s*(interval|burst)\\s+\\S+\\s*$', '', s, flags=re.M)\nopen(p, 'w').write(s)\nEOF\ncaddy validate --config /etc/caddy/Caddyfile && systemctl reload-or-restart caddy"
+    },
+    {
+      "id": "caddy-reload-on-inactive-unit",
+      "match_any": [
+        "Unit cannot be reloaded because it is inactive",
+        "caddy.service: Unit cannot be reloaded"
+      ],
+      "context": "Steps that apply Caddy config call `systemctl reload caddy`, which is a no-op when the unit is inactive. A Caddy that died at boot over a bad directive was therefore never revived, even after a later step rewrote the config into something valid.",
+      "fix": "Use `systemctl reload-or-restart caddy` so a dead unit is started.",
+      "auto_apply": true,
+      "severity": "high",
+      "fix_command": "systemctl reload-or-restart caddy"
+    },
+    {
+      "id": "callback-curl-hang",
+      "match_any": [
+        "Failed to report status to orchestrator",
+        "Connection timed out after",
+        "orchestrator_url.*unreachable"
+      ],
+      "context": "status callback curl hangs with no timeout, stalling the installer",
+      "fix": "Add --max-time 15 --connect-timeout 5 to the callback curl; treat callback failure as non-fatal (|| true).",
+      "auto_apply": true,
+      "severity": "medium"
+    },
+    {
+      "id": "contabo-cloudinit-bootcmd-cosmetic",
+      "match_any": [
+        "cloud-init status: error",
+        "bootcmd.*failed",
+        "Contabo.*bootcmd"
+      ],
+      "context": "Contabo MERGES your #cloud-config with its own defaults; its injected bootcmd fails so 'cloud-init status: error' shows, but runcmd still runs.",
+      "fix": "COSMETIC \u2014 ignore this specific error if runcmd completed. Verify /var/lib/cloud/instance/user-data.txt ran (check the WOPR install log), do not treat cloud-init overall-status=error as fatal.",
+      "auto_apply": false,
+      "severity": "info"
+    },
+    {
+      "id": "contabo-cloudinit-needs-ssh-or-password",
+      "match_any": [
+        "Cloud Init File must set SSH public key and/or password",
+        "must set SSH public key"
+      ],
+      "context": "Contabo rejects POST /compute/instances with 400 when the supplied cloud-init sets neither an SSH key nor a root password. Every provision failed on this until WOPR_DEPLOY_SSH_PUBKEY was set, and had one succeeded nobody could have SSHed in to bootstrap it.",
+      "fix": "Set WOPR_DEPLOY_SSH_PUBKEY in the control-plane environment to the deploy key's public half; _generate_cloud_init emits ssh_authorized_keys when it is present. Note Contabo's sshKeys field takes numeric secretIds from /secrets?type=ssh, NOT a key body - send the key via cloud-init instead.",
+      "verified": "2026-07-27, Contabo V155 US-central",
+      "source": "e2e beacon install - contabo provisioning"
+    },
+    {
+      "id": "contabo-reinstall-ssh-key-type",
+      "match_any": [
+        "each value in sshKeys must be a number",
+        "sshKeys must be a number conforming"
+      ],
+      "context": "Contabo's sshKeys field takes SECRET IDS from /secrets?type=ssh, not key bodies. _deploy_ssh_keys() returns the raw public key; create() filters to numeric ids and lets cloud-init carry the key, but reinstall() forwarded the string and 400'd - making in-place re-imaging impossible, which is the only way to rebuild a box without buying another contract.",
+      "fix": "Filter to numeric ids in reinstall() exactly as create() does.",
+      "auto_apply": false,
+      "severity": "high",
+      "fix_command": "true  # code fix in providers/contabo.py reinstall()"
+    },
+    {
+      "id": "contabo-userdata-base64",
+      "match_any": [
+        "userData.*base64",
+        "Invalid user-data",
+        "cloud-init.*failed to render"
+      ],
+      "context": "Contabo reinstall/create accept RAW #cloud-config userData, NOT base64-encoded",
+      "fix": "Send userData as raw text (leading '#cloud-config'), do not base64-encode it for the Contabo API.",
+      "auto_apply": false,
+      "severity": "high"
+    },
+    {
+      "id": "dns-configured-before-ip-exists",
+      "match_any": [
+        "No instance IP for DNS, skipping",
+        "No instance IP after VPS wait",
+        "Provisioned instance",
+        "at None"
+      ],
+      "context": "orchestrator ran CONFIGURING_DNS between PROVISIONING_VPS and WAITING_FOR_VPS. Providers do not return an address at create time, so job.instance_ip was empty, _configure_dns skipped and returned True, and the step was recorded as a success that never retried. Job shows every state green while the hostname resolves to nothing and no certificate can be issued - the beacon is unreachable.",
+      "fix": "Order CONFIGURING_DNS after _wait_for_vps (the step that obtains the address), and make a missing IP at that point return False instead of True - by then it is a genuine failure, not something to skip.",
+      "auto_apply": false,
+      "severity": "critical",
+      "fix_command": "python3 - <<'EOF'\n# Re-create the missing records for a job whose DNS was skipped.\n# SUB and IP come from the provisioning_jobs row.\nimport asyncio, os, sys\nsys.path.insert(0, '/opt/wopr/control-plane'); os.chdir('/opt/wopr/control-plane')\nfor l in open('/opt/wopr/control-plane/.env'):\n    l = l.strip()\n    if l and not l.startswith('#') and '=' in l:\n        k, v = l.split('=', 1); os.environ.setdefault(k.strip(), v.strip())\nfrom control_plane.services.cloudflare_dns import CloudflareDNS\nSUB, IP = os.environ['SUB'], os.environ['IP']\nasync def m():\n    d = CloudflareDNS(api_token=os.environ['CLOUDFLARE_API_TOKEN'],\n                      zone_id=os.environ['CLOUDFLARE_ZONE_ID'])\n    for n in (f'{SUB}.wopr.systems', f'*.{SUB}.wopr.systems'):\n        print(n, await d.create_a_record(name=n, ip=IP, proxied=False))\nasyncio.run(m())\nEOF"
+    },
+    {
+      "id": "docker-io-vs-docker-ce-apt-conflict",
+      "match_any": [
+        "pkgProblemResolver",
+        "docker.io : Conflicts: docker-ce",
+        "Unable to correct problems, you have held broken packages"
+      ],
+      "context": "Installing docker.io alongside docker-ce breaks apt dependency resolution, so no Docker daemon exists and the whole install dies. docker.io also ships no compose plugin.",
+      "fix": "Skip if a working Docker is already present, otherwise install docker-ce from the official repo with the compose plugin: docker info >/dev/null 2>&1 || (install -m0755 -d /etc/apt/keyrings; curl -fsSL https://download.docker.com/linux/${ID}/gpg -o /etc/apt/keyrings/docker.asc; chmod a+r /etc/apt/keyrings/docker.asc; . /etc/os-release; echo \"deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/${ID} ${VERSION_CODENAME} stable\" > /etc/apt/sources.list.d/docker.list; apt-get update -qq; apt-get install -y -qq docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin)",
+      "verified": "2026-07-27",
+      "source": "e2e beacon install - core stack"
+    },
+    {
+      "id": "docker-io-vs-docker-ce-conflict",
+      "match_any": [
+        "pkgProblemResolver::Resolve generated breaks",
+        "this may be caused by held packages",
+        "docker.io : Conflicts: docker-ce",
+        "Unable to correct problems, you have held broken packages"
+      ],
+      "context": "Installer core-stack step ran `apt-get install -y -qq docker.io`, which conflicts with the official docker-ce/containerd.io packages already present (or pulled in by the mirror path). apt aborts, no Docker daemon comes up, and every later module fails. Also left no compose plugin.",
+      "fix": "Make the Docker step idempotent and use Docker's official repo: if `docker info` already succeeds, skip. Otherwise add /etc/apt/keyrings/docker.asc + the download.docker.com sources list and install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin, then `systemctl enable --now docker`. Never install docker.io alongside docker-ce.",
+      "auto_apply": true,
+      "severity": "critical",
+      "verified_on": "2026-07-25",
+      "verified_host": "contabo test beacon 94.72.114.128 (Ubuntu 24.04)",
+      "source": "e2e beacon install, sovereign_developer bundle",
+      "code_fix": "scripts/wopr_install.sh install_core_stack() \u2014 replaced `apt-get install -y -qq docker.io` block",
+      "fix_command": "apt-get remove -y -qq docker.io >/dev/null 2>&1; install -m 0755 -d /etc/apt/keyrings && curl -fsSL https://download.docker.com/linux/${ID}/gpg -o /etc/apt/keyrings/docker.asc && chmod a+r /etc/apt/keyrings/docker.asc && . /etc/os-release && echo \"deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/${ID} ${VERSION_CODENAME} stable\" > /etc/apt/sources.list.d/docker.list && apt-get update -qq && apt-get install -y -qq docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin && systemctl enable --now docker"
+    },
+    {
+      "id": "docker-repo-wrong-distro",
+      "match_any": [
+        "does not have a Release file",
+        "download.docker.com/linux/ubuntu bookworm",
+        "Docker is not usable after install"
+      ],
+      "context": "The installer sourced /etc/os-release for the codename but hardcoded 'ubuntu' in the Docker repo URL. Contabo ships Debian bookworm and download.docker.com/linux/ubuntu has no bookworm suite, so apt rejected the repo, Docker never installed, and the beacon served nothing on 80/443 while still reporting a completed install.",
+      "fix": "Use ${ID} from /etc/os-release in both the GPG key URL and the repo line, then verify `docker info` and `docker compose version` succeed before continuing.",
+      "auto_apply": true,
+      "severity": "critical",
+      "fix_command": ". /etc/os-release && rm -f /etc/apt/sources.list.d/docker.list /etc/apt/keyrings/docker.asc && install -m 0755 -d /etc/apt/keyrings && curl -fsSL https://download.docker.com/linux/${ID}/gpg -o /etc/apt/keyrings/docker.asc && chmod a+r /etc/apt/keyrings/docker.asc && echo \"deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/${ID} ${VERSION_CODENAME} stable\" > /etc/apt/sources.list.d/docker.list && apt-get update -qq && apt-get install -y -qq docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin && systemctl enable --now docker"
+    },
+    {
+      "id": "git-clone-early-eof",
+      "match_any": [
+        "fetch-pack: unexpected disconnect",
+        "remote end hung up unexpectedly",
+        "early EOF",
+        "RPC failed; curl"
+      ],
+      "context": "vault git clone in provisioner cloud-init dies mid-transfer",
+      "fix": "Retry the clone shallow with backoff: for i in 1 2 3 4; do git clone --depth 1 \"$REPO\" \"$DEST\" && break; sleep $((i*5)); rm -rf \"$DEST\"; done",
+      "auto_apply": true,
+      "severity": "high",
+      "fix_command": "true  # retry handled by the installer's clone loop; nothing to heal post-hoc"
+    },
+    {
+      "id": "image-tag-does-not-exist",
+      "match_any": [
+        "failed to resolve reference",
+        "not found: name unknown",
+        "manifest unknown",
+        "codeberg.org/forgejo/forgejo:latest"
+      ],
+      "context": "A module's image reference in registry.sh uses a tag the upstream registry does not publish. Concrete case: codeberg.org/forgejo/forgejo:latest 404s (Forgejo publishes :11, :12, etc. but no :latest), so the forgejo module failed to deploy while the rest of the install continued.",
+      "fix": "Pin the module to a tag that actually exists upstream, then mirror it into the vault and ghcr so beacons pull sovereignly. Verify with: docker manifest inspect <ref>. For forgejo use codeberg.org/forgejo/forgejo:11.",
+      "fix_command": "sed -i 's#codeberg.org/forgejo/forgejo:latest#codeberg.org/forgejo/forgejo:11#g' /opt/wopr/scripts/modules/registry.sh 2>/dev/null; true",
+      "auto_apply": true,
+      "severity": "high",
+      "verified_on": "2026-07-25",
+      "verified_host": "contabo test beacon 94.72.114.128",
+      "source": "e2e beacon install, sovereign_developer bundle",
+      "code_fix": "scripts/modules/registry.sh forgejo entry; image mirrored to vault + ghcr as forgejo-forgejo:11"
+    },
+    {
+      "id": "job-lookup-skips-database",
+      "match_any": [
+        "Job not found",
+        "{\"detail\":\"Job not found\"}"
+      ],
+      "context": "orchestrator.get_job() reads memory then a JSON file, never the database, although jobs are written to Postgres. After any control-plane restart the progress endpoints, the support-ticket endpoint and - worst - the endpoint the BEACON posts its own progress to all returned 404, so a live install reported into a void.",
+      "fix": "Add an async loader that falls back to database.get_job() and rehydrates the cache, and await it from every endpoint. Coerce UUID columns to str: they are not JSON serialisable and killed the SSE stream outright.",
+      "auto_apply": false,
+      "severity": "critical",
+      "fix_command": "true  # code fix in orchestrator.get_job_or_load + main.py call sites"
+    },
+    {
+      "id": "jq-hyphen-oidc-secret",
+      "match_any": [
+        "is not defined at <top-level>",
+        "jq: 1 compile error",
+        "_secret/0 is not defined"
+      ],
+      "context": "wopr_setting_get built its filter as `jq -r \".$key\"`. Any settings key containing a hyphen (authentik_wopr-nextcloud_secret, authentik_wopr-vaultwarden_secret, ...) is parsed by jq as SUBTRACTION -> '<name>/0 is not defined', so every OIDC client secret resolved EMPTY. Consequence: SSO wiring and the authenticated Caddy route failed for every app in the bundle (nextcloud, vaultwarden, forgejo, ...), while the install kept going and looked mostly successful.",
+      "fix": "Index with a quoted key passed via --arg instead of interpolating into the filter: `jq -r --arg k \"$key\" '.[$k] // empty' \"$config_file\"`. Never interpolate a key or value directly into a jq filter.",
+      "fix_command": "python3 - <<'PY'\np='/opt/wopr/scripts/wopr_common.sh'\ns=open(p).read()\nold='        jq -r \".$key // empty\" \"$config_file\"'\nnew='        jq -r --arg k \"$key\" \\'.[$k] // empty\\' \"$config_file\"'\nif old in s:\n    open(p,'w').write(s.replace(old,new,1)); print('patched')\nelse:\n    print('already patched or pattern moved')\nPY",
+      "auto_apply": true,
+      "severity": "critical",
+      "verified_on": "2026-07-25",
+      "verified_host": "contabo test beacon 94.72.114.128 (Ubuntu 24.04)",
+      "source": "e2e beacon install, sovereign_developer bundle",
+      "code_fix": "scripts/wopr_common.sh wopr_setting_get()",
+      "proof": "OLD: jq -r \".$key\" -> 'nextcloud_secret/0 is not defined'; NEW: jq -r --arg k \"$key\" '.[$k]' -> 's3cret-val'"
+    },
+    {
+      "id": "jq-setting-set-silent-secret-loss",
+      "match_any": [
+        "_secret/0 is not defined",
+        "jq: 1 compile error",
+        "Setting saved: authentik_wopr-",
+        "Failed to add authenticated Caddy route"
+      ],
+      "context": "wopr_setting_set wrote settings with `jq \".$key = \\\"$value\\\"\"`. THREE defects: (1) a hyphenated key (authentik_wopr-reactor_secret) is parsed by jq as subtraction so the write fails; (2) the value is interpolated raw into the filter so quotes/backslashes corrupt it; (3) on jq failure the `&&` correctly skipped the mv but the function STILL logged 'Setting saved' and returned 0. Net effect: every hyphenated OIDC client secret was silently never persisted while the installer reported success, and the authenticated Caddy route then failed for that app. This is the WRITE half of jq-hyphen-oidc-secret.",
+      "fix": "Bind both key and value with --arg and only claim success when jq succeeded: `if jq --arg k \"$key\" --arg v \"$value\" '.[$k] = $v' \"$config_file\" > \"$tmp\"; then mv \"$tmp\" \"$config_file\"; wopr_log INFO \"Setting saved: $key\"; else rm -f \"$tmp\"; wopr_log ERROR \"Failed to save setting: $key\"; return 1; fi`",
+      "auto_apply": true,
+      "severity": "critical",
+      "verified_on": "2026-07-25",
+      "verified_host": "contabo test beacon 94.72.114.128",
+      "source": "e2e beacon install, sovereign_developer bundle (reactor/code-server/openwebui)",
+      "code_fix": "scripts/wopr_common.sh wopr_setting_set(); also hardened bootstrap reader + mesh.sh last_check writer. Tree swept: 0 unquoted-key jq filters remain.",
+      "lesson": "Never interpolate a shell variable into a jq filter \u2014 always --arg. And never log success on an unchecked command."
+    },
+    {
+      "id": "postgres-early-return-skips-db-passwords",
+      "match_any": [
+        "Authentik database password not configured",
+        "database password not configured",
+        "PostgreSQL is already running"
+      ],
+      "context": "wopr_deploy_postgresql() early-returns when the systemd service is already active, but the per-app DB passwords (authentik_db_password, nextcloud_db_password, freshrss_db_password) were generated ~70 lines later in the SAME function. On any re-run, retry, or resumed install where PostgreSQL is already up, those settings are never written and the very next module dies with 'Authentik database password not configured'. A perfectly healthy box fails on the second pass.",
+      "fix": "Hoist the (already idempotent) credential generation into wopr_postgresql_ensure_passwords() and call it BEFORE the is-active early return, so the passwords exist on every code path.",
+      "fix_command": "python3 - <<'PY'\nimport json,subprocess,secrets,string\ndef rnd(n=32):\n    a=string.ascii_letters+string.digits\n    return ''.join(secrets.choice(a) for _ in range(n))\np='/etc/wopr/settings.json'\ntry: d=json.load(open(p))\nexcept Exception: d={}\nch=[]\nfor app in ('authentik','nextcloud','freshrss'):\n    k=app+'_db_password'\n    if not d.get(k):\n        d[k]=rnd(); ch.append(k)\njson.dump(d,open(p,'w'),indent=2)\nprint('generated:',ch)\nPY",
+      "auto_apply": true,
+      "severity": "critical",
+      "verified_on": "2026-07-25",
+      "verified_host": "contabo test beacon 94.72.114.128",
+      "source": "e2e beacon install, clean re-run of sovereign_developer bundle",
+      "code_fix": "scripts/modules/postgresql.sh - wopr_postgresql_ensure_passwords() hoisted above the early return",
+      "lesson": "An early-return 'already installed' guard must not skip side effects that later modules depend on."
+    },
+    {
+      "id": "provider-blank-ip-write",
+      "match_any": [
+        "invalid input syntax for type inet",
+        "invalid input syntax for type inet: \"\""
+      ],
+      "context": "Contabo reports an empty string rather than null for an address not yet assigned; Postgres rejects '' for an inet column, failing the job even though the VPS was created successfully.",
+      "fix": "Normalise before writing: job.instance_ip = (_ip or \"\").strip() or None",
+      "auto_apply": false,
+      "severity": "high",
+      "fix_command": "true  # code fix in orchestrator._provision_vps; nothing to heal post-hoc"
+    },
+    {
+      "id": "provider-duplicate-display-name",
+      "match_any": [
+        "There is already an instance with the same display name",
+        "same display name",
+        "displayName already exists"
+      ],
+      "context": "Contabo rejects a create whose displayName is already in use. The orchestrator named instances after the beacon subdomain alone, so a retry after ANY earlier failure collided with the instance that attempt left behind and the job could never recover - it failed identically on every attempt. Two customers choosing the same beacon name would collide too.",
+      "fix": "Make the display name unique per job: '<subdomain>-<first 8 of job_id>' (see _provider_display_name in orchestrator.py). To clear a stuck retry, either destroy the orphaned instance or let the unique suffix bypass it. List current names: docker-free check via the provider API - GET /v1/compute/instances and compare displayName.",
+      "verified": "2026-07-27, Contabo V155 - provision went 400 -> 201 after the fix",
+      "source": "e2e beacon install - provider create"
+    },
+    {
+      "id": "stale-apt-repo-aborts-bootstrap",
+      "match_any": [
+        "E: The repository",
+        "Installing prerequisites...",
+        "apt update reported errors"
+      ],
+      "context": "bootstrap.sh runs under `set -euo pipefail`, so a failing `apt-get update` ends the run. A docker.list left by an earlier failed attempt persists on disk, which means a box that failed once could never be re-installed - every retry died on the same line before reaching the corrected installer.",
+      "fix": "Make the prerequisite update best effort (|| echo ... ), and delete a docker.list that does not match this distro before running it.",
+      "auto_apply": true,
+      "severity": "high",
+      "fix_command": ". /etc/os-release && if [ -f /etc/apt/sources.list.d/docker.list ] && ! grep -q \"download.docker.com/linux/${ID}\" /etc/apt/sources.list.d/docker.list; then rm -f /etc/apt/sources.list.d/docker.list; fi; apt-get update -qq || true"
+    },
+    {
+      "id": "support-plane-assets-fetched-from-unreachable-urls",
+      "match_any": [
+        "KB fetch failed",
+        "Autodiscovery fetch failed",
+        "No autodiscovery source available",
+        "HTTP Error 403: Forbidden",
+        "raw/branch/main/support-plane"
+      ],
+      "context": "The support-plane module fetched knowledge-base.json and wopr-sp-autodiscovery.py from branch-pinned raw URLs. On a real beacon BOTH fail: the vault repo is private so raw returns 403 Forbidden, and the GitHub mirror path 404s. Result: no knowledge base and 'No autodiscovery source available - manifest will be static' on every install, silently degrading the Sentinel.",
+      "fix": "Ship the assets in the installer payload (support-plane/ next to scripts/) and copy them local-first, falling through to the network only if genuinely absent - the same pattern already used for wopr-support-plane.py.",
+      "auto_apply": false,
+      "severity": "high",
+      "verified_on": "2026-07-25",
+      "verified_host": "contabo test beacon 94.72.114.128",
+      "source": "e2e beacon install from main-based branch",
+      "code_fix": "scripts/modules/support_plane.sh local-first for KB + autodiscovery; assets committed to support-plane/"
+    },
+    {
+      "id": "unpullable-image-refs-localhost-and-latest",
+      "match_any": [
+        "localhost/wopr-",
+        "Timeout waiting for 127.0.0.1:8600",
+        "status=30/n/a",
+        "rolling minor tag",
+        "manifest unknown",
+        "failed to resolve reference"
+      ],
+      "context": "Two ways a module's image reference is unusable on a customer beacon: (1) five modules pointed at localhost/... images (reactor, ai-engine, defcon-one, support-plane, deployment-queue) - a localhost ref only resolves on the machine that built it, so the pull silently fails and the module times out waiting for its port (reactor: 'Timeout waiting for 127.0.0.1:8600'); (2) woodpecker used :latest - the image pulls fine but Woodpecker's entrypoint REFUSES to run the latest tag and exits 30, so the container never stays up. Same family as image-tag-does-not-exist (forgejo :latest 404).",
+      "fix": "Point every WOPR-built module at the sovereign mirror (ghcr.io/nodez3r0/<name>:latest, also in the vault registry) instead of localhost/, and pin vendor images to a tag the upstream actually supports and runs (woodpecker -> :v3). Verify with `docker manifest inspect <ref>` AND that the container stays up, not just that it pulls.",
+      "fix_command": "sed -i 's#localhost/wopr-#ghcr.io/nodez3r0/wopr-#g; s#woodpeckerci/woodpecker-server:latest#woodpeckerci/woodpecker-server:v3#g' /opt/wopr/scripts/modules/registry.sh 2>/dev/null; true",
+      "auto_apply": true,
+      "severity": "critical",
+      "verified_on": "2026-07-25",
+      "verified_host": "contabo test beacon 94.72.114.128",
+      "source": "e2e beacon install - reactor + woodpecker were the only 2 of 11 apps whose containers never came up",
+      "code_fix": "scripts/modules/registry.sh - 5 localhost refs -> ghcr mirror; woodpecker :latest -> :v3",
+      "lesson": "A module image ref must be pullable FROM THE BEACON. localhost/ never is. And 'pulls successfully' is not 'runs successfully'."
+    },
+    {
+      "id": "wait-for-port-timeout",
+      "match_any": [
+        "Timeout waiting for 127.0.0.1:",
+        "Timeout waiting for port"
+      ],
+      "context": "A module's readiness probe expired before its container bound the port. Usually the container failed to start (check it first) rather than the service being genuinely slow; on a cold first boot Authentik in particular can exceed a short wait while it runs migrations and imports blueprints.",
+      "fix": "Identify the port's owner and inspect it rather than extending the wait blindly: docker ps -a --format '{{.Names}}|{{.Status}}' | grep -v ' Up '; then docker logs --tail 100 <name>. If the container is healthy but slow, raise that module's wait_ready timeout (Authentik needed 120s -> 300s on first boot).",
+      "verified": "2026-07-27",
+      "source": "e2e beacon install - module readiness"
+    },
+    {
+      "id": "wait-ready-timeout-short",
+      "match_any": [
+        "wait_ready.*timeout",
+        "service did not become ready",
+        "healthcheck timed out"
+      ],
+      "context": "core service (postgres/authentik) needs longer than default to become ready on a cold box",
+      "fix": "Raise wait_ready to 300s for core infra; poll the real healthcheck, not just port open.",
+      "auto_apply": true,
+      "severity": "medium",
+      "fix_command": "sed -i 's/WOPR_WAIT_READY_TIMEOUT=[0-9]*/WOPR_WAIT_READY_TIMEOUT=300/' /opt/wopr/scripts/wopr_common.sh 2>/dev/null; true"
+    }
+  ]
+}

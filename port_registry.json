@@ -3,10 +3,10 @@
     "4001": {
       "owner": "mastodon-streaming",
       "proc": "docker-proxy",
-      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 4001 -container-ip 10.220.3.3 -container-port 4000 -use-listen-fd",
+      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 4001 -container-ip 10.220.3.2 -container-port 4000 -use-listen-fd",
       "container": "mastodon-streaming",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -16,7 +16,7 @@
       "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 4000 -container-ip 10.210.0.2 -container-port 4000 -use-listen-fd",
       "container": "akkoma",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -26,27 +26,27 @@
       "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 3801 -container-ip 172.26.0.3 -container-port 3000 -use-listen-fd",
       "container": "serpbear",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
     "3802": {
       "owner": "seonaut",
       "proc": "docker-proxy",
-      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 3802 -container-ip 172.26.0.2 -container-port 9000 -use-listen-fd",
+      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 3802 -container-ip 172.26.0.4 -container-port 9000 -use-listen-fd",
       "container": "seonaut",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
     "3400": {
       "owner": "lovejoos-frontend",
       "proc": "docker-proxy",
-      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 3400 -container-ip 172.22.0.5 -container-port 3000 -use-listen-fd",
+      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 3400 -container-ip 172.22.0.4 -container-port 3000 -use-listen-fd",
       "container": "lovejoos-frontend",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -56,7 +56,7 @@
       "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 3333 -container-ip 10.220.3.5 -container-port 3000 -use-listen-fd",
       "container": "mastodon-web",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -66,17 +66,17 @@
       "cmd": "node server.js",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
     "3110": {
       "owner": "brainjoos-api",
       "proc": "docker-proxy",
-      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 3110 -container-ip 192.168.64.3 -container-port 8000 -use-listen-fd",
+      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 3110 -container-ip 192.168.64.2 -container-port 8000 -use-listen-fd",
       "container": "brainjoos-api",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -86,27 +86,27 @@
       "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 3300 -container-ip 192.168.144.9 -container-port 3000 -use-listen-fd",
       "container": "folkmoot-web",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
     "3201": {
       "owner": "folkmoot-grafana-1",
       "proc": "docker-proxy",
-      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 3201 -container-ip 172.23.0.3 -container-port 3001 -use-listen-fd",
+      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 3201 -container-ip 172.23.0.4 -container-port 3001 -use-listen-fd",
       "container": "folkmoot-grafana-1",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
     "3200": {
       "owner": "folkmoot-frontend-1",
       "proc": "docker-proxy",
-      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 3200 -container-ip 172.23.0.6 -container-port 3000 -use-listen-fd",
+      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 3200 -container-ip 172.23.0.7 -container-port 3000 -use-listen-fd",
       "container": "folkmoot-frontend-1",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -116,7 +116,7 @@
       "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 2583 -container-ip 10.211.0.2 -container-port 3000 -use-listen-fd",
       "container": "wopr-pds",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -126,7 +126,7 @@
       "cmd": "/usr/bin/caddy run --environ --config /etc/caddy/Caddyfile",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-20T18:30:01.695646+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -136,7 +136,7 @@
       "cmd": "/snap/microk8s/8702/bin/containerd --config /var/snap/microk8s/8702/args/containerd.toml --root /var/snap/microk8s/common/var/lib/containerd --state /var/snap/m",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -156,7 +156,7 @@
       "cmd": "/usr/lib/protonmail/bridge/bridge --noninteractive",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -166,7 +166,7 @@
       "cmd": "/usr/lib/protonmail/bridge/bridge --noninteractive",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -176,7 +176,7 @@
       "cmd": "/home/nodez3r0/.local/share/protonmail/bridge-v3/updates/3.25.0/bridge --noninteractive --session-id 20260622_092406620 --launcher /usr/lib/protonmail/bridge/pr",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": "",
       "last_conflict": "1026:bridge->socat"
@@ -187,7 +187,7 @@
       "cmd": "/usr/sbin/named -u bind -f -c /etc/bind/named.conf -L /var/log/bind/default.log",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -197,7 +197,7 @@
       "cmd": "/usr/sbin/cupsd -l",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -207,37 +207,37 @@
       "cmd": "/usr/sbin/named -u bind -f -c /etc/bind/named.conf -L /var/log/bind/default.log",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
     "8009": {
       "owner": "matrix-element",
       "proc": "docker-proxy",
-      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 8009 -container-ip 192.168.160.2 -container-port 80 -use-listen-fd",
+      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 8009 -container-ip 192.168.160.9 -container-port 80 -use-listen-fd",
       "container": "matrix-element",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
     "8008": {
       "owner": "matrix-synapse",
       "proc": "docker-proxy",
-      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 8008 -container-ip 192.168.160.9 -container-port 8008 -use-listen-fd",
+      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 8008 -container-ip 192.168.160.7 -container-port 8008 -use-listen-fd",
       "container": "matrix-synapse",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:00:01.823289+00:00",
       "expected": null,
       "note": ""
     },
     "8010": {
       "owner": "synapse-admin",
       "proc": "docker-proxy",
-      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 8010 -container-ip 192.168.160.6 -container-port 80 -use-listen-fd",
+      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 8010 -container-ip 192.168.160.5 -container-port 80 -use-listen-fd",
       "container": "synapse-admin",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -247,7 +247,7 @@
       "cmd": "/opt/wopr/control-plane/.venv/bin/python3 /opt/wopr/control-plane/.venv/bin/uvicorn main:app --host 127.0.0.1 --port 8001",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -257,7 +257,7 @@
       "cmd": "/opt/printful-sync/venv/bin/python3 /opt/printful-sync/venv/bin/uvicorn shopify_api:app --host 127.0.0.1 --port 8003",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -267,7 +267,7 @@
       "cmd": "/home/nodez3r0/ComfyUI/venv/bin/python3 main.py --listen 127.0.0.1 --port 8188 --disable-auto-launch",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T10:45:02.013411+00:00",
+      "last_seen": "2026-08-05T18:00:01.823289+00:00",
       "expected": null,
       "note": ""
     },
@@ -277,40 +277,40 @@
       "cmd": "python3 /snap/sabnzbd/6446/opt/sabnzbd/SABnzbd.py -f /var/snap/sabnzbd/common",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
     "8083": {
       "owner": "lovejoos-emqx",
       "proc": "docker-proxy",
-      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 8083 -container-ip 172.22.0.6 -container-port 8083 -use-listen-fd",
+      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 8083 -container-ip 172.22.0.5 -container-port 8083 -use-listen-fd",
       "container": "lovejoos-emqx",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
     "8070": {
       "owner": "barter-web-1",
       "proc": "docker-proxy",
-      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 8070 -container-ip 172.31.0.3 -container-port 8000 -use-listen-fd",
+      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 8070 -container-ip 172.31.0.5 -container-port 8000 -use-listen-fd",
       "container": "barter-web-1",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
     "8125": {
-      "owner": "netdata",
-      "proc": "netdata",
-      "cmd": "/usr/sbin/netdata -D",
+      "owner": "bash",
+      "proc": "bash",
+      "cmd": "bash /usr/lib/netdata/plugins.d/tc-qos-helper.sh 1",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": "",
-      "last_conflict": "8125:netdata->apps.plugin"
+      "last_conflict": "8125:bash->apps.plugin"
     },
     "8101": {
       "owner": "sst-frontend",
@@ -318,7 +318,7 @@
       "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 8101 -container-ip 172.28.0.3 -container-port 3000 -use-listen-fd",
       "container": "sst-frontend",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -328,17 +328,17 @@
       "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 8100 -container-ip 172.28.0.2 -container-port 8000 -use-listen-fd",
       "container": "sst-backend",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
     "8096": {
       "owner": "lovejoos-api",
       "proc": "docker-proxy",
-      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 8096 -container-ip 172.19.0.2 -container-port 8096 -use-listen-fd",
+      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 8096 -container-ip 172.19.0.11 -container-port 8096 -use-listen-fd",
       "container": "lovejoos-api",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -348,7 +348,7 @@
       "cmd": "/usr/bin/python3 /opt/thedudeabides-store/reg-proxy.py",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -358,7 +358,7 @@
       "cmd": "/opt/thedudeabides-store/og-prerender/venv/bin/python3 /opt/thedudeabides-store/og-prerender/venv/bin/uvicorn og_prerender:app --host 127.0.0.1 --port 8098",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -368,7 +368,7 @@
       "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 7777 -container-ip 192.168.128.2 -container-port 8080 -use-listen-fd",
       "container": "nostr-relay",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -378,7 +378,7 @@
       "cmd": "/usr/bin/python3 /opt/wopr-sms-proxy/sms_proxy.py",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -388,17 +388,17 @@
       "cmd": "/usr/bin/redis-server 127.0.0.1:6379",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
     "5433": {
       "owner": "brainjoos-db",
       "proc": "docker-proxy",
-      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 5433 -container-ip 192.168.64.2 -container-port 5432 -use-listen-fd",
+      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 5433 -container-ip 192.168.64.3 -container-port 5432 -use-listen-fd",
       "container": "brainjoos-db",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -408,7 +408,7 @@
       "cmd": "/usr/lib/postgresql/16/bin/postgres -D /var/lib/postgresql/16/main -c config_file=/etc/postgresql/16/main/postgresql.conf",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -418,7 +418,7 @@
       "cmd": "gunicorn: worker [honeypot:app]",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -428,7 +428,7 @@
       "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 5601 -container-ip 192.168.192.3 -container-port 5601 -use-listen-fd",
       "container": "single-node-wazuh.dashboard-1",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -438,7 +438,7 @@
       "cmd": "/usr/bin/python3 /opt/nedry-honeypot/abuse_reporter.py serve",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -448,17 +448,17 @@
       "cmd": "/usr/bin/python3 /opt/nedry-honeypot/dashboard.py",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
     "5314": {
       "owner": "elk-web",
       "proc": "docker-proxy",
-      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 5314 -container-ip 10.220.0.4 -container-port 5314 -use-listen-fd",
+      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 5314 -container-ip 10.220.0.5 -container-port 5314 -use-listen-fd",
       "container": "elk-web",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -468,17 +468,17 @@
       "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 5001 -container-ip 192.168.112.2 -container-port 5000 -use-listen-fd",
       "container": "lnbits",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
     "5000": {
       "owner": "wopr-matrix-onboard",
       "proc": "docker-proxy",
-      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 5000 -container-ip 192.168.160.8 -container-port 5000 -use-listen-fd",
+      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 5000 -container-ip 192.168.160.6 -container-port 5000 -use-listen-fd",
       "container": "wopr-matrix-onboard",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -498,7 +498,7 @@
       "cmd": "/usr/bin/python3 /opt/wopr-stats/stats_server.py",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -508,17 +508,17 @@
       "cmd": "gunicorn: worker [app:app]",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
     "11883": {
       "owner": "lovejoos-emqx",
       "proc": "docker-proxy",
-      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 11883 -container-ip 172.22.0.6 -container-port 1883 -use-listen-fd",
+      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 11883 -container-ip 172.22.0.5 -container-port 1883 -use-listen-fd",
       "container": "lovejoos-emqx",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -528,7 +528,7 @@
       "cmd": "/usr/local/bin/ollama serve",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -538,7 +538,7 @@
       "cmd": "/snap/microk8s/8702/kubelite --scheduler-args-file=/var/snap/microk8s/8702/args/kube-scheduler --controller-manager-args-file=/var/snap/microk8s/8702/args/kube-",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -548,7 +548,7 @@
       "cmd": "/snap/microk8s/8702/kubelite --scheduler-args-file=/var/snap/microk8s/8702/args/kube-scheduler --controller-manager-args-file=/var/snap/microk8s/8702/args/kube-",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -558,17 +558,17 @@
       "cmd": "/snap/microk8s/8702/kubelite --scheduler-args-file=/var/snap/microk8s/8702/args/kube-scheduler --controller-manager-args-file=/var/snap/microk8s/8702/args/kube-",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
     "9445": {
       "owner": "authentik-server-1",
       "proc": "docker-proxy",
-      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 9445 -container-ip 172.19.0.9 -container-port 9443 -use-listen-fd",
+      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 9445 -container-ip 172.19.0.10 -container-port 9443 -use-listen-fd",
       "container": "authentik-server-1",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -578,7 +578,7 @@
       "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 9392 -container-ip 192.168.224.4 -container-port 80 -use-listen-fd",
       "container": "greenbone-gsa-1",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -588,7 +588,7 @@
       "cmd": "/usr/bin/tor --defaults-torrc /usr/share/tor/tor-service-defaults-torrc -f /etc/tor/torrc --RunAsDaemon 0",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -605,30 +605,30 @@
     "9201": {
       "owner": "lovejoos-minio",
       "proc": "docker-proxy",
-      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 9201 -container-ip 172.22.0.7 -container-port 9001 -use-listen-fd",
+      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 9201 -container-ip 172.22.0.6 -container-port 9001 -use-listen-fd",
       "container": "lovejoos-minio",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
     "9200": {
       "owner": "lovejoos-minio",
       "proc": "docker-proxy",
-      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 9200 -container-ip 172.22.0.7 -container-port 9000 -use-listen-fd",
+      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 9200 -container-ip 172.22.0.6 -container-port 9000 -use-listen-fd",
       "container": "lovejoos-minio",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
     "9190": {
       "owner": "folkmoot-prometheus-1",
       "proc": "docker-proxy",
-      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 9190 -container-ip 172.23.0.7 -container-port 9090 -use-listen-fd",
+      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 9190 -container-ip 172.23.0.6 -container-port 9090 -use-listen-fd",
       "container": "folkmoot-prometheus-1",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -638,7 +638,7 @@
       "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 9110 -container-ip 10.220.4.2 -container-port 9000 -use-listen-fd",
       "container": "listmonk",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -648,37 +648,37 @@
       "cmd": "php-fpm: pool www",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
     "9091": {
       "owner": "authentik-server-1",
       "proc": "docker-proxy",
-      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 9091 -container-ip 172.19.0.9 -container-port 9000 -use-listen-fd",
+      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 9091 -container-ip 172.19.0.10 -container-port 9000 -use-listen-fd",
       "container": "authentik-server-1",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
     "8806": {
       "owner": "folkmoot-nedry-ingest",
       "proc": "docker-proxy",
-      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 8806 -container-ip 192.168.144.12 -container-port 8806 -use-listen-fd",
+      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 8806 -container-ip 192.168.144.10 -container-port 8806 -use-listen-fd",
       "container": "folkmoot-nedry-ingest",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
     "8803": {
       "owner": "folkmoot-falken-bridge",
       "proc": "docker-proxy",
-      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 8803 -container-ip 192.168.144.2 -container-port 8803 -use-listen-fd",
+      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 8803 -container-ip 192.168.144.6 -container-port 8803 -use-listen-fd",
       "container": "folkmoot-falken-bridge",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -688,7 +688,7 @@
       "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 8900 -container-ip 192.168.16.2 -container-port 8080 -use-listen-fd",
       "container": "castopod-app",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -698,17 +698,17 @@
       "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 8888 -container-ip 10.220.1.2 -container-port 8080 -use-listen-fd",
       "container": "searxng",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
     "8680": {
       "owner": "element-call",
       "proc": "docker-proxy",
-      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 8680 -container-ip 192.168.160.5 -container-port 8080 -use-listen-fd",
+      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 8680 -container-ip 192.168.160.2 -container-port 8080 -use-listen-fd",
       "container": "element-call",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -718,17 +718,17 @@
       "cmd": "node --enable-source-maps dist/main.mjs",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
     "8580": {
       "owner": "lk-jwt-service",
       "proc": "docker-proxy",
-      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 8580 -container-ip 192.168.160.3 -container-port 8080 -use-listen-fd",
+      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 8580 -container-ip 192.168.160.8 -container-port 8080 -use-listen-fd",
       "container": "lk-jwt-service",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -738,7 +738,7 @@
       "cmd": "/opt/wopr-user-registry/venv/bin/python /opt/wopr-user-registry/app.py",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -748,7 +748,7 @@
       "cmd": "/usr/bin/python3 /opt/wopr-seo-proxy/proxy.py",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -758,7 +758,7 @@
       "cmd": "/usr/bin/python3 /opt/wopr-social-monitor/app.py",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -768,7 +768,7 @@
       "cmd": "/usr/bin/python3 /var/www/wopr_foundation/form-handler.py",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -778,17 +778,17 @@
       "cmd": "/usr/bin/python3 /opt/folkmoot-ccm/coordination.py",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
     "16379": {
       "owner": "mastodon-redis",
       "proc": "docker-proxy",
-      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 16379 -container-ip 10.220.3.2 -container-port 6379 -use-listen-fd",
+      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 16379 -container-ip 10.220.3.6 -container-port 6379 -use-listen-fd",
       "container": "mastodon-redis",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -798,17 +798,17 @@
       "cmd": "/var/www/wopr-main/venv/bin/python3 /var/www/wopr-main/venv/bin/gunicorn --chdir /var/www/wopr-main -b 127.0.0.1:16000 --workers 3 --timeout 120 --graceful-time",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
     "13001": {
       "owner": "wopr-umami",
       "proc": "docker-proxy",
-      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 13001 -container-ip 172.24.0.2 -container-port 3000 -use-listen-fd",
+      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 13001 -container-ip 172.24.0.3 -container-port 3000 -use-listen-fd",
       "container": "wopr-umami",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -818,7 +818,7 @@
       "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 13002 -container-ip 192.168.208.2 -container-port 3000 -use-listen-fd",
       "container": "crowdsec-dashboard-metabase-1",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -838,7 +838,7 @@
       "cmd": "/usr/bin/cloudflared --no-autoupdate --config /etc/cloudflared/config.yml tunnel run 25d7dd31-74eb-4235-b5aa-bc95dc26512a",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -848,7 +848,7 @@
       "cmd": "/snap/microk8s/8702/bin/k8s-dqlite --storage-dir=/var/snap/microk8s/8702/var/kubernetes/backend/ --listen=unix:///var/snap/microk8s/8702/var/kubernetes/backend/",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -858,7 +858,7 @@
       "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 19002 -container-ip 172.27.0.4 -container-port 80 -use-listen-fd",
       "container": "saleor-dashboard-dude",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -868,7 +868,7 @@
       "cmd": "openclaw-gateway",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -878,37 +878,37 @@
       "cmd": "openclaw-gateway",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
     "18900": {
       "owner": "secondbrain-api",
       "proc": "docker-proxy",
-      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 18900 -container-ip 10.220.5.3 -container-port 8000 -use-listen-fd",
+      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 18900 -container-ip 10.220.5.2 -container-port 8000 -use-listen-fd",
       "container": "secondbrain-api",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
     "18000": {
       "owner": "folkmoot-backend-1",
       "proc": "docker-proxy",
-      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 18000 -container-ip 172.23.0.4 -container-port 8000 -use-listen-fd",
+      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 18000 -container-ip 172.23.0.3 -container-port 8000 -use-listen-fd",
       "container": "folkmoot-backend-1",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
     "18070": {
       "owner": "miniflux",
       "proc": "docker-proxy",
-      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 18070 -container-ip 192.168.80.2 -container-port 8080 -use-listen-fd",
+      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 18070 -container-ip 192.168.80.3 -container-port 8080 -use-listen-fd",
       "container": "miniflux",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -918,7 +918,7 @@
       "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 18096 -container-ip 192.168.32.4 -container-port 8096 -use-listen-fd",
       "container": "buylocal",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -928,17 +928,17 @@
       "cmd": "/usr/local/bin/python3.11 /usr/local/bin/uvicorn app:app --host 127.0.0.1 --port 18095 --log-level info",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
     "18090": {
       "owner": "wopr-sydent",
       "proc": "docker-proxy",
-      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 18090 -container-ip 192.168.160.4 -container-port 8090 -use-listen-fd",
+      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 18090 -container-ip 192.168.160.3 -container-port 8090 -use-listen-fd",
       "container": "wopr-sydent",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -948,17 +948,17 @@
       "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 18081 -container-ip 172.25.0.2 -container-port 80 -use-listen-fd",
       "container": "wopr-ntfy",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
     "18083": {
       "owner": "lovejoos-emqx",
       "proc": "docker-proxy",
-      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 18083 -container-ip 172.22.0.6 -container-port 18083 -use-listen-fd",
+      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 18083 -container-ip 172.22.0.5 -container-port 18083 -use-listen-fd",
       "container": "lovejoos-emqx",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -968,27 +968,27 @@
       "cmd": "/opt/reactor-mcp/backend/venv/bin/python3 -c from multiprocessing.spawn import spawn_main; spawn_main(tracker_fd=7, pipe_handle=13) --multiprocessing-fork",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
     "28000": {
       "owner": "saleor-api-dude",
       "proc": "docker-proxy",
-      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 28000 -container-ip 172.19.0.11 -container-port 8000 -use-listen-fd",
+      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 28000 -container-ip 172.19.0.9 -container-port 8000 -use-listen-fd",
       "container": "saleor-api-dude",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
     "28100": {
       "owner": "folkmoot-api",
       "proc": "docker-proxy",
-      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 28100 -container-ip 192.168.144.10 -container-port 8000 -use-listen-fd",
+      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 28100 -container-ip 192.168.144.3 -container-port 8000 -use-listen-fd",
       "container": "folkmoot-api",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1008,7 +1008,7 @@
       "cmd": "/usr/sbin/netdata -D",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1018,7 +1018,7 @@
       "cmd": "/opt/grc/.venv/bin/python3 /opt/grc/.venv/bin/uvicorn main:app --host 0.0.0.0 --port 18910",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1028,7 +1028,7 @@
       "cmd": "openclaw-gateway",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1038,17 +1038,17 @@
       "cmd": "/opt/gpu-scheduler/venv/bin/python3 /opt/gpu-scheduler/venv/bin/uvicorn scheduler:app --host 0.0.0.0 --port 18099 --workers 1",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
     "18086": {
       "owner": "wopr-static-multi",
       "proc": "docker-proxy",
-      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 18086 -container-ip 10.220.0.5 -container-port 80 -use-listen-fd",
+      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 18086 -container-ip 10.220.0.3 -container-port 80 -use-listen-fd",
       "container": "wopr-static-multi",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1058,7 +1058,7 @@
       "cmd": "gunicorn: worker [deploy-webhook:app]",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1068,7 +1068,7 @@
       "cmd": "/usr/lib/erlang/erts-13.2.2.5/bin/beam.smp -W w -MBas ageffcbf -MHas ageffcbf -MBlmbcs 512 -MHlmbcs 512 -MMmcs 30 -pc unicode -P 1048576 -t 5000000 -stbt db -zd",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1078,7 +1078,7 @@
       "cmd": "/usr/bin/python3 /opt/wopr-sms-gateway/sms_gateway.py",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1088,7 +1088,7 @@
       "cmd": "/opt/SwarmUI/src/bin/live_release/SwarmUI --host 0.0.0.0 --port 7801",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1098,7 +1098,7 @@
       "cmd": "/usr/local/bin/python3.12 /usr/local/bin/gunicorn -w 2 -b 0.0.0.0:7778 --timeout 30 app:app",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1118,7 +1118,7 @@
       "cmd": "/home/nodez3r0/ai-coding-agent/venv/bin/python3 /home/nodez3r0/ai-coding-agent/venv/bin/uvicorn rag_ui_app:app --host 0.0.0.0 --port 8086",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1128,7 +1128,7 @@
       "cmd": "/home/nodez3r0/ai-coding-agent/rag-service/venv/bin/python3 /home/nodez3r0/ai-coding-agent/rag-service/venv/bin/uvicorn main:app --app-dir /home/nodez3r0/ai-cod",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1138,7 +1138,7 @@
       "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 8085 -container-ip 10.220.0.2 -container-port 80 -use-listen-fd",
       "container": "wopr-nodez3r0-static",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1148,7 +1148,7 @@
       "cmd": "/home/nodez3r0/ai-coding-agent/mcp-server/venv/bin/python3 server.py",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": "",
       "last_conflict": "8082:python3->python"
@@ -1159,7 +1159,7 @@
       "cmd": "/usr/bin/socat TCP-LISTEN:8081,fork,reuseaddr,bind=0.0.0.0 TCP:127.0.0.1:8080",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": "",
       "last_conflict": "8081:socat->iopaint"
@@ -1170,17 +1170,17 @@
       "cmd": "/opt/signal-boost/venv/bin/python3 /opt/signal-boost/venv/bin/uvicorn main:app --host 0.0.0.0 --port 8095 --workers 1",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
     "8090": {
       "owner": "nextcloud",
       "proc": "docker-proxy",
-      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 8090 -container-ip 172.18.0.2 -container-port 80 -use-listen-fd",
+      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 8090 -container-ip 172.18.0.4 -container-port 80 -use-listen-fd",
       "container": "nextcloud",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1190,7 +1190,7 @@
       "cmd": "/usr/local/bin/python3.12 /usr/local/bin/uvicorn api:app --host 0.0.0.0 --port 8091 --log-level info",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1200,7 +1200,7 @@
       "cmd": "/opt/sso-notifications/venv/bin/python /opt/sso-notifications/notify.py",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1210,17 +1210,17 @@
       "cmd": "/home/nodez3r0/ai-coding-agent/venv/bin/python3 /home/nodez3r0/ai-coding-agent/venv/bin/uvicorn spec_kit_runtime_mcp:app --host 0.0.0.0 --port 8000",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-24T08:45:01.173302+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
     "8055": {
       "owner": "printful-sync-printful-sync-1",
       "proc": "docker-proxy",
-      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 8055 -container-ip 172.19.0.5 -container-port 8055 -use-listen-fd",
+      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 8055 -container-ip 172.19.0.2 -container-port 8055 -use-listen-fd",
       "container": "printful-sync-printful-sync-1",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1230,7 +1230,7 @@
       "cmd": "redis-server 127.0.0.1:6380",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1240,7 +1240,7 @@
       "cmd": "/opt/defcon-one/backend/venv/bin/python3 server.py",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1250,7 +1250,7 @@
       "cmd": "/usr/bin/node /opt/defcon-one/ui/build/index.js",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1260,17 +1260,17 @@
       "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 5174 -container-ip 192.168.176.2 -container-port 80 -use-listen-fd",
       "container": "reactor_ui",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
     "5173": {
       "owner": "sonicforge-frontend-1",
       "proc": "docker-proxy",
-      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 5173 -container-ip 172.29.0.2 -container-port 5173 -use-listen-fd",
+      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 5173 -container-ip 172.29.0.4 -container-port 5173 -use-listen-fd",
       "container": "sonicforge-frontend-1",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1280,7 +1280,7 @@
       "cmd": "/opt/printful-notifications/venv/bin/python /opt/printful-notifications/notify.py",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1290,7 +1290,7 @@
       "cmd": "/usr/bin/python3 /opt/wopr/orchestrator/wopr-installer/tracking_webhook.py",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1300,7 +1300,7 @@
       "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 5678 -container-ip 192.168.96.2 -container-port 5678 -use-listen-fd",
       "container": "n8n",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1320,7 +1320,7 @@
       "cmd": "/opt/pftp/venv/bin/python app.py",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1330,17 +1330,17 @@
       "cmd": "/usr/bin/python3 /opt/project2032-outreach/app.py",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
     "4002": {
       "owner": "app",
       "proc": "docker-proxy",
-      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 4002 -container-ip 10.220.0.3 -container-port 80 -use-listen-fd",
+      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 4002 -container-ip 10.220.0.4 -container-port 80 -use-listen-fd",
       "container": "app",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1350,7 +1350,7 @@
       "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 3011 -container-ip 10.220.7.2 -container-port 8080 -use-listen-fd",
       "container": "open-webui",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1360,7 +1360,7 @@
       "cmd": "/usr/sbin/mosquitto -c /etc/mosquitto/mosquitto.conf",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1370,7 +1370,7 @@
       "cmd": "/usr/sbin/smbd --foreground --no-process-group",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1380,7 +1380,7 @@
       "cmd": "sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1390,7 +1390,7 @@
       "cmd": "/usr/lib/postfix/sbin/master -w",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1400,7 +1400,7 @@
       "cmd": "/usr/sbin/smbd --foreground --no-process-group",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1410,27 +1410,27 @@
       "cmd": "/usr/lib/postfix/sbin/master -w",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
     "14000": {
       "owner": "artjoos-artjoos-storefront-1",
       "proc": "docker-proxy",
-      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 14000 -container-ip 172.30.0.6 -container-port 3000 -use-listen-fd",
+      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 14000 -container-ip 172.30.0.3 -container-port 3000 -use-listen-fd",
       "container": "artjoos-artjoos-storefront-1",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
     "14204": {
       "owner": "artjoos-artjoos-federation-1",
       "proc": "docker-proxy",
-      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 14204 -container-ip 172.30.0.4 -container-port 8204 -use-listen-fd",
+      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 14204 -container-ip 172.30.0.6 -container-port 8204 -use-listen-fd",
       "container": "artjoos-artjoos-federation-1",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1440,7 +1440,7 @@
       "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 14202 -container-ip 172.30.0.2 -container-port 8202 -use-listen-fd",
       "container": "artjoos-artjoos-commissions-1",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1450,17 +1450,17 @@
       "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 14203 -container-ip 172.30.0.5 -container-port 8203 -use-listen-fd",
       "container": "artjoos-artjoos-provenance-1",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
     "14200": {
       "owner": "artjoos-artjoos-verification-1",
       "proc": "docker-proxy",
-      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 14200 -container-ip 172.30.0.3 -container-port 8200 -use-listen-fd",
+      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 14200 -container-ip 172.30.0.4 -container-port 8200 -use-listen-fd",
       "container": "artjoos-artjoos-verification-1",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1470,7 +1470,7 @@
       "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 14201 -container-ip 172.30.0.7 -container-port 8201 -use-listen-fd",
       "container": "artjoos-artjoos-analytics-1",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1480,7 +1480,7 @@
       "cmd": "next-server (v15.5.12)",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1490,7 +1490,7 @@
       "cmd": "/opt/gpu-scheduler/venv/bin/python3 /opt/gpu-scheduler/venv/bin/uvicorn ollama_gatekeeper:app --host 0.0.0.0 --port 11434 --workers 1",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1500,17 +1500,17 @@
       "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 8600 -container-ip 10.220.6.2 -container-port 8000 -use-listen-fd",
       "container": "wopr-ai-engine",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
     "8787": {
       "owner": "sonicforge-backend-1",
       "proc": "docker-proxy",
-      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 8787 -container-ip 172.29.0.4 -container-port 8787 -use-listen-fd",
+      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 8787 -container-ip 172.29.0.2 -container-port 8787 -use-listen-fd",
       "container": "sonicforge-backend-1",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1520,17 +1520,17 @@
       "cmd": "/usr/bin/python3 /opt/wopr/support-plane/metrics-exporter.py",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
     "9003": {
       "owner": "group7-peertube",
       "proc": "docker-proxy",
-      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 9003 -container-ip 172.19.0.8 -container-port 9000 -use-listen-fd",
+      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 9003 -container-ip 172.19.0.12 -container-port 9000 -use-listen-fd",
       "container": "group7-peertube",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1540,7 +1540,7 @@
       "cmd": "/usr/sbin/mosquitto -c /etc/mosquitto/mosquitto.conf",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1550,7 +1550,7 @@
       "cmd": "caddy run --config /etc/caddy/Caddyfile --adapter caddyfile",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1560,7 +1560,7 @@
       "cmd": "/snap/microk8s/8702/kubelite --scheduler-args-file=/var/snap/microk8s/8702/args/kube-scheduler --controller-manager-args-file=/var/snap/microk8s/8702/args/kube-",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1570,7 +1570,7 @@
       "cmd": "/snap/microk8s/8702/bin/cluster-agent cluster-agent --bind 0.0.0.0:25000 --keyfile /var/snap/microk8s/8702/certs/server.key --certfile /var/snap/microk8s/8702/c",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1580,7 +1580,7 @@
       "cmd": "/livekit-server --config /etc/livekit.yaml",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1590,7 +1590,7 @@
       "cmd": "/livekit-server --config /etc/livekit.yaml",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1600,7 +1600,7 @@
       "cmd": "/usr/lib/jvm/java-21-openjdk-amd64/bin/java -Xmx3462817376 -Xms3462817376 -XX:MaxMetaspaceSize=268435456 -XX:+IgnoreUnrecognizedVMOptions --add-exports=java.bas",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1610,7 +1610,7 @@
       "cmd": "caddy run --config /etc/caddy/Caddyfile --adapter caddyfile",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1620,7 +1620,7 @@
       "cmd": "/usr/lib/erlang/erts-13.2.2.5/bin/beam.smp -W w -MBas ageffcbf -MHas ageffcbf -MBlmbcs 512 -MHlmbcs 512 -MMmcs 30 -pc unicode -P 1048576 -t 5000000 -stbt db -zd",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1630,7 +1630,7 @@
       "cmd": "/usr/lib/jvm/java-21-openjdk-amd64/bin/java -Xmx3462817376 -Xms3462817376 -XX:MaxMetaspaceSize=268435456 -XX:+IgnoreUnrecognizedVMOptions --add-exports=java.bas",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1640,7 +1640,7 @@
       "cmd": "/usr/bin/epmd -systemd",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1650,7 +1650,7 @@
       "cmd": "/usr/libexec/gnome-remote-desktop-daemon",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1660,7 +1660,7 @@
       "cmd": "/usr/local/bin/forgejo web --config /etc/forgejo/app.ini",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1670,7 +1670,7 @@
       "cmd": "/usr/bin/node /opt/blackoutlabs-store/server.js",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1680,7 +1680,7 @@
       "cmd": "/usr/bin/node server.js",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1690,7 +1690,7 @@
       "cmd": "/usr/bin/node server.js",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1700,17 +1700,17 @@
       "cmd": "/usr/bin/caddy run --environ --config /etc/caddy/Caddyfile",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-20T18:30:01.695646+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
     "443": {
       "owner": "caddy",
       "proc": "caddy",
-      "cmd": "caddy run --config /etc/caddy/Caddyfile --adapter caddyfile",
+      "cmd": "/usr/bin/caddy run --environ --config /etc/caddy/Caddyfile",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-22T14:00:01.408608+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1720,7 +1720,7 @@
       "cmd": "/snap/microk8s/8702/kubelite --scheduler-args-file=/var/snap/microk8s/8702/args/kube-scheduler --controller-manager-args-file=/var/snap/microk8s/8702/args/kube-",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1730,7 +1730,7 @@
       "cmd": "/snap/microk8s/8702/kubelite --scheduler-args-file=/var/snap/microk8s/8702/args/kube-scheduler --controller-manager-args-file=/var/snap/microk8s/8702/args/kube-",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1740,7 +1740,7 @@
       "cmd": "/snap/microk8s/8702/kubelite --scheduler-args-file=/var/snap/microk8s/8702/args/kube-scheduler --controller-manager-args-file=/var/snap/microk8s/8702/args/kube-",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1750,7 +1750,7 @@
       "cmd": "java -Xmx4G -Xms4G -server -XX:+UseG1GC -XX:MaxGCPauseMillis=20 -XX:InitiatingHeapOccupancyPercent=35 -XX:+ExplicitGCInvokesConcurrent -XX:MaxInlineLevel=15 -Dj",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1760,7 +1760,7 @@
       "cmd": "java -Xmx4G -Xms4G -server -XX:+UseG1GC -XX:MaxGCPauseMillis=20 -XX:InitiatingHeapOccupancyPercent=35 -XX:+ExplicitGCInvokesConcurrent -XX:MaxInlineLevel=15 -Dj",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1770,7 +1770,7 @@
       "cmd": "/snap/prometheus/86/bin/prometheus --config.file /var/snap/prometheus/86/prometheus.yml --storage.tsdb.path=/var/snap/prometheus/common",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1780,7 +1780,7 @@
       "cmd": "/usr/bin/prometheus-node-exporter",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1790,7 +1790,7 @@
       "cmd": "/usr/bin/promtail -config.file=/etc/promtail/config.yml",
       "container": "",
       "first_seen": "2026-07-03T11:19:36.101733+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1800,7 +1800,7 @@
       "cmd": "/opt/asscast/venv-chatterbox/bin/python3 /opt/asscast/chatterbox_ui.py",
       "container": "",
       "first_seen": "2026-07-03T11:30:01.883510+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1810,7 +1810,7 @@
       "cmd": "/opt/wopr-falken/pipeline/venv/bin/python3 /opt/wopr-falken/pipeline/venv/bin/uvicorn server:app --host 127.0.0.1 --port 13201",
       "container": "",
       "first_seen": "2026-07-04T07:00:01.068001+00:00",
-      "last_seen": "2026-07-25T09:45:01.140427+00:00",
+      "last_seen": "2026-08-05T09:45:01.044243+00:00",
       "expected": null,
       "note": ""
     },
@@ -1820,7 +1820,7 @@
       "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 3411 -container-ip 10.220.8.2 -container-port 3000 -use-listen-fd",
       "container": "adams-dsa-web-1",
       "first_seen": "2026-07-04T14:00:01.804480+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1830,7 +1830,7 @@
       "cmd": "/opt/wopr-allies/venv/bin/python3 /opt/wopr-allies/venv/bin/gunicorn -b 127.0.0.1:16600 --workers 2 --timeout 60 app:app",
       "container": "",
       "first_seen": "2026-07-07T15:30:01.431278+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1840,17 +1840,17 @@
       "cmd": "/usr/bin/crowdsec -c /etc/crowdsec/config.yaml",
       "container": "",
       "first_seen": "2026-07-09T11:15:01.464121+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
     "5434": {
       "owner": "socat",
       "proc": "socat",
-      "cmd": "/usr/bin/socat TCP-LISTEN:5434,bind=10.0.0.3,fork,reuseaddr TCP:172.19.0.3:5432",
+      "cmd": "/usr/bin/socat TCP-LISTEN:5434,bind=10.0.0.3,fork,reuseaddr TCP:172.19.0.5:5432",
       "container": "",
       "first_seen": "2026-07-09T11:15:01.464121+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1860,17 +1860,17 @@
       "cmd": "/usr/bin/crowdsec -c /etc/crowdsec/config.yaml",
       "container": "",
       "first_seen": "2026-07-09T11:15:01.464121+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
     "18120": {
       "owner": "theblock-api",
       "proc": "docker-proxy",
-      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 18120 -container-ip 192.168.144.3 -container-port 8000 -use-listen-fd",
+      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 18120 -container-ip 10.220.13.6 -container-port 8000 -use-listen-fd",
       "container": "theblock-api",
       "first_seen": "2026-07-10T16:30:01.456677+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1880,7 +1880,7 @@
       "cmd": "/opt/thedudeabides-store/og-prerender/venv/bin/python3 /opt/thedudeabides-store/og-prerender/venv/bin/uvicorn saleor_prerender:app --host 127.0.0.1 --port 8097",
       "container": "",
       "first_seen": "2026-07-10T17:30:01.309638+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1890,7 +1890,7 @@
       "cmd": "/opt/thedudeabides-store/og-prerender/venv/bin/python3 /opt/thedudeabides-store/og-prerender/venv/bin/uvicorn headless_prerender:app --host 127.0.0.1 --port 878",
       "container": "",
       "first_seen": "2026-07-10T17:30:01.309638+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1910,7 +1910,7 @@
       "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 3412 -container-ip 10.220.11.2 -container-port 3000 -use-listen-fd",
       "container": "wopr-foundation-next",
       "first_seen": "2026-07-13T13:30:01.879742+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1920,7 +1920,7 @@
       "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 3413 -container-ip 10.220.12.2 -container-port 3000 -use-listen-fd",
       "container": "wopr-systems-next",
       "first_seen": "2026-07-13T14:15:01.837105+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1930,7 +1930,7 @@
       "cmd": "/opt/reactor-mcp/backend/venv/bin/python /opt/reactor-ctx-adapter/reactor_ctx_adapter.py",
       "container": "",
       "first_seen": "2026-07-13T15:30:01.651122+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1940,7 +1940,7 @@
       "cmd": "/usr/bin/python3 /opt/wopr-stream-proxy/proxy.py",
       "container": "",
       "first_seen": "2026-07-13T19:00:01.853450+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -1957,10 +1957,10 @@
     "27099": {
       "owner": "mongod",
       "proc": "mongod",
-      "cmd": "/snap/wekan/3541/migratemongo/bin/mongod --dbpath /var/snap/wekan/common --bind_ip 127.0.0.1 --port 27099 --logpath /var/snap/wekan/common/migration-mongod.log ",
+      "cmd": "/snap/wekan/3585/migratemongo/bin/mongod --dbpath /var/snap/wekan/common --bind_ip 127.0.0.1 --port 27099 --logpath /var/snap/wekan/common/migration-mongod.log ",
       "container": "",
       "first_seen": "2026-07-17T04:00:01.871334+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -2110,7 +2110,7 @@
       "cmd": "/usr/bin/python3 /opt/tiktok-poster/server.py",
       "container": "",
       "first_seen": "2026-07-24T20:45:01.362378+00:00",
-      "last_seen": "2026-07-25T11:00:01.147286+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
       "expected": null,
       "note": ""
     },
@@ -2143,9 +2143,109 @@
       "last_seen": "2026-07-25T08:30:01.208496+00:00",
       "expected": null,
       "note": ""
+    },
+    "28200": {
+      "owner": "foundation-folkmoot-folkmoot-api-1",
+      "proc": "docker-proxy",
+      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 127.0.0.1 -host-port 28200 -container-ip 10.220.13.3 -container-port 8000 -use-listen-fd",
+      "container": "foundation-folkmoot-folkmoot-api-1",
+      "first_seen": "2026-07-25T14:00:01.851999+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
+      "expected": null,
+      "note": ""
+    },
+    "3320": {
+      "owner": "foundation-folkmoot-folkmoot-web-1",
+      "proc": "docker-proxy",
+      "cmd": "/usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 3320 -container-ip 10.220.13.4 -container-port 3000 -use-listen-fd",
+      "container": "foundation-folkmoot-folkmoot-web-1",
+      "first_seen": "2026-07-25T14:00:01.851999+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
+      "expected": null,
+      "note": ""
+    },
+    "32681": {
+      "owner": "python",
+      "proc": "python",
+      "cmd": "/home/nodez3r0/ai-apps/Applio/.venv/bin/python -c from multiprocessing.spawn import spawn_main; spawn_main(tracker_fd=26, pipe_handle=28) --multiprocessing-fork",
+      "container": "",
+      "first_seen": "2026-07-26T10:45:01.078632+00:00",
+      "last_seen": "2026-07-26T10:45:01.078632+00:00",
+      "expected": null,
+      "note": ""
+    },
+    "9120": {
+      "owner": "uvicorn",
+      "proc": "uvicorn",
+      "cmd": "/opt/lunk-review/venv/bin/python3 /opt/lunk-review/venv/bin/uvicorn app:app --host 127.0.0.1 --port 9120 --workers 1",
+      "container": "",
+      "first_seen": "2026-07-29T18:45:01.072988+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
+      "expected": null,
+      "note": ""
+    },
+    "8210": {
+      "owner": "python3",
+      "proc": "python3",
+      "cmd": "/usr/bin/python3 /opt/stonesoup/intake.py",
+      "container": "",
+      "first_seen": "2026-07-31T09:45:01.537872+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
+      "expected": null,
+      "note": ""
+    },
+    "11436": {
+      "owner": "python3",
+      "proc": "python3",
+      "cmd": "/usr/bin/python3 /opt/reactor_bridge.py 11436",
+      "container": "",
+      "first_seen": "2026-07-31T10:00:01.677049+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
+      "expected": null,
+      "note": ""
+    },
+    "18110": {
+      "owner": "uvicorn",
+      "proc": "uvicorn",
+      "cmd": "/opt/reactor-ssh-mcp/venv/bin/python3 /opt/reactor-ssh-mcp/venv/bin/uvicorn http_server:app --host 0.0.0.0 --port 18110",
+      "container": "",
+      "first_seen": "2026-08-03T09:45:02.030776+00:00",
+      "last_seen": "2026-08-04T08:45:01.181278+00:00",
+      "expected": null,
+      "note": ""
+    },
+    "18112": {
+      "owner": "mcpo",
+      "proc": "mcpo",
+      "cmd": "/opt/reactor-ssh-mcp/mcpo-venv/bin/python3 /opt/reactor-ssh-mcp/mcpo-venv/bin/mcpo --host 0.0.0.0 --port 18112 --api-key OaET1oi1ehHqEwWSTBPgHM4zdruHdYlhjkOuGzl",
+      "container": "",
+      "first_seen": "2026-08-04T08:45:01.181278+00:00",
+      "last_seen": "2026-08-05T18:30:01.172628+00:00",
+      "expected": null,
+      "note": ""
+    },
+    "5199": {
+      "owner": "node",
+      "proc": "node",
+      "cmd": "node /opt/cert-translator/node_modules/.bin/vite",
+      "container": "",
+      "first_seen": "2026-08-04T11:00:01.768060+00:00",
+      "last_seen": "2026-08-04T12:00:01.626463+00:00",
+      "expected": null,
+      "note": ""
+    },
+    "9405": {
+      "owner": "chrome",
+      "proc": "chrome",
+      "cmd": "/usr/bin/google-chrome --headless=new --disable-gpu --no-sandbox --remote-debugging-port=9405 --user-data-dir=/tmp/chk about:blank",
+      "container": "",
+      "first_seen": "2026-08-05T11:45:01.595034+00:00",
+      "last_seen": "2026-08-05T11:45:01.595034+00:00",
+      "expected": null,
+      "note": ""
     }
   },
   "created": "2026-07-03T11:19:36.101733+00:00",
-  "last_scan": "2026-07-25T11:00:01.147286+00:00",
-  "count": 214
+  "last_scan": "2026-08-05T18:30:01.172628+00:00",
+  "count": 224
 }

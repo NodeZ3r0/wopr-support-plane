@@ -79,6 +79,10 @@ def snapshot():
         if not m_addr:
             continue
         addr, port, proc, pid = m_addr.group(1), m_addr.group(2), m_addr.group(3), m_addr.group(4)
+        # a socket can be held by several processes at once (postfix master +
+        # smtpd children, netdata + an fd-inheriting bash helper). Record them
+        # all so a sample that catches a sibling is not read as a takeover.
+        all_owners = set(re.findall(r'"([^"]+)",pid=\d+', line))
         # keep the most informative row per port (prefer non-loopback / a real container)
         user, cmd = proc_info(pid)
         container = ""
@@ -86,7 +90,8 @@ def snapshot():
             container = dmap.get(port, "")
         owner = container or proc
         entry = {"proc": proc, "pid": pid, "user": user, "container": container,
-                 "owner": owner, "cmd": cmd, "addr": addr}
+                 "owner": owner, "cmd": cmd, "addr": addr,
+                 "all_owners": sorted(all_owners | ({container} if container else set()))}
         prev = cur.get(port)
         if prev is None or (prev["owner"] in ("docker-proxy", "") and owner):
             cur[port] = entry
@@ -123,7 +128,15 @@ def main():
         _transient = (e["proc"] == "docker-proxy" or bool(e.get("container"))
                       or expected == "docker-proxy" or (_pnum >= 32768 and not rec.get("expected")))
         # CONFLICT: a manually-expected owner, or the previously-recorded owner, changed
-        if e["owner"] and expected and e["owner"] != expected and not _transient:
+        # postfix runs a master with a family of children; any of them holding
+        # the socket means postfix still owns it.
+        _FAMILIES = [{"master", "smtpd", "pickup", "qmgr", "cleanup", "tlsmgr",
+                      "anvil", "scache", "trivial-rewrite", "bounce", "local"}]
+        _holders = set(e.get("all_owners") or [e["owner"]])
+        _same_family = any(expected in fam and _holders & fam for fam in _FAMILIES)
+        _any_match = expected in _holders
+        if (e["owner"] and expected and e["owner"] != expected
+                and not _transient and not _any_match and not _same_family):
             key = "%s:%s->%s" % (port, expected, e["owner"])
             if rec.get("last_conflict") != key:
                 conflicts.append("port %s: expected '%s' but now held by '%s' (%s)"

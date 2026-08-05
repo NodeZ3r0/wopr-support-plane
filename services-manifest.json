@@ -1,7 +1,7 @@
 {
   "version": "5.0-autodiscovery",
   "host": "nodez3ro",
-  "generated": "2026-07-25T06:04:59.980818",
+  "generated": "2026-08-05T13:22:40.906772",
   "container_runtime": "docker",
   "autodiscovery": true,
   "services": [
@@ -74,6 +74,11 @@
       "name": "bolt",
       "type": "systemd",
       "critical": false
+    },
+    {
+      "name": "caddy",
+      "type": "systemd",
+      "critical": true
     },
     {
       "name": "chatterbox-ui",
@@ -276,6 +281,11 @@
       "critical": false
     },
     {
+      "name": "lunk-review",
+      "type": "systemd",
+      "critical": false
+    },
+    {
       "name": "lvm2-lvmpolld",
       "type": "systemd",
       "critical": false
@@ -292,11 +302,6 @@
     },
     {
       "name": "mcp",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "meme-engine",
       "type": "systemd",
       "critical": false
     },
@@ -461,11 +466,6 @@
       "critical": false
     },
     {
-      "name": "protovision-email",
-      "type": "systemd",
-      "critical": false
-    },
-    {
       "name": "qemu-kvm",
       "type": "systemd",
       "critical": false
@@ -486,7 +486,17 @@
       "critical": false
     },
     {
+      "name": "reactor-bridge",
+      "type": "systemd",
+      "critical": false
+    },
+    {
       "name": "reactor-ctx-adapter",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "reactor-mcpo",
       "type": "systemd",
       "critical": false
     },
@@ -672,6 +682,11 @@
     },
     {
       "name": "sssd",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "stonesoup-intake",
       "type": "systemd",
       "critical": false
     },
@@ -923,8 +938,73 @@
   ],
   "containers": [
     {
-      "name": "protovision-secondbrain-email-run-6b9a39f7c1aa",
-      "image": "protovision-secondbrain-email",
+      "name": "secondbrain-api",
+      "image": "protovision-secondbrain-api",
+      "critical": false
+    },
+    {
+      "name": "wopr-foundation-next",
+      "image": "wopr-foundation-next:latest",
+      "critical": false
+    },
+    {
+      "name": "open-webui",
+      "image": "ghcr.io/open-webui/open-webui:main",
+      "critical": false
+    },
+    {
+      "name": "group7-peertube",
+      "image": "chocobozzz/peertube:v8.0.1",
+      "critical": false
+    },
+    {
+      "name": "peertube-postgres",
+      "image": "postgres:15",
+      "critical": false
+    },
+    {
+      "name": "peertube-redis",
+      "image": "redis:7",
+      "critical": false
+    },
+    {
+      "name": "nostr-toolkit",
+      "image": "nostr-toolkit-nostr-toolkit",
+      "critical": false
+    },
+    {
+      "name": "brainjoos-api-node",
+      "image": "node:20",
+      "critical": false
+    },
+    {
+      "name": "theblock-api",
+      "image": "wopr-theblock-theblock-api",
+      "critical": false
+    },
+    {
+      "name": "foundation-folkmoot-folkmoot-web-1",
+      "image": "foundation-folkmoot-folkmoot-web",
+      "critical": false
+    },
+    {
+      "name": "foundation-folkmoot-folkmoot-api-1",
+      "image": "foundation-folkmoot-folkmoot-api",
+      "critical": false
+    },
+    {
+      "name": "foundation-folkmoot-folkmoot-db-1",
+      "image": "postgres:16-alpine",
+      "critical": false
+    },
+    {
+      "name": "foundation-folkmoot-folkmoot-redis-1",
+      "image": "redis:7-alpine",
+      "critical": false
+    },
+    {
+      "name": "wopr-systems-next",
+      "image": "wopr-systems-next:latest",
       "critical": false
     },
     {
@@ -943,11 +1023,6 @@
       "critical": false
     },
     {
-      "name": "wopr-systems-next",
-      "image": "wopr-systems-next:latest",
-      "critical": false
-    },
-    {
       "name": "authentik-worker-1",
       "image": "ghcr.io/goauthentik/server:2025.12",
       "critical": false
@@ -958,23 +1033,8 @@
       "critical": false
     },
     {
-      "name": "wopr-foundation-next",
-      "image": "wopr-foundation-next:latest",
-      "critical": false
-    },
-    {
-      "name": "theblock-api",
-      "image": "wopr-theblock-theblock-api",
-      "critical": false
-    },
-    {
       "name": "saleor-api-dude",
       "image": "ghcr.io/saleor/saleor:3.20",
-      "critical": false
-    },
-    {
-      "name": "open-webui",
-      "image": "eef064db6151",
       "critical": false
     },
     {
@@ -1058,11 +1118,6 @@
       "critical": false
     },
     {
-      "name": "secondbrain-api",
-      "image": "protovision-secondbrain-api",
-      "critical": false
-    },
-    {
       "name": "artjoos-artjoos-storefront-1",
       "image": "wopr-systems/artjoos-storefront:latest",
       "critical": false
@@ -1090,11 +1145,6 @@
     {
       "name": "mastodon-streaming",
       "image": "ghcr.io/mastodon/mastodon-streaming:v4.3.23",
-      "critical": false
-    },
-    {
-      "name": "group7-peertube",
-      "image": "chocobozzz/peertube:v8.0.1",
       "critical": false
     },
     {
@@ -1158,11 +1208,6 @@
       "critical": false
     },
     {
-      "name": "brainjoos-api-node",
-      "image": "node:20",
-      "critical": false
-    },
-    {
       "name": "brainjoos-api",
       "image": "backend-api",
       "critical": false
@@ -1205,16 +1250,6 @@
     {
       "name": "akkoma-db",
       "image": "postgres:15-alpine",
-      "critical": false
-    },
-    {
-      "name": "peertube-postgres",
-      "image": "postgres:15",
-      "critical": false
-    },
-    {
-      "name": "peertube-redis",
-      "image": "redis:7",
       "critical": false
     },
     {
@@ -1345,11 +1380,6 @@
     {
       "name": "nostr-relay",
       "image": "scsibug/nostr-rs-relay:latest",
-      "critical": false
-    },
-    {
-      "name": "nostr-toolkit",
-      "image": "nostr-toolkit-nostr-toolkit",
       "critical": false
     },
     {
@@ -1640,7 +1670,7 @@
         "discovered_via": "port_scan"
       },
       {
-        "url": "http://127.0.0.1:3010/",
+        "url": "http://127.0.0.1:3010/health",
         "name": "forgejo-3010",
         "expected_status": [
           200,
@@ -1708,6 +1738,17 @@
         "critical": false,
         "discovered_via": "port_scan",
         "container": "folkmoot-web"
+      },
+      {
+        "url": "http://127.0.0.1:3320/health",
+        "name": "foundation-folkmoot-folkmoot-web-1-3320",
+        "expected_status": [
+          200,
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan",
+        "container": "foundation-folkmoot-folkmoot-web-1"
       },
       {
         "url": "http://127.0.0.1:3333/health",
@@ -1786,6 +1827,7 @@
         "url": "http://127.0.0.1:4000/health",
         "name": "akkoma-4000",
         "expected_status": [
+          200,
           200
         ],
         "critical": false,
@@ -1992,7 +2034,7 @@
         "name": "SwarmUI-7801",
         "expected_status": [
           200,
-          302
+          200
         ],
         "critical": false,
         "discovered_via": "port_scan"
@@ -2001,6 +2043,7 @@
         "url": "http://127.0.0.1:7880/",
         "name": "livekit-server-7880",
         "expected_status": [
+          200,
           200
         ],
         "critical": false,
@@ -2010,6 +2053,16 @@
         "url": "http://127.0.0.1:7890/health",
         "name": "python3-7890",
         "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://127.0.0.1:8000/health",
+        "name": "uvicorn-8000",
+        "expected_status": [
+          200,
           200
         ],
         "critical": false,
@@ -2034,16 +2087,6 @@
         ],
         "critical": false,
         "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:8008/health",
-        "name": "matrix-synapse-8008",
-        "expected_status": [
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "matrix-synapse"
       },
       {
         "url": "http://127.0.0.1:8009/",
@@ -2101,8 +2144,7 @@
         "name": "iopaint-8081",
         "expected_status": [
           200,
-          401,
-          403
+          200
         ],
         "critical": false,
         "discovered_via": "port_scan"
@@ -2142,6 +2184,7 @@
         "url": "http://127.0.0.1:8087/health",
         "name": "uvicorn-8087",
         "expected_status": [
+          200,
           200
         ],
         "critical": false,
@@ -2189,6 +2232,7 @@
         "url": "http://127.0.0.1:8095/health",
         "name": "uvicorn-8095",
         "expected_status": [
+          200,
           200
         ],
         "critical": false,
@@ -2315,6 +2359,16 @@
         "discovered_via": "port_scan"
       },
       {
+        "url": "http://127.0.0.1:8210/health",
+        "name": "python3-8210",
+        "expected_status": [
+          200,
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
         "url": "http://127.0.0.1:8444/",
         "name": "python3-8444",
         "expected_status": [
@@ -2338,6 +2392,7 @@
         "url": "http://127.0.0.1:8581/health",
         "name": "node-8581",
         "expected_status": [
+          200,
           200
         ],
         "critical": false,
@@ -2490,6 +2545,16 @@
         "container": "listmonk"
       },
       {
+        "url": "http://127.0.0.1:9120/api/status",
+        "name": "uvicorn-9120",
+        "expected_status": [
+          200,
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
         "url": "http://127.0.0.1:9190/status",
         "name": "folkmoot-prometheus-1-9190",
         "expected_status": [
@@ -2553,6 +2618,26 @@
       {
         "url": "http://127.0.0.1:10256/healthz",
         "name": "kubelite-10256",
+        "expected_status": [
+          200,
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://127.0.0.1:11435/api/status",
+        "name": "ollama-11435",
+        "expected_status": [
+          200,
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://10.220.7.1:11436/",
+        "name": "python3-11436",
         "expected_status": [
           200,
           200
@@ -2728,6 +2813,7 @@
         "url": "http://127.0.0.1:18082/health",
         "name": "python3-18082",
         "expected_status": [
+          200,
           200
         ],
         "critical": false,
@@ -2788,6 +2874,16 @@
         "expected_status": [
           200,
           200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://127.0.0.1:18112/",
+        "name": "mcpo-18112",
+        "expected_status": [
+          200,
+          404
         ],
         "critical": false,
         "discovered_via": "port_scan"
@@ -2876,6 +2972,7 @@
         "url": "http://127.0.0.1:20241/ready",
         "name": "cloudflared-20241",
         "expected_status": [
+          200,
           200
         ],
         "critical": false,
@@ -2912,6 +3009,17 @@
         "container": "folkmoot-api"
       },
       {
+        "url": "http://127.0.0.1:28200/health",
+        "name": "foundation-folkmoot-folkmoot-api-1-28200",
+        "expected_status": [
+          200,
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan",
+        "container": "foundation-folkmoot-folkmoot-api-1"
+      },
+      {
         "url": "http://127.0.0.1:29001/",
         "name": "unknown-29001",
         "expected_status": [
@@ -2925,6 +3033,14 @@
   },
   "timers": [
     {
+      "timer": "protovision-tick.timer",
+      "service": "protovision-tick"
+    },
+    {
+      "timer": "wopr-git-cred-sync.timer",
+      "service": "wopr-git-cred-sync"
+    },
+    {
       "timer": "comfyui-idle-release.timer",
       "service": "comfyui-idle-release"
     },
@@ -2933,12 +3049,16 @@
       "service": "protovision-ingest"
     },
     {
-      "timer": "protovision-tick.timer",
-      "service": "protovision-tick"
-    },
-    {
       "timer": "wopr-watchdog.timer",
       "service": "wopr-watchdog"
+    },
+    {
+      "timer": "folkmoot-watchdog.timer",
+      "service": "folkmoot-watchdog"
+    },
+    {
+      "timer": "gpu-scheduler-watchdog.timer",
+      "service": "gpu-scheduler-watchdog"
     },
     {
       "timer": "wopr-sp-watchdog.timer",
@@ -2949,20 +3069,16 @@
       "service": "grc-selfheal"
     },
     {
-      "timer": "gpu-scheduler-watchdog.timer",
-      "service": "gpu-scheduler-watchdog"
-    },
-    {
-      "timer": "phpsessionclean.timer",
-      "service": "phpsessionclean"
+      "timer": "protovision-email.timer",
+      "service": "protovision-email"
     },
     {
       "timer": "sysstat-collect.timer",
       "service": "sysstat-collect"
     },
     {
-      "timer": "folkmoot-watchdog.timer",
-      "service": "folkmoot-watchdog"
+      "timer": "anacron.timer",
+      "service": "anacron"
     },
     {
       "timer": "prometheus-node-exporter-apt.timer",
@@ -2973,20 +3089,16 @@
       "service": "prometheus-node-exporter-nvme"
     },
     {
+      "timer": "phpsessionclean.timer",
+      "service": "phpsessionclean"
+    },
+    {
       "timer": "fwupd-refresh.timer",
       "service": "fwupd-refresh"
     },
     {
-      "timer": "apt-daily-upgrade.timer",
-      "service": "apt-daily-upgrade"
-    },
-    {
-      "timer": "anacron.timer",
-      "service": "anacron"
-    },
-    {
-      "timer": "asscast-watchdog.timer",
-      "service": "asscast-watchdog"
+      "timer": "stonesoup-remind.timer",
+      "service": "stonesoup-remind"
     },
     {
       "timer": "apport-autoreport.timer",
@@ -2997,12 +3109,8 @@
       "service": "motd-news"
     },
     {
-      "timer": "apt-daily.timer",
-      "service": "apt-daily"
-    },
-    {
-      "timer": "certbot.timer",
-      "service": "certbot"
+      "timer": "meme-engine.timer",
+      "service": "meme-engine"
     },
     {
       "timer": "dpkg-db-backup.timer",
@@ -3025,28 +3133,48 @@
       "service": "falken-overnight-start"
     },
     {
-      "timer": "e2scrub_all.timer",
-      "service": "e2scrub_all"
+      "timer": "certbot.timer",
+      "service": "certbot"
     },
     {
       "timer": "forgejo-backup.timer",
       "service": "forgejo-backup"
     },
     {
-      "timer": "update-notifier-download.timer",
-      "service": "update-notifier-download"
-    },
-    {
-      "timer": "systemd-tmpfiles-clean.timer",
-      "service": "systemd-tmpfiles-clean"
+      "timer": "apt-daily.timer",
+      "service": "apt-daily"
     },
     {
       "timer": "falken-overnight-stop.timer",
       "service": "falken-overnight-stop"
     },
     {
+      "timer": "wopr-secret-sweep.timer",
+      "service": "wopr-secret-sweep"
+    },
+    {
+      "timer": "apt-daily-upgrade.timer",
+      "service": "apt-daily-upgrade"
+    },
+    {
+      "timer": "update-notifier-download.timer",
+      "service": "update-notifier-download"
+    },
+    {
+      "timer": "asscast-watchdog.timer",
+      "service": "asscast-watchdog"
+    },
+    {
+      "timer": "systemd-tmpfiles-clean.timer",
+      "service": "systemd-tmpfiles-clean"
+    },
+    {
       "timer": "man-db.timer",
       "service": "man-db"
+    },
+    {
+      "timer": "e2scrub_all.timer",
+      "service": "e2scrub_all"
     },
     {
       "timer": "fstrim.timer",
@@ -3055,10 +3183,6 @@
     {
       "timer": "update-notifier-motd.timer",
       "service": "update-notifier-motd"
-    },
-    {
-      "timer": "meme-engine.timer",
-      "service": "meme-engine"
     },
     {
       "timer": "prometheus-node-exporter-ipmitool-sensor.timer",
@@ -3071,10 +3195,6 @@
     {
       "timer": "prometheus-node-exporter-smartmon.timer",
       "service": "prometheus-node-exporter-smartmon"
-    },
-    {
-      "timer": "protovision-email.timer",
-      "service": "protovision-email"
     },
     {
       "timer": "snapd.snap-repair.timer",
@@ -3137,7 +3257,7 @@
     },
     {
       "user": "root",
-      "command": "*/15 * * * * LISTMONK_PASS=YZb5p0cPJ3Yii24bYXPX56 /usr/bin/python3 /opt/listmonk/ai_tagger.py >> /opt/listmonk/ai_tagger.log 2>&1",
+      "command": "*/15 * * * * /usr/local/sbin/run-listmonk-tagger.sh >> /opt/listmonk/ai_tagger.log 2>&1",
       "source": "crontab"
     },
     {
@@ -3184,6 +3304,11 @@
       "user": "system",
       "command": "*/3 * * * * root /opt/wopr-dsa-sites/scripts/autodeploy.sh >> /var/log/dsa-autodeploy.log 2>&1",
       "source": "/etc/cron.d/dsa-template-autodeploy"
+    },
+    {
+      "user": "system",
+      "command": "23 7 * * * root /opt/wopr/support-plane/secret_scan.py >> /opt/wopr/support-plane/secret_scan.log 2>&1",
+      "source": "/etc/cron.d/wopr-secret-scan"
     },
     {
       "user": "system",
@@ -3252,7 +3377,7 @@
     },
     {
       "user": "system",
-      "command": "30 9 * * * root /opt/openclaw/scripts/content-engine.sh",
+      "command": "30 9,13,17 * * * root /opt/openclaw/scripts/content-engine.sh",
       "source": "/etc/cron.d/wopr-content-engine"
     },
     {
@@ -4959,14 +5084,6 @@
           "10.0.0.3"
         ],
         "type": "nebula"
-      },
-      {
-        "name": "wlx9cefd5f75075",
-        "state": "UP",
-        "addresses": [
-          "192.168.0.44"
-        ],
-        "type": "physical"
       }
     ],
     "nebula_active": true
@@ -4976,6 +5093,41 @@
       "name": "folkmoot-foundation",
       "path": "/opt/folkmoot-foundation/docker-compose.yml",
       "directory": "/opt/folkmoot-foundation"
+    },
+    {
+      "name": "infisical",
+      "path": "/opt/wopr-rig-infra/docker/infisical/docker-compose.yml",
+      "directory": "/opt/wopr-rig-infra/docker/infisical"
+    },
+    {
+      "name": "crowdsec-dashboard",
+      "path": "/opt/wopr-rig-infra/docker/crowdsec-dashboard/docker-compose.yml",
+      "directory": "/opt/wopr-rig-infra/docker/crowdsec-dashboard"
+    },
+    {
+      "name": "akkoma",
+      "path": "/opt/wopr-rig-infra/docker/akkoma/docker-compose.yml",
+      "directory": "/opt/wopr-rig-infra/docker/akkoma"
+    },
+    {
+      "name": "wazuh",
+      "path": "/opt/wopr-rig-infra/docker/wazuh/docker-compose.yml",
+      "directory": "/opt/wopr-rig-infra/docker/wazuh"
+    },
+    {
+      "name": "greenbone",
+      "path": "/opt/wopr-rig-infra/docker/greenbone/docker-compose.yml",
+      "directory": "/opt/wopr-rig-infra/docker/greenbone"
+    },
+    {
+      "name": "mastodon",
+      "path": "/opt/wopr-rig-infra/docker/mastodon/docker-compose.yml",
+      "directory": "/opt/wopr-rig-infra/docker/mastodon"
+    },
+    {
+      "name": "lovejoos",
+      "path": "/opt/wopr-rig-infra/apps/lovejoos/docker-compose.yml",
+      "directory": "/opt/wopr-rig-infra/apps/lovejoos"
     },
     {
       "name": "bind",
@@ -5138,6 +5290,11 @@
       "directory": "/opt/wopr-systems-next"
     },
     {
+      "name": "foundation-folkmoot",
+      "path": "/opt/foundation-folkmoot/docker-compose.yml",
+      "directory": "/opt/foundation-folkmoot"
+    },
+    {
       "name": "multi-node",
       "path": "/opt/wazuh-docker/multi-node/docker-compose.yml",
       "directory": "/opt/wazuh-docker/multi-node"
@@ -5253,6 +5410,16 @@
       "directory": "/opt/wopr"
     },
     {
+      "name": "installer-deploy",
+      "path": "/opt/wopr/orchestrator/installer-deploy/docker-compose.yml",
+      "directory": "/opt/wopr/orchestrator/installer-deploy"
+    },
+    {
+      "name": "wopr-theblock-prod",
+      "path": "/opt/wopr/orchestrator/installer-deploy/wopr-theblock-prod/docker-compose.yml",
+      "directory": "/opt/wopr/orchestrator/installer-deploy/wopr-theblock-prod"
+    },
+    {
       "name": "wtp-rise",
       "path": "/opt/wopr/orchestrator/installer-deploy/wtp-rise/docker-compose.yml",
       "directory": "/opt/wopr/orchestrator/installer-deploy/wtp-rise"
@@ -5346,6 +5513,11 @@
       "name": "tts-generation-webui",
       "path": "/home/nodez3r0/ai-apps/tts-generation-webui/docker-compose.yml",
       "directory": "/home/nodez3r0/ai-apps/tts-generation-webui"
+    },
+    {
+      "name": "Applio",
+      "path": "/home/nodez3r0/ai-apps/Applio/docker-compose.yaml",
+      "directory": "/home/nodez3r0/ai-apps/Applio"
     },
     {
       "name": "bind",
@@ -5584,14 +5756,14 @@
     }
   ],
   "discovery_stats": {
-    "listening_ports": 221,
+    "listening_ports": 229,
     "caddy_backends": 1,
-    "containers_total": 131,
-    "services_total": 183,
-    "timers_total": 41,
-    "cron_jobs_total": 369,
-    "compose_projects": 122,
+    "containers_total": 134,
+    "services_total": 186,
+    "timers_total": 44,
+    "cron_jobs_total": 370,
+    "compose_projects": 133,
     "public_endpoints": 1,
-    "backend_endpoints": 134
+    "backend_endpoints": 141
   }
 }
