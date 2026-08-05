@@ -1,7 +1,7 @@
 {
   "version": "5.0-autodiscovery",
   "host": "nodez3ro",
-  "generated": "2026-08-05T13:22:40.906772",
+  "generated": "2026-08-05T13:37:40.303418",
   "container_runtime": "docker",
   "autodiscovery": true,
   "services": [
@@ -3053,10 +3053,6 @@
       "service": "wopr-watchdog"
     },
     {
-      "timer": "folkmoot-watchdog.timer",
-      "service": "folkmoot-watchdog"
-    },
-    {
       "timer": "gpu-scheduler-watchdog.timer",
       "service": "gpu-scheduler-watchdog"
     },
@@ -3069,16 +3065,20 @@
       "service": "grc-selfheal"
     },
     {
-      "timer": "protovision-email.timer",
-      "service": "protovision-email"
+      "timer": "phpsessionclean.timer",
+      "service": "phpsessionclean"
     },
     {
       "timer": "sysstat-collect.timer",
       "service": "sysstat-collect"
     },
     {
-      "timer": "anacron.timer",
-      "service": "anacron"
+      "timer": "folkmoot-watchdog.timer",
+      "service": "folkmoot-watchdog"
+    },
+    {
+      "timer": "protovision-email.timer",
+      "service": "protovision-email"
     },
     {
       "timer": "prometheus-node-exporter-apt.timer",
@@ -3089,28 +3089,32 @@
       "service": "prometheus-node-exporter-nvme"
     },
     {
-      "timer": "phpsessionclean.timer",
-      "service": "phpsessionclean"
-    },
-    {
-      "timer": "fwupd-refresh.timer",
-      "service": "fwupd-refresh"
+      "timer": "motd-news.timer",
+      "service": "motd-news"
     },
     {
       "timer": "stonesoup-remind.timer",
       "service": "stonesoup-remind"
     },
     {
+      "timer": "fwupd-refresh.timer",
+      "service": "fwupd-refresh"
+    },
+    {
+      "timer": "anacron.timer",
+      "service": "anacron"
+    },
+    {
       "timer": "apport-autoreport.timer",
       "service": "apport-autoreport"
     },
     {
-      "timer": "motd-news.timer",
-      "service": "motd-news"
-    },
-    {
       "timer": "meme-engine.timer",
       "service": "meme-engine"
+    },
+    {
+      "timer": "apt-daily.timer",
+      "service": "apt-daily"
     },
     {
       "timer": "dpkg-db-backup.timer",
@@ -3133,16 +3137,8 @@
       "service": "falken-overnight-start"
     },
     {
-      "timer": "certbot.timer",
-      "service": "certbot"
-    },
-    {
       "timer": "forgejo-backup.timer",
       "service": "forgejo-backup"
-    },
-    {
-      "timer": "apt-daily.timer",
-      "service": "apt-daily"
     },
     {
       "timer": "falken-overnight-stop.timer",
@@ -3163,6 +3159,10 @@
     {
       "timer": "asscast-watchdog.timer",
       "service": "asscast-watchdog"
+    },
+    {
+      "timer": "certbot.timer",
+      "service": "certbot"
     },
     {
       "timer": "systemd-tmpfiles-clean.timer",
