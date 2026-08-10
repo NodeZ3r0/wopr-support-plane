@@ -640,6 +640,8 @@ def build_manifest(runtime):
                 ep["remote"] = True
             if be_existing and be_existing.get("pinned"):
                 ep["pinned"] = True
+                if be_existing.get("url"):
+                    ep["url"] = be_existing["url"]
 
             backend_endpoints.append(ep)
 
@@ -658,7 +660,7 @@ def build_manifest(runtime):
             continue
 
         # Skip non-service host processes that bind many ephemeral ports (noise)
-        if info.get("process", "") in ("rygel", "containerd", "forgejo-runner"):
+        if info.get("process", "") in ("rygel", "containerd", "forgejo-runner", "mongod"):
             continue
 
         probe_bind = "127.0.0.1" if bind in ("0.0.0.0", "*", "::") else bind
@@ -707,6 +709,8 @@ def build_manifest(runtime):
             ep["container"] = container_name
         if be_existing and be_existing.get("pinned"):
             ep["pinned"] = True
+            if be_existing.get("url"):
+                ep["url"] = be_existing["url"]
 
         backend_endpoints.append(ep)
 
