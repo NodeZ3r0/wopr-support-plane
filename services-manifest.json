@@ -1,7 +1,7 @@
 {
   "version": "5.0-autodiscovery",
   "host": "nodez3ro",
-  "generated": "2026-08-05T13:37:40.303418",
+  "generated": "2026-08-10T04:06:45.143600",
   "container_runtime": "docker",
   "autodiscovery": true,
   "services": [
@@ -186,7 +186,37 @@
       "critical": false
     },
     {
+      "name": "falken-flink-consumer",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "falken-gdelt",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "falken-miniflux-bridge",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "falken-osint-scraper",
+      "type": "systemd",
+      "critical": false
+    },
+    {
       "name": "falken-pg-tunnel",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "falken-topic-matcher",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "falken-tor-scraper",
       "type": "systemd",
       "critical": false
     },
@@ -938,13 +968,58 @@
   ],
   "containers": [
     {
-      "name": "secondbrain-api",
-      "image": "protovision-secondbrain-api",
+      "name": "ward6-canvass",
+      "image": "ward6-canvass:latest",
+      "critical": false
+    },
+    {
+      "name": "ward6-vote-api",
+      "image": "ward6-vote-api:latest",
+      "critical": false
+    },
+    {
+      "name": "ward6-vote-web",
+      "image": "ward6-vote-web:latest",
+      "critical": false
+    },
+    {
+      "name": "reactor_ui",
+      "image": "reactor-ui-reactor-ui",
+      "critical": false
+    },
+    {
+      "name": "lovejoos-frontend",
+      "image": "registry.wopr.systems/lovejoos/frontend:latest",
       "critical": false
     },
     {
       "name": "wopr-foundation-next",
       "image": "wopr-foundation-next:latest",
+      "critical": false
+    },
+    {
+      "name": "ward6-vote-db",
+      "image": "postgres:16-alpine",
+      "critical": false
+    },
+    {
+      "name": "ward6-vote-redis",
+      "image": "redis:7-alpine",
+      "critical": false
+    },
+    {
+      "name": "wopr-systems-next",
+      "image": "wopr-systems-next:latest",
+      "critical": false
+    },
+    {
+      "name": "folkmoot-web",
+      "image": "folkmoot-foundation-folkmoot-web",
+      "critical": false
+    },
+    {
+      "name": "secondbrain-api",
+      "image": "protovision-secondbrain-api",
       "critical": false
     },
     {
@@ -1003,18 +1078,8 @@
       "critical": false
     },
     {
-      "name": "wopr-systems-next",
-      "image": "wopr-systems-next:latest",
-      "critical": false
-    },
-    {
       "name": "folkmoot-api",
       "image": "folkmoot-foundation-folkmoot-api",
-      "critical": false
-    },
-    {
-      "name": "folkmoot-web",
-      "image": "folkmoot-foundation-folkmoot-web",
       "critical": false
     },
     {
@@ -1283,11 +1348,6 @@
       "critical": false
     },
     {
-      "name": "reactor_ui",
-      "image": "reactor-ui-reactor-ui",
-      "critical": false
-    },
-    {
       "name": "castopod-mariadb",
       "image": "mariadb:11",
       "critical": false
@@ -1543,11 +1603,6 @@
       "critical": false
     },
     {
-      "name": "lovejoos-frontend",
-      "image": "registry.wopr.systems/lovejoos/frontend:latest",
-      "critical": false
-    },
-    {
       "name": "lovejoos-redis",
       "image": "redis:7-alpine",
       "critical": false
@@ -1633,6 +1688,16 @@
         "discovered_via": "caddy"
       },
       {
+        "url": "http://127.0.0.1:2021/",
+        "name": "caddy-2021",
+        "expected_status": [
+          200,
+          404
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
         "url": "http://127.0.0.1:2583/",
         "name": "wopr-pds-2583",
         "expected_status": [
@@ -1670,7 +1735,7 @@
         "discovered_via": "port_scan"
       },
       {
-        "url": "http://127.0.0.1:3010/health",
+        "url": "http://127.0.0.1:3010/",
         "name": "forgejo-3010",
         "expected_status": [
           200,
@@ -1802,6 +1867,17 @@
         "critical": false,
         "discovered_via": "port_scan",
         "container": "wopr-systems-next"
+      },
+      {
+        "url": "http://127.0.0.1:3414/vote",
+        "name": "ward6-vote-web-3414",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan",
+        "container": "ward6-vote-web",
+        "pinned": true
       },
       {
         "url": "http://127.0.0.1:3801/",
@@ -2299,16 +2375,6 @@
         "container": "sst-frontend"
       },
       {
-        "url": "http://127.0.0.1:8188/",
-        "name": "python3-8188",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
         "url": "http://127.0.0.1:8199/",
         "name": "python3-8199",
         "expected_status": [
@@ -2510,6 +2576,7 @@
         "url": "http://127.0.0.1:9091/",
         "name": "authentik-server-1-9091",
         "expected_status": [
+          200,
           200
         ],
         "critical": false,
@@ -2674,6 +2741,16 @@
         "critical": false,
         "discovered_via": "port_scan",
         "container": "crowdsec-dashboard-metabase-1"
+      },
+      {
+        "url": "http://127.0.0.1:13201/health",
+        "name": "uvicorn-13201",
+        "expected_status": [
+          200,
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
       },
       {
         "url": "http://127.0.0.1:14000/api/health",
@@ -2972,21 +3049,11 @@
         "url": "http://127.0.0.1:20241/ready",
         "name": "cloudflared-20241",
         "expected_status": [
-          200,
           200
         ],
         "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:27099/health",
-        "name": "mongod-27099",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
+        "discovered_via": "port_scan",
+        "pinned": true
       },
       {
         "url": "http://127.0.0.1:28000/",
@@ -3020,6 +3087,28 @@
         "container": "foundation-folkmoot-folkmoot-api-1"
       },
       {
+        "url": "http://127.0.0.1:28300/health",
+        "name": "ward6-vote-api-28300",
+        "expected_status": [
+          200,
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan",
+        "container": "ward6-vote-api"
+      },
+      {
+        "url": "http://127.0.0.1:28310/health",
+        "name": "ward6-canvass-28310",
+        "expected_status": [
+          200,
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan",
+        "container": "ward6-canvass"
+      },
+      {
         "url": "http://127.0.0.1:29001/",
         "name": "unknown-29001",
         "expected_status": [
@@ -3033,26 +3122,6 @@
   },
   "timers": [
     {
-      "timer": "protovision-tick.timer",
-      "service": "protovision-tick"
-    },
-    {
-      "timer": "wopr-git-cred-sync.timer",
-      "service": "wopr-git-cred-sync"
-    },
-    {
-      "timer": "comfyui-idle-release.timer",
-      "service": "comfyui-idle-release"
-    },
-    {
-      "timer": "protovision-ingest.timer",
-      "service": "protovision-ingest"
-    },
-    {
-      "timer": "wopr-watchdog.timer",
-      "service": "wopr-watchdog"
-    },
-    {
       "timer": "gpu-scheduler-watchdog.timer",
       "service": "gpu-scheduler-watchdog"
     },
@@ -3065,8 +3134,36 @@
       "service": "grc-selfheal"
     },
     {
+      "timer": "protovision-tick.timer",
+      "service": "protovision-tick"
+    },
+    {
+      "timer": "prometheus-node-exporter-apt.timer",
+      "service": "prometheus-node-exporter-apt"
+    },
+    {
+      "timer": "prometheus-node-exporter-nvme.timer",
+      "service": "prometheus-node-exporter-nvme"
+    },
+    {
+      "timer": "comfyui-idle-release.timer",
+      "service": "comfyui-idle-release"
+    },
+    {
+      "timer": "protovision-ingest.timer",
+      "service": "protovision-ingest"
+    },
+    {
+      "timer": "wopr-git-cred-sync.timer",
+      "service": "wopr-git-cred-sync"
+    },
+    {
       "timer": "phpsessionclean.timer",
       "service": "phpsessionclean"
+    },
+    {
+      "timer": "wopr-watchdog.timer",
+      "service": "wopr-watchdog"
     },
     {
       "timer": "sysstat-collect.timer",
@@ -3081,40 +3178,64 @@
       "service": "protovision-email"
     },
     {
-      "timer": "prometheus-node-exporter-apt.timer",
-      "service": "prometheus-node-exporter-apt"
-    },
-    {
-      "timer": "prometheus-node-exporter-nvme.timer",
-      "service": "prometheus-node-exporter-nvme"
-    },
-    {
-      "timer": "motd-news.timer",
-      "service": "motd-news"
-    },
-    {
-      "timer": "stonesoup-remind.timer",
-      "service": "stonesoup-remind"
-    },
-    {
-      "timer": "fwupd-refresh.timer",
-      "service": "fwupd-refresh"
-    },
-    {
-      "timer": "anacron.timer",
-      "service": "anacron"
+      "timer": "wopr-sp-autodiscovery.timer",
+      "service": "wopr-sp-autodiscovery"
     },
     {
       "timer": "apport-autoreport.timer",
       "service": "apport-autoreport"
     },
     {
-      "timer": "meme-engine.timer",
-      "service": "meme-engine"
+      "timer": "fwupd-refresh.timer",
+      "service": "fwupd-refresh"
+    },
+    {
+      "timer": "falken-overnight-stop.timer",
+      "service": "falken-overnight-stop"
+    },
+    {
+      "timer": "stonesoup-remind.timer",
+      "service": "stonesoup-remind"
+    },
+    {
+      "timer": "motd-news.timer",
+      "service": "motd-news"
     },
     {
       "timer": "apt-daily.timer",
       "service": "apt-daily"
+    },
+    {
+      "timer": "apt-daily-upgrade.timer",
+      "service": "apt-daily-upgrade"
+    },
+    {
+      "timer": "wopr-secret-sweep.timer",
+      "service": "wopr-secret-sweep"
+    },
+    {
+      "timer": "meme-engine.timer",
+      "service": "meme-engine"
+    },
+    {
+      "timer": "anacron.timer",
+      "service": "anacron"
+    },
+    {
+      "timer": "update-notifier-download.timer",
+      "service": "update-notifier-download"
+    },
+    {
+      "timer": "asscast-watchdog.timer",
+      "service": "asscast-watchdog"
+    },
+    {
+      "timer": "systemd-tmpfiles-clean.timer",
+      "service": "systemd-tmpfiles-clean"
+    },
+    {
+      "timer": "certbot.timer",
+      "service": "certbot"
     },
     {
       "timer": "dpkg-db-backup.timer",
@@ -3139,34 +3260,6 @@
     {
       "timer": "forgejo-backup.timer",
       "service": "forgejo-backup"
-    },
-    {
-      "timer": "falken-overnight-stop.timer",
-      "service": "falken-overnight-stop"
-    },
-    {
-      "timer": "wopr-secret-sweep.timer",
-      "service": "wopr-secret-sweep"
-    },
-    {
-      "timer": "apt-daily-upgrade.timer",
-      "service": "apt-daily-upgrade"
-    },
-    {
-      "timer": "update-notifier-download.timer",
-      "service": "update-notifier-download"
-    },
-    {
-      "timer": "asscast-watchdog.timer",
-      "service": "asscast-watchdog"
-    },
-    {
-      "timer": "certbot.timer",
-      "service": "certbot"
-    },
-    {
-      "timer": "systemd-tmpfiles-clean.timer",
-      "service": "systemd-tmpfiles-clean"
     },
     {
       "timer": "man-db.timer",
@@ -3203,10 +3296,6 @@
     {
       "timer": "ua-timer.timer",
       "service": "ua-timer"
-    },
-    {
-      "timer": "wopr-sp-autodiscovery.timer",
-      "service": "wopr-sp-autodiscovery"
     }
   ],
   "cron_jobs": [
@@ -3312,6 +3401,11 @@
     },
     {
       "user": "system",
+      "command": "30 6 * * * root /opt/openclaw/scripts/price-sync.sh",
+      "source": "/etc/cron.d/wopr-price-sync"
+    },
+    {
+      "user": "system",
       "command": "0 10 * * 1,3,5 nodez3r0 /opt/openclaw/scripts/block-video.sh",
       "source": "/etc/cron.d/wopr-block-video"
     },
@@ -3369,6 +3463,11 @@
       "user": "system",
       "command": "09,39 *     * * *     root   [ -x /usr/lib/php/sessionclean ] && if [ ! -d /run/systemd/system ]; then /usr/lib/php/sessionclean; fi",
       "source": "/etc/cron.d/php"
+    },
+    {
+      "user": "system",
+      "command": "15 4 * * 1 root /usr/bin/python3 /opt/wopr-content/indexnow.py --submit >> /var/log/wopr-indexnow.log 2>&1",
+      "source": "/etc/cron.d/wopr-indexnow"
     },
     {
       "user": "system",
@@ -5255,6 +5354,11 @@
       "directory": "/opt/open-webui"
     },
     {
+      "name": "ward6-vote",
+      "path": "/opt/ward6-vote/docker-compose.yml",
+      "directory": "/opt/ward6-vote"
+    },
+    {
       "name": "crowdsec-dashboard",
       "path": "/opt/crowdsec-dashboard/docker-compose.yml",
       "directory": "/opt/crowdsec-dashboard"
@@ -5398,6 +5502,11 @@
       "name": "wopr-ai-engine",
       "path": "/opt/wopr-ai-engine/docker-compose.yml",
       "directory": "/opt/wopr-ai-engine"
+    },
+    {
+      "name": "ward6-canvass",
+      "path": "/opt/ward6-canvass/docker-compose.yml",
+      "directory": "/opt/ward6-canvass"
     },
     {
       "name": "docker",
@@ -5756,14 +5865,14 @@
     }
   ],
   "discovery_stats": {
-    "listening_ports": 229,
+    "listening_ports": 233,
     "caddy_backends": 1,
-    "containers_total": 134,
-    "services_total": 186,
+    "containers_total": 139,
+    "services_total": 192,
     "timers_total": 44,
-    "cron_jobs_total": 370,
-    "compose_projects": 133,
+    "cron_jobs_total": 372,
+    "compose_projects": 135,
     "public_endpoints": 1,
-    "backend_endpoints": 141
+    "backend_endpoints": 144
   }
 }
