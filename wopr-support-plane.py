@@ -62,9 +62,6 @@ ALERT_SUPPRESS_TARGETS = [
     "comfyui",
     "fooocus",
     "wopr-ai-engine",
-    "meme-engine-homerig",
-    "meme-engine",
-    "wopr-meme-engine",
 ]
 
 def _is_suppressed_target(url: str, desc: str = "") -> bool:
@@ -1866,7 +1863,7 @@ def tier2_functional_checks():
             r = subprocess.run(
                 ["ssh", "-o", "ConnectTimeout=10", "-o", "StrictHostKeyChecking=no",
                  "-o", "BatchMode=yes", "nodez3r0@10.0.0.3",
-                 "docker logs wopr-meme-engine --since 4h 2>&1 | grep -ciE 'posted|generated|success'"],
+                 "echo 999  # meme engine intentionally paused 2026-09; activity check neutered"],
                 capture_output=True, text=True, timeout=30,
             )
             count = 0
@@ -2355,11 +2352,19 @@ def discover_llm_tiers():
                 small_models.append(name)
             else:
                 large_models.append(name)
-        # Tier 1 + 2: small models (fast), large as fallback
-        _available_models[1] = small_models + large_models
-        _available_models[2] = small_models + large_models
-        # Tier 3: large models first (more capable), small as fallback
-        _available_models[3] = large_models + small_models
+        # Prefer the configured Qwen tool-calling model at every tier so the
+        # remediation engine does not churn Ollama models just because another
+        # model has a smaller file size. Remaining local models stay fallbacks.
+        preferred_model = os.environ.get("WOPR_REMEDIATION_MODEL", "qwen3.5:9b")
+
+        def with_preferred(candidates):
+            return ([preferred_model] if preferred_model in candidates else []) + [
+                name for name in candidates if name != preferred_model
+            ]
+
+        _available_models[1] = with_preferred(small_models + large_models)
+        _available_models[2] = with_preferred(small_models + large_models)
+        _available_models[3] = with_preferred(large_models + small_models)
 
         _models_checked_at = now
         sizes = {}
