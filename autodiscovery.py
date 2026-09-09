@@ -85,6 +85,10 @@ METRICS_PORTS = {
 CRITICAL_SERVICES = {
     "caddy", "docker", "nebula", "crowdsec", "sshd", "ssh",
     "podman", "containerd", "systemd-resolved",
+    # The money path: billing/provisioning/shop API. systemd restarts it on
+    # crash, but marking it critical also lets the support-plane watchdog restart
+    # it if it is ever down for another reason (WOPR-023).
+    "wopr-control-plane",
 }
 
 CRITICAL_CONTAINERS = {
