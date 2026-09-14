@@ -59,6 +59,10 @@ def check_webhook_refuses_unsigned():
                  headers={"stripe-signature": "t=1,v1=deadbeef"})
     if st in (400, 503):
         return None
+    if st is None:
+        # Connection error, not an answer: the service was restarting or down.
+        # This must NOT read as "accepted an unsigned payload".
+        return "connect webhook UNREACHABLE - not a security finding (service down/restarting)"
     return "connect webhook accepted an UNSIGNED payload (status %s) - refuses expected" % st
 
 
@@ -93,8 +97,12 @@ def ntfy(title, msg, priority, tags):
 def main():
     fails = run_checks()
 
-    # The unsigned-webhook failure is a security regression -> always high prio.
-    security_break = "connect webhook refuses unsigned" in fails
+    # Only escalate when the webhook ACTUALLY accepted something. A failure of
+    # this check because the service was unreachable (a deploy, a restart) is an
+    # availability problem, not a breach - paging it as one trains the owner to
+    # ignore the channel that matters.
+    _wh = fails.get("connect webhook refuses unsigned", "")
+    security_break = bool(_wh) and "UNREACHABLE" not in _wh
 
     prev = {}
     try:
