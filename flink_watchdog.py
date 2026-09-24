@@ -102,7 +102,38 @@ def restart_cluster():
     return jobs_running()
 
 
+def live_jobs():
+    """Jobs that are not finished (RUNNING, RESTARTING, CREATED, ...), oldest first; None if REST down."""
+    try:
+        with urllib.request.urlopen(REST + "/jobs/overview", timeout=8) as r:
+            js = json.loads(r.read().decode()).get("jobs", [])
+        return sorted([j for j in js if j.get("state") not in ("CANCELED", "FINISHED", "FAILED")],
+                      key=lambda j: j.get("start-time", 0))
+    except Exception:
+        return None
+
+
+def cancel_jobs(js):
+    for j in js:
+        try:
+            urllib.request.urlopen(urllib.request.Request(
+                f"{REST}/jobs/{j['jid']}?mode=cancel", method="PATCH"), timeout=8).read()
+        except Exception:
+            pass
+    ids = {j["jid"] for j in js}
+    for _ in range(30):
+        time.sleep(2)
+        left = live_jobs()
+        if left is not None and not any(j["jid"] in ids for j in left):
+            return True
+    return False
+
+
 def resubmit():
+    # Clear stuck/RESTARTING copies first, or every resubmit adds a duplicate next to them.
+    stale = live_jobs() or []
+    if stale:
+        cancel_jobs(stale)
     rc, out = sh(f"timeout 200 {SQL_CLIENT} -f {JOBS_SQL}", 220)
     time.sleep(4)
     return jobs_running(), ("submitted to the cluster" in out or "Job ID" in out)
@@ -157,6 +188,16 @@ def main():
         else:
             action = ("FLINK no workers (cooldown)",
                       "Flink JobManager up but 0 TaskManagers/slots; within 30-min restart cooldown, not restarting again. Manual check needed.")
+    elif running > MIN_JOBS:
+        # (4) Duplicate copies of the job -> keep the oldest RUNNING one, cancel the rest
+        live = live_jobs() or []
+        keep = next((j for j in live if j.get("state") == "RUNNING"), None)
+        extra = [j for j in live if keep is None or j["jid"] != keep["jid"]]
+        ok = cancel_jobs(extra)
+        running = jobs_running()
+        action = ("FLINK duplicate jobs removed" if ok and running == MIN_JOBS else "FLINK duplicate cleanup FAILED",
+                  f"Found {len(live)} copies of the jobs.sql job; kept {keep['jid'][:8] if keep else 'none'}, "
+                  f"cancelled {len(extra)}. Running jobs now: {running}.")
     elif running < MIN_JOBS:
         # (3) Cluster healthy WITH slots but the SQL job isn't running -> resubmit
         if cooled_down(st, "resubmit_ts"):
