@@ -667,6 +667,16 @@ def build_manifest(runtime):
         if info.get("process", "") in ("rygel", "containerd", "forgejo-runner", "mongod"):
             continue
 
+        # Flink's JVMs bind ~30 random internal ports (RPC, BLOB, shuffle, PyFlink). HTTP probes
+        # there log "BlobServerConnection ... Unknown operation 71" every run. Only REST :8092 is HTTP.
+        if info.get("process", "") == "java" and port != 8092:
+            try:
+                cmd = open(f"/proc/{info.get('pid', '0')}/cmdline", "rb").read()
+            except Exception:
+                cmd = b""
+            if b"org.apache.flink" in cmd:
+                continue
+
         probe_bind = "127.0.0.1" if bind in ("0.0.0.0", "*", "::") else bind
         probe = probe_http_port(port, probe_bind, timeout=2)
         if not probe:
