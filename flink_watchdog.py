@@ -67,6 +67,46 @@ def cluster_slots():
         return None
 
 
+TM_LOG_GLOB = "/opt/flink-2.2.0/log/flink-root-taskexecutor-0-*.log*"
+REPEAT_WINDOW_S = 6 * 3600                      # deaths within this window collapse into one alert
+
+
+def last_root_cause():
+    """Root cause of the newest TaskManager death, short form. Known root signatures near the fatal error
+    win (the fatal trace itself often ends in a secondary error, e.g. Producer is closed forcefully);
+    otherwise the deepest Caused by in the fatal trace."""
+    import glob, re
+    roots = ("OutOfMemoryError", "RecordTooLargeException", "No space left on device",
+             "Too many open files", "StackOverflowError", "ClassNotFoundException")
+    short = lambda l: re.sub(r"^(Caused by: )?[\w.\$]*?\.?(\w+(Exception|Error))", r"\2", l.strip())[:220]
+    for f in sorted(glob.glob(TM_LOG_GLOB), key=os.path.getmtime, reverse=True)[:4]:
+        try:
+            lines = open(f, errors="replace").read().splitlines()[-200000:]
+        except Exception:
+            continue
+        fatal = [i for i, l in enumerate(lines) if "Fatal error occurred" in l]
+        oom = [l for l in lines[-5000:] if "OutOfMemoryError" in l]
+        if not fatal:
+            if oom:
+                return short(oom[-1])
+            continue
+        i = fatal[-1]
+        near = lines[max(0, i - 3000):i + 60]
+        for sig in roots:
+            hits = [l for l in near if sig in l and "at " not in l[:6]]
+            if hits:
+                return short(hits[-1])
+        trace = []
+        for l in lines[i + 1:i + 400]:
+            if re.match(r"^\d{4}-\d\d-\d\d ", l):
+                break
+            trace.append(l)
+        causes = [l for l in trace if l.startswith("Caused by:")] or trace[:1]
+        if causes:
+            return short(causes[-1])
+    return "unknown (no fatal error or OOM in recent TaskManager logs)"
+
+
 def load_state():
     try:
         return json.load(open(STATE))
@@ -178,16 +218,31 @@ def main():
                           "Flink 2.2.0 JobManager up but 0 TaskManagers/slots; auto-restart did NOT bring a worker back (still 0 slots). Manual check needed.")
             else:
                 after2, ok = resubmit()
-                if after2 >= MIN_JOBS:
+                cause = last_root_cause()
+                deaths = [d for d in st.get("tm_deaths", []) if now - d < REPEAT_WINDOW_S] + [now]
+                st["tm_deaths"] = deaths
+                if after2 >= MIN_JOBS and len(deaths) >= 2:
+                    running = after2
+                    if now - st.get("repeat_alert_ts", 0) > REPEAT_WINDOW_S:
+                        st["repeat_alert_ts"] = now
+                        action = (f"FLINK worker keeps dying ({len(deaths)}x in 6h) - root cause: {cause[:80]}",
+                                  f"TaskManager died {len(deaths)} times in 6h; each auto-restart just brings it back to die again. "
+                                  f"Root cause from the TaskManager log: {cause}. Restarted and resubmitted -> {after2} job(s) running. "
+                                  f"Further deaths in the next 6h will not alert again.")
+                    else:
+                        print(datetime.now().strftime("%F %T"), "repeat TM death suppressed; cause:", cause)
+                elif after2 >= MIN_JOBS:
                     action = ("FLINK auto-recovered (dead worker)",
-                              f"TaskManager had died (0 slots) — JobManager was up so systemd never noticed. Restarted flink.service ({slots2[1]} slots back) and resubmitted jobs.sql -> {after2} job(s) running.")
+                              f"TaskManager had died (0 slots) — JobManager was up so systemd never noticed. Restarted flink.service ({slots2[1]} slots back) and resubmitted jobs.sql -> {after2} job(s) running. "
+                              f"Root cause from the TaskManager log: {cause}")
                     running = after2
                 else:
                     action = ("FLINK resubmit FAILED after worker restart",
                               f"Restored {slots2[1]} slots but jobs.sql resubmit did not start a job (still {after2}). Manual check needed.")
         else:
             action = ("FLINK no workers (cooldown)",
-                      "Flink JobManager up but 0 TaskManagers/slots; within 30-min restart cooldown, not restarting again. Manual check needed.")
+                      "Flink JobManager up but 0 TaskManagers/slots; within 30-min restart cooldown, not restarting again. Manual check needed. "
+                      f"Root cause from the TaskManager log: {last_root_cause()}")
     elif running > MIN_JOBS:
         # (4) Duplicate copies of the job -> keep the oldest RUNNING one, cancel the rest
         live = live_jobs() or []
