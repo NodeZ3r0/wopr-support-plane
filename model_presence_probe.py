@@ -19,8 +19,14 @@ NTFY_URL   = os.environ.get("NTFY_URL", "http://127.0.0.1:18081")
 NTFY_TOPIC = os.environ.get("NTFY_TOPIC", "wopr-alerts")
 STATE      = "/opt/wopr/support-plane/model_presence_probe.state.json"
 OLLAMA     = "http://127.0.0.1:11435"               # behind gpu-scheduler :18099
-SOURCES    = {
-    "falken-pipeline": "/opt/wopr-falken/pipeline/.env",
+ENV_LINE   = r"^\s*([A-Z0-9_]*MODEL)\s*=\s*['\"]?([^'\"\s#]+)"
+SOURCES    = {                                       # name: (file, regex -> (key, model) or (model,))
+    "falken-pipeline": ("/opt/wopr-falken/pipeline/.env", ENV_LINE),
+    "protovision": ("/opt/protovision/.env", ENV_LINE),
+    "reactor-chat-default": ("/opt/reactor-mcp/backend/server.py",
+                             r"model = data\.get\(\"model\", \"([^\"]+)\"\)"),
+    "reactor-cli-default": ("/opt/reactor-mcp/backend/reactor_cli.py",
+                            r"os\.getenv\(\"REACTOR_MODEL\", \"([^\"]+)\"\)"),
 }
 
 
@@ -60,14 +66,19 @@ def installed():
 
 
 def configured(sources):
-    """[(service, key, model)] for every KEY_MODEL=value line."""
+    """[(service, key, model)] for every model setting each source names."""
     out = []
-    for svc, path in sources.items():
+    for svc, (path, rx) in sources.items():
         try:
+            found = 0
             for line in open(path):
-                m = re.match(r"^\s*([A-Z0-9_]*MODEL)\s*=\s*['\"]?([^'\"\s#]+)", line)
+                m = re.search(rx, line)
                 if m:
-                    out.append((svc, m.group(1), m.group(2)))
+                    found += 1
+                    g = m.groups()
+                    out.append((svc, g[0], g[1]) if len(g) == 2 else (svc, "default", g[0]))
+            if not found and rx != ENV_LINE:
+                out.append((svc, "UNREADABLE", f"{path}: default model pattern not found"))
         except Exception as e:
             out.append((svc, "UNREADABLE", f"{path}: {e}"))
     return out
@@ -79,7 +90,8 @@ def main():
     ap.add_argument("--state", default=STATE)
     ap.add_argument("--test", action="store_true", help="prefix alert titles with TEST")
     a = ap.parse_args()
-    sources = dict(s.split("=", 1) for s in a.source) if a.source else SOURCES
+    sources = ({n: (p, ENV_LINE) for n, p in (s.split("=", 1) for s in a.source)}
+               if a.source else SOURCES)
     prefix = "[MODEL] TEST - ignore: " if a.test else "[MODEL] "
 
     st = load_state(a.state)
