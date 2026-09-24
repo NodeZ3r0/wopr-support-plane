@@ -27,7 +27,17 @@ from datetime import datetime, timezone
 NTFY_URL   = os.environ.get("NTFY_URL", "http://127.0.0.1:18081")
 NTFY_TOPIC = os.environ.get("NTFY_TOPIC", "wopr-alerts")
 STATE      = "/opt/wopr/support-plane/falken_flink_probe.state.json"
-DSN        = os.environ.get("FALKEN_DSN", "postgresql://falken:F4lk3nW0PR2026@127.0.0.1:5432/falken")
+def _falken_dsn():
+    try:
+        for l in open("/opt/wopr-falken/.env.local"):
+            if l.startswith("DATABASE_URL="):
+                return l.split("=", 1)[1].strip().strip('"')
+    except Exception:
+        pass
+    return "postgresql://falken@127.0.0.1:5432/falken"
+
+
+DSN        = os.environ.get("FALKEN_DSN") or _falken_dsn()
 KAFKA      = ("127.0.0.1", 9092)
 STALE_HRS  = 26          # daily overnight cadence (02:00-05:00) -> alert if no fresh data >26h
 
