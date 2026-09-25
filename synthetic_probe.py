@@ -5,13 +5,18 @@ status + JSON validity. Catches migration class-bugs (dead ports, stripped route
 empty/405/000 bodies) that container/log health checks miss. Does NOT follow redirects
 (so a 301/302 alias is seen as healthy, not chased out to the external URL).
 ntfy alerts ONLY on failure-set CHANGE (no spam). Cron */5."""
-import json, os, urllib.request, urllib.error
+import json, os, time, urllib.request, urllib.error
 
 CADDY      = "http://127.0.0.1:18080"
 NTFY_URL   = os.environ.get("NTFY_URL", "http://127.0.0.1:18081")
 NTFY_TOPIC = os.environ.get("NTFY_TOPIC", "wopr-alerts")
 STATE      = "/opt/wopr/support-plane/.synthetic_probe_state.json"
 LOG        = "/opt/wopr/support-plane/synthetic_probe.log"
+# Confirm-before-alert: a failure on the first pass is re-checked before it pages.
+# Kills false alarms from container restarts/deploys; a real outage still fails all
+# attempts and alerts within the same cron cycle. Tunable via env.
+PROBE_ATTEMPTS = int(os.environ.get("PROBE_ATTEMPTS", "3"))   # total tries per failing endpoint
+RETRY_DELAY    = float(os.environ.get("PROBE_RETRY_DELAY", "5"))  # seconds between tries
 
 OK   = [200]
 REDIR= [301, 302, 308]
@@ -89,10 +94,22 @@ def ntfy(title, msg, priority, tags):
     except Exception: pass
 
 def main():
+    # Pass 1: probe everything once.
     fails = {}
+    by_name = {}
     for p in PROBES:
+        by_name[p[0]] = p
         r = probe(*p)
         if r: fails[p[0]] = r
+    # Confirm pass: anything that failed gets re-checked; a single good
+    # reply clears it. Only endpoints that fail EVERY attempt stay in fails.
+    for _attempt in range(PROBE_ATTEMPTS - 1):
+        if not fails: break
+        time.sleep(RETRY_DELAY)
+        for name in list(fails):
+            r = probe(*by_name[name])
+            if r: fails[name] = r      # still failing, keep latest reason
+            else: del fails[name]       # recovered on retry -> not a real outage
     cur = set(fails)
     try: prev = set(json.load(open(STATE)).get("failing", []))
     except Exception: prev = set()
