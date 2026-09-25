@@ -47,7 +47,6 @@ PROBES = [
   ("asscast.org",            "asscast.org",            "GET","/",None,OK,False,None),
   ("wopr.systems",           "wopr.systems",           "GET","/",None,OK,False,None),
   ("wopr.foundation",        "wopr.foundation",        "GET","/",None,OK,False,None),
-  ("project2028",            "project2028.wopr.systems","GET","/",None,OK,False,None),
   ("powerforthepeople",      "powerforthepeople.party","GET","/",None,OK,False,None),
   ("reactorai.app",          "reactorai.app",          "GET","/",None,OK,False,None),
   ("defconone.app",          "defconone.app",          "GET","/",None,OK,False,None),
@@ -57,7 +56,7 @@ PROBES = [
   ("mstdn.wopr.systems",     "mstdn.wopr.systems",     "GET","/health",None,OK,False,None),
   ("nostr-api relay",        "nostr-api.wopr.systems",  "GET","/",None,OK,False,None),
   ("falken.wopr.systems",    "falken.wopr.systems",    "GET","/",None,OK,False,None),
-  ("multiverse",             "multiverse.wopr.systems","GET","/",None,OK,False,None),
+  ("multiverse (auth-gated)","multiverse.wopr.systems","GET","/",None,REDIR,False,None),
 ]
 
 class _NoRedirect(urllib.request.HTTPRedirectHandler):
