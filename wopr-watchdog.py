@@ -21,6 +21,9 @@ MAX_HEARTBEAT_AGE_SECONDS = 900  # 15 min
 
 NO_AUTO_RESTART = {
     "sshd", "ssh", "nebula", "systemd-journald", "systemd-logind",
+    # ollama has its own systemd Restart=; the watchdog must NOT bounce it,
+    # or it kills GPU jobs mid-run (crashed the scheduler, failed ASScast 2026-09-26).
+    "ollama", "ollama.service",
 }
 
 logging.basicConfig(
