@@ -76,8 +76,25 @@ MEMORY_STATE_FILE = "/var/lib/wopr-support-plane-memory.json"
 # ========== ACTION LOGGING ==========
 ACTIONS_LOG_FILE = "/var/lib/wopr-support-plane-actions.json"
 ACTIONS_MAX_ENTRIES = 500
-SITREP_API_URL = "https://sitrep.wopr.systems/api/sp/actions"
-SITREP_API_TOKEN = "wopr-sp-actions-2026"
+# SITREP receiver. Nothing listens at sitrep.wopr.systems/api/sp/actions any more
+# (the site is a static page behind SSO), so reporting is off unless SITREP_API_URL
+# is set. The token comes from the environment or /etc/wopr/sitrep.token (Infisical
+# SITREP_API_TOKEN), never from this file: the old literal shipped in public
+# installer tarballs and was retired on 2026-10-05.
+SITREP_API_URL = os.environ.get("SITREP_API_URL", "").strip()
+
+
+def _sitrep_token():
+    v = os.environ.get("SITREP_API_TOKEN")
+    if v:
+        return v.strip()
+    try:
+        return Path("/etc/wopr/sitrep.token").read_text().strip()
+    except OSError:
+        return ""
+
+
+SITREP_API_TOKEN = _sitrep_token()
 
 
 # Services that should NEVER be auto-restarted
@@ -1332,8 +1349,10 @@ def log_action(action_type, target, reason, result, detail=""):
     except Exception as e:
         log.warning("Failed to write action log: %%s", e)
 
-    # Report to SITREP API (best effort, non-blocking)
+    # Report to SITREP API (best effort, non-blocking; off without a URL and token)
     try:
+        if not (SITREP_API_URL and SITREP_API_TOKEN):
+            raise RuntimeError("SITREP reporting not configured")
         data = json.dumps(entry).encode()
         req = urllib.request.Request(SITREP_API_URL, data=data)
         req.add_header("Content-Type", "application/json")
