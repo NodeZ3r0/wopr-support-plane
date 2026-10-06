@@ -93,6 +93,12 @@ def snapshot():
                  "owner": owner, "cmd": cmd, "addr": addr,
                  "all_owners": sorted(all_owners | ({container} if container else set()))}
         prev = cur.get(port)
+        if prev is not None:
+            # one port bound on several addresses (Proton Bridge on 127.0.0.1,
+            # its socat forwarder on the docker bridge IP) is held by every one
+            # of them - not by whichever row ss happens to list first
+            both = sorted(set(entry["all_owners"]) | set(prev["all_owners"]) | {owner, prev["owner"]})
+            entry["all_owners"] = prev["all_owners"] = both
         if prev is None or (prev["owner"] in ("docker-proxy", "") and owner):
             cur[port] = entry
     return cur
@@ -144,8 +150,9 @@ def main():
                 rec["last_conflict"] = key
         else:
             rec.pop("last_conflict", None)
-            # refresh the observed owner if no explicit 'expected' pin
-            if not rec.get("expected"):
+            # refresh the observed owner if no explicit 'expected' pin (and the
+            # recorded owner is really gone, so a shared port doesn't flip-flop)
+            if not rec.get("expected") and rec.get("owner") not in _holders:
                 rec["owner"] = e["owner"]; rec["proc"] = e["proc"]
                 rec["cmd"] = e["cmd"]; rec["container"] = e["container"]
 
