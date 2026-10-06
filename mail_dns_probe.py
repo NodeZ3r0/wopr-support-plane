@@ -27,7 +27,7 @@ Usage:
 Cron (root, on the Rig) -- add by hand when ready:
   */30 * * * * /usr/bin/python3 /opt/wopr/support-plane/mail_dns_probe.py >> /opt/wopr/support-plane/mail_dns_probe.log 2>&1
 """
-import argparse, json, os, subprocess, sys, time, urllib.request
+import argparse, fcntl, ipaddress, json, os, re, subprocess, sys, time, urllib.request
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 NTFY = "http://127.0.0.1:18081/wopr-alerts"
@@ -59,6 +59,11 @@ DB_SQL = ("select b.domain, coalesce(b.custom_domain,''), coalesce(host(b.instan
           "order by j.updated_at desc limit 1), '') "
           "from beacons b where b.status='active'")
 
+# DNS names only - a value starting with - + or @ would be read by dig as an option
+NAME_RE = re.compile(r"^(?=.{1,253}$)[A-Za-z0-9_](?:[A-Za-z0-9_.-]*[A-Za-z0-9])?$")
+# the DB being unreadable this many runs in a row (30 min each) pages once
+DB_DOWN_ALERT_RUNS = 6
+
 CHECKS = ("mail_a", "spf", "dkim", "dmarc", "ptr")
 HEAD = {"mail_a": "A", "spf": "SPF", "dkim": "DKIM", "dmarc": "DMARC", "ptr": "PTR"}
 
@@ -68,8 +73,9 @@ def ntfy(title, msg, prio, tags):
         req = urllib.request.Request(NTFY, data=msg.encode(), method="POST",
                                      headers={"Title": title, "Priority": prio, "Tags": tags})
         urllib.request.urlopen(req, timeout=10)
+        return True
     except Exception:
-        pass
+        return False
 
 
 def load_state():
@@ -106,10 +112,13 @@ def db_targets():
 def targets(state):
     rows = db_targets()
     src = "db"
-    if rows is None:  # tolerate DB failure: fall back to the last good list
+    if rows is None or (not rows and state.get("db_targets")):
+        # DB unreadable (or suddenly empty): fall back to the last good list
         rows, src = state.get("db_targets", []), "cached"
+        state["db_down_runs"] = state.get("db_down_runs", 0) + 1
     else:
         state["db_targets"] = rows
+        state["db_down_runs"] = 0
     seen = {t["domain"] for t in rows}
     return rows + [t for t in EXTRA_TARGETS if t["domain"] not in seen], src
 
@@ -117,7 +126,15 @@ def targets(state):
 def dig(name, rtype):
     """List of answer lines, or None if the lookup itself failed (resolver unreachable)."""
     args = ["dig", "+short", "+time=3", "+tries=2", "@" + RESOLVER]
-    args += ["-x", name] if rtype == "PTR" else [name, rtype]
+    if rtype == "PTR":
+        try:
+            args += ["-x", str(ipaddress.ip_address(name))]
+        except ValueError:
+            return None
+    else:
+        if not NAME_RE.match(name):
+            return None
+        args += ["-q", name, "-t", rtype]
     try:
         r = subprocess.run(args, capture_output=True, text=True, timeout=20)
     except Exception:
@@ -237,30 +254,45 @@ def main():
     a = ap.parse_args()
     quiet = a.once or a.dry_run
 
+    lock = open(STATE + ".lock", "a")
+    try:
+        fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+    except OSError:
+        print("mail_dns_probe: previous run still going, skipping")
+        return
     state = load_state()
     tlist, src = targets(state)
+    if src == "cached" and state.get("db_down_runs") == DB_DOWN_ALERT_RUNS and not quiet:
+        send("Mail DNS probe: control-plane DB unreadable",
+             "mail_dns_probe could not list beacons from wopr_cp for %d runs; it is checking "
+             "the last known list, so new beacons are not being checked." % DB_DOWN_ALERT_RUNS,
+             "default", "warning")
     res = run_checks(tlist)
     if a.verbose:
         print(table(tlist, res))
 
-    send = (lambda ti, m, p, tg: print("[would ntfy] %s (%s)\n%s" % (ti, p, m))) if a.dry_run else ntfy
+    send = (lambda ti, m, p, tg: print("[would ntfy] %s (%s)\n%s" % (ti, p, m)) or True) if a.dry_run else ntfy
     doms = state.setdefault("domains", {})
     summary = []
     for t in tlist:
         d = t["domain"]
         r = res[d]
-        if all(ok is None for ok, _ in r.values()):
-            summary.append("%s=?" % d)  # resolver trouble: don't move state
-            continue
         failing = [i for i in CHECKS if r[i][0] is False]
+        if not failing and any(ok is None for ok, _ in r.values()):
+            # some lookups errored and nothing definitely failed: a timed-out
+            # DKIM/PTR lookup is not a pass - don't clear an alert or set ever_ok
+            summary.append("%s=?" % d)
+            continue
         s = doms.get(d, {"fails": 0, "alerted": False, "ever_ok": False, "alerted_items": []})
         hosted = ours(d)
         if not failing:
+            still = False
             if s.get("alerted") and not a.once:
-                send("Mail DNS RECOVERED: " + d,
-                     "%s (%s) mail records are all correct again (A, SPF, DKIM s=%s, DMARC, PTR)."
-                     % (d, t["ip"], t["selector"]), "default", "white_check_mark,email")
-            doms[d] = {"fails": 0, "alerted": False, "ever_ok": True, "alerted_items": []}
+                still = not send("Mail DNS RECOVERED: " + d,
+                                 "%s (%s) mail records are all correct again (A, SPF, DKIM s=%s, DMARC, PTR)."
+                                 % (d, t["ip"], t["selector"]), "default", "white_check_mark,email")
+            # a RECOVERED that could not be sent is retried next run
+            doms[d] = {"fails": 0, "alerted": still, "ever_ok": True, "alerted_items": []}
             summary.append("%s=ok" % d)
             continue
         fails = s.get("fails", 0) + 1
@@ -269,23 +301,27 @@ def main():
         if eligible and not a.once and (not alerted or items != failing):
             lines = ["- " + explain(i, t, r[i][1]) for i in failing]
             who = "" if hosted else "\nCustom domain we don't host: the customer must add these records."
-            send("Mail DNS BROKEN: " + d,
-                 "%s (%s, %s) will fail mail delivery checks. Wrong for %d runs:\n%s%s"
-                 % (d, t["ip"], t.get("label", ""), fails, "\n".join(lines), who),
-                 "high" if hosted else "default", "email,warning")
-            alerted, items = True, failing
-        if (AUTO_REPUBLISH and not quiet and hosted and "dkim" in failing
+            if send("Mail DNS BROKEN: " + d,
+                    "%s (%s, %s) will fail mail delivery checks. Wrong for %d runs:\n%s%s"
+                    % (d, t["ip"], t.get("label", ""), fails, "\n".join(lines), who),
+                    "high" if hosted else "default", "email,warning"):
+                alerted, items = True, failing  # unsent -> retried next run
+        if (AUTO_REPUBLISH and not quiet and hosted and "dkim" in failing and t not in EXTRA_TARGETS
                 and fails >= FAIL_THRESHOLD and not s.get("republished")):
             s["republished"] = republish(t)
         doms[d] = {"fails": fails, "alerted": alerted, "ever_ok": s.get("ever_ok", False),
                    "alerted_items": items, "republished": s.get("republished", False)}
         summary.append("%s=FAIL(%s)" % (d, ",".join(HEAD[i] for i in failing)))
 
-    for d in [d for d in doms if d not in {t["domain"] for t in tlist}]:
-        doms.pop(d)  # beacon gone/decommissioned: forget it
+    if src == "db":
+        for d in [d for d in doms if d not in {t["domain"] for t in tlist}]:
+            doms.pop(d)  # beacon gone/decommissioned: forget it
     if not quiet:
         try:
-            json.dump(state, open(STATE, "w"), indent=1)
+            tmp = STATE + ".tmp"
+            with open(tmp, "w") as fh:
+                json.dump(state, fh, indent=1)
+            os.replace(tmp, STATE)  # a crash mid-write never leaves a truncated state
         except Exception:
             pass
     print("%s mail_dns_probe targets=%d(%s) %s" % (time.strftime("%Y-%m-%d %H:%M:%S"),
