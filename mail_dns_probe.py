@@ -253,6 +253,8 @@ def main():
     ap.add_argument("--dry-run", action="store_true", help="print alerts instead of sending; no state write")
     a = ap.parse_args()
     quiet = a.once or a.dry_run
+    # defined before anything can page (the DB-down alert below uses it)
+    send = (lambda ti, m, p, tg: print("[would ntfy] %s (%s)\n%s" % (ti, p, m)) or True) if a.dry_run else ntfy
 
     lock = open(STATE + ".lock", "a")
     try:
@@ -271,7 +273,6 @@ def main():
     if a.verbose:
         print(table(tlist, res))
 
-    send = (lambda ti, m, p, tg: print("[would ntfy] %s (%s)\n%s" % (ti, p, m)) or True) if a.dry_run else ntfy
     doms = state.setdefault("domains", {})
     summary = []
     for t in tlist:
