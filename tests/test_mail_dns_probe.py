@@ -66,4 +66,15 @@ check("... and goes out once ntfy is back", s["alerted"] and any("BROKEN" in x f
 check("dig refuses a name that would be an option", p.dig("-f/etc/shadow", "TXT") is None
       and p.dig("@1.2.3.4", "TXT") is None and p.dig("not-an-ip", "PTR") is None)
 
+# WOPR-070: the DB-down page must not crash the run (send was used before it was set)
+p.db_targets = lambda: None
+crashed = None
+try:
+    for _ in range(p.DB_DOWN_ALERT_RUNS):
+        run()
+except Exception as e:
+    crashed = repr(e)
+check("control-plane DB unreadable %d runs -> page sent, run does not crash (%s)"
+      % (p.DB_DOWN_ALERT_RUNS, crashed), crashed is None and any("DB unreadable" in x for x in sent))
+
 sys.exit(1 if fails else 0)
