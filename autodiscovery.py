@@ -663,8 +663,16 @@ def build_manifest(runtime):
         if bind.startswith("172.") or bind.startswith("fd"):
             continue
 
-        # Skip non-service host processes that bind many ephemeral ports (noise)
-        if info.get("process", "") in ("rygel", "containerd", "forgejo-runner", "mongod"):
+        # Skip non-service host processes that bind many ephemeral ports (noise).
+        # Ollama's llama-server workers use temporary high ports and must not be
+        # persisted as health endpoints; Ollama's stable API remains on :11434.
+        if info.get("process", "") in (
+            "rygel",
+            "containerd",
+            "forgejo-runner",
+            "mongod",
+            "llama-server",
+        ):
             continue
 
         # Flink's JVMs bind ~30 random internal ports (RPC, BLOB, shuffle, PyFlink). HTTP probes
