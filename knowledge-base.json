@@ -2,9 +2,9 @@
   "_meta": {
     "version": "3.0",
     "description": "WOPR Support Plane Knowledge Base v3.0 - Known issues, patterns, remediation, log noise filters",
-    "updated": "2026-07-29",
+    "updated": "2026-09-01",
     "format": "Each entry has a pattern (what the support plane detects), root_cause (why it happens), fix (automated remediation), and notes (context for AI reasoning)",
-    "auto_synced": "2026-07-29T06:26:09.839382"
+    "auto_synced": "2026-09-01T09:18:30.704249"
   },
   "service_issues": [
     {
@@ -462,6 +462,46 @@
       "root_cause": "",
       "fix": "systemctl restart defcon-backend",
       "notes": "Auto-learned by support plane. Success rate: 3/5. First seen: 2026-07-10T13:36:36.860491"
+    },
+    {
+      "id": "AUTO-029",
+      "pattern": "backend_unhealthy on http://127.0.0.1:18082/",
+      "host": "nodez3ro",
+      "root_cause": "",
+      "fix": "systemctl restart defcon-backend",
+      "notes": "Auto-learned by support plane. Success rate: 3/4. First seen: 2026-07-28T08:24:34.917491"
+    },
+    {
+      "id": "AUTO-030",
+      "pattern": "backend_unhealthy on http://127.0.0.1:18100/",
+      "host": "nodez3ro",
+      "root_cause": "",
+      "fix": "systemctl restart defcon-backend",
+      "notes": "Auto-learned by support plane. Success rate: 3/5. First seen: 2026-08-10T13:00:10.616039"
+    },
+    {
+      "id": "AUTO-031",
+      "pattern": "backend_unhealthy on http://127.0.0.1:5042/",
+      "host": "nodez3ro",
+      "root_cause": "",
+      "fix": "systemctl restart defcon-backend",
+      "notes": "Auto-learned by support plane. Success rate: 3/4. First seen: 2026-07-07T07:06:12.989191"
+    },
+    {
+      "id": "AUTO-032",
+      "pattern": "backend_unhealthy on http://127.0.0.1:29001/",
+      "host": "nodez3ro",
+      "root_cause": "",
+      "fix": "systemctl restart defcon-backend",
+      "notes": "Auto-learned by support plane. Success rate: 3/5. First seen: 2026-07-07T07:06:13.160696"
+    },
+    {
+      "id": "AUTO-033",
+      "pattern": "zombie_processes on system",
+      "host": "nodez3ro",
+      "root_cause": "",
+      "fix": "systemctl restart bluetooth",
+      "notes": "Auto-learned by support plane. Success rate: 3/3. First seen: 2026-07-02T14:57:30.098197"
     }
   ],
   "theme_and_branding": [
