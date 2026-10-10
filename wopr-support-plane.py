@@ -110,6 +110,7 @@ SERVICE_IGNORE = {
     "samba-ad-dc",
     "snap.etcd.etcd", "snap.microk8s.daemon-apiserver-proxy",
     "snap.microk8s.daemon-etcd", "snap.microk8s.daemon-flanneld",
+    "snap.wekan.mongodb", "snap.wekan.wekan", "snap.wekan.ferretdb", "snap.wekan.caddy",  # WeKan down: snap auto-refresh left DB too old for bundled Mongo; data at /var/snap/wekan/common preserved, not monitored until revived
     "sssd", "sssd-kcm",
     "thermald",
     "tpm-udev", "tpm2-abrmd",
