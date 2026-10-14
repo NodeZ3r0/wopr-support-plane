@@ -1116,6 +1116,27 @@ def tier1_check_services():
     return issues
 
 
+_ONESHOT_EXIT_RE = re.compile(r"Exited \((\d+)\)")
+
+
+def _is_completed_oneshot(name, status, runtime):
+    """True if a container exited cleanly (code 0) and has no restart policy -
+    a finished one-shot job (DB migration, bucket init, etc.) that is meant to
+    stay stopped, not a crash. Used to avoid pointlessly 'restarting' such jobs
+    and reporting a false container_restart_failed."""
+    m = _ONESHOT_EXIT_RE.search(status or "")
+    if not m or m.group(1) != "0":
+        return False
+    try:
+        r = subprocess.run(
+            [runtime, "inspect", "-f", "{{.HostConfig.RestartPolicy.Name}}", name],
+            capture_output=True, text=True, timeout=10,
+        )
+        return (r.stdout or "").strip().lower() in ("", "no")
+    except Exception:
+        return False
+
+
 def tier1_check_containers():
     """Check all containers, restart stopped/unhealthy ones. Respects dependency order."""
     issues = []
@@ -1149,6 +1170,14 @@ def tier1_check_containers():
         m_ctr = manifest_containers.get(name, {})
 
         if not c["running"]:
+            # Completed one-shot jobs (migrations, bucket init) exit cleanly with no
+            # restart policy and are SUPPOSED to be stopped - don't "restart" them
+            # (that just re-runs the job and reports a false failure). A failed one-shot
+            # (non-zero exit) is NOT skipped and still alerts; a dependent long-running
+            # service failing to start is caught by its own check.
+            if _is_completed_oneshot(name, c.get("status", ""), runtime):
+                log.info("T1: Container %s is a completed one-shot (clean exit, no restart policy) - skipping", name)
+                continue
             # Check if this container is in a restart group that was already handled
             restart_group = m_ctr.get("restart_group", [])
             group_key = tuple(sorted(restart_group)) if restart_group else (name,)
