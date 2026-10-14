@@ -6,3 +6,7 @@ After=network.target
 Type=oneshot
 User=nodez3r0
 ExecStart=/usr/bin/python3 /opt/wopr/support-plane/asscast_watchdog.py
+# The watchdog Popen()s the pipeline rerun and exits in <1s. The default
+# KillMode=control-group killed that rerun as soon as this oneshot finished
+# (2026-10-13: rerun stamped 08:00, never logged a line). Kill only the watchdog.
+KillMode=process
