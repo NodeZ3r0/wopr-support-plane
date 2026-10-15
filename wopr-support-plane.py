@@ -102,6 +102,12 @@ NO_AUTO_RESTART = {
     "sshd", "ssh", "nebula", "systemd-journald", "systemd-logind",
 }
 
+# Services the GPU scheduler (/opt/gpu-scheduler) stops, masks and restarts itself:
+# it stops Ollama on purpose while a SCRIPT job holds the GPU. Restarting it here
+# fought the scheduler mid-job (6 restarts 10-12..10-14, one 67 s after a 15 GB
+# job started), so T1 leaves these alone entirely. WOPR-113.
+SCHEDULER_MANAGED = {"ollama"}
+
 # Services to completely ignore - hardware/platform services that do not apply
 SERVICE_IGNORE = {
     "alsa-state", "alsa-restore", "alsa-utils",
@@ -1071,6 +1077,10 @@ def tier1_check_services():
 
             # Skip services in the ignore list (hardware/platform that don't apply)
             if svc["name"] in SERVICE_IGNORE or svc_base in SERVICE_IGNORE:
+                continue
+
+            if svc_base in SCHEDULER_MANAGED:
+                log.debug("T1: %s is %s/%s - managed by the GPU scheduler, not touching", svc["name"], svc["active"], svc["sub"])
                 continue
 
             # Check manifest for protected status
@@ -2322,7 +2332,6 @@ REMEDIATION_STATE_FILE = "/var/lib/wopr-support-plane-remediation-state.json"
 MAX_TIER = 3
 MAX_ATTEMPTS_PER_TIER = 5
 OLLAMA_URL = "http://10.0.0.3:11434"  # homerig GPU via Nebula
-OLLAMA_FALLBACK_URL = "http://159.203.138.7:11434"  # nodez3r0 fallback (CPU-only)
 
 _ollama_available = False
 _ollama_checked_at = 0
@@ -2331,8 +2340,10 @@ _models_checked_at = 0
 
 
 def _check_ollama():
-    """Check if Ollama is available (cached 5 min). Falls back if primary fails."""
-    global _ollama_available, _ollama_checked_at, OLLAMA_URL
+    """Check if Ollama is available (cached 5 min). There is no fallback: the
+    old one pointed at a DigitalOcean box that no longer exists, and a single
+    failed check switched OLLAMA_URL to it for good. WOPR-113."""
+    global _ollama_available, _ollama_checked_at
     now = time.time()
     if now - _ollama_checked_at < 300:
         return _ollama_available
@@ -2341,19 +2352,6 @@ def _check_ollama():
         urllib.request.urlopen(req, timeout=5)
         _ollama_available = True
     except Exception:
-        # Try fallback Ollama URL if primary failed
-        _fb_url = globals().get("OLLAMA_FALLBACK_URL", "")
-        if _fb_url and _fb_url != OLLAMA_URL:
-            try:
-                req2 = urllib.request.Request(_fb_url + "/api/tags", method="GET")
-                urllib.request.urlopen(req2, timeout=5)
-                log.warning("Ollama primary (%s) failed, switching to fallback: %s", OLLAMA_URL, _fb_url)
-                OLLAMA_URL = _fb_url
-                _ollama_available = True
-                _ollama_checked_at = now
-                return True
-            except Exception:
-                pass
         _ollama_available = False
         if _ollama_checked_at == 0:
             log.info("REMEDIATION: Ollama not available")
