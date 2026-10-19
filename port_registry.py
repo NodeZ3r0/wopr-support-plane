@@ -153,6 +153,16 @@ def main():
             # refresh the observed owner if no explicit 'expected' pin (and the
             # recorded owner is really gone, so a shared port doesn't flip-flop)
             if not rec.get("expected") and rec.get("owner") not in _holders:
+                # A host process <-> Docker container change is not the routine
+                # container/docker-proxy flip: report it once instead of silently
+                # relearning (Oct 2026: ArtCraft's filer took wopr-mode-api's 8899
+                # while the API was down, and nobody heard about it for 5 days).
+                was_docker = rec.get("proc") == "docker-proxy" or bool(rec.get("container"))
+                now_docker = e["proc"] == "docker-proxy" or bool(e.get("container"))
+                if was_docker != now_docker:
+                    conflicts.append("port %s: changed hands from '%s' to '%s' (%s) - if that is "
+                                     "right, pin \"expected\" in %s"
+                                     % (port, rec.get("owner"), e["owner"], e["cmd"][:60], DB))
                 rec["owner"] = e["owner"]; rec["proc"] = e["proc"]
                 rec["cmd"] = e["cmd"]; rec["container"] = e["container"]
 
