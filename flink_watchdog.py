@@ -180,6 +180,12 @@ def resubmit():
 
 
 def main():
+    # flink.service runs flink_submit_on_start.sh as ExecStartPost (WOPR-125); while that runs
+    # the unit is 'activating' and 0 jobs is expected, so don't resubmit or alert over it.
+    rc, state = sh("systemctl show -p ActiveState --value flink.service", 15)
+    if state.strip() in ("activating", "reloading", "deactivating"):
+        print(datetime.now().strftime("%F %T"), "flink.service", state.strip(), "- start hook owns it, skipping")
+        return
     st = load_state()
     now = time.time()
     action = None
@@ -217,7 +223,9 @@ def main():
                 action = ("FLINK no workers — restart FAILED",
                           "Flink 2.2.0 JobManager up but 0 TaskManagers/slots; auto-restart did NOT bring a worker back (still 0 slots). Manual check needed.")
             else:
-                after2, ok = resubmit()
+                after2 = jobs_running() or 0
+                if after2 < MIN_JOBS:        # start hook normally resubmits; only step in if it didn't
+                    after2, ok = resubmit()
                 cause = last_root_cause()
                 deaths = [d for d in st.get("tm_deaths", []) if now - d < REPEAT_WINDOW_S] + [now]
                 st["tm_deaths"] = deaths
