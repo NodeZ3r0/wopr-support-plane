@@ -4,11 +4,13 @@ Runs on the Rig (10.0.0.3) via root cron */5. Alerts after 2 consecutive fails (
 import subprocess, json, os, urllib.request
 NTFY = "http://127.0.0.1:18081/wopr-alerts"
 STATE = "/opt/wopr/support-plane/mesh_probe.state.json"
-# 24/7 server nodes only (NOT the laptop 10.0.0.10 — "asleep" is not a fault)
+# 24/7 server nodes only (NOT the laptop 10.0.0.10 — "asleep" is not a fault).
+# 10.0.0.2 / 10.0.0.4 / 10.0.0.5 were the old DO/Hetzner VPSes: gone, never probe them.
+# woprtest02 (10.0.0.100, /etc/nebula/allocations.json) did not answer on 2026-10-25;
+# add it back here once it is on the mesh again.
 NODES = {
-    "10.0.0.2": "nodez3r0 VPS",
-    "10.0.0.4": "micro-reactor",
-    "10.0.0.5": "hetzner",
+    "10.0.0.20": "Bear's beacon",   # Contabo 144.126.143.227
+    "10.0.0.101": "BINK beacon",
 }
 FAIL_THRESHOLD = 2  # consecutive */5 misses before alerting (~10 min)
 
@@ -28,6 +30,8 @@ state = {}
 if os.path.exists(STATE):
     try: state = json.load(open(STATE))
     except Exception: state = {}
+# keep state only for nodes still probed, so a removed node's counters do not linger
+state = {ip: s for ip, s in state.items() if ip in NODES}
 
 for ip, name in NODES.items():
     s = state.get(ip, {"fails": 0, "alerted": False, "ever_up": False})
