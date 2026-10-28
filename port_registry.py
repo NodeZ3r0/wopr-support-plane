@@ -138,10 +138,13 @@ def main():
         # the socket means postfix still owns it. netdata is the same: its plugins
         # inherit the StatsD socket (:8125), and a restart can leave netdata itself
         # holding it (10-28: needrestart bounced netdata -> "[PORTS] 8125" text).
+        # Newer Node names its main thread, so a restarted node server shows up as
+        # "MainThread" / "node-MainThread" - still the same node process.
         _FAMILIES = [{"master", "smtpd", "pickup", "qmgr", "cleanup", "tlsmgr",
                       "anvil", "scache", "trivial-rewrite", "bounce", "local"},
                      {"netdata", "apps.plugin", "go.d.plugin", "python.d.plugin", "ebpf.plugin",
-                      "debugfs.plugin", "charts.d.plugin", "cgroup-network"}]
+                      "debugfs.plugin", "charts.d.plugin", "cgroup-network"},
+                     {"node", "MainThread", "node-MainThread"}]
         _holders = set(e.get("all_owners") or [e["owner"]])
         # netdata helpers like tc-qos-helper.sh run as plain "bash"
         if "/netdata/plugins.d/" in (e.get("cmd") or ""):

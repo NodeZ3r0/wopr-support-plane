@@ -67,6 +67,13 @@ class OwnerChange(unittest.TestCase):
                                 {"8125": held("bash", cmd="bash /home/someone/listen.sh")})
         self.assertEqual(len(sent), 1)
 
+    def test_node_main_thread_name_is_node(self):
+        # 10-28 11:18: a node server restarted on :3101 under Node's new thread name
+        sent, _ = self.run_once({"3101": self.rec("node"), "8581": self.rec("node")},
+                                {"3101": held("node-MainThread", cmd="node server.js"),
+                                 "8581": held("MainThread", cmd="node dist/main.mjs")})
+        self.assertEqual(sent, [])
+
     def test_postfix_family_unchanged(self):
         sent, _ = self.run_once({"25": self.rec("master", expected="master")},
                                 {"25": held("smtpd")})
