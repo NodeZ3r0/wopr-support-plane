@@ -135,10 +135,17 @@ def main():
                       or expected == "docker-proxy" or (_pnum >= 32768 and not rec.get("expected")))
         # CONFLICT: a manually-expected owner, or the previously-recorded owner, changed
         # postfix runs a master with a family of children; any of them holding
-        # the socket means postfix still owns it.
+        # the socket means postfix still owns it. netdata is the same: its plugins
+        # inherit the StatsD socket (:8125), and a restart can leave netdata itself
+        # holding it (10-28: needrestart bounced netdata -> "[PORTS] 8125" text).
         _FAMILIES = [{"master", "smtpd", "pickup", "qmgr", "cleanup", "tlsmgr",
-                      "anvil", "scache", "trivial-rewrite", "bounce", "local"}]
+                      "anvil", "scache", "trivial-rewrite", "bounce", "local"},
+                     {"netdata", "apps.plugin", "go.d.plugin", "python.d.plugin", "ebpf.plugin",
+                      "debugfs.plugin", "charts.d.plugin", "cgroup-network"}]
         _holders = set(e.get("all_owners") or [e["owner"]])
+        # netdata helpers like tc-qos-helper.sh run as plain "bash"
+        if "/netdata/plugins.d/" in (e.get("cmd") or ""):
+            _holders.add("netdata")
         _same_family = any(expected in fam and _holders & fam for fam in _FAMILIES)
         _any_match = expected in _holders
         if (e["owner"] and expected and e["owner"] != expected
