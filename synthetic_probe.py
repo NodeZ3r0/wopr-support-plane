@@ -37,7 +37,7 @@ PROBES = [
   ("lovejoos.lgbt redir",    "lovejoos.lgbt",          "GET","/",None,REDIR,False,None),
   ("artjoos.art",            "artjoos.art",            "GET","/",None,OK,False,None),
   ("thedudeabides.shop",     "thedudeabides.shop",     "GET","/",None,OK,False,None),
-  ("dudeabides.wopr.systems","dudeabides.wopr.systems","GET","/",None,OK,False,None),
+  ("dudeabides.wopr.systems","dudeabides.wopr.systems","GET","/health/",None,OK,False,None),
   ("commiesocialists.org",   "commiesocialists.org",   "GET","/",None,OK,False,None),
   ("shop.commiesocialists",  "shop.commiesocialists.org","GET","/",None,REDIR,False,None),
   ("barterra.store",         "barterra.store",         "GET","/",None,OK,False,None),
