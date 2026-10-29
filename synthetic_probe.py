@@ -34,7 +34,7 @@ PROBES = [
   ("brainjoos.com",          "brainjoos.com",          "GET","/",None,OK,False,None),
   ("brainjoos.wopr.systems", "brainjoos.wopr.systems", "GET","/",None,OK,False,None),
   ("lovejoos.com",           "lovejoos.com",           "GET","/",None,OK,False,None),
-  ("lovejoos.lgbt redir",    "lovejoos.lgbt",          "GET","/",None,REDIR,False,None),
+  ("lovejoos.lgbt",          "lovejoos.lgbt",          "GET","/",None,OK,False,None),  # own site since 09-30, no redirect
   ("artjoos.art",            "artjoos.art",            "GET","/",None,OK,False,None),
   ("thedudeabides.shop",     "thedudeabides.shop",     "GET","/",None,OK,False,None),
   ("dudeabides.wopr.systems","dudeabides.wopr.systems","GET","/health/",None,OK,False,None),
