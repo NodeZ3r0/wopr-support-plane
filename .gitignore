@@ -46,3 +46,5 @@ weights/
 *.pre-*
 *state*.json
 *.state.json
+services-manifest.json.prev
+*.tmp

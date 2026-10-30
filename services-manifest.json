@@ -1,62 +1,27 @@
 {
-  "version": "5.0-autodiscovery",
-  "host": "nodez3ro",
-  "generated": "2026-10-30T08:10:19.699563",
+  "version": "prod1-strict-1",
+  "host": "prod-1",
+  "generated": "2026-10-30T14:25:29",
+  "generator": "prod1_manifest.py (WOPR-260)",
+  "strict_manifest": true,
+  "autodiscovery": false,
+  "llm_remediation": false,
   "container_runtime": "docker",
-  "autodiscovery": true,
+  "alerts": {
+    "ntfy_url": "http://127.0.0.1:18081",
+    "topic": "wopr-alerts",
+    "urgent_topic": "wopr-texts",
+    "defcon2_email": false,
+    "_note": "DEFCON-1: mail + wopr-texts priority 5. DEFCON-2: wopr-alerts only (the alert forwarder decides what becomes a text); its mail stays muted as on the Rig (WOPR-175)."
+  },
+  "mail_units": [
+    "postfix",
+    "opendkim",
+    "protonmail-bridge"
+  ],
   "services": [
     {
-      "name": "accounts-daemon",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "alsa-restore",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "alsa-state",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "anacron",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "apparmor",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "apport",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "atd",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "\u25cf",
-      "type": "systemd",
-      "critical": false
-    },
-    {
       "name": "authentik-logtail",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "avahi-daemon",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "backlot",
       "type": "systemd",
       "critical": false
     },
@@ -66,52 +31,7 @@
       "critical": false
     },
     {
-      "name": "blk-availability",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "blueman-mechanism",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "bluetooth",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "bolt",
-      "type": "systemd",
-      "critical": false
-    },
-    {
       "name": "bugtrkr",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "caddy",
-      "type": "systemd",
-      "critical": true
-    },
-    {
-      "name": "chatterbox-ui",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "cloudflared",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "colord",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "comfyui",
       "type": "systemd",
       "critical": false
     },
@@ -128,12 +48,7 @@
     {
       "name": "cron",
       "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "crowdsec-firewall-bouncer",
-      "type": "systemd",
-      "critical": false
+      "critical": true
     },
     {
       "name": "crowdsec",
@@ -141,44 +56,14 @@
       "critical": true
     },
     {
-      "name": "cups-browsed",
+      "name": "crowdsec-firewall-bouncer",
       "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "cups",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "defcon-backend",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "defcon-ui",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "dm-event",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "dmesg",
-      "type": "systemd",
-      "critical": false
+      "critical": true
     },
     {
       "name": "docker",
       "type": "systemd",
       "critical": true
-    },
-    {
-      "name": "dude-saleor-secrets",
-      "type": "systemd",
-      "critical": false
     },
     {
       "name": "dudeabides-og-prerender",
@@ -191,159 +76,16 @@
       "critical": false
     },
     {
-      "name": "epmd",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "fail2ban",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "falken-canary-monitor",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "finalrd",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "flink",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "folkmoot-ccm",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "forgejo-runner",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "forgejo",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "fwupd",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "gdm",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "gnome-remote-desktop",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "gpu-gatekeeper",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "gpu-scheduler",
-      "type": "systemd",
-      "critical": true
-    },
-    {
-      "name": "grc-api",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "group-admin-daemon",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "haveged",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "iopaint",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "iscsid",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "kafka",
-      "type": "systemd",
-      "critical": true
-    },
-    {
-      "name": "kerneloops",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "lm-sensors",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "lunk-review",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "lvm2-lvmpolld",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "lvm2-monitor",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "mcp-server",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "mcp",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "ModemManager",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "mosquitto-authfail",
-      "type": "systemd",
-      "critical": false
-    },
-    {
       "name": "mosquitto",
       "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "multipathd",
-      "type": "systemd",
-      "critical": false
+      "critical": true
     },
     {
       "name": "nebula",
       "type": "systemd",
-      "critical": true
+      "critical": true,
+      "mesh": true,
+      "note": "lighthouse: only a plain systemctl restart when it is down; /etc/nebula never touched"
     },
     {
       "name": "nedry-dashboard",
@@ -356,497 +98,22 @@
       "critical": false
     },
     {
-      "name": "nedry-trap",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "netdata",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "networkd-dispatcher",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "NetworkManager-wait-online",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "NetworkManager",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "nmbd",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "nodemin",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "noip2",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "nvidia-persistenced",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "ollama",
+      "name": "opendkim",
       "type": "systemd",
       "critical": true
     },
     {
-      "name": "open-vm-tools",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "opendkim",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "openvpn",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "pftp-flask",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "polkit",
-      "type": "systemd",
-      "critical": false
-    },
-    {
       "name": "postfix",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "postfix@-",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "postgresql",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "postgresql@16-main",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "power-profiles-daemon",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "printful-notifications",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "project2032-outreach",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "prometheus-node-exporter",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "protonbridge-fwd",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "protonmail-bridge",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "protovision-consumer",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "qemu-kvm",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "rabbitmq-server",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "rag",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "reactor-backend",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "reactor-bridge",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "reactor-ctx-adapter",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "reactor-mcpo",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "redis-server",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "rig-comfyui-bridge",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "rsyslog",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "rtkit-daemon",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "samba-ad-dc",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "secret-drop",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "setvtrgb",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "shopify-enrichment",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "smartmontools",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "smbd",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "snap.canonical-livepatch.canonical-livepatchd",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "snap.etcd.etcd",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "snap.keepalived.daemon",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "snap.microk8s.daemon-apiserver-kicker",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "snap.microk8s.daemon-apiserver-proxy",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "snap.microk8s.daemon-cluster-agent",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "snap.microk8s.daemon-containerd",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "snap.microk8s.daemon-etcd",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "snap.microk8s.daemon-flanneld",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "snap.microk8s.daemon-k8s-dqlite",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "snap.microk8s.daemon-kubelite",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "snap.prometheus.prometheus",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "snap.sabnzbd.sabnzbd",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "snap.wekan.ferretdb",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "snap.wekan.mongodb",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "snap.wekan.wekan",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "snapd.apparmor",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "snapd.seeded",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "snapd",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "ssh",
       "type": "systemd",
       "critical": true
     },
     {
       "name": "sso-bridge",
       "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "sso-notifications",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "sssd-autofs",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "sssd-nss",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "sssd-pac",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "sssd-pam",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "sssd-ssh",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "sssd-sudo",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "sssd",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "stonesoup-intake",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "swarmui",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "switcheroo-control",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "sysstat",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "thermald",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "tiktok-poster",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "tinyproxy",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "tor",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "tor@default",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "tpm-udev",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "ubuntu-advantage",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "udisks2",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "ufw",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "unattended-upgrades",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "upower",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "user-runtime-dir@1000",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "uuidd",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "vgauth",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "wazuh-agent",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "whoopsie",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "wopr-alert-sms",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "wopr-allies",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "wopr-control-plane",
-      "type": "systemd",
       "critical": true
     },
     {
-      "name": "wopr-deploy-webhook",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "wopr-falken-pipeline",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "wopr-falken-web",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "wopr-form",
+      "name": "ufw",
       "type": "systemd",
       "critical": false
     },
@@ -856,5725 +123,686 @@
       "critical": false
     },
     {
-      "name": "wopr-lighthouse-pg",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "wopr-log-sentinel",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "wopr-mesh-bridge",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "wopr-nodez3r0",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "wopr-nostr-health",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "wopr-rag-ui",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "wopr-seo-proxy",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "wopr-serp-worker",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "wopr-sms-bridge",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "wopr-sms-gateway",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "wopr-sms-proxy",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "wopr-social-monitor",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "wopr-sp-autodiscovery",
-      "type": "systemd",
-      "critical": false
-    },
-    {
       "name": "wopr-sp-metrics",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "wopr-stats",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "wopr-stream-proxy",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "wopr-support-plane",
-      "type": "systemd",
-      "critical": true
-    },
-    {
-      "name": "wopr-tracking-webhook",
       "type": "systemd",
       "critical": false
     },
     {
       "name": "wopr-user-registry",
       "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "wopr-web",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "wopr-yourspace-fed-wtprn",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "wopr-yourspace-fed-you",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "wopr-yourspace-fed",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "wopr",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "wpa_supplicant",
-      "type": "systemd",
-      "critical": false
+      "critical": true
     }
   ],
   "containers": [
     {
-      "name": "wopr-sso-redis",
-      "image": "redis:8-alpine",
-      "critical": false
-    },
-    {
-      "name": "barter-web-1",
-      "image": "barter-web:latest",
-      "critical": false
-    },
-    {
-      "name": "saleor-worker-dude",
-      "image": "ghcr.io/saleor/saleor:3.23",
-      "critical": false
-    },
-    {
-      "name": "saleor-api-dude",
-      "image": "ghcr.io/saleor/saleor:3.23",
-      "critical": false
-    },
-    {
-      "name": "n8n",
-      "image": "n8nio/n8n:latest",
-      "critical": false
-    },
-    {
-      "name": "searxng",
-      "image": "searxng/searxng:latest",
-      "critical": false
-    },
-    {
-      "name": "crowdsec-dashboard-metabase-1",
-      "image": "metabase/metabase:latest",
-      "critical": false
-    },
-    {
-      "name": "serpbear",
-      "image": "wopr-local/serpbear-latest:node-22.23.4",
-      "critical": false
-    },
-    {
-      "name": "mastodon-streaming",
-      "image": "wopr-local/mastodon-streaming-v4.7.3:node-24.22.1",
-      "critical": false
-    },
-    {
-      "name": "secondbrain-api",
-      "image": "protovision-secondbrain-api",
-      "critical": false
-    },
-    {
-      "name": "artjoos-artjoos-federation-1",
-      "image": "wopr-systems/artjoos-federation:latest",
-      "critical": false
-    },
-    {
-      "name": "artjoos-artjoos-provenance-1",
-      "image": "wopr-systems/artjoos-provenance:latest",
-      "critical": false
-    },
-    {
-      "name": "artjoos-artjoos-commissions-1",
-      "image": "wopr-systems/artjoos-commissions:latest",
-      "critical": false
-    },
-    {
-      "name": "artjoos-artjoos-analytics-1",
-      "image": "wopr-systems/artjoos-analytics:latest",
-      "critical": false
-    },
-    {
-      "name": "artjoos-artjoos-verification-1",
-      "image": "wopr-systems/artjoos-verification:latest",
-      "critical": false
-    },
-    {
-      "name": "artjoos-artjoos-storefront-1",
-      "image": "wopr-systems/artjoos-storefront:latest",
-      "critical": false
-    },
-    {
-      "name": "open-webui",
-      "image": "ghcr.io/open-webui/open-webui:main",
-      "critical": false
-    },
-    {
-      "name": "castopod-mariadb",
-      "image": "mariadb:13.0",
-      "critical": false
-    },
-    {
-      "name": "buylocal",
-      "image": "buylocal-buylocal:latest",
-      "critical": false
-    },
-    {
-      "name": "wopr-multiverse",
-      "image": "wopr-multiverse-multiverse",
-      "critical": false
-    },
-    {
-      "name": "printful-sync-printful-sync-1",
-      "image": "printful-sync-printful-sync",
-      "critical": false
-    },
-    {
-      "name": "noise-lab",
-      "image": "noise-lab:latest",
-      "critical": false
-    },
-    {
-      "name": "binkerd-us",
-      "image": "binkerd-us:latest",
-      "critical": false
-    },
-    {
-      "name": "wopr-systems-preview",
-      "image": "wopr-systems-preview:latest",
-      "critical": false
-    },
-    {
-      "name": "wopr-matrix-onboard",
-      "image": "matrix-onboard-matrix-onboard:latest",
-      "critical": false
-    },
-    {
-      "name": "matrix-meshbot",
-      "image": "matrix-mqtt-bridge-meshbot:latest",
-      "critical": false
-    },
-    {
-      "name": "matrix-synapse",
-      "image": "matrix-synapse-wopr:latest",
-      "critical": false
-    },
-    {
-      "name": "barter-scanner-1",
-      "image": "barter-scanner:latest",
-      "critical": false
-    },
-    {
-      "name": "lovejoos-api",
-      "image": "registry.wopr.systems/lovejoos/api:latest",
-      "critical": false
-    },
-    {
-      "name": "sst-backend",
-      "image": "statestreettheater-backend",
-      "critical": false
-    },
-    {
-      "name": "ward6-vote-api",
-      "image": "ward6-vote-api:latest",
-      "critical": false
-    },
-    {
-      "name": "nostr-toolkit",
-      "image": "nostr-toolkit-nostr-toolkit",
-      "critical": false
-    },
-    {
-      "name": "adams-dsa-folkmoot-api",
-      "image": "adams-dsa-folkmoot-api:latest",
-      "critical": false
-    },
-    {
-      "name": "foundation-folkmoot-folkmoot-api-1",
-      "image": "foundation-folkmoot-folkmoot-api",
-      "critical": false
-    },
-    {
-      "name": "folkmoot-backend-1",
-      "image": "folkmoot-backend",
-      "critical": false
-    },
-    {
-      "name": "folkmoot-canary",
-      "image": "folkmoot-foundation-canary",
-      "critical": false
-    },
-    {
-      "name": "folkmoot-api",
-      "image": "folkmoot-foundation-folkmoot-api",
-      "critical": false
-    },
-    {
-      "name": "wopr-ai-engine",
-      "image": "wopr-ai-engine:latest",
-      "critical": false
-    },
-    {
-      "name": "wopr-systems-next",
-      "image": "wopr-systems-next:latest",
-      "critical": false
-    },
-    {
-      "name": "wopr-assessment-postgres",
-      "image": "postgres:18-alpine",
-      "critical": false
-    },
-    {
-      "name": "greenbone-gsa-1",
-      "image": "registry.community.greenbone.net/community/gsa:stable",
-      "critical": false
-    },
-    {
-      "name": "greenbone-gvmd-1",
-      "image": "registry.community.greenbone.net/community/gvmd:stable",
-      "critical": false
-    },
-    {
-      "name": "greenbone-pg-gvm-1",
-      "image": "registry.community.greenbone.net/community/pg-gvm:stable",
-      "critical": false
-    },
-    {
-      "name": "nextcloud",
-      "image": "nextcloud:35-apache",
-      "critical": false
-    },
-    {
-      "name": "infisical",
-      "image": "infisical/infisical:latest",
-      "critical": false
-    },
-    {
-      "name": "brainjoos-api-node",
-      "image": "node:26",
-      "critical": false
-    },
-    {
-      "name": "wopr-meme-engine",
-      "image": "meme-engine-meme-engine",
-      "critical": false
-    },
-    {
-      "name": "folkmoot-trust-graph",
-      "image": "folkmoot-foundation-trust-graph",
-      "critical": false
-    },
-    {
-      "name": "folkmoot-proposal-review",
-      "image": "folkmoot-foundation-proposal-review",
-      "critical": false
-    },
-    {
-      "name": "folkmoot-nedry-ingest",
-      "image": "folkmoot-foundation-nedry-ingest",
-      "critical": false
-    },
-    {
-      "name": "folkmoot-falken-bridge",
-      "image": "folkmoot-foundation-falken-bridge",
-      "critical": false
-    },
-    {
-      "name": "folkmoot-deliberation",
-      "image": "folkmoot-foundation-deliberation",
-      "critical": false
-    },
-    {
-      "name": "ward6-canvass",
-      "image": "ward6-canvass:latest",
-      "critical": false
-    },
-    {
-      "name": "matrix-element",
-      "image": "vectorim/element-web:latest",
-      "critical": false
-    },
-    {
-      "name": "peertube-postgres",
-      "image": "postgres:18",
-      "critical": false
-    },
-    {
       "name": "authentik-postgresql-1",
       "image": "postgres:18",
-      "critical": false
-    },
-    {
-      "name": "artcraft-selfhost-redis-1",
-      "image": "redis:8",
-      "critical": false
-    },
-    {
-      "name": "authentik_redis",
-      "image": "redis:8",
-      "critical": false
-    },
-    {
-      "name": "peertube-redis",
-      "image": "redis:8",
-      "critical": false
-    },
-    {
-      "name": "saleor-redis-dude",
-      "image": "redis:8",
-      "critical": false
-    },
-    {
-      "name": "buylocal-postgres",
-      "image": "buylocal-postgres-custom:pg18",
-      "critical": false
-    },
-    {
-      "name": "ward6-vote-redis",
-      "image": "redis:8-alpine",
-      "critical": false
-    },
-    {
-      "name": "sonicforge-redis-1",
-      "image": "redis:8-alpine",
-      "critical": false
-    },
-    {
-      "name": "protovision-redis",
-      "image": "redis:8-alpine",
-      "critical": false
-    },
-    {
-      "name": "lovejoos-redis",
-      "image": "redis:8-alpine",
-      "critical": false
-    },
-    {
-      "name": "infisical-redis",
-      "image": "redis:8-alpine",
-      "critical": false
-    },
-    {
-      "name": "foundation-folkmoot-folkmoot-redis-1",
-      "image": "redis:8-alpine",
-      "critical": false
-    },
-    {
-      "name": "folkmoot-redis-1",
-      "image": "redis:8-alpine",
-      "critical": false
-    },
-    {
-      "name": "folkmoot-redis",
-      "image": "redis:8-alpine",
-      "critical": false
-    },
-    {
-      "name": "buylocal-redis",
-      "image": "redis:8-alpine",
-      "critical": false
-    },
-    {
-      "name": "barter-redis-1",
-      "image": "redis:8-alpine",
-      "critical": false
-    },
-    {
-      "name": "artjoos-artjoos-redis-1",
-      "image": "redis:8-alpine",
-      "critical": false
-    },
-    {
-      "name": "adams-dsa-folkmoot-redis",
-      "image": "redis:8-alpine",
-      "critical": false
-    },
-    {
-      "name": "nextcloud-redis",
-      "image": "redis:8-alpine",
-      "critical": false
-    },
-    {
-      "name": "mastodon-redis",
-      "image": "redis:8-alpine",
-      "critical": false
-    },
-    {
-      "name": "wopr-pds",
-      "image": "ghcr.io/bluesky-social/pds:latest",
-      "critical": false
+      "critical": true,
+      "expected_state": "running"
     },
     {
       "name": "authentik-server-1",
       "image": "ghcr.io/goauthentik/server:2026.8",
-      "critical": false
+      "critical": true,
+      "expected_state": "running",
+      "depends_on": [
+        "authentik-postgresql-1",
+        "authentik_redis"
+      ]
     },
     {
-      "name": "authentik-worker-1",
-      "image": "ghcr.io/goauthentik/server:2026.8",
-      "critical": false
-    },
-    {
-      "name": "livekit-server",
-      "image": "livekit/livekit-server:v1.13.11",
-      "critical": false
-    },
-    {
-      "name": "artcraft-selfhost-mysql-1",
-      "image": "mysql:26.7",
-      "critical": false
-    },
-    {
-      "name": "seonaut-db",
-      "image": "mysql:26.7",
-      "critical": false
-    },
-    {
-      "name": "brainjoos-db",
-      "image": "postgres:18-alpine",
-      "critical": false
-    },
-    {
-      "name": "mastodon-db",
-      "image": "postgres:18-alpine",
-      "critical": false
-    },
-    {
-      "name": "protovision-postgres",
-      "image": "pgvector/pgvector:pg18",
-      "critical": false
-    },
-    {
-      "name": "akkoma-db",
-      "image": "postgres:18-alpine",
-      "critical": false
-    },
-    {
-      "name": "saleor-postgres-dude",
-      "image": "postgres:18-alpine",
-      "critical": false
-    },
-    {
-      "name": "wopr-api-postgres",
-      "image": "postgres:18-alpine",
-      "critical": false
-    },
-    {
-      "name": "matrix-postgres",
-      "image": "postgres:18-alpine",
-      "critical": false
-    },
-    {
-      "name": "ward6-vote-db",
-      "image": "postgres:18-alpine",
-      "critical": false
-    },
-    {
-      "name": "nextcloud-db",
-      "image": "postgres:18-alpine",
-      "critical": false
-    },
-    {
-      "name": "miniflux-db",
-      "image": "postgres:18-alpine",
-      "critical": false
-    },
-    {
-      "name": "joshua-postgres",
-      "image": "postgres:18-alpine",
-      "critical": false
-    },
-    {
-      "name": "folkmoot-db",
-      "image": "postgres:18-alpine",
-      "critical": false
-    },
-    {
-      "name": "lovejoos-postgres",
-      "image": "postgres:18-alpine",
-      "critical": false
+      "name": "authentik_redis",
+      "image": "redis:8",
+      "critical": true,
+      "expected_state": "running"
     },
     {
       "name": "barter-postgres",
-      "image": "postgres:18-alpine",
-      "critical": false
+      "image": "postgres:18-alpine@sha256:10a5c69a83035ab5239f5620d708520e8b28f5aa1f2b20143e6024532edadfb5",
+      "critical": false,
+      "expected_state": "running"
+    },
+    {
+      "name": "barter-redis-1",
+      "image": "redis:8-alpine@sha256:21090af93f8324db2f0f0f4f38a7c60369d47d917e000c3423d89d2ae2883537",
+      "critical": false,
+      "expected_state": "running"
+    },
+    {
+      "name": "barter-web-1",
+      "image": "barter-web:latest",
+      "critical": false,
+      "expected_state": "running",
+      "depends_on": [
+        "barter-postgres",
+        "barter-redis-1"
+      ]
+    },
+    {
+      "name": "binkerd-us",
+      "image": "binkerd-us:latest",
+      "critical": false,
+      "expected_state": "running"
+    },
+    {
+      "name": "buylocal",
+      "image": "buylocal-buylocal:latest",
+      "critical": false,
+      "expected_state": "running",
+      "depends_on": [
+        "buylocal-postgres"
+      ]
+    },
+    {
+      "name": "buylocal-postgres",
+      "image": "buylocal-postgres-custom:pg18",
+      "critical": false,
+      "expected_state": "running"
+    },
+    {
+      "name": "buylocal-redis",
+      "image": "redis:8-alpine@sha256:21090af93f8324db2f0f0f4f38a7c60369d47d917e000c3423d89d2ae2883537",
+      "critical": false,
+      "expected_state": "running"
+    },
+    {
+      "name": "infisical",
+      "image": "infisical/infisical:v0.167.4@sha256:80a3bb51bee4092b7332d000506d5740ba57b1c4d48550e50746fe9c5209715d",
+      "critical": true,
+      "expected_state": "running",
+      "depends_on": [
+        "infisical-redis"
+      ]
+    },
+    {
+      "name": "infisical-redis",
+      "image": "redis:8-alpine@sha256:47b08295737773de3b711fb86f13ae802f5074e96a9a2d29f5f80164ac08c046",
+      "critical": true,
+      "expected_state": "running"
+    },
+    {
+      "name": "listmonk",
+      "image": "listmonk/listmonk@sha256:f535d59e14991337a9f2d570273685378ae86b0d7698c3e00da444e3bc205286",
+      "critical": false,
+      "expected_state": "running",
+      "depends_on": [
+        "listmonk-db"
+      ]
     },
     {
       "name": "listmonk-db",
-      "image": "postgres:18-alpine",
-      "critical": false
+      "image": "postgres@sha256:10a5c69a83035ab5239f5620d708520e8b28f5aa1f2b20143e6024532edadfb5",
+      "critical": false,
+      "expected_state": "running"
     },
     {
-      "name": "seo-db",
-      "image": "postgres:18-alpine",
-      "critical": false
+      "name": "lnbits",
+      "image": "lnbits/lnbits@sha256:0bcc90efd497caf7ba3e65fc8b0515192fd6cccd4436b145c09c962f242d8536",
+      "critical": false,
+      "expected_state": "running"
     },
     {
-      "name": "wopr_ollama_chat-postgres-1",
-      "image": "pgvector/pgvector:pg18",
-      "critical": false
-    },
-    {
-      "name": "adams-dsa-folkmoot-db",
-      "image": "postgres:18-alpine",
-      "critical": false
-    },
-    {
-      "name": "folkmoot-postgres-1",
-      "image": "postgres:18-alpine",
-      "critical": false
-    },
-    {
-      "name": "foundation-folkmoot-folkmoot-db-1",
-      "image": "postgres:18-alpine",
-      "critical": false
-    },
-    {
-      "name": "joshcore-postgres",
-      "image": "postgres:18-alpine",
-      "critical": false
-    },
-    {
-      "name": "theblock-db",
-      "image": "postgres:18-alpine",
-      "critical": false
-    },
-    {
-      "name": "wopr-umami-db",
-      "image": "postgres:18-alpine",
-      "critical": false
+      "name": "lovejoos-api",
+      "image": "registry.wopr.systems/lovejoos/api:latest",
+      "critical": false,
+      "expected_state": "running",
+      "depends_on": [
+        "lovejoos-postgres",
+        "lovejoos-redis"
+      ]
     },
     {
       "name": "lovejoos-frontend",
       "image": "registry.wopr.systems/lovejoos/frontend:latest",
-      "critical": false
+      "critical": false,
+      "expected_state": "running"
     },
     {
-      "name": "group7-peertube",
-      "image": "chocobozzz/peertube:v8.3.1",
-      "critical": false
+      "name": "lovejoos-minio",
+      "image": "minio/minio:RELEASE.2025-09-07T16-13-09Z",
+      "critical": false,
+      "expected_state": "running"
     },
     {
-      "name": "wopr-manifesto",
-      "image": "wopr-manifesto:latest",
-      "critical": false
+      "name": "lovejoos-postgres",
+      "image": "postgres:18-alpine@sha256:10a5c69a83035ab5239f5620d708520e8b28f5aa1f2b20143e6024532edadfb5",
+      "critical": false,
+      "expected_state": "running"
     },
     {
-      "name": "wopr-foundation-next",
-      "image": "wopr-foundation-next:latest",
-      "critical": false
+      "name": "lovejoos-redis",
+      "image": "redis:8-alpine@sha256:21090af93f8324db2f0f0f4f38a7c60369d47d917e000c3423d89d2ae2883537",
+      "critical": false,
+      "expected_state": "running"
     },
     {
-      "name": "ward6-vote-web",
-      "image": "ward6-vote-web:latest",
-      "critical": false
+      "name": "miniflux",
+      "image": "miniflux/miniflux@sha256:72e49f513a63104506aab98ba8cfc3a409d4fde23550a583dec07ec941f1e94e",
+      "critical": false,
+      "expected_state": "running",
+      "depends_on": [
+        "miniflux-db"
+      ]
     },
     {
-      "name": "theblock-api",
-      "image": "wopr-theblock-theblock-api",
-      "critical": false
+      "name": "miniflux-db",
+      "image": "postgres@sha256:10a5c69a83035ab5239f5620d708520e8b28f5aa1f2b20143e6024532edadfb5",
+      "critical": false,
+      "expected_state": "running"
     },
     {
-      "name": "sst-frontend",
-      "image": "statestreettheater-frontend",
-      "critical": false
+      "name": "n8n",
+      "image": "n8nio/n8n@sha256:9a8d8dcea75667496695d7810d7e1fe018a65efb36cc499d347f3931b3957b5d",
+      "critical": false,
+      "expected_state": "running"
     },
     {
-      "name": "sonicforge-frontend-1",
-      "image": "sonicforge-frontend",
-      "critical": false
+      "name": "nextcloud",
+      "image": "nextcloud@sha256:6f514aae04ad16917124064f7df851720c82b5ccb180b56cb787bed2ed8a7246",
+      "critical": false,
+      "expected_state": "running",
+      "depends_on": [
+        "nextcloud-db",
+        "nextcloud-redis"
+      ]
     },
     {
-      "name": "sonicforge-backend-1",
-      "image": "sonicforge-backend",
-      "critical": false
+      "name": "nextcloud-db",
+      "image": "postgres@sha256:10a5c69a83035ab5239f5620d708520e8b28f5aa1f2b20143e6024532edadfb5",
+      "critical": false,
+      "expected_state": "running"
     },
     {
-      "name": "reactor_ui",
-      "image": "reactor-ui-reactor-ui",
-      "critical": false
+      "name": "nextcloud-redis",
+      "image": "redis@sha256:21090af93f8324db2f0f0f4f38a7c60369d47d917e000c3423d89d2ae2883537",
+      "critical": false,
+      "expected_state": "running"
     },
     {
-      "name": "reactor_demo_ui",
-      "image": "reactor-demo-ui:latest",
-      "critical": false
+      "name": "printful-sync-printful-sync-1",
+      "image": "printful-sync-printful-sync",
+      "critical": false,
+      "expected_state": "running"
     },
     {
-      "name": "reactor_demo_api",
-      "image": "reactor-demo-api:latest",
-      "critical": false
+      "name": "prod-postgres",
+      "image": "postgres:18.6",
+      "critical": true,
+      "expected_state": "running"
     },
     {
-      "name": "gsc-puller",
-      "image": "wopr-seo-gsc-puller",
-      "critical": false
-    },
-    {
-      "name": "foundation-folkmoot-folkmoot-web-1",
-      "image": "foundation-folkmoot-folkmoot-web",
-      "critical": false
-    },
-    {
-      "name": "folkmoot-web",
-      "image": "folkmoot-foundation-folkmoot-web",
-      "critical": false
-    },
-    {
-      "name": "folkmoot-frontend-1",
-      "image": "folkmoot-frontend",
-      "critical": false
-    },
-    {
-      "name": "artcraft-selfhost-thumbnailer-1",
-      "image": "artcraft-thumbnailer:local",
-      "critical": false
-    },
-    {
-      "name": "artcraft-selfhost-storyteller-web-1",
-      "image": "artcraft-services:local",
-      "critical": false
-    },
-    {
-      "name": "akkoma",
-      "image": "akkoma:latest",
-      "critical": false
-    },
-    {
-      "name": "adams-dsa-web-1",
-      "image": "adams-dsa-web:latest",
-      "critical": false
-    },
-    {
-      "name": "mastodon-web",
-      "image": "ghcr.io/mastodon/mastodon:v4.7.3",
-      "critical": false
-    },
-    {
-      "name": "mastodon-sidekiq",
-      "image": "ghcr.io/mastodon/mastodon:v4.7.3",
-      "critical": false
-    },
-    {
-      "name": "app",
-      "image": "local_discourse/app",
-      "critical": false
-    },
-    {
-      "name": "wopr-nodez3r0-static",
-      "image": "nginx:alpine",
-      "critical": false
-    },
-    {
-      "name": "wopr-static-multi",
-      "image": "nginx:alpine",
-      "critical": false
-    },
-    {
-      "name": "wopr-caddy-rig",
-      "image": "wopr-caddy-replace:latest",
-      "critical": false
+      "name": "saleor-api-dude",
+      "image": "ghcr.io/saleor/saleor:3.23",
+      "critical": false,
+      "expected_state": "running"
     },
     {
       "name": "saleor-dashboard-dude",
       "image": "ghcr.io/saleor/saleor-dashboard:3.23",
-      "critical": false
+      "critical": false,
+      "expected_state": "running"
     },
     {
-      "name": "artcraft-selfhost-elasticsearch-1",
-      "image": "docker.elastic.co/elasticsearch/elasticsearch:9.5.5",
-      "critical": false
+      "name": "saleor-postgres-dude",
+      "image": "postgres:18-alpine",
+      "critical": false,
+      "expected_state": "running"
     },
     {
-      "name": "folkmoot-grafana-1",
-      "image": "grafana/grafana:13.2.4",
-      "critical": false
+      "name": "saleor-redis-dude",
+      "image": "redis:8",
+      "critical": false,
+      "expected_state": "running"
     },
     {
-      "name": "folkmoot-prometheus-1",
-      "image": "prom/prometheus:v3.15.1",
-      "critical": false
+      "name": "seo-db",
+      "image": "postgres@sha256:10a5c69a83035ab5239f5620d708520e8b28f5aa1f2b20143e6024532edadfb5",
+      "critical": false,
+      "expected_state": "running"
     },
     {
-      "name": "element-call",
-      "image": "ghcr.io/element-hq/element-call:v0.26.1",
-      "critical": false
+      "name": "seonaut",
+      "image": "ghcr.io/stjudewashere/seonaut@sha256:d18721b6c07f333694ebe241d06442827ad56e343d34103051a3e5028f1697d9",
+      "critical": false,
+      "expected_state": "running"
     },
     {
-      "name": "lk-jwt-service",
-      "image": "ghcr.io/element-hq/lk-jwt-service:0.9.0",
-      "critical": false
+      "name": "seonaut-db",
+      "image": "mysql@sha256:625f74ddf93652d9d0f8d4ea7d741b9189554a5e96d27bb770abd0902d89c6e3",
+      "critical": false,
+      "expected_state": "running"
+    },
+    {
+      "name": "wopr-assessment-postgres",
+      "image": "postgres:18.6-alpine",
+      "critical": false,
+      "expected_state": "running"
+    },
+    {
+      "name": "wopr-caddy-rig",
+      "image": "wopr-caddy-replace:latest",
+      "critical": true,
+      "expected_state": "running"
+    },
+    {
+      "name": "wopr-manifesto",
+      "image": "wopr-manifesto:latest",
+      "critical": false,
+      "expected_state": "running"
+    },
+    {
+      "name": "wopr-multiverse",
+      "image": "wopr-multiverse-multiverse:latest",
+      "critical": false,
+      "expected_state": "running"
     },
     {
       "name": "wopr-ntfy",
       "image": "binwiederhier/ntfy:v2.33.1",
-      "critical": false
+      "critical": true,
+      "expected_state": "running"
     },
     {
-      "name": "moodshot",
-      "image": "caddy:2",
-      "critical": false
+      "name": "wopr-sites-redis",
+      "image": "redis:8.10.3-alpine",
+      "critical": false,
+      "expected_state": "running"
     },
     {
-      "name": "seonaut",
-      "image": "ghcr.io/stjudewashere/seonaut:latest",
-      "critical": false
-    },
-    {
-      "name": "nostr-relay",
-      "image": "scsibug/nostr-rs-relay:latest",
-      "critical": false
-    },
-    {
-      "name": "lnbits",
-      "image": "lnbits/lnbits:latest",
-      "critical": false
-    },
-    {
-      "name": "miniflux",
-      "image": "miniflux/miniflux:latest",
-      "critical": false
-    },
-    {
-      "name": "wopr-umami",
-      "image": "ghcr.io/umami-software/umami:postgresql-latest",
-      "critical": false
-    },
-    {
-      "name": "wopr-bind",
-      "image": "internetsystemsconsortium/bind9:9.20",
-      "critical": false
-    },
-    {
-      "name": "listmonk",
-      "image": "listmonk/listmonk:v6.2.0",
-      "critical": false
-    },
-    {
-      "name": "single-node-wazuh.dashboard-1",
-      "image": "wazuh/wazuh-dashboard:4.14.9",
-      "critical": false
-    },
-    {
-      "name": "single-node-wazuh.manager-1",
-      "image": "wazuh/wazuh-manager:4.14.9",
-      "critical": false
-    },
-    {
-      "name": "single-node-wazuh.indexer-1",
-      "image": "wazuh/wazuh-indexer:4.14.9",
-      "critical": false
-    },
-    {
-      "name": "castopod-app",
-      "image": "castopod/castopod:latest",
-      "critical": false
-    },
-    {
-      "name": "artcraft-selfhost-seaweedfs-1",
-      "image": "chrislusf/seaweedfs:3.97",
-      "critical": false
-    },
-    {
-      "name": "artcraft-selfhost-migrate-1",
-      "image": "1487abffa4fa",
-      "critical": false
-    },
-    {
-      "name": "artcraft-selfhost-storage-init-1",
-      "image": "chrislusf/seaweedfs:3.97",
-      "critical": false
-    },
-    {
-      "name": "brainjoos-api",
-      "image": "backend-api",
-      "critical": false
-    },
-    {
-      "name": "wopr-sydent",
-      "image": "matrixdotorg/sydent:latest",
-      "critical": false
-    },
-    {
-      "name": "synapse-admin",
-      "image": "awesometechnologies/synapse-admin:latest",
-      "critical": false
-    },
-    {
-      "name": "lovejoos-minio",
-      "image": "minio/minio:latest",
-      "critical": false
-    }
-  ],
-  "http_endpoints": {
-    "public": [
-      {
-        "url": "https://node-code.wopr.systems/",
-        "name": "node-code",
-        "expected_status": [
-          200,
-          301,
-          302,
-          400,
-          403,
-          404
-        ],
-        "critical": false
-      },
-      {
-        "url": "https://rag.wopr.systems/",
-        "name": "rag",
-        "expected_status": [
-          200,
-          301,
-          302,
-          403
-        ],
-        "critical": false
-      }
-    ],
-    "backend": [
-      {
-        "url": "http://127.0.0.1:18082/health",
-        "name": "node-code-backend",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "caddy"
-      },
-      {
-        "url": "http://127.0.0.1:8086/",
-        "name": "rag-backend",
-        "expected_status": [
-          200
-        ],
-        "critical": false,
-        "discovered_via": "caddy"
-      },
-      {
-        "url": "http://127.0.0.1:81/health",
-        "name": "node-MainThread-81",
-        "expected_status": [
-          200,
-          404
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:2021/",
-        "name": "caddy-2021",
-        "expected_status": [
-          200,
-          404
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:2583/",
-        "name": "wopr-pds-2583",
-        "expected_status": [
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "wopr-pds"
-      },
-      {
-        "url": "http://127.0.0.1:3000/health",
-        "name": "MainThread-3000",
-        "expected_status": [
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:3001/health",
-        "name": "MainThread-3001",
-        "expected_status": [
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:3004/health",
-        "name": "MainThread-3004",
-        "expected_status": [
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:3010/",
-        "name": "forgejo-3010",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:3011/health",
-        "name": "open-webui-3011",
-        "expected_status": [
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "open-webui"
-      },
-      {
-        "url": "http://127.0.0.1:3101/api/health",
-        "name": "node-MainThread-3101",
-        "expected_status": [
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:3200/",
-        "name": "folkmoot-frontend-1-3200",
-        "expected_status": [
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "folkmoot-frontend-1"
-      },
-      {
-        "url": "http://127.0.0.1:3201/api/health",
-        "name": "folkmoot-grafana-1-3201",
-        "expected_status": [
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "folkmoot-grafana-1"
-      },
-      {
-        "url": "http://127.0.0.1:3300/",
-        "name": "folkmoot-web-3300",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "folkmoot-web"
-      },
-      {
-        "url": "http://127.0.0.1:3320/health",
-        "name": "foundation-folkmoot-folkmoot-web-1-3320",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "foundation-folkmoot-folkmoot-web-1"
-      },
-      {
-        "url": "http://127.0.0.1:3333/health",
-        "name": "mastodon-web-3333",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "mastodon-web"
-      },
-      {
-        "url": "http://127.0.0.1:3400/health",
-        "name": "lovejoos-frontend-3400",
-        "expected_status": [
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "lovejoos-frontend"
-      },
-      {
-        "url": "http://127.0.0.1:3411/",
-        "name": "adams-dsa-web-1-3411",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "adams-dsa-web-1"
-      },
-      {
-        "url": "http://127.0.0.1:3412/",
-        "name": "wopr-foundation-next-3412",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "wopr-foundation-next"
-      },
-      {
-        "url": "http://127.0.0.1:3413/",
-        "name": "wopr-systems-next-3413",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "wopr-systems-next"
-      },
-      {
-        "url": "http://127.0.0.1:3414/vote",
-        "name": "ward6-vote-web-3414",
-        "expected_status": [
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "ward6-vote-web",
-        "pinned": true
-      },
-      {
-        "url": "http://127.0.0.1:3415/",
-        "name": "wopr-systems-preview-3415",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "wopr-systems-preview"
-      },
-      {
-        "url": "http://127.0.0.1:3416/",
-        "name": "binkerd-us-3416",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "binkerd-us"
-      },
-      {
-        "url": "http://127.0.0.1:3417/",
-        "name": "wopr-manifesto-3417",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "wopr-manifesto"
-      },
-      {
-        "url": "http://127.0.0.1:3420/api/health",
-        "name": "noise-lab-3420",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "noise-lab"
-      },
-      {
-        "url": "http://127.0.0.1:3801/",
-        "name": "serpbear-3801",
-        "expected_status": [
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "serpbear"
-      },
-      {
-        "url": "http://127.0.0.1:3802/health",
-        "name": "seonaut-3802",
-        "expected_status": [
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "seonaut"
-      },
-      {
-        "url": "http://127.0.0.1:4000/health",
-        "name": "akkoma-4000",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "akkoma"
-      },
-      {
-        "url": "http://127.0.0.1:4001/",
-        "name": "mastodon-streaming-4001",
-        "expected_status": [
-          200,
-          400
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "mastodon-streaming"
-      },
-      {
-        "url": "http://127.0.0.1:4002/",
-        "name": "app-4002",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "app"
-      },
-      {
-        "url": "http://127.0.0.1:5000/",
-        "name": "wopr-matrix-onboard-5000",
-        "expected_status": [
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "wopr-matrix-onboard"
-      },
-      {
-        "url": "http://127.0.0.1:5001/api/v1/health",
-        "name": "lnbits-5001",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "lnbits"
-      },
-      {
-        "url": "http://127.0.0.1:5032/health",
-        "name": "python3-5032",
-        "expected_status": [
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:5042/",
-        "name": "unknown-5042",
-        "expected_status": [
-          200,
-          404
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:5047/health",
-        "name": "python3-5047",
-        "expected_status": [
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:5173/health",
-        "name": "sonicforge-frontend-1-5173",
-        "expected_status": [
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "sonicforge-frontend-1"
-      },
-      {
-        "url": "http://127.0.0.1:5174/health",
-        "name": "reactor_ui-5174",
-        "expected_status": [
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "reactor_ui"
-      },
-      {
-        "url": "http://127.0.0.1:5175/health",
-        "name": "reactor_demo_ui-5175",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "reactor_demo_ui"
-      },
-      {
-        "url": "http://127.0.0.1:5176/health",
-        "name": "reactor_demo_api-5176",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "reactor_demo_api"
-      },
-      {
-        "url": "http://127.0.0.1:5555/health",
-        "name": "python3-5555",
-        "expected_status": [
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:5556/",
-        "name": "python3-5556",
-        "expected_status": [
-          200,
-          404
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:5580/health",
-        "name": "python-5580",
-        "expected_status": [
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:5590/health",
-        "name": "python3-5590",
-        "expected_status": [
-          200,
-          401,
-          403
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:5591/healthz",
-        "name": "python3-5591",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:5598/health",
-        "name": "python3-5598",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:5599/health",
-        "name": "unknown-5599",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:5602/api/health",
-        "name": "python3-5602",
-        "expected_status": [
-          200,
-          401,
-          403
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:5678/health",
-        "name": "n8n-5678",
-        "expected_status": [
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "n8n"
-      },
-      {
-        "url": "http://127.0.0.1:7100/health",
-        "name": "python3-7100",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:7101/",
-        "name": "MainThread-7101",
-        "expected_status": [
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:7777/",
-        "name": "nostr-relay-7777",
-        "expected_status": [
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "nostr-relay"
-      },
-      {
-        "url": "http://127.0.0.1:7778/health",
-        "name": "gunicorn-7778",
-        "expected_status": [
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:7801/api/health",
-        "name": "SwarmUI-7801",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:7880/",
-        "name": "livekit-server-7880",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:7890/health",
-        "name": "python3-7890",
-        "expected_status": [
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:8000/health",
-        "name": "uvicorn-8000",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:8001/api/health",
-        "name": "uvicorn-8001",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:8003/",
-        "name": "uvicorn-8003",
-        "expected_status": [
-          200,
-          404
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:8008/health",
-        "name": "matrix-synapse-8008",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "matrix-synapse"
-      },
-      {
-        "url": "http://127.0.0.1:8009/",
-        "name": "matrix-element-8009",
-        "expected_status": [
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "matrix-element"
-      },
-      {
-        "url": "http://127.0.0.1:8010/",
-        "name": "synapse-admin-8010",
-        "expected_status": [
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "synapse-admin"
-      },
-      {
-        "url": "http://127.0.0.1:8020/healthz",
-        "name": "python3-8020",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:8021/healthz",
-        "name": "python3-8021",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:8022/healthz",
-        "name": "python3-8022",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:8055/health",
-        "name": "printful-sync-printful-sync-1-8055",
-        "expected_status": [
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "printful-sync-printful-sync-1"
-      },
-      {
-        "url": "http://127.0.0.1:8070/",
-        "name": "barter-web-1-8070",
-        "expected_status": [
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "barter-web-1"
-      },
-      {
-        "url": "http://127.0.0.1:8080/",
-        "name": "python3-8080",
-        "expected_status": [
-          200,
-          401,
-          403
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:8081/",
-        "name": "iopaint-8081",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:8082/health",
-        "name": "python-8082",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:8085/",
-        "name": "wopr-nodez3r0-static-8085",
-        "expected_status": [
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "wopr-nodez3r0-static"
-      },
-      {
-        "url": "http://127.0.0.1:8087/health",
-        "name": "uvicorn-8087",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:8088/health",
-        "name": "python-8088",
-        "expected_status": [
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:8090/",
-        "name": "nextcloud-8090",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "nextcloud"
-      },
-      {
-        "url": "http://127.0.0.1:8091/health",
-        "name": "uvicorn-8091",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:8092/",
-        "name": "java-8092",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:8093/",
-        "name": "caddy-8093",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:8096/health",
-        "name": "lovejoos-api-8096",
-        "expected_status": [
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "lovejoos-api"
-      },
-      {
-        "url": "http://127.0.0.1:8097/health",
-        "name": "uvicorn-8097",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:8098/health",
-        "name": "uvicorn-8098",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:8099/",
-        "name": "python3-8099",
-        "expected_status": [
-          200,
-          404
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:8100/",
-        "name": "sst-backend-8100",
-        "expected_status": [
-          200,
-          404
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "sst-backend"
-      },
-      {
-        "url": "http://127.0.0.1:8101/",
-        "name": "sst-frontend-8101",
-        "expected_status": [
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "sst-frontend"
-      },
-      {
-        "url": "http://10.220.0.1:8188/",
-        "name": "socat-8188",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:8199/",
-        "name": "python3-8199",
-        "expected_status": [
-          200,
-          501
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:8201/",
-        "name": "python-8201",
-        "expected_status": [
-          200,
-          404
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:8202/",
-        "name": "python3-8202",
-        "expected_status": [
-          200,
-          404
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:8203/",
-        "name": "python3-8203",
-        "expected_status": [
-          200,
-          404
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:8205/",
-        "name": "python3-8205",
-        "expected_status": [
-          200,
-          404
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:8210/health",
-        "name": "python3-8210",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:8444/",
-        "name": "python3-8444",
-        "expected_status": [
-          200,
-          404
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:8580/healthz",
-        "name": "lk-jwt-service-8580",
-        "expected_status": [
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "lk-jwt-service"
-      },
-      {
-        "url": "http://127.0.0.1:8581/health",
-        "name": "node-MainThread-8581",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:8600/health",
-        "name": "wopr-ai-engine-8600",
-        "expected_status": [
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "wopr-ai-engine"
-      },
-      {
-        "url": "http://127.0.0.1:8680/health",
-        "name": "element-call-8680",
-        "expected_status": [
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "element-call"
-      },
-      {
-        "url": "http://127.0.0.1:8787/api/health",
-        "name": "sonicforge-backend-1-8787",
-        "expected_status": [
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "sonicforge-backend-1"
-      },
-      {
-        "url": "http://127.0.0.1:8788/",
-        "name": "uvicorn-8788",
-        "expected_status": [
-          200,
-          404
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:8803/health",
-        "name": "folkmoot-falken-bridge-8803",
-        "expected_status": [
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "folkmoot-falken-bridge"
-      },
-      {
-        "url": "http://127.0.0.1:8806/health",
-        "name": "folkmoot-nedry-ingest-8806",
-        "expected_status": [
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "folkmoot-nedry-ingest"
-      },
-      {
-        "url": "http://127.0.0.1:8898/healthz",
-        "name": "artcraft-selfhost-seaweedfs-1-8898",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "artcraft-selfhost-seaweedfs-1"
-      },
-      {
-        "url": "http://127.0.0.1:8899/health",
-        "name": "python3-8899",
-        "expected_status": [
-          200,
-          405
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:8900/health",
-        "name": "castopod-app-8900",
-        "expected_status": [
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "castopod-app"
-      },
-      {
-        "url": "http://127.0.0.1:9003/health",
-        "name": "group7-peertube-9003",
-        "expected_status": [
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "group7-peertube"
-      },
-      {
-        "url": "http://127.0.0.1:9090/status",
-        "name": "prometheus-9090",
-        "expected_status": [
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:9091/",
-        "name": "authentik-server-1-9091",
-        "expected_status": [
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "authentik-server-1"
-      },
-      {
-        "url": "http://127.0.0.1:9100/health",
-        "name": "prometheus-node-9100",
-        "expected_status": [
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:9101/health",
-        "name": "python3-9101",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:9110/health",
-        "name": "listmonk-9110",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "listmonk"
-      },
-      {
-        "url": "http://127.0.0.1:9120/api/status",
-        "name": "uvicorn-9120",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:9130/api/health",
-        "name": "python-9130",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:9190/status",
-        "name": "folkmoot-prometheus-1-9190",
-        "expected_status": [
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "folkmoot-prometheus-1"
-      },
-      {
-        "url": "http://127.0.0.1:9201/health",
-        "name": "lovejoos-minio-9201",
-        "expected_status": [
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "lovejoos-minio"
-      },
-      {
-        "url": "http://127.0.0.1:9392/health",
-        "name": "greenbone-gsa-1-9392",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "greenbone-gsa-1"
-      },
-      {
-        "url": "http://127.0.0.1:9876/health",
-        "name": "crowdsec-9876",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:9900/health",
-        "name": "caddy-9900",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:10248/healthz",
-        "name": "kubelite-10248",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:10249/healthz",
-        "name": "kubelite-10249",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:10256/healthz",
-        "name": "kubelite-10256",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:11435/api/status",
-        "name": "ollama-11435",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://10.220.7.1:11436/health",
-        "name": "python3-11436",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:12345/",
-        "name": "artcraft-selfhost-storyteller-web-1-12345",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "artcraft-selfhost-storyteller-web-1"
-      },
-      {
-        "url": "http://127.0.0.1:13000/",
-        "name": "unknown-13000",
-        "expected_status": [
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:13001/",
-        "name": "wopr-umami-13001",
-        "expected_status": [
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "wopr-umami"
-      },
-      {
-        "url": "http://127.0.0.1:13002/health",
-        "name": "crowdsec-dashboard-metabase-1-13002",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "crowdsec-dashboard-metabase-1"
-      },
-      {
-        "url": "http://127.0.0.1:14000/api/health",
-        "name": "artjoos-artjoos-storefront-1-14000",
-        "expected_status": [
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "artjoos-artjoos-storefront-1"
-      },
-      {
-        "url": "http://127.0.0.1:14200/",
-        "name": "artjoos-artjoos-verification-1-14200",
-        "expected_status": [
-          200,
-          404
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "artjoos-artjoos-verification-1"
-      },
-      {
-        "url": "http://127.0.0.1:14201/",
-        "name": "artjoos-artjoos-analytics-1-14201",
-        "expected_status": [
-          200,
-          404
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "artjoos-artjoos-analytics-1"
-      },
-      {
-        "url": "http://127.0.0.1:14202/",
-        "name": "artjoos-artjoos-commissions-1-14202",
-        "expected_status": [
-          200,
-          404
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "artjoos-artjoos-commissions-1"
-      },
-      {
-        "url": "http://127.0.0.1:14203/",
-        "name": "artjoos-artjoos-provenance-1-14203",
-        "expected_status": [
-          200,
-          404
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "artjoos-artjoos-provenance-1"
-      },
-      {
-        "url": "http://127.0.0.1:14204/",
-        "name": "artjoos-artjoos-federation-1-14204",
-        "expected_status": [
-          200,
-          404
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "artjoos-artjoos-federation-1"
-      },
-      {
-        "url": "http://127.0.0.1:16000/health",
-        "name": "gunicorn-16000",
-        "expected_status": [
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:16600/healthz",
-        "name": "gunicorn-16600",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:18000/health",
-        "name": "folkmoot-backend-1-18000",
-        "expected_status": [
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "folkmoot-backend-1"
-      },
-      {
-        "url": "http://127.0.0.1:18065/",
-        "name": "python3-18065",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:18070/health",
-        "name": "miniflux-18070",
-        "expected_status": [
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "miniflux"
-      },
-      {
-        "url": "http://127.0.0.1:18080/",
-        "name": "caddy-18080",
-        "expected_status": [
-          200,
-          404
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:18081/health",
-        "name": "wopr-ntfy-18081",
-        "expected_status": [
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "wopr-ntfy"
-      },
-      {
-        "url": "http://127.0.0.1:18090/",
-        "name": "wopr-sydent-18090",
-        "expected_status": [
-          200,
-          404
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "wopr-sydent"
-      },
-      {
-        "url": "http://127.0.0.1:18095/api/health",
-        "name": "uvicorn-18095",
-        "expected_status": [
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:18096/api/v1/health",
-        "name": "buylocal-18096",
-        "expected_status": [
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "buylocal"
-      },
-      {
-        "url": "http://127.0.0.1:18099/health",
-        "name": "uvicorn-18099",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:18100/health",
-        "name": "python3-18100",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:18112/",
-        "name": "mcpo-18112",
-        "expected_status": [
-          200,
-          404
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:18120/api/health",
-        "name": "theblock-api-18120",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "theblock-api"
-      },
-      {
-        "url": "http://127.0.0.1:18201/health",
-        "name": "python-18201",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:18470/health",
-        "name": "soundcraft-rig-18470",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:18472/health",
-        "name": "soundcraft-rig-18472",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:18789/health",
-        "name": "MainThread-18789",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:18900/health",
-        "name": "secondbrain-api-18900",
-        "expected_status": [
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "secondbrain-api"
-      },
-      {
-        "url": "http://127.0.0.1:18910/api/health",
-        "name": "uvicorn-18910",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:19002/health",
-        "name": "saleor-dashboard-dude-19002",
-        "expected_status": [
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "saleor-dashboard-dude"
-      },
-      {
-        "url": "http://127.0.0.1:20241/ready",
-        "name": "cloudflared-20241",
-        "expected_status": [
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "pinned": true
-      },
-      {
-        "url": "http://127.0.0.1:27020/health",
-        "name": "ferretdb-27020",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:28000/",
-        "name": "saleor-api-dude-28000",
-        "expected_status": [
-          200,
-          404
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "saleor-api-dude"
-      },
-      {
-        "url": "http://127.0.0.1:28100/health",
-        "name": "folkmoot-api-28100",
-        "expected_status": [
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "folkmoot-api"
-      },
-      {
-        "url": "http://127.0.0.1:28200/health",
-        "name": "foundation-folkmoot-folkmoot-api-1-28200",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "foundation-folkmoot-folkmoot-api-1"
-      },
-      {
-        "url": "http://127.0.0.1:28300/health",
-        "name": "ward6-vote-api-28300",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "ward6-vote-api"
-      },
-      {
-        "url": "http://127.0.0.1:28310/health",
-        "name": "ward6-canvass-28310",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "ward6-canvass"
-      },
-      {
-        "url": "http://127.0.0.1:29001/",
-        "name": "unknown-29001",
-        "expected_status": [
-          200,
-          404
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:42087/",
-        "name": "MainThread-42087",
-        "expected_status": [
-          200,
-          400
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      }
-    ]
-  },
-  "timers": [
-    {
-      "timer": "protovision-tick.timer",
-      "service": "protovision-tick"
-    },
-    {
-      "timer": "protovision-email.timer",
-      "service": "protovision-email"
-    },
-    {
-      "timer": "sysstat-collect.timer",
-      "service": "sysstat-collect"
-    },
-    {
-      "timer": "comfyui-idle-release.timer",
-      "service": "comfyui-idle-release"
-    },
-    {
-      "timer": "protovision-ingest.timer",
-      "service": "protovision-ingest"
-    },
-    {
-      "timer": "nedry-abuse-reporter.timer",
-      "service": "nedry-abuse-reporter"
-    },
-    {
-      "timer": "wopr-watchdog.timer",
-      "service": "wopr-watchdog"
-    },
-    {
-      "timer": "crowdsec-metabase-export.timer",
-      "service": "crowdsec-metabase-export"
-    },
-    {
-      "timer": "wopr-sp-watchdog.timer",
-      "service": "wopr-sp-watchdog"
-    },
-    {
-      "timer": "grc-selfheal.timer",
-      "service": "grc-selfheal"
-    },
-    {
-      "timer": "dude-abandoned-cart-monitor.timer",
-      "service": "dude-abandoned-cart-monitor"
-    },
-    {
-      "timer": "gpu-scheduler-watchdog.timer",
-      "service": "gpu-scheduler-watchdog"
-    },
-    {
-      "timer": "prometheus-node-exporter-apt.timer",
-      "service": "prometheus-node-exporter-apt"
-    },
-    {
-      "timer": "prometheus-node-exporter-nvme.timer",
-      "service": "prometheus-node-exporter-nvme"
-    },
-    {
-      "timer": "wopr-git-cred-sync.timer",
-      "service": "wopr-git-cred-sync"
-    },
-    {
-      "timer": "wopr-dup-reconcile.timer",
-      "service": "wopr-dup-reconcile"
-    },
-    {
-      "timer": "cross-pollinate.timer",
-      "service": "cross-pollinate"
-    },
-    {
-      "timer": "lovejoos-secrets-sync.timer",
-      "service": "lovejoos-secrets-sync"
-    },
-    {
-      "timer": "folkmoot-watchdog.timer",
-      "service": "folkmoot-watchdog"
-    },
-    {
-      "timer": "wopr-vuln-sweep.timer",
-      "service": "wopr-vuln-sweep"
-    },
-    {
-      "timer": "wopr-vuln-sweep-feeds.timer",
-      "service": "wopr-vuln-sweep-feeds"
-    },
-    {
-      "timer": "anacron.timer",
-      "service": "anacron"
-    },
-    {
-      "timer": "phpsessionclean.timer",
-      "service": "phpsessionclean"
-    },
-    {
-      "timer": "fwupd-refresh.timer",
-      "service": "fwupd-refresh"
-    },
-    {
-      "timer": "barterra-verified-sync.timer",
-      "service": "barterra-verified-sync"
-    },
-    {
-      "timer": "wopr-verified-sync.timer",
-      "service": "wopr-verified-sync"
-    },
-    {
-      "timer": "stonesoup-remind.timer",
-      "service": "stonesoup-remind"
-    },
-    {
-      "timer": "asscast-watchdog.timer",
-      "service": "asscast-watchdog"
-    },
-    {
-      "timer": "apt-daily.timer",
-      "service": "apt-daily"
-    },
-    {
-      "timer": "update-notifier-download.timer",
-      "service": "update-notifier-download"
-    },
-    {
-      "timer": "systemd-tmpfiles-clean.timer",
-      "service": "systemd-tmpfiles-clean"
-    },
-    {
-      "timer": "serpbear-wopr-gsc-refresh.timer",
-      "service": "serpbear-wopr-gsc-refresh"
-    },
-    {
-      "timer": "certbot.timer",
-      "service": "certbot"
-    },
-    {
-      "timer": "motd-news.timer",
-      "service": "motd-news"
-    },
-    {
-      "timer": "dpkg-db-backup.timer",
-      "service": "dpkg-db-backup"
-    },
-    {
-      "timer": "logrotate.timer",
-      "service": "logrotate"
-    },
-    {
-      "timer": "barterra-abuse-cleanup.timer",
-      "service": "barterra-abuse-cleanup"
-    },
-    {
-      "timer": "crowdsec-hubupdate.timer",
-      "service": "crowdsec-hubupdate"
-    },
-    {
-      "timer": "sysstat-summary.timer",
-      "service": "sysstat-summary"
-    },
-    {
-      "timer": "dude-sitemap-sync.timer",
-      "service": "dude-sitemap-sync"
-    },
-    {
-      "timer": "falken-overnight-start.timer",
-      "service": "falken-overnight-start"
-    },
-    {
-      "timer": "wopr-pg-backup.timer",
-      "service": "wopr-pg-backup"
-    },
-    {
-      "timer": "forgejo-backup.timer",
-      "service": "forgejo-backup"
-    },
-    {
-      "timer": "yourspace-backup.timer",
-      "service": "yourspace-backup"
-    },
-    {
-      "timer": "falken-overnight-stop.timer",
-      "service": "falken-overnight-stop"
-    },
-    {
-      "timer": "update-watcher.timer",
-      "service": "update-watcher"
-    },
-    {
-      "timer": "apt-daily-upgrade.timer",
-      "service": "apt-daily-upgrade"
-    },
-    {
-      "timer": "dude-stripe-keys.timer",
-      "service": "dude-stripe-keys"
-    },
-    {
-      "timer": "wopr-secret-sweep.timer",
-      "service": "wopr-secret-sweep"
-    },
-    {
-      "timer": "man-db.timer",
-      "service": "man-db"
-    },
-    {
-      "timer": "e2scrub_all.timer",
-      "service": "e2scrub_all"
-    },
-    {
-      "timer": "grc-catalog-sweep.timer",
-      "service": "grc-catalog-sweep"
-    },
-    {
-      "timer": "fstrim.timer",
-      "service": "fstrim"
-    },
-    {
-      "timer": "update-notifier-motd.timer",
-      "service": "update-notifier-motd"
-    },
-    {
-      "timer": "apport-autoreport.timer",
-      "service": "apport-autoreport"
-    },
-    {
-      "timer": "prometheus-node-exporter-ipmitool-sensor.timer",
-      "service": "prometheus-node-exporter-ipmitool-sensor"
-    },
-    {
-      "timer": "prometheus-node-exporter-mellanox-hca-temp.timer",
-      "service": "prometheus-node-exporter-mellanox-hca-temp"
-    },
-    {
-      "timer": "prometheus-node-exporter-smartmon.timer",
-      "service": "prometheus-node-exporter-smartmon"
-    },
-    {
-      "timer": "snapd.snap-repair.timer",
-      "service": "snapd.snap-repair"
-    },
-    {
-      "timer": "ua-timer.timer",
-      "service": "ua-timer"
-    },
-    {
-      "timer": "wopr-sp-autodiscovery.timer",
-      "service": "wopr-sp-autodiscovery"
-    }
-  ],
-  "cron_jobs": [
-    {
-      "user": "root",
-      "command": "5 2 * * * /usr/local/sbin/wopr-unban-expired.sh >/dev/null 2>&1",
-      "source": "crontab"
-    },
-    {
-      "user": "root",
-      "command": "* * * * * /bin/bash /opt/wopr-health/dns_tor_health.sh >/dev/null 2>&1",
-      "source": "crontab"
-    },
-    {
-      "user": "root",
-      "command": "*/5 * * * * /usr/bin/python3 /opt/wopr/support-plane/wopr-ddns-firewall-sync.py >/dev/null 2>&1",
-      "source": "crontab"
-    },
-    {
-      "user": "root",
-      "command": "*/5 * * * * docker exec -u www-data nextcloud php -f cron.php > /dev/null 2>&1",
-      "source": "crontab"
-    },
-    {
-      "user": "root",
-      "command": "*/5 * * * * /usr/bin/python3 /opt/wopr/support-plane/synthetic_probe.py >/dev/null 2>&1",
-      "source": "crontab"
-    },
-    {
-      "user": "root",
-      "command": "*/30 * * * * /usr/bin/python3 /opt/wopr/support-plane/image_probe.py >> /opt/wopr/support-plane/image_probe.log 2>&1",
-      "source": "crontab"
-    },
-    {
-      "user": "root",
-      "command": "17 6 * * * /usr/bin/python3 /opt/wopr/support-plane/og_audit.py --alert >> /opt/wopr/support-plane/og_audit.log 2>&1",
-      "source": "crontab"
-    },
-    {
-      "user": "root",
-      "command": "*/5 * * * * /usr/bin/python3 /opt/wopr/support-plane/mesh_probe.py >/dev/null 2>&1",
-      "source": "crontab"
-    },
-    {
-      "user": "root",
-      "command": "*/30 * * * * /usr/bin/python3 /opt/wopr/support-plane/content_probe.py >> /opt/wopr/support-plane/content_probe.log 2>&1",
-      "source": "crontab"
-    },
-    {
-      "user": "root",
-      "command": "*/15 * * * * /usr/local/sbin/run-listmonk-tagger.sh >> /opt/listmonk/ai_tagger.log 2>&1",
-      "source": "crontab"
-    },
-    {
-      "user": "root",
-      "command": "0 3 * * * . /etc/wopr-dns.env && /usr/local/bin/validate_wopr_dns.py >> /var/log/wopr_dns_check.log 2>&1",
-      "source": "crontab"
-    },
-    {
-      "user": "root",
-      "command": "*/30 * * * * /usr/bin/python3 /opt/wopr/support-plane/falken_flink_probe.py >> /opt/wopr/support-plane/falken_flink_probe.log 2>&1",
-      "source": "crontab"
-    },
-    {
-      "user": "root",
-      "command": "*/15 * * * * /usr/bin/python3 /opt/wopr/support-plane/flink_watchdog.py >> /opt/wopr/support-plane/flink_watchdog.log 2>&1",
-      "source": "crontab"
-    },
-    {
-      "user": "root",
-      "command": "*/15 * * * * /usr/bin/python3 /opt/wopr/support-plane/port_registry.py >> /opt/wopr/support-plane/port_registry.log 2>&1",
-      "source": "crontab"
-    },
-    {
-      "user": "root",
-      "command": "*/15 * * * * /usr/bin/python3 /opt/wopr/support-plane/model_presence_probe.py >> /opt/wopr/support-plane/model_presence_probe.log 2>&1",
-      "source": "crontab"
-    },
-    {
-      "user": "root",
-      "command": "*/30 * * * * /usr/bin/python3 /opt/wopr/support-plane/falken_freshness_probe.py >> /opt/wopr/support-plane/falken_freshness_probe.log 2>&1",
-      "source": "crontab"
-    },
-    {
-      "user": "root",
-      "command": "*/30 * * * * /usr/bin/python3 /opt/wopr/support-plane/mail_dns_probe.py >> /opt/wopr/support-plane/mail_dns_probe.log 2>&1",
-      "source": "crontab"
-    },
-    {
-      "user": "root",
-      "command": "*/15 * * * * /usr/bin/python3 /opt/wopr/support-plane/sso_access_probe.py >> /opt/wopr/support-plane/sso_access_probe.log 2>&1",
-      "source": "crontab"
-    },
-    {
-      "user": "nodez3r0",
-      "command": "*/10 3-22 * * * /usr/local/bin/comprehensive-backup.sh >/dev/null 2>&1",
-      "source": "crontab"
-    },
-    {
-      "user": "nodez3r0",
-      "command": "0 6 * * * cd /opt/asscast && /opt/asscast/venv/bin/python3 /opt/asscast/daily_pipeline.py >> /opt/asscast/cron.log 2>&1",
-      "source": "crontab"
-    },
-    {
-      "user": "nodez3r0",
-      "command": "*/5 * * * * /usr/bin/python3 /opt/gpu-scheduler/vram_reaper.py >> /opt/gpu-scheduler/reaper.log 2>&1",
-      "source": "crontab"
-    },
-    {
-      "user": "nodez3r0",
-      "command": "17 */6 * * * /usr/bin/python3 /opt/gpu-scheduler/registry/build_registry.py >> /opt/gpu-scheduler/registry/out/build.log 2>&1",
-      "source": "crontab"
-    },
-    {
-      "user": "nodez3r0",
-      "command": "23 4 * * * /usr/bin/python3 /opt/artcraft-dev/artcraft-services/build/selfhost/rig/rig_cleanup.py --prune-days 7 >> /opt/artcraft-dev/tools/rig_cleanup_prune.log 2>&1",
-      "source": "crontab"
-    },
-    {
-      "user": "nodez3r0",
-      "command": "17 4 * * * /usr/local/bin/prune-cargo-targets >> /home/nodez3r0/.cache/prune-cargo-targets.log 2>&1",
-      "source": "crontab"
-    },
-    {
-      "user": "nodez3r0",
-      "command": "*/15 * * * * /home/nodez3r0/wopr-kanban/autocommit.sh >> /tmp/wopr-kanban-autocommit.log 2>&1",
-      "source": "crontab"
-    },
-    {
-      "user": "system",
-      "command": "*/3 * * * * root /opt/wopr-dsa-sites/scripts/autodeploy.sh >> /var/log/dsa-autodeploy.log 2>&1",
-      "source": "/etc/cron.d/dsa-template-autodeploy"
-    },
-    {
-      "user": "system",
-      "command": "*/3 * * * * nodez3r0 /usr/bin/python3 -I /opt/sitrep/status/probe.py 2>&1 | logger -t sitrep-status",
-      "source": "/etc/cron.d/sitrep-status"
-    },
-    {
-      "user": "system",
-      "command": "23 7 * * * root /opt/wopr/support-plane/secret_scan.py >> /opt/wopr/support-plane/secret_scan.log 2>&1",
-      "source": "/etc/cron.d/wopr-secret-scan"
-    },
-    {
-      "user": "system",
-      "command": "*/5 6-9 * * * root /usr/bin/python3 /opt/meme-engine/scripts/asscast_daily.py post >> /var/log/wopr-asscast-daily.log 2>&1",
-      "source": "/etc/cron.d/wopr-asscast-daily"
-    },
-    {
-      "user": "system",
-      "command": "0 8-22/2 * * * root /usr/bin/python3 /opt/meme-engine/scripts/asscast_daily.py bump >> /var/log/wopr-asscast-daily.log 2>&1",
-      "source": "/etc/cron.d/wopr-asscast-daily"
-    },
-    {
-      "user": "system",
-      "command": "30 6 * * * root /opt/openclaw/scripts/price-sync.sh",
-      "source": "/etc/cron.d/wopr-price-sync.bak-20260913"
-    },
-    {
-      "user": "system",
-      "command": "0 2 * * 0 root /opt/openclaw/scripts/refresh-personas.sh",
-      "source": "/etc/cron.d/wopr-persona-refresh"
-    },
-    {
-      "user": "system",
-      "command": "30 6 * * * root /opt/openclaw/scripts/price-sync.sh",
-      "source": "/etc/cron.d/wopr-price-sync"
-    },
-    {
-      "user": "system",
-      "command": "0 10 * * 1,3,5 nodez3r0 /opt/openclaw/scripts/block-video.sh",
-      "source": "/etc/cron.d/wopr-block-video"
-    },
-    {
-      "user": "system",
-      "command": "5-55/10 * * * * root command -v debian-sa1 > /dev/null && debian-sa1 1 1",
-      "source": "/etc/cron.d/sysstat"
-    },
-    {
-      "user": "system",
-      "command": "59 23 * * * root command -v debian-sa1 > /dev/null && debian-sa1 60 2",
-      "source": "/etc/cron.d/sysstat"
-    },
-    {
-      "user": "system",
-      "command": "*/5 * * * * root /usr/bin/python3 /opt/wopr/support-plane/shop_probe.py >/dev/null 2>&1",
-      "source": "/etc/cron.d/wopr-shop-probe"
-    },
-    {
-      "user": "system",
-      "command": "30 7-23 * * *   root\t[ -x /etc/init.d/anacron ] && if [ ! -d /run/systemd/system ]; then /usr/sbin/invoke-rc.d anacron start >/dev/null; fi",
-      "source": "/etc/cron.d/anacron"
-    },
-    {
-      "user": "system",
-      "command": "*/2 * * * * root /usr/bin/python3 /opt/wopr/support-plane/wopr-failsafe.py >> /var/log/wopr-failsafe.log 2>&1",
-      "source": "/etc/cron.d/wopr-failsafe"
-    },
-    {
-      "user": "system",
-      "command": "*/5 * * * * root /usr/bin/python3 /opt/wopr/support-plane/tunnel_watchdog.py >> /var/log/wopr-tunnel-watchdog.log 2>&1",
-      "source": "/etc/cron.d/wopr-tunnel-watchdog"
-    },
-    {
-      "user": "system",
-      "command": "17 */6 * * * root /usr/local/sbin/wopr_mirror.sh >/dev/null 2>&1",
-      "source": "/etc/cron.d/wopr-mirror"
-    },
-    {
-      "user": "system",
-      "command": "30 3 * * 0 root test -e /run/systemd/system || SERVICE_MODE=1 /usr/lib/x86_64-linux-gnu/e2fsprogs/e2scrub_all_cron",
-      "source": "/etc/cron.d/e2scrub_all"
-    },
-    {
-      "user": "system",
-      "command": "10 3 * * * root test -e /run/systemd/system || SERVICE_MODE=1 /sbin/e2scrub_all -A -r",
-      "source": "/etc/cron.d/e2scrub_all"
-    },
-    {
-      "user": "system",
-      "command": "*/15 * * * * root /usr/bin/python3 /opt/wopr-disk-watchdog.py >> /var/log/wopr-disk-watchdog.log 2>&1",
-      "source": "/etc/cron.d/wopr-disk-watchdog"
-    },
-    {
-      "user": "system",
-      "command": "0 */12 * * * root test -x /usr/bin/certbot -a \\! -d /run/systemd/system && perl -e 'sleep int(rand(43200))' && certbot -q renew --no-random-sleep-on-renew",
-      "source": "/etc/cron.d/certbot"
-    },
-    {
-      "user": "system",
-      "command": "30 4 * * 1 root /opt/seo/seonaut_crawl_all.sh >> /var/log/seonaut-crawl.log 2>&1",
-      "source": "/etc/cron.d/seonaut-weekly"
-    },
-    {
-      "user": "system",
-      "command": "09,39 *     * * *     root   [ -x /usr/lib/php/sessionclean ] && if [ ! -d /run/systemd/system ]; then /usr/lib/php/sessionclean; fi",
-      "source": "/etc/cron.d/php"
-    },
-    {
-      "user": "system",
-      "command": "15 4 * * 1 root /usr/bin/python3 /opt/wopr-content/indexnow.py --submit >> /var/log/wopr-indexnow.log 2>&1",
-      "source": "/etc/cron.d/wopr-indexnow"
-    },
-    {
-      "user": "system",
-      "command": "*/30 * * * * root /usr/bin/python3 /opt/wopr/support-plane/traffic_probe.py >> /opt/wopr/support-plane/traffic_probe.log 2>&1",
-      "source": "/etc/cron.d/wopr-traffic-probe"
-    },
-    {
-      "user": "system",
-      "command": "30 9,13,17 * * * root /opt/openclaw/scripts/content-engine.sh",
-      "source": "/etc/cron.d/wopr-content-engine"
-    },
-    {
-      "user": "system",
-      "command": "test -x /usr/sbin/anacron || exit 0",
-      "source": "/etc/cron.daily/0anacron"
-    },
-    {
-      "user": "system",
-      "command": "anacron -u cron.daily",
-      "source": "/etc/cron.daily/0anacron"
-    },
-    {
-      "user": "system",
-      "command": "set -e",
-      "source": "/etc/cron.daily/sysstat"
-    },
-    {
-      "user": "system",
-      "command": "DEFAULT=/etc/default/sysstat",
-      "source": "/etc/cron.daily/sysstat"
-    },
-    {
-      "user": "system",
-      "command": "ENABLED=false",
-      "source": "/etc/cron.daily/sysstat"
-    },
-    {
-      "user": "system",
-      "command": "[ ! -d /run/systemd/system ] || exit 0",
-      "source": "/etc/cron.daily/sysstat"
-    },
-    {
-      "user": "system",
-      "command": "[ -x /usr/lib/sysstat/sa2 ] || exit 0",
-      "source": "/etc/cron.daily/sysstat"
-    },
-    {
-      "user": "system",
-      "command": "[ -r \"$DEFAULT\" ] && . \"$DEFAULT\"",
-      "source": "/etc/cron.daily/sysstat"
-    },
-    {
-      "user": "system",
-      "command": "[ \"$ENABLED\" = \"true\" ]  || exit 0",
-      "source": "/etc/cron.daily/sysstat"
-    },
-    {
-      "user": "system",
-      "command": "exec /usr/lib/sysstat/sa2 -A",
-      "source": "/etc/cron.daily/sysstat"
-    },
-    {
-      "user": "system",
-      "command": "set -e",
-      "source": "/etc/cron.daily/apt-compat"
-    },
-    {
-      "user": "system",
-      "command": "if [ -d /run/systemd/system ]; then",
-      "source": "/etc/cron.daily/apt-compat"
-    },
-    {
-      "user": "system",
-      "command": "exit 0",
-      "source": "/etc/cron.daily/apt-compat"
-    },
-    {
-      "user": "system",
-      "command": "fi",
-      "source": "/etc/cron.daily/apt-compat"
-    },
-    {
-      "user": "system",
-      "command": "check_power()",
-      "source": "/etc/cron.daily/apt-compat"
-    },
-    {
-      "user": "system",
-      "command": "{",
-      "source": "/etc/cron.daily/apt-compat"
-    },
-    {
-      "user": "system",
-      "command": "if command -v on_ac_power >/dev/null; then",
-      "source": "/etc/cron.daily/apt-compat"
-    },
-    {
-      "user": "system",
-      "command": "if on_ac_power; then",
-      "source": "/etc/cron.daily/apt-compat"
-    },
-    {
-      "user": "system",
-      "command": ":",
-      "source": "/etc/cron.daily/apt-compat"
-    },
-    {
-      "user": "system",
-      "command": "elif [ $? -eq 1 ]; then",
-      "source": "/etc/cron.daily/apt-compat"
-    },
-    {
-      "user": "system",
-      "command": "return 1",
-      "source": "/etc/cron.daily/apt-compat"
-    },
-    {
-      "user": "system",
-      "command": "fi",
-      "source": "/etc/cron.daily/apt-compat"
-    },
-    {
-      "user": "system",
-      "command": "fi",
-      "source": "/etc/cron.daily/apt-compat"
-    },
-    {
-      "user": "system",
-      "command": "return 0",
-      "source": "/etc/cron.daily/apt-compat"
-    },
-    {
-      "user": "system",
-      "command": "}",
-      "source": "/etc/cron.daily/apt-compat"
-    },
-    {
-      "user": "system",
-      "command": "random_sleep()",
-      "source": "/etc/cron.daily/apt-compat"
-    },
-    {
-      "user": "system",
-      "command": "{",
-      "source": "/etc/cron.daily/apt-compat"
-    },
-    {
-      "user": "system",
-      "command": "RandomSleep=1800",
-      "source": "/etc/cron.daily/apt-compat"
-    },
-    {
-      "user": "system",
-      "command": "eval $(apt-config shell RandomSleep APT::Periodic::RandomSleep)",
-      "source": "/etc/cron.daily/apt-compat"
-    },
-    {
-      "user": "system",
-      "command": "if [ $RandomSleep -eq 0 ]; then",
-      "source": "/etc/cron.daily/apt-compat"
-    },
-    {
-      "user": "system",
-      "command": "return",
-      "source": "/etc/cron.daily/apt-compat"
-    },
-    {
-      "user": "system",
-      "command": "fi",
-      "source": "/etc/cron.daily/apt-compat"
-    },
-    {
-      "user": "system",
-      "command": "if [ -z \"$RANDOM\" ] ; then",
-      "source": "/etc/cron.daily/apt-compat"
-    },
-    {
-      "user": "system",
-      "command": "RANDOM=$(( $(dd if=/dev/urandom bs=2 count=1 2> /dev/null | cksum | cut -d' ' -f1) % 32767 ))",
-      "source": "/etc/cron.daily/apt-compat"
-    },
-    {
-      "user": "system",
-      "command": "fi",
-      "source": "/etc/cron.daily/apt-compat"
-    },
-    {
-      "user": "system",
-      "command": "TIME=$(($RANDOM % $RandomSleep))",
-      "source": "/etc/cron.daily/apt-compat"
-    },
-    {
-      "user": "system",
-      "command": "sleep $TIME",
-      "source": "/etc/cron.daily/apt-compat"
-    },
-    {
-      "user": "system",
-      "command": "}",
-      "source": "/etc/cron.daily/apt-compat"
-    },
-    {
-      "user": "system",
-      "command": "random_sleep",
-      "source": "/etc/cron.daily/apt-compat"
-    },
-    {
-      "user": "system",
-      "command": "check_power || exit 0",
-      "source": "/etc/cron.daily/apt-compat"
-    },
-    {
-      "user": "system",
-      "command": "exec /usr/lib/apt/apt.systemd.daily",
-      "source": "/etc/cron.daily/apt-compat"
-    },
-    {
-      "user": "system",
-      "command": "[ -d /var/crash ] || exit 0",
-      "source": "/etc/cron.daily/apport"
-    },
-    {
-      "user": "system",
-      "command": "find /var/crash/. ! -name . -prune -type f \\( \\( -size 0 -a \\! -name '*.upload*' -a \\! -name '*.drkonqi*' \\) -o -mtime +7 \\) -exec rm -f -- '{}' \\;",
-      "source": "/etc/cron.daily/apport"
-    },
-    {
-      "user": "system",
-      "command": "find /var/crash/. ! -name . -prune -type d -regextype posix-extended -regex '.*/[0-9]{12}$' \\( -mtime +7 \\) -exec rm -Rf -- '{}' \\;",
-      "source": "/etc/cron.daily/apport"
-    },
-    {
-      "user": "system",
-      "command": "if [ -d /run/systemd/system ]; then",
-      "source": "/etc/cron.daily/logrotate"
-    },
-    {
-      "user": "system",
-      "command": "exit 0",
-      "source": "/etc/cron.daily/logrotate"
-    },
-    {
-      "user": "system",
-      "command": "fi",
-      "source": "/etc/cron.daily/logrotate"
-    },
-    {
-      "user": "system",
-      "command": "if [ ! -x /usr/sbin/logrotate ]; then",
-      "source": "/etc/cron.daily/logrotate"
-    },
-    {
-      "user": "system",
-      "command": "exit 0",
-      "source": "/etc/cron.daily/logrotate"
-    },
-    {
-      "user": "system",
-      "command": "fi",
-      "source": "/etc/cron.daily/logrotate"
-    },
-    {
-      "user": "system",
-      "command": "/usr/sbin/logrotate /etc/logrotate.conf",
-      "source": "/etc/cron.daily/logrotate"
-    },
-    {
-      "user": "system",
-      "command": "EXITVALUE=$?",
-      "source": "/etc/cron.daily/logrotate"
-    },
-    {
-      "user": "system",
-      "command": "if [ $EXITVALUE != 0 ]; then",
-      "source": "/etc/cron.daily/logrotate"
-    },
-    {
-      "user": "system",
-      "command": "/usr/bin/logger -t logrotate \"ALERT exited abnormally with [$EXITVALUE]\"",
-      "source": "/etc/cron.daily/logrotate"
-    },
-    {
-      "user": "system",
-      "command": "fi",
-      "source": "/etc/cron.daily/logrotate"
-    },
-    {
-      "user": "system",
-      "command": "exit $EXITVALUE",
-      "source": "/etc/cron.daily/logrotate"
-    },
-    {
-      "user": "system",
-      "command": "DEFAULTS_FILE=\"/etc/default/google-chrome\"",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "REPOCONFIG=\"deb [arch=amd64] https://dl.google.com/linux/chrome/deb/ stable main\"",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "REPOCONFIGREGEX=\"deb (\\[arch=[^]]*\\bamd64\\b[^]]*\\][[:space:]]*) https?://dl.google.com/linux/chrome/deb/ stable main\"",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "PGP_KEY_DATA=$(cat <<KEYDATA",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "mQINBFcMjNMBEAC6Wr5QuLIFgz1V1EFPlg8ty2TsjQEl4VWftUAqWlMevJFWvYEx",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "BOsOZ6kNFfBfjAxgJNWTkxZrHzDl74R7KW/nUx6X57bpFjUyRaB8F3/NpWKSeIGS",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "pJT+0m2SgUNhLAn1WY/iNJGNaMl7lgUnaP+/ZsSNT9hyTBiH3Ev5VvAtMGhVI/u8",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "P0EtTjXp4o2U+VqFTBGmZ6PJVhCFjZUeRByloHw8dGOshfXKgriebpioHvU8iQ2U",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "GV3WNIirB2Rq1wkKxXJ/9Iw+4l5m4GmXMs7n3XaYQoBj28H86YA1cYWSm5LR5iU2",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "TneI1fJ3vwF2vpSXVBUUDk67PZhg6ZwGRT7GFWskC0z8PsWd5jwK20mA8EVKq0vN",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "BFmMK6i4fJU+ux17Rgvnc9tDSCzFZ1/4f43EZ41uTmmNXIDsaPCqwjvSS5ICadt2",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "xeqTWDlzONUpOs5yBjF1cfJSdVxsfshvln2JXUwgIdKl4DLbZybuNFXnPffNLb2v",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "PtRJHO48O2UbeXS8n27PcuMoLRd7+r7TsqG2vBH4t/cB/1vsvWMbqnQlaJ5VsjeW",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "Tp8Gv9FJiKuU8PKiWsF4EGR/kAFyCB8QbJeQ6HrOT0CXLOaYHRu2TvJ4taY9doXn",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "98TgU03XTLcYoSp49cdkkis4K+9hd2dUqARVCG7UVd9PY60VVCKi47BVKQARAQAB",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "tFRHb29nbGUgSW5jLiAoTGludXggUGFja2FnZXMgU2lnbmluZyBBdXRob3JpdHkp",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "IDxsaW51eC1wYWNrYWdlcy1rZXltYXN0ZXJAZ29vZ2xlLmNvbT6JAk4EEwEIADgC",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "GwMCHgECF4AWIQTrTBv9TwQvbd3M7JF3IfY704tHlgUCVwyM0wULCQgHAgYVCgkI",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "CwIEFgIDAQAKCRB3IfY704tHlkGrD/9aIOPxoABbhHDa+GbM1XHSeV99q2UOIsYc",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "A5Jg3k2+Vbjr/006cL9Kk+rdbruZJtERo2z+HVVhkJisvySbsd0UbWfiY5AdHzNP",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "azpitbX9cNYi0ghDZsD5UgP3cWdx21BJPO0v9PBG9U4z1TQ+pmsQphtNzMC4tK+A",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "H/7WTXnVPzKXTYziIEIPgHeassSj7Yfwa8kLiBR5tAehHDNNMi/mMf4d6a+wO46x",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "hhRx/BLjoaIxsZw9f5VxDAqGbCrW8IccwJX8vTc89y+6vpzSurdqYrplZWGpcnfT",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "3SPBxodLhS7wMehdy6NKNO14vDGR/GP43+6oZ91Cyv2CYHSPpZM6+qMwMmGVkHS2",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "6PrCVPhPoDywf/7UeFsC4KZMI6LIGD2YI9UEOlcCAEbRwWVjXCSwRZ9vRkxOxK4Q",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "xNMLAIf3YmUZPnqGVcvNssgsapvjmI3CAWpAPWlP5GTcHxrVGiYz7hNZcA0PfgxF",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "pmB0QXNxr/x737I9Q8FCZasSlNqocaiKF6gKBxFOKfiKx5DRZ63EZ07Z3HE6y+w3",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "+97UIJhjxVrONgb7ZX9paE8NtLG/X0ZldUzqWngfnFVasnCDiQC+ls2Tu9Oa+yMJ",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "rMe3VM4EcZTjYoESUjKzEHP72hn+GoAk7saWWVK6xYUJPM18Ua1mGx8xwoXt/t95",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "W40b92HbJrkCDQRluVp2ARAAxKbVA+3KMCtd0zWLZjrjf0lz8AnLfKRWPFNoOLqf",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "nPuWBCKlpAFKlZvC6fg6nRbl+zW3ytgTaI8D8oqipWgQDejce2zvW40r5W22Qa1S",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "d5i/pO8axXUxi3g0kk5RAXrI+xVytcyu0lvQFd5+OZZjiwF0wtd1UNytEhF2/uvR",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "cF699f4ueDYE3zP9S3CWYSKEejLrRyQkmCrjumR8WGjnX4+PARklo+0SBGxefayB",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "Mw0e6QZOtXy5v9opZU0E8XTBhgXksDY0eBWnXjydLXUXg6CI2kKQBmYlAI+XKnh6",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "Zh/GSKGOH5NkrDopyvHA4LHth5x4orrBa+scevCMnGXaeFq0Mhg0iWdWSpOUGngD",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "2BN0LGZyJnXFdv5CWUvJwFgxaC7aWjUqTjQ059WWMgotq1jzxfCYlTJJgsbJfmR4",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "8jb2Rz7JUbJxgexKCg6XIz9XD4Zd+6P8FGKcoi2MhPFvpgzbnB+GBy1R6v80Bqjt",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "1emsUwNQ7PoLvbR1f9/shKyKqaLtfVTnzyiY2Au8n87yA+fIy2TWBavCEVkOVVgj",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "kCVjHHczCgee0tmW+byISZH5f0uSEjBlw1299p8ilX7wuU5ojG367M3NwywMcIai",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "ZQB/8Zhdsjz/HWIeiilkiH31Rk5t/LHLPZJJtW1QQEdfIpcenRsVYzUjPYt9DDF4",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "1FEAEQEAAYkEcgQYAQoAJhYhBOtMG/1PBC9t3czskXch9jvTi0eWBQJluVp2AhsC",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "BQkFo5qAAkAJEHch9jvTi0eWwXQgBBkBCgAdFiEEDwb/hr7q9OcYZu5SMu5TVaa8",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "bkIFAmW5WnYACgkQMu5TVaa8bkKYHg//VGdcoevKndSVo4Cr9QAXZgoVL00CCBXA",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "fw+GwVzqdmmu5z4IVTWzmPAK5b1qJaBD5OMEW9DSH9sctu6OVNKZ/LLKj8iP7i9L",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "FHOWZRryUc+rKq/t8ixDzYACzxYT+ZXwOJ/biGzElJkQfXfQNORGq2ddLQUHqw5A",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "8aPkQoAW3e/S839nVBFfZ4uZlzaM7tB+R1Gy2u8XduitvvF23br88zyDxGBhob5+",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "ogn820ZAXRcj5ZTG5D6a1EYTJWkviqfDCeiTLGOwzGwm+8Yho9QspHUJqEYkPi0C",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "XITcO82KQxEjZIOiNobKHlzDbiYklVmbHjrtDe0Th3CYC7ykIYKV1RAEbp6mtMv9",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "Zq7IlyaQmvWqxIruDLH5TLybBcRJj+zlvAOTOGXNonRaMHGpd+gcUgSUcl+EtLR5",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "+oivo0WY9S7hwEokqhmgUHBM9NMSZbPu0TaYOBU71npD1+rsLBlLon8ZyGJ5CADL",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "dHGbkGLMFmxaKxjcFDglfXDrAfQJp7itgJ5uS60UVYGDskDePaeSB/OwPeRgdh/k",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "GWUvbJXnz10Shw2M+Kiznq8+LmSD1RA4U7VJpfgR+7V4Cs1w214HEp/mkfyiQNyC",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "OqP3JdlGzp8jZST3PPPRQvrf6JFKpKPwq/qJ6ksLM6mHUMedja0WCGlIViqVrKF2",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "mswlWTsaYsWiJg//WdPrCryT9ENLf9bscQEnxG3GzW8vnWdTR7kruOBtRP2RobYo",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "GaWdFuCQQuO+7SVfrMsWLI9xzkmS8TYDJ9nu3lwh9qc5LiFzRb0LrpFCjZy9TGSf",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "aC0KszsoJNzXojB7+4wLZE0Sd40uIJ63BzkOGmNgTFHn2zPND02nHfWl5+yaRLAp",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "260TPxb3qXb3IdiAgOgthbdvqe4FEF+nicBdDWBap8SYU0WUpkFrak+wo2UWClyE",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "L4SIxD91vUSVU3Jbfwrsg7HqE0akQEnBs+4c15/1ZTefYMgiAwEdMc+9s0eII1N+",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "44zX78ExuYrn1GZbrpNLRRrFmyzAcctm3u803tIrNey95P34DV3rBmVWjLxjeDKQ",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "EqcEcZFoY7TNpdzMe3hixQDgveKzqUCNsiilTkzePYXVEUpGv3n4dlP81c14ZsW+",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "x0qa8/gQu0MC5hUyBhHwaqMjnI/9xxUyyL+aFP5xTE78Xv7ueLHDUajrfsmqv80X",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "mSOOsEPwSIbLxCsabq4FHc0Zp3QGcxYprZihgoXWbcWz968GRzKZH6FLAXORebpZ",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "I5vyHMkhrIVrqQBzu5IrJHmIbTSn+d6JtuozVpQBAMHBXuD3A+Zx1EiMlLYy0rUl",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "cdkJHWBUpv4Q5ty3pEk5XDyznwRLk73AZmZtW0hn4kdNu4f62DQShE1wJvO5Ag0E",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "Z31b7QEQAMEWM0g1KKIxE7q8JK7QblKom7++NYn92E3suHv3WxqzrhRT9tYNDSao",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "OazQP+haNA2BqkdFcB7G4jKdtK2VLFc7RBpcR2rnQEJWgpeP03DHrdZYFdpH9zAB",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "oFsotgZRKwwTOoxdm6XtV+47LEY9yAefPrt1gPJQ4h1SKwWIFSRPChQ1cThBz2QD",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "2LaPAGtjWzr6+0xf0nm4xTDvya0EbdTpMOvtyDCUp7qe41u34RelGxoo0+rmoL/0",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "cTJGCr2L3xWijlvWCMLhp2dgVnvRIpvo+tOSSl/pvTCLgE0nFjNQFbNh3D1Qo/AH",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "hEz3MzbQ9JbEy7MF+fiw83YULRKN1kZ673Z1ng1wLA0m4+EWrh/PpMPp1raYQT0f",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "SqUkiGBo25MfIjdheAuTgUf/4aHKU7vi4yFwxr8DWcKrxiv7g6xxbFvI3p+/wmyD",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "bLXBBh2ciqwQfW/H32TlfL+cXqtapB93L1xR4IPTRvMnIVJBA+J6I/jlqx6RqPAB",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "emHudFvL2sAJu91lQjL5GxEmgVNL7l+UKGsy+h8mg4Sonnw3MI1c1KrvvIhJlkTp",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "qiCqCnaGBBjZQWkuiyVJSq8VLHq2LxlWJd9nt73MpOLgj79ylD5G7OQEVgGBbvKw",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "qdRYvKik8UTYYu7sTolNFVNMvQoCIJxropO/xk17qK0a4LtaZ8oVABEBAAGJBHIE",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "GAEKACYWIQTrTBv9TwQvbd3M7JF3IfY704tHlgUCZ31b7QIbAgUJBaOagAJACRB3",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "IfY704tHlsF0IAQZAQoAHRYhBA4iWRdBRnD0RCwlDf1TPAfCZGSPBQJnfVvtAAoJ",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "EP1TPAfCZGSPphkP/iHWjnYuEXC7uKzt+zvsqjkGkGkXVApXgZGm9h1/ujlab0FK",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "+9VA1JlVuzqw9SBYuwUwkGX0TVVCCc5KAxDa6sYH2IggcC+dN4ZjCMiUrJlEHNVE",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "6f7Fjg59STScr+jWOckKnP5p2x4xmH0kZX/rkZ+90lfniPUvVt/g5aunoEQDvtMO",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "ZBn3Opgx4zOWxqK4vGMtF1bhFUieMtg5B3E5jlNeNwmkDYV3MHGu+oMYy1TFMA3O",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "QuTOz5deD86xE73hK9HQ3DBoETPIuzlYXP0qoQswVKBI4z7HjRLmfBQagXCXj+64",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "LEUaumAZlWWV3zzxZnAk4kzJv51+vESxaMm6Ll5VG18MLrzv3Zi4Ez4BMr7OjbAn",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "xfcgrsITDlwrweCYC7Rq9fWw5USyk93h0kNJ8AVT6CG2a5/LsCztfW4jkg7LFDWW",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "kMISoN/rCaR2sJfvy2aijZ33yAWUnEpWZG6+8811YAFdn9g1bnuWLHx9Z7q8Vjal",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "zJhVFe9f8Mhwk2K764VUL7pnNNYxl4Kj0oTAqVVGDZoMWHCcE7nxqGbzjn8H/unT",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "Y0vtK5k8BPyuUt0Dtel8fspjlDl5o5VbeBQo6cFBEzZSd5rbavXmtixhL7CGKqCW",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "aHbJ6OYTa85W14ndUmRJ5qPdLcYakdl16Uj/DrFuKHOPrulgAbs+hmgm1q/nYdgP",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "/3UUMgaqxU6efsiWi3M3pz9nTu0mcI8kpJzvfov7WINjLLu2+yVRyRbS98473Zr6",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "KS49BFqOXNQBmtZl77bcz5shfhPxoKLd8YJVayvnBQrjCIE1CACvmJBZGDZSNY0v",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "Ea4G+n6WT3DwEan6plZ3/xM6s4caZfP43ZZkEiu1M1svQtgzF98HFxAhX5oLyMPw",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "x8R61X0XtKxmjVbNrTBwRfJf/FRDmmv5qSxoO2g1gpbCcm2VGoGBvoDws95GvPFN",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "lWUes4xQMclIo01JuynJGLyOaEm19TXu4T36ulCTO/b1lGIOLi+25vpFKlwBrD6y",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "q4yrt81t6vGvtI1pZrt1Wcm7hce8CFLrzfzo2D28yHPIsT0YvK7AnwUK/SMKIV1E",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "UNrLIRhnTMBnP+BaOF0HxcAYnlRLSwScPx2pATglHmIvNcRkCsfIZQOXjn8lvFXs",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "7lnkP5KUF5/+ccsJj8kEdzcsYaczQe3wY2N36ibqRPOfPeVmPFAKPQsUdgx47cAP",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "KTm6PxIp73IxceGXbkOXJ7W1lqVPKiwQh09RkwWpMtJA2HSdbmInxBiE71tJqSxQ",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "pp2EfNXOgWTTrs46lkuW39I7dr0NOAGomeaNnOuexMmlTZy2Rf77BfozRZIZ+RAY",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "lZu5/W1Ed2X4iR8i76QET6ICFmgxADKzB4WnpeBaBqAruQINBGmweKcBEAC1/xca",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "t0PuTxtFGEIKOMlQaQZl3NJkvJBFC1AMY0+h8zQtD3FvTeoxc36oI+BC017cXARI",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "SSieMgI/4T16ffYhij1ChX3rraH3UyxBimK+WbYb8ieTYHFMmmYrAVlDByhngSrX",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "A/kpafZUvWqlafJ//zb+U+oSdz/Fce2SzmhjA2JF/kH9U/P78jPNhrIjFGbFpa0F",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "VPowB4OQRxmJkIYhd7BpXaMLvjlJPQyw4u3vylcUe5Xc+WdpT4nNA72AkUiCjKtc",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "AoqRgCq1i5dRB8hmmyKiiv9Yys+cnm/aaLPKAUdjPGHhlWo7J5C7fRM2VOgn/QCz",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "hxcR0Fwyx2jhlaotGlq+g3yTnDE0eKrlejuDJW9PjHalDgJ1zjQ0xL1/DH+t71pQ",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "wr4yRhfSfaeV+AyLJlRqzBLSHBVcJYHCpP3WrNSHolK2dx3q+guwCgqOmcMV6WcN",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "NRQ5epXb8J8t55lKB04XmN6MlyojMV3WZs1SLtBH7/YQFGNO8Ku7MDozvdIkZycV",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "yINU7vRnz5tMipk05ubLYBGbp+UoyyBsg3h7tBE509esQYrFGwsIQxuKYYbkNhc1",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "k/EOS3lOlOLrW2imSSbEqFEgCdQDWeHD7k9oe8bEbBuqMR5ENAkuICoTcEeHSEMI",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "uoltOdarDDjNKO7+vwgIg4FPtbiyoEfTNV+qxwARAQABiQRyBBgBCgAmFiEE60wb",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "/U8EL23dzOyRdyH2O9OLR5YFAmmweKcCGwIFCQWjmoACQAkQdyH2O9OLR5bBdCAE",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "GQEKAB0WIQS42+nMryEW+EoIS9YdCcAVAG/quAUCabB4pwAKCRAdCcAVAG/quHng",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "EACj1W8fovEHBvNSDUdBIiD9gx6XzScxDMAjeN8g9FNILkIdwfTN9mnHq0uNTR4E",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "PwTXuOOns0ET9wwM4aHihzLJlO8b6s32O3OOTkd37hT6PFcXVVxiFi8oM0rZjQGc",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "uFzL6Ste4650/6voJCoIysx3vSzZqmlTbDen6nnCwJNJlXta/Ecd7q1JFSDNDPt7",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "kJqnBXSP9JBBg0m5f2SicsZPqCzUO57nj5TGUFnoG191OAwLsuftrvGe0YbnfegN",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "3wn4sz7bo74zO7+0URl6TBCqV7CNPYjo303TH/m7tw0yidaOJQxlmQS62za6CPOS",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "1G+JG9sO+F0jKN7r7i4eJxMXukFS4txHDy3qiceuyN10Tcj6tbDqOSb7lHmAuKuI",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "CkpLOlGdJ0D3gY3c4KmZaOQ79clOuYpPb86PqusLLGet+z4BCB+h6/t/QHcXdSdE",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "NB9g7daExjOBngKNVKkbJ6+yrlwA9heS/KVEfXnB0njcROhTBiF6DR+/B7EfjWCS",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "NsD5/X5crUuXmC6ymdSGUxNeeL6kVNMWWGNYXuVWeNwbxh7rrKbAiUy5xKEWyxaV",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "8KAVaHyUnHRliM0utxibWoY8ffDhzhFQfkRiZd5vnOxES9ExqoRhN4MhYjjG+D8q",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "wjrqiXFif19zDO5CsKZ1WvNOf0snDwLh3pQuy5et8KG/QJz+D/9whzafoi650yzs",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "8jZ/hhfRo30cdVz/AOBLXex8kla5cXAi21S6kyIp6JDvTzdQovzj/UqG8RUUpAel",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "h4dLn4ulcffUX4khW3SUmOFG5TUjk9xET1a6ppx+oyVq+SbPurxYXoKm4ZAZwcji",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "dJF8lhwxYdW3yzBU8CKIhNT6i7aY7YrfVqinjXVFxn+8WsLkGk9IommwPwa+bzSJ",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "XBkF5FevMlboH/ze2cc0+wzR8ZWiPEOATuJan4O/z2fwGxDmMg3x68cd7Yj9Pol3",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "nOKTud8luTM8IOBE8hCfol6x+k7KfqtRdgrTv7W3/Ise0ybJlMkEEUuqglg4Ta7o",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "mgO7MJFiVl+P0ab+69W2z1ZzAyzjKajm21Tb4tec7AoBVaLNGYsunLCTfjxcB3V0",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "SRDlO/iJNIqXIhClHEqrnSYUrfVbUKNCAZ4zUK1/ctdJyuVViV2jlafQ+YR8RUMH",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "YT2P3iMawH90FFhYAxll7V5dfugB2FAh51bENiMrPL9k1MUuoiDABrC/Foo4uqby",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "kJUJr8eR3zHs94v8IPir5cS6FFqchlqxto/A5LPpxYbXnfY+x1QQkyv3euOH2+9x",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "nYB57gEQf2XL4P+pZQnKy6WMyWnFD6Yb2fQQVFsP0uGTm0v0CsmWxRndaD9rY35w",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "0VKRfNSbDRGP+JSZlxIhNwzxA5IrpQ==",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "KEYDATA",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": ")",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "PGP_KEY_CHECKSUM=\"=djNO\"",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "PGP_SUBKEYS=\"32EE5355A6BC6E42 FD533C07C264648F 1D09C015006FEAB8\"",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "APT_CONFIG=\"$(command -v apt-config 2>/dev/null)\"",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "GPG_FILE=\"/usr/share/keyrings/google-chrome.gpg\"",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "find_apt_trusted() {",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "eval $(\"$APT_CONFIG\" shell APT_TRUSTEDDIR 'Dir::Etc::trustedparts/d')",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "}",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "find_apt_sources() {",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "eval $(\"$APT_CONFIG\" shell APT_SOURCESDIR 'Dir::Etc::sourceparts/d')",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "SOURCES_FILE=\"$APT_SOURCESDIR/google-chrome.sources\"",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "}",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "install_key() {",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "if [ ! -e /usr/share/keyrings ]; then",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "mkdir -p /usr/share/keyrings",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "chmod 755 /usr/share/keyrings",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "fi",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "echo \"$PGP_KEY_DATA\" | base64 -d >\"$GPG_FILE.$$.tmp\"",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "chmod 644 \"$GPG_FILE.$$.tmp\"",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "mv \"$GPG_FILE.$$.tmp\" \"$GPG_FILE\"",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "}",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "uninstall_key() {",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "rm -f \"$GPG_FILE\"",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "}",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "remove_legacy_key() {",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "find_apt_trusted",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "rm -f \"$APT_TRUSTEDDIR/google-chrome.gpg\"",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "}",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "remove_legacy_list() {",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "find_apt_sources",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "LEGACY_LIST=\"$APT_SOURCESDIR/google-chrome.list\"",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "if [ ! -f \"$LEGACY_LIST\" ]; then",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "return",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "fi",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "if grep -E \"^[[:space:]]*#?[[:space:]]*deb\" \"$LEGACY_LIST\" |",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "grep -v -E \\",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "\"^[[:space:]]*#?[[:space:]]*$REPOCONFIGREGEX\" >/dev/null;",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "then",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "sed -i -E \"s|^[[:space:]]*($REPOCONFIGREGEX)|# \\1|\" \"$LEGACY_LIST\"",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "else",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "rm -f \"$LEGACY_LIST\"",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "fi",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "}",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "gen_sources_content() {",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "cat <<EOF",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "X-Repolib-Name: Google Chrome",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "Types: deb",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "URIs: https://dl.google.com/linux/chrome-stable/deb/",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "Suites: stable",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "Components: main",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "Architectures: amd64",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "Signed-By: $GPG_FILE",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "EOF",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "}",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "create_sources_lists() {",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "find_apt_sources",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "gen_sources_content >\"$SOURCES_FILE.$$.tmp\"",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "chmod 644 \"$SOURCES_FILE.$$.tmp\"",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "mv \"$SOURCES_FILE.$$.tmp\" \"$SOURCES_FILE\"",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "if [ -r \"$DEFAULTS_FILE\" ]; then",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "if grep -q \"^[[:space:]]*repo_add_once=\" \"$DEFAULTS_FILE\"; then",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "sed -i -e \\",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "'s/^[[:space:]]*repo_add_once=.*/repo_add_once=\"false\"/' \\",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "\"$DEFAULTS_FILE\"",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "else",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "echo 'repo_add_once=\"false\"' >>\"$DEFAULTS_FILE\"",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "fi",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "fi",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "}",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "clean_sources_lists() {",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "find_apt_sources",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "rm -f \"$SOURCES_FILE\"",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "}",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "install_deb822_sources() {",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "find_apt_sources",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "LEGACY_LIST=\"$APT_SOURCESDIR/google-chrome.list\"",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "SHOULD_INSTALL_SOURCES=0",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "if [ -r \"$DEFAULTS_FILE\" ]; then",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "if grep -E -q \\",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "'^[[:space:]]*repo_add_once=[[:space:]]*[\"'\\'']?true[\"'\\'']?' \\",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "\"$DEFAULTS_FILE\"; then",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "SHOULD_INSTALL_SOURCES=1",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "fi",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "else",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "SHOULD_INSTALL_SOURCES=1",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "echo 'repo_add_once=\"true\"' >\"$DEFAULTS_FILE\"",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "echo 'repo_reenable_on_distupgrade=\"true\"' >>\"$DEFAULTS_FILE\"",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "fi",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "if [ -f \"$SOURCES_FILE\" ]; then",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "SHOULD_INSTALL_SOURCES=1",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "elif [ -f \"$LEGACY_LIST\" ]; then",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "if grep -E -q \"^[[:space:]]*$REPOCONFIGREGEX\" \"$LEGACY_LIST\"; then",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "SHOULD_INSTALL_SOURCES=1",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "elif grep -E -q \\",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "\"^[[:space:]]*#[[:space:]]*$REPOCONFIGREGEX[[:space:]]*# disabled on \\",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "upgrade to .*\" \\",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "\"$LEGACY_LIST\"; then",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "SHOULD_INSTALL_SOURCES=1",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "fi",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "fi",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "if [ \"$SHOULD_INSTALL_SOURCES\" -eq 1 ]; then",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "create_sources_lists",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "fi",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "}",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "if [ -r \"$DEFAULTS_FILE\" ]; then",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": ". \"$DEFAULTS_FILE\"",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "fi",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "install_key",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "if [ \"$repo_add_once\" = \"true\" ]; then",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "create_sources_lists",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "elif [ \"$repo_reenable_on_distupgrade\" = \"true\" ]; then",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "install_deb822_sources",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "fi",
-      "source": "/etc/cron.daily/google-chrome"
-    },
-    {
-      "user": "system",
-      "command": "set -e",
-      "source": "/etc/cron.daily/man-db"
-    },
-    {
-      "user": "system",
-      "command": "if [ -d /run/systemd/system ]; then",
-      "source": "/etc/cron.daily/man-db"
-    },
-    {
-      "user": "system",
-      "command": "exit 0",
-      "source": "/etc/cron.daily/man-db"
-    },
-    {
-      "user": "system",
-      "command": "fi",
-      "source": "/etc/cron.daily/man-db"
-    },
-    {
-      "user": "system",
-      "command": "export PATH=\"$PATH:/usr/local/sbin:/usr/sbin:/sbin\"",
-      "source": "/etc/cron.daily/man-db"
-    },
-    {
-      "user": "system",
-      "command": "iosched_idle=",
-      "source": "/etc/cron.daily/man-db"
-    },
-    {
-      "user": "system",
-      "command": "if ! grep -Eq '(envID|VxID):.*[1-9]' /proc/self/status && \\",
-      "source": "/etc/cron.daily/man-db"
-    },
-    {
-      "user": "system",
-      "command": "{ [ ! -d /proc/vz ] || [ -d /proc/bc ]; }; then",
-      "source": "/etc/cron.daily/man-db"
-    },
-    {
-      "user": "system",
-      "command": "iosched_idle='--iosched idle'",
-      "source": "/etc/cron.daily/man-db"
-    },
-    {
-      "user": "system",
-      "command": "fi",
-      "source": "/etc/cron.daily/man-db"
-    },
-    {
-      "user": "system",
-      "command": "if ! [ -d /var/cache/man ]; then",
-      "source": "/etc/cron.daily/man-db"
-    },
-    {
-      "user": "system",
-      "command": "install -d -o man -g man -m 0755 /var/cache/man",
-      "source": "/etc/cron.daily/man-db"
-    },
-    {
-      "user": "system",
-      "command": "fi",
-      "source": "/etc/cron.daily/man-db"
-    },
-    {
-      "user": "system",
-      "command": "if [ -d /var/cache/man ]; then",
-      "source": "/etc/cron.daily/man-db"
-    },
-    {
-      "user": "system",
-      "command": "cd /",
-      "source": "/etc/cron.daily/man-db"
-    },
-    {
-      "user": "system",
-      "command": "start-stop-daemon --start --pidfile /dev/null --startas /bin/sh \\",
-      "source": "/etc/cron.daily/man-db"
-    },
-    {
-      "user": "system",
-      "command": "--oknodo --chuid man $iosched_idle -- -c \\",
-      "source": "/etc/cron.daily/man-db"
-    },
-    {
-      "user": "system",
-      "command": "\"find /var/cache/man -type f -name '*.gz' -atime +6 -print0 | \\",
-      "source": "/etc/cron.daily/man-db"
-    },
-    {
-      "user": "system",
-      "command": "xargs -r0 rm -f\"",
-      "source": "/etc/cron.daily/man-db"
-    },
-    {
-      "user": "system",
-      "command": "fi",
-      "source": "/etc/cron.daily/man-db"
-    },
-    {
-      "user": "system",
-      "command": "if [ -x /usr/bin/mandb ]; then",
-      "source": "/etc/cron.daily/man-db"
-    },
-    {
-      "user": "system",
-      "command": "start-stop-daemon --start --pidfile /dev/null \\",
-      "source": "/etc/cron.daily/man-db"
-    },
-    {
-      "user": "system",
-      "command": "--startas /usr/bin/mandb --oknodo --chuid man \\",
-      "source": "/etc/cron.daily/man-db"
-    },
-    {
-      "user": "system",
-      "command": "$iosched_idle \\",
-      "source": "/etc/cron.daily/man-db"
-    },
-    {
-      "user": "system",
-      "command": "-- --no-purge --quiet",
-      "source": "/etc/cron.daily/man-db"
-    },
-    {
-      "user": "system",
-      "command": "fi",
-      "source": "/etc/cron.daily/man-db"
-    },
-    {
-      "user": "system",
-      "command": "exit 0",
-      "source": "/etc/cron.daily/man-db"
-    },
-    {
-      "user": "system",
-      "command": "if [ -d /run/systemd/system ]; then",
-      "source": "/etc/cron.daily/dpkg"
-    },
-    {
-      "user": "system",
-      "command": "exit 0",
-      "source": "/etc/cron.daily/dpkg"
-    },
-    {
-      "user": "system",
-      "command": "fi",
-      "source": "/etc/cron.daily/dpkg"
-    },
-    {
-      "user": "system",
-      "command": "/usr/libexec/dpkg/dpkg-db-backup",
-      "source": "/etc/cron.daily/dpkg"
-    }
-  ],
-  "network": {
-    "interfaces": [
-      {
-        "name": "enp13s0",
-        "state": "UP",
-        "addresses": [
-          "192.168.0.250"
-        ],
-        "type": "physical"
-      },
-      {
-        "name": "wwan0",
-        "state": "DOWN",
-        "addresses": [],
-        "type": "physical"
-      },
-      {
-        "name": "nebula0",
-        "state": "UNKNOWN",
-        "addresses": [
-          "10.0.0.3"
-        ],
-        "type": "nebula"
-      }
-    ],
-    "nebula_active": true
-  },
-  "compose_projects": [
-    {
-      "name": "folkmoot-foundation",
-      "path": "/opt/folkmoot-foundation/docker-compose.yml",
-      "directory": "/opt/folkmoot-foundation"
-    },
-    {
-      "name": "infisical",
-      "path": "/opt/wopr-rig-infra/docker/infisical/docker-compose.yml",
-      "directory": "/opt/wopr-rig-infra/docker/infisical"
-    },
-    {
-      "name": "crowdsec-dashboard",
-      "path": "/opt/wopr-rig-infra/docker/crowdsec-dashboard/docker-compose.yml",
-      "directory": "/opt/wopr-rig-infra/docker/crowdsec-dashboard"
-    },
-    {
-      "name": "akkoma",
-      "path": "/opt/wopr-rig-infra/docker/akkoma/docker-compose.yml",
-      "directory": "/opt/wopr-rig-infra/docker/akkoma"
-    },
-    {
-      "name": "wazuh",
-      "path": "/opt/wopr-rig-infra/docker/wazuh/docker-compose.yml",
-      "directory": "/opt/wopr-rig-infra/docker/wazuh"
-    },
-    {
-      "name": "greenbone",
-      "path": "/opt/wopr-rig-infra/docker/greenbone/docker-compose.yml",
-      "directory": "/opt/wopr-rig-infra/docker/greenbone"
-    },
-    {
-      "name": "mastodon",
-      "path": "/opt/wopr-rig-infra/docker/mastodon/docker-compose.yml",
-      "directory": "/opt/wopr-rig-infra/docker/mastodon"
-    },
-    {
-      "name": "lovejoos",
-      "path": "/opt/wopr-rig-infra/apps/lovejoos/docker-compose.yml",
-      "directory": "/opt/wopr-rig-infra/apps/lovejoos"
-    },
-    {
-      "name": "bind",
-      "path": "/opt/bind/docker-compose.yml",
-      "directory": "/opt/bind"
-    },
-    {
-      "name": "hermes-webui",
-      "path": "/opt/wopr-agent-harnesses/hermes-webui/docker-compose.yml",
-      "directory": "/opt/wopr-agent-harnesses/hermes-webui"
-    },
-    {
-      "name": "hermes",
-      "path": "/opt/wopr-agent-harnesses/hermes/docker-compose.yml",
-      "directory": "/opt/wopr-agent-harnesses/hermes"
-    },
-    {
-      "name": "wopr_ollama_chat",
-      "path": "/opt/wopr_ollama_chat/docker-compose.yml",
-      "directory": "/opt/wopr_ollama_chat"
-    },
-    {
-      "name": "statestreettheater",
-      "path": "/opt/statestreettheater/docker-compose.yml",
-      "directory": "/opt/statestreettheater"
-    },
-    {
-      "name": "protovision-web",
-      "path": "/opt/protovision-web/docker-compose.yml",
-      "directory": "/opt/protovision-web"
-    },
-    {
-      "name": "wopr-theblock",
-      "path": "/opt/wopr-theblock/docker-compose.yml",
-      "directory": "/opt/wopr-theblock"
-    },
-    {
-      "name": "adams-dsa-folkmoot",
-      "path": "/opt/adams-dsa-folkmoot/docker-compose.yml",
-      "directory": "/opt/adams-dsa-folkmoot"
-    },
-    {
-      "name": "protovision",
-      "path": "/opt/protovision/docker-compose.yml",
-      "directory": "/opt/protovision"
-    },
-    {
-      "name": "noise-lab-releases",
-      "path": "/opt/noise-lab-releases/docker-compose.yml",
-      "directory": "/opt/noise-lab-releases"
-    },
-    {
-      "name": "printful-sync",
-      "path": "/opt/printful-sync/docker-compose.yml",
-      "directory": "/opt/printful-sync"
-    },
-    {
-      "name": "umami",
-      "path": "/opt/wopr-monitoring/umami/docker-compose.yml",
-      "directory": "/opt/wopr-monitoring/umami"
-    },
-    {
-      "name": "ntfy",
-      "path": "/opt/wopr-monitoring/ntfy/docker-compose.yml",
-      "directory": "/opt/wopr-monitoring/ntfy"
-    },
-    {
-      "name": "nostr-toolkit",
-      "path": "/opt/nostr-toolkit/docker-compose.yml",
-      "directory": "/opt/nostr-toolkit"
-    },
-    {
-      "name": "protovision-wt-battery",
-      "path": "/opt/protovision-wt-battery/docker-compose.yml",
-      "directory": "/opt/protovision-wt-battery"
-    },
-    {
-      "name": "adams-dsa",
-      "path": "/opt/adams-dsa/docker-compose.yml",
-      "directory": "/opt/adams-dsa"
-    },
-    {
-      "name": "tor",
-      "path": "/opt/tor/docker-compose.yml",
-      "directory": "/opt/tor"
-    },
-    {
-      "name": "wopr-manifesto",
-      "path": "/opt/wopr-manifesto/docker-compose.yml",
-      "directory": "/opt/wopr-manifesto"
-    },
-    {
-      "name": "matrix",
-      "path": "/opt/matrix/docker-compose.yml",
-      "directory": "/opt/matrix"
-    },
-    {
-      "name": "rig-compose",
-      "path": "/opt/matrix/rig-compose/docker-compose.yml",
-      "directory": "/opt/matrix/rig-compose"
-    },
-    {
-      "name": "livekit",
-      "path": "/opt/livekit/docker-compose.yml",
-      "directory": "/opt/livekit"
-    },
-    {
-      "name": "infisical",
-      "path": "/opt/infisical/docker-compose.yml",
-      "directory": "/opt/infisical"
-    },
-    {
-      "name": "wopr-multiverse",
-      "path": "/opt/wopr-multiverse/docker-compose.yml",
-      "directory": "/opt/wopr-multiverse"
-    },
-    {
-      "name": "wopr-sso",
-      "path": "/opt/wopr-sso/docker-compose.yml",
-      "directory": "/opt/wopr-sso"
-    },
-    {
-      "name": "meme-engine.bak.20260320081348",
-      "path": "/opt/meme-engine.bak.20260320081348/docker-compose.yml",
-      "directory": "/opt/meme-engine.bak.20260320081348"
-    },
-    {
-      "name": "group7-peertube",
-      "path": "/opt/group7-peertube/docker-compose.yml",
-      "directory": "/opt/group7-peertube"
-    },
-    {
-      "name": "backup-20261023-0657",
-      "path": "/opt/group7-peertube/backup-20261023-0657/docker-compose.yml",
-      "directory": "/opt/group7-peertube/backup-20261023-0657"
-    },
-    {
-      "name": "n8n",
-      "path": "/opt/n8n/docker-compose.yml",
-      "directory": "/opt/n8n"
-    },
-    {
-      "name": "listmonk",
-      "path": "/opt/listmonk/docker-compose.yml",
-      "directory": "/opt/listmonk"
-    },
-    {
-      "name": "backup-20261023-0714",
-      "path": "/opt/listmonk/backup-20261023-0714/docker-compose.yml",
-      "directory": "/opt/listmonk/backup-20261023-0714"
-    },
-    {
-      "name": "printful-sync.preBLT_1779710036",
-      "path": "/opt/printful-sync.preBLT_1779710036/docker-compose.yml",
-      "directory": "/opt/printful-sync.preBLT_1779710036"
-    },
-    {
-      "name": "pftp",
-      "path": "/opt/pftp/docker-compose.yml",
-      "directory": "/opt/pftp"
-    },
-    {
-      "name": "lovejoos",
-      "path": "/opt/lovejoos/docker-compose.yml",
-      "directory": "/opt/lovejoos"
-    },
-    {
-      "name": "binkerd-us",
-      "path": "/opt/binkerd-us/docker-compose.yml",
-      "directory": "/opt/binkerd-us"
-    },
-    {
-      "name": "open-webui",
-      "path": "/opt/open-webui/docker-compose.yml",
-      "directory": "/opt/open-webui"
-    },
-    {
-      "name": "ward6-vote",
-      "path": "/opt/ward6-vote/docker-compose.yml",
-      "directory": "/opt/ward6-vote"
-    },
-    {
-      "name": "crowdsec-dashboard",
-      "path": "/opt/crowdsec-dashboard/docker-compose.yml",
-      "directory": "/opt/crowdsec-dashboard"
-    },
-    {
-      "name": "wopr-systems-preview",
-      "path": "/opt/wopr-systems-preview/docker-compose.yml",
-      "directory": "/opt/wopr-systems-preview"
-    },
-    {
-      "name": "standalone",
-      "path": "/opt/wopr-systems-preview/.next/standalone/docker-compose.yml",
-      "directory": "/opt/wopr-systems-preview/.next/standalone"
-    },
-    {
-      "name": "rig-compose",
-      "path": "/opt/buylocal/rig-compose/docker-compose.yml",
-      "directory": "/opt/buylocal/rig-compose"
-    },
-    {
-      "name": "pds",
-      "path": "/opt/pds/compose.yml",
-      "directory": "/opt/pds"
-    },
-    {
-      "name": "miniflux",
-      "path": "/opt/miniflux/docker-compose.yml",
-      "directory": "/opt/miniflux"
-    },
-    {
-      "name": "reactor-ui",
-      "path": "/opt/reactor-ui/docker-compose.yml",
-      "directory": "/opt/reactor-ui"
-    },
-    {
-      "name": "demo",
-      "path": "/opt/reactor-ui/demo/docker-compose.yml",
-      "directory": "/opt/reactor-ui/demo"
+      "name": "wopr-sso-redis",
+      "image": "redis:8-alpine@sha256:47b08295737773de3b711fb86f13ae802f5074e96a9a2d29f5f80164ac08c046",
+      "critical": true,
+      "expected_state": "running"
     },
     {
       "name": "wopr-systems-next",
-      "path": "/opt/wopr-systems-next/docker-compose.yml",
-      "directory": "/opt/wopr-systems-next"
-    },
-    {
-      "name": "crowdsec-dashboard",
-      "path": "/opt/wopr-security-config/crowdsec-dashboard/docker-compose.yml",
-      "directory": "/opt/wopr-security-config/crowdsec-dashboard"
-    },
-    {
-      "name": "foundation-folkmoot",
-      "path": "/opt/foundation-folkmoot/docker-compose.yml",
-      "directory": "/opt/foundation-folkmoot"
-    },
-    {
-      "name": "multi-node",
-      "path": "/opt/wazuh-docker/multi-node/docker-compose.yml",
-      "directory": "/opt/wazuh-docker/multi-node"
-    },
-    {
-      "name": "single-node",
-      "path": "/opt/wazuh-docker/single-node/docker-compose.yml",
-      "directory": "/opt/wazuh-docker/single-node"
-    },
-    {
-      "name": "lnbits",
-      "path": "/opt/lnbits/docker-compose.yml",
-      "directory": "/opt/lnbits"
-    },
-    {
-      "name": "searxng",
-      "path": "/opt/wopr-rig-config-snapshot/files/opt/searxng/docker-compose.yml",
-      "directory": "/opt/wopr-rig-config-snapshot/files/opt/searxng"
-    },
-    {
-      "name": "barter",
-      "path": "/opt/barter/docker-compose.yml",
-      "directory": "/opt/barter"
-    },
-    {
-      "name": "rig-compose",
-      "path": "/opt/barter/rig-compose/docker-compose.yml",
-      "directory": "/opt/barter/rig-compose"
-    },
-    {
-      "name": "protovision-wt-voice",
-      "path": "/opt/protovision-wt-voice/docker-compose.yml",
-      "directory": "/opt/protovision-wt-voice"
-    },
-    {
-      "name": "akkoma",
-      "path": "/opt/akkoma/docker-compose.yml",
-      "directory": "/opt/akkoma"
-    },
-    {
-      "name": "elasticsearch",
-      "path": "/opt/akkoma/deps/elasticsearch/docker-compose.yml",
-      "directory": "/opt/akkoma/deps/elasticsearch"
-    },
-    {
-      "name": "selfhost",
-      "path": "/opt/artcraft-dev/artcraft-services/build/selfhost/docker-compose.yml",
-      "directory": "/opt/artcraft-dev/artcraft-services/build/selfhost"
-    },
-    {
-      "name": "Applio",
-      "path": "/opt/artcraft-dev/Applio/docker-compose.yaml",
-      "directory": "/opt/artcraft-dev/Applio"
-    },
-    {
-      "name": "elk",
-      "path": "/opt/elk/docker-compose.yml",
-      "directory": "/opt/elk"
-    },
-    {
-      "name": "meme-engine",
-      "path": "/opt/meme-engine/docker-compose.yml",
-      "directory": "/opt/meme-engine"
-    },
-    {
-      "name": "thedudeabides-store",
-      "path": "/opt/thedudeabides-store/docker-compose.yml",
-      "directory": "/opt/thedudeabides-store"
-    },
-    {
-      "name": "rig-compose",
-      "path": "/opt/thedudeabides-store/rig-compose/docker-compose.yml",
-      "directory": "/opt/thedudeabides-store/rig-compose"
-    },
-    {
-      "name": "sonicforge",
-      "path": "/opt/sonicforge/docker-compose.yml",
-      "directory": "/opt/sonicforge"
-    },
-    {
-      "name": "src",
-      "path": "/opt/matrix-onboard/src/docker-compose.yml",
-      "directory": "/opt/matrix-onboard/src"
-    },
-    {
-      "name": "folkmoot",
-      "path": "/opt/folkmoot/docker-compose.yml",
-      "directory": "/opt/folkmoot"
-    },
-    {
-      "name": "searxng",
-      "path": "/opt/searxng/docker-compose.yml",
-      "directory": "/opt/searxng"
-    },
-    {
-      "name": "matrix-mqtt-bridge",
-      "path": "/opt/matrix-mqtt-bridge/docker-compose.yml",
-      "directory": "/opt/matrix-mqtt-bridge"
-    },
-    {
-      "name": "protovision-wt-app",
-      "path": "/opt/protovision-wt-app/docker-compose.yml",
-      "directory": "/opt/protovision-wt-app"
-    },
-    {
-      "name": "wopr-sydent",
-      "path": "/opt/wopr-sydent/docker-compose.yml",
-      "directory": "/opt/wopr-sydent"
-    },
-    {
-      "name": "castopod",
-      "path": "/opt/castopod/docker-compose.yml",
-      "directory": "/opt/castopod"
-    },
-    {
-      "name": "greenbone",
-      "path": "/opt/greenbone/docker-compose.yml",
-      "directory": "/opt/greenbone"
-    },
-    {
-      "name": "wopr-foundation-next",
-      "path": "/opt/wopr-foundation-next/docker-compose.yml",
-      "directory": "/opt/wopr-foundation-next"
-    },
-    {
-      "name": "wopr-ai-engine",
-      "path": "/opt/wopr-ai-engine/docker-compose.yml",
-      "directory": "/opt/wopr-ai-engine"
-    },
-    {
-      "name": "deploy",
-      "path": "/opt/grc/deploy/docker-compose.yml",
-      "directory": "/opt/grc/deploy"
-    },
-    {
-      "name": "ward6-canvass",
-      "path": "/opt/ward6-canvass/docker-compose.yml",
-      "directory": "/opt/ward6-canvass"
-    },
-    {
-      "name": "docker",
-      "path": "/opt/defcon-one/docker/docker-compose.yml",
-      "directory": "/opt/defcon-one/docker"
-    },
-    {
-      "name": "wopr",
-      "path": "/opt/wopr/docker-compose.yml",
-      "directory": "/opt/wopr"
-    },
-    {
-      "name": "installer-deploy",
-      "path": "/opt/wopr/orchestrator/installer-deploy/docker-compose.yml",
-      "directory": "/opt/wopr/orchestrator/installer-deploy"
-    },
-    {
-      "name": "wopr-theblock-prod",
-      "path": "/opt/wopr/orchestrator/installer-deploy/wopr-theblock-prod/docker-compose.yml",
-      "directory": "/opt/wopr/orchestrator/installer-deploy/wopr-theblock-prod"
-    },
-    {
-      "name": "wtp-rise",
-      "path": "/opt/wopr/orchestrator/installer-deploy/wtp-rise/docker-compose.yml",
-      "directory": "/opt/wopr/orchestrator/installer-deploy/wtp-rise"
-    },
-    {
-      "name": "site",
-      "path": "/opt/wopr/bear-wtprise/site/docker-compose.yml",
-      "directory": "/opt/wopr/bear-wtprise/site"
-    },
-    {
-      "name": "nostr-relay",
-      "path": "/opt/nostr-relay/docker-compose.yml",
-      "directory": "/opt/nostr-relay"
-    },
-    {
-      "name": "wtp-rise-src",
-      "path": "/opt/bear-migration/staged/wtp-rise-src/docker-compose.yml",
-      "directory": "/opt/bear-migration/staged/wtp-rise-src"
-    },
-    {
-      "name": "wopr-mqtt-proxy",
-      "path": "/opt/wopr-modules/wopr-mqtt-proxy/docker-compose.yml",
-      "directory": "/opt/wopr-modules/wopr-mqtt-proxy"
-    },
-    {
-      "name": "mastodon",
-      "path": "/opt/mastodon/docker-compose.yml",
-      "directory": "/opt/mastodon"
-    },
-    {
-      "name": "backup-sec-20261023-0822",
-      "path": "/opt/mastodon/backup-sec-20261023-0822/docker-compose.yml",
-      "directory": "/opt/mastodon/backup-sec-20261023-0822"
-    },
-    {
-      "name": "backup-sec-20261023-0718",
-      "path": "/opt/mastodon/backup-sec-20261023-0718/docker-compose.yml",
-      "directory": "/opt/mastodon/backup-sec-20261023-0718"
-    },
-    {
-      "name": "wopr-seo",
-      "path": "/opt/wopr-seo/docker-compose.yml",
-      "directory": "/opt/wopr-seo"
-    },
-    {
-      "name": "artjoos-infra",
-      "path": "/opt/artjoos/workspace/artjoos-infra/docker-compose.yml",
-      "directory": "/opt/artjoos/workspace/artjoos-infra"
-    },
-    {
-      "name": "deploy",
-      "path": "/opt/artjoos/deploy/docker-compose.yml",
-      "directory": "/opt/artjoos/deploy"
-    },
-    {
-      "name": "printful-sync.preBLT_1779826815",
-      "path": "/opt/printful-sync.preBLT_1779826815/docker-compose.yml",
-      "directory": "/opt/printful-sync.preBLT_1779826815"
-    },
-    {
-      "name": "nodez3r0",
-      "path": "/home/nodez3r0/docker-compose.yml",
-      "directory": "/home/nodez3r0"
-    },
-    {
-      "name": "ComfyUI-3D-Pack",
-      "path": "/home/nodez3r0/comfyui_node_quarantine/ComfyUI-3D-Pack/docker-compose.yml",
-      "directory": "/home/nodez3r0/comfyui_node_quarantine/ComfyUI-3D-Pack"
-    },
-    {
-      "name": "protovision",
-      "path": "/home/nodez3r0/protovision/docker-compose.yml",
-      "directory": "/home/nodez3r0/protovision"
-    },
-    {
-      "name": "authentik",
-      "path": "/home/nodez3r0/authentik/docker-compose.yml",
-      "directory": "/home/nodez3r0/authentik"
-    },
-    {
-      "name": "scripts",
-      "path": "/home/nodez3r0/authentik/scripts/docker-compose.yml",
-      "directory": "/home/nodez3r0/authentik/scripts"
-    },
-    {
-      "name": "openid_conformance",
-      "path": "/home/nodez3r0/authentik/tests/openid_conformance/compose.yml",
-      "directory": "/home/nodez3r0/authentik/tests/openid_conformance"
-    },
-    {
-      "name": "e2e",
-      "path": "/home/nodez3r0/authentik/tests/e2e/docker-compose.yml",
-      "directory": "/home/nodez3r0/authentik/tests/e2e"
-    },
-    {
-      "name": "lj-check",
-      "path": "/home/nodez3r0/lj-check/docker-compose.yml",
-      "directory": "/home/nodez3r0/lj-check"
-    },
-    {
-      "name": "bear-wtp-rise",
-      "path": "/home/nodez3r0/bear-wtp-rise/docker-compose.yml",
-      "directory": "/home/nodez3r0/bear-wtp-rise"
-    },
-    {
-      "name": "hermes-webui",
-      "path": "/home/nodez3r0/.hermes-wopr/home/hermes-webui/docker-compose.yml",
-      "directory": "/home/nodez3r0/.hermes-wopr/home/hermes-webui"
-    },
-    {
-      "name": "hermes-agent",
-      "path": "/home/nodez3r0/.hermes-wopr/hermes-agent/docker-compose.yml",
-      "directory": "/home/nodez3r0/.hermes-wopr/hermes-agent"
-    },
-    {
-      "name": "installer-wopr232",
-      "path": "/home/nodez3r0/wt/installer-wopr232/docker-compose.yml",
-      "directory": "/home/nodez3r0/wt/installer-wopr232"
-    },
-    {
-      "name": "wopr-theblock-prod",
-      "path": "/home/nodez3r0/wt/installer-wopr232/wopr-theblock-prod/docker-compose.yml",
-      "directory": "/home/nodez3r0/wt/installer-wopr232/wopr-theblock-prod"
-    },
-    {
-      "name": "wtp-rise",
-      "path": "/home/nodez3r0/wt/installer-wopr232/wtp-rise/docker-compose.yml",
-      "directory": "/home/nodez3r0/wt/installer-wopr232/wtp-rise"
-    },
-    {
-      "name": "nextcloud-backup-20261023-0654",
-      "path": "/home/nodez3r0/nextcloud-backup-20261023-0654/docker-compose.yml",
-      "directory": "/home/nodez3r0/nextcloud-backup-20261023-0654"
-    },
-    {
-      "name": "ACE-Step",
-      "path": "/home/nodez3r0/ai-apps/ACE-Step/docker-compose.yaml",
-      "directory": "/home/nodez3r0/ai-apps/ACE-Step"
-    },
-    {
-      "name": "GPT-SoVITS",
-      "path": "/home/nodez3r0/ai-apps/GPT-SoVITS/docker-compose.yaml",
-      "directory": "/home/nodez3r0/ai-apps/GPT-SoVITS"
-    },
-    {
-      "name": "Fooocus",
-      "path": "/home/nodez3r0/ai-apps/Fooocus/docker-compose.yml",
-      "directory": "/home/nodez3r0/ai-apps/Fooocus"
-    },
-    {
-      "name": "tts-generation-webui",
-      "path": "/home/nodez3r0/ai-apps/tts-generation-webui/docker-compose.yml",
-      "directory": "/home/nodez3r0/ai-apps/tts-generation-webui"
-    },
-    {
-      "name": "Applio",
-      "path": "/home/nodez3r0/ai-apps/Applio/docker-compose.yaml",
-      "directory": "/home/nodez3r0/ai-apps/Applio"
-    },
-    {
-      "name": "bind",
-      "path": "/home/nodez3r0/prod-rescue-20260617/bind/docker-compose.yml",
-      "directory": "/home/nodez3r0/prod-rescue-20260617/bind"
-    },
-    {
-      "name": "tor",
-      "path": "/home/nodez3r0/prod-rescue-20260617/tor/docker-compose.yml",
-      "directory": "/home/nodez3r0/prod-rescue-20260617/tor"
-    },
-    {
-      "name": "pds",
-      "path": "/home/nodez3r0/prod-rescue-20260617/pds/compose.yml",
-      "directory": "/home/nodez3r0/prod-rescue-20260617/pds"
-    },
-    {
-      "name": "keycloak_2025-08-19_1541",
-      "path": "/home/nodez3r0/prod-rescue-20260617/backups/keycloak_2025-08-19_1541/docker-compose.yml",
-      "directory": "/home/nodez3r0/prod-rescue-20260617/backups/keycloak_2025-08-19_1541"
-    },
-    {
-      "name": "authentik_2025-10-15_05-45-11",
-      "path": "/home/nodez3r0/prod-rescue-20260617/backups/authentik_2025-10-15_05-45-11/docker-compose.yml",
-      "directory": "/home/nodez3r0/prod-rescue-20260617/backups/authentik_2025-10-15_05-45-11"
-    },
-    {
-      "name": "pre-update-verify",
-      "path": "/home/nodez3r0/prod-rescue-20260617/backups/pre-update-verify/docker-compose.yml",
-      "directory": "/home/nodez3r0/prod-rescue-20260617/backups/pre-update-verify"
-    },
-    {
-      "name": "authentik_2025-10-13_12-29-25",
-      "path": "/home/nodez3r0/prod-rescue-20260617/backups/authentik_2025-10-13_12-29-25/docker-compose.yml",
-      "directory": "/home/nodez3r0/prod-rescue-20260617/backups/authentik_2025-10-13_12-29-25"
-    },
-    {
-      "name": "authentik",
-      "path": "/home/nodez3r0/prod-rescue-20260617/root/authentik/docker-compose.yml",
-      "directory": "/home/nodez3r0/prod-rescue-20260617/root/authentik"
-    },
-    {
-      "name": "n8n-data",
-      "path": "/home/nodez3r0/prod-rescue-20260617/root/n8n-data/docker-compose.yml",
-      "directory": "/home/nodez3r0/prod-rescue-20260617/root/n8n-data"
-    },
-    {
-      "name": "authentik-docker",
-      "path": "/home/nodez3r0/prod-rescue-20260617/opt/authentik-docker/docker-compose.yml",
-      "directory": "/home/nodez3r0/prod-rescue-20260617/opt/authentik-docker"
-    },
-    {
-      "name": "authentik-outpost",
-      "path": "/home/nodez3r0/prod-rescue-20260617/opt/authentik-outpost/docker-compose.yml",
-      "directory": "/home/nodez3r0/prod-rescue-20260617/opt/authentik-outpost"
-    },
-    {
-      "name": "statestreettheater",
-      "path": "/home/nodez3r0/prod-rescue-20260617/opt/statestreettheater/docker-compose.yml",
-      "directory": "/home/nodez3r0/prod-rescue-20260617/opt/statestreettheater"
-    },
-    {
-      "name": "printful-sync",
-      "path": "/home/nodez3r0/prod-rescue-20260617/opt/printful-sync/docker-compose.yml",
-      "directory": "/home/nodez3r0/prod-rescue-20260617/opt/printful-sync"
-    },
-    {
-      "name": "authentik",
-      "path": "/home/nodez3r0/prod-rescue-20260617/opt/authentik/docker-compose.yml",
-      "directory": "/home/nodez3r0/prod-rescue-20260617/opt/authentik"
-    },
-    {
-      "name": "matrix",
-      "path": "/home/nodez3r0/prod-rescue-20260617/opt/matrix/docker-compose.yml",
-      "directory": "/home/nodez3r0/prod-rescue-20260617/opt/matrix"
-    },
-    {
-      "name": "infisical",
-      "path": "/home/nodez3r0/prod-rescue-20260617/opt/infisical/docker-compose.yml",
-      "directory": "/home/nodez3r0/prod-rescue-20260617/opt/infisical"
-    },
-    {
-      "name": "wopr-multiverse",
-      "path": "/home/nodez3r0/prod-rescue-20260617/opt/wopr-multiverse/docker-compose.yml",
-      "directory": "/home/nodez3r0/prod-rescue-20260617/opt/wopr-multiverse"
-    },
-    {
-      "name": "pleroma-docker",
-      "path": "/home/nodez3r0/prod-rescue-20260617/opt/pleroma-docker/docker-compose.yml",
-      "directory": "/home/nodez3r0/prod-rescue-20260617/opt/pleroma-docker"
-    },
-    {
-      "name": "chatbot-ui",
-      "path": "/home/nodez3r0/prod-rescue-20260617/opt/chatbot-ui/docker-compose.yml",
-      "directory": "/home/nodez3r0/prod-rescue-20260617/opt/chatbot-ui"
-    },
-    {
-      "name": "oauth2-proxy",
-      "path": "/home/nodez3r0/prod-rescue-20260617/opt/oauth2-proxy/docker-compose.yml",
-      "directory": "/home/nodez3r0/prod-rescue-20260617/opt/oauth2-proxy"
-    },
-    {
-      "name": "flowise",
-      "path": "/home/nodez3r0/prod-rescue-20260617/opt/flowise/docker-compose.yml",
-      "directory": "/home/nodez3r0/prod-rescue-20260617/opt/flowise"
-    },
-    {
-      "name": "group7-peertube",
-      "path": "/home/nodez3r0/prod-rescue-20260617/opt/group7-peertube/docker-compose.yml",
-      "directory": "/home/nodez3r0/prod-rescue-20260617/opt/group7-peertube"
-    },
-    {
-      "name": "wopr-pg-haproxy",
-      "path": "/home/nodez3r0/prod-rescue-20260617/opt/wopr-pg-haproxy/docker-compose.yml",
-      "directory": "/home/nodez3r0/prod-rescue-20260617/opt/wopr-pg-haproxy"
-    },
-    {
-      "name": "wopr-private-data",
-      "path": "/home/nodez3r0/prod-rescue-20260617/opt/wopr-private-data/docker-compose.yml",
-      "directory": "/home/nodez3r0/prod-rescue-20260617/opt/wopr-private-data"
-    },
-    {
-      "name": "wopr-keycloak",
-      "path": "/home/nodez3r0/prod-rescue-20260617/opt/wopr-keycloak/docker-compose.yml",
-      "directory": "/home/nodez3r0/prod-rescue-20260617/opt/wopr-keycloak"
-    },
-    {
-      "name": "nextcloud",
-      "path": "/home/nodez3r0/prod-rescue-20260617/opt/nextcloud/docker-compose.yml",
-      "directory": "/home/nodez3r0/prod-rescue-20260617/opt/nextcloud"
-    },
-    {
-      "name": "pftp",
-      "path": "/home/nodez3r0/prod-rescue-20260617/opt/pftp/docker-compose.yml",
-      "directory": "/home/nodez3r0/prod-rescue-20260617/opt/pftp"
-    },
-    {
-      "name": "buylocal",
-      "path": "/home/nodez3r0/prod-rescue-20260617/opt/buylocal/docker-compose.yml",
-      "directory": "/home/nodez3r0/prod-rescue-20260617/opt/buylocal"
-    },
-    {
-      "name": "barter",
-      "path": "/home/nodez3r0/prod-rescue-20260617/opt/barter/docker-compose.yml",
-      "directory": "/home/nodez3r0/prod-rescue-20260617/opt/barter"
-    },
-    {
-      "name": "akkoma",
-      "path": "/home/nodez3r0/prod-rescue-20260617/opt/akkoma/docker-compose.yml",
-      "directory": "/home/nodez3r0/prod-rescue-20260617/opt/akkoma"
-    },
-    {
-      "name": "authentik-pftp",
-      "path": "/home/nodez3r0/prod-rescue-20260617/opt/authentik-pftp/docker-compose.yml",
-      "directory": "/home/nodez3r0/prod-rescue-20260617/opt/authentik-pftp"
-    },
-    {
-      "name": "elk",
-      "path": "/home/nodez3r0/prod-rescue-20260617/opt/elk/docker-compose.yml",
-      "directory": "/home/nodez3r0/prod-rescue-20260617/opt/elk"
-    },
-    {
-      "name": "thedudeabides",
-      "path": "/home/nodez3r0/prod-rescue-20260617/opt/thedudeabides/docker-compose.yml",
-      "directory": "/home/nodez3r0/prod-rescue-20260617/opt/thedudeabides"
-    },
-    {
-      "name": "thedudeabides-store",
-      "path": "/home/nodez3r0/prod-rescue-20260617/opt/thedudeabides-store/docker-compose.yml",
-      "directory": "/home/nodez3r0/prod-rescue-20260617/opt/thedudeabides-store"
-    },
-    {
-      "name": "lemmy",
-      "path": "/home/nodez3r0/prod-rescue-20260617/opt/lemmy/docker-compose.yml",
-      "directory": "/home/nodez3r0/prod-rescue-20260617/opt/lemmy"
-    },
-    {
-      "name": "wopr-postgres-consolidated",
-      "path": "/home/nodez3r0/prod-rescue-20260617/opt/wopr-postgres-consolidated/docker-compose.yml",
-      "directory": "/home/nodez3r0/prod-rescue-20260617/opt/wopr-postgres-consolidated"
-    },
-    {
-      "name": "friendica-docker",
-      "path": "/home/nodez3r0/prod-rescue-20260617/opt/friendica-docker/docker-compose.yaml",
-      "directory": "/home/nodez3r0/prod-rescue-20260617/opt/friendica-docker"
-    },
-    {
-      "name": "backend",
-      "path": "/home/nodez3r0/prod-rescue-20260617/opt/backend/docker-compose.yml",
-      "directory": "/home/nodez3r0/prod-rescue-20260617/opt/backend"
-    },
-    {
-      "name": "lemmy-docker",
-      "path": "/home/nodez3r0/prod-rescue-20260617/opt/lemmy-docker/docker-compose.yml",
-      "directory": "/home/nodez3r0/prod-rescue-20260617/opt/lemmy-docker"
-    },
-    {
-      "name": "mastodon",
-      "path": "/home/nodez3r0/prod-rescue-20260617/opt/mastodon/docker-compose.yml",
-      "directory": "/home/nodez3r0/prod-rescue-20260617/opt/mastodon"
-    },
-    {
-      "name": "wopr-seo",
-      "path": "/home/nodez3r0/prod-rescue-20260617/opt/wopr-seo/docker-compose.yml",
-      "directory": "/home/nodez3r0/prod-rescue-20260617/opt/wopr-seo"
-    },
-    {
-      "name": "comfyui-docker",
-      "path": "/home/nodez3r0/comfyui-docker/docker-compose.yml",
-      "directory": "/home/nodez3r0/comfyui-docker"
-    },
-    {
-      "name": "infisical-config-backup",
-      "path": "/home/nodez3r0/infisical-config-backup/docker-compose.yml",
-      "directory": "/home/nodez3r0/infisical-config-backup"
-    },
-    {
-      "name": "n8n",
-      "path": "/home/nodez3r0/n8n/docker-compose.yml",
-      "directory": "/home/nodez3r0/n8n"
-    },
-    {
-      "name": "nextcloud",
-      "path": "/home/nodez3r0/nextcloud/docker-compose.yml",
-      "directory": "/home/nodez3r0/nextcloud"
-    },
-    {
-      "name": "kohya_ss",
-      "path": "/home/nodez3r0/kohya_ss/docker-compose.yaml",
-      "directory": "/home/nodez3r0/kohya_ss"
-    },
-    {
-      "name": "nextcloud-backup-20261023-0723",
-      "path": "/home/nodez3r0/nextcloud-backup-20261023-0723/docker-compose.yml",
-      "directory": "/home/nodez3r0/nextcloud-backup-20261023-0723"
-    },
-    {
-      "name": "installer-wopr065",
-      "path": "/home/nodez3r0/fixwave/installer-wopr065/docker-compose.yml",
-      "directory": "/home/nodez3r0/fixwave/installer-wopr065"
-    },
-    {
-      "name": "wopr-theblock-prod",
-      "path": "/home/nodez3r0/fixwave/installer-wopr065/wopr-theblock-prod/docker-compose.yml",
-      "directory": "/home/nodez3r0/fixwave/installer-wopr065/wopr-theblock-prod"
-    },
-    {
-      "name": "wtp-rise",
-      "path": "/home/nodez3r0/fixwave/installer-wopr065/wtp-rise/docker-compose.yml",
-      "directory": "/home/nodez3r0/fixwave/installer-wopr065/wtp-rise"
-    },
-    {
-      "name": "lovejoos",
-      "path": "/home/nodez3r0/fixwave/lovejoos/docker-compose.yml",
-      "directory": "/home/nodez3r0/fixwave/lovejoos"
-    },
-    {
-      "name": "barter",
-      "path": "/home/nodez3r0/fixwave/barter/docker-compose.yml",
-      "directory": "/home/nodez3r0/fixwave/barter"
-    },
-    {
-      "name": "rig-compose",
-      "path": "/home/nodez3r0/fixwave/barter/rig-compose/docker-compose.yml",
-      "directory": "/home/nodez3r0/fixwave/barter/rig-compose"
-    },
-    {
-      "name": "installer-deploy",
-      "path": "/home/nodez3r0/fixwave/installer-deploy/docker-compose.yml",
-      "directory": "/home/nodez3r0/fixwave/installer-deploy"
-    },
-    {
-      "name": "wopr-theblock-prod",
-      "path": "/home/nodez3r0/fixwave/installer-deploy/wopr-theblock-prod/docker-compose.yml",
-      "directory": "/home/nodez3r0/fixwave/installer-deploy/wopr-theblock-prod"
-    },
-    {
-      "name": "wtp-rise",
-      "path": "/home/nodez3r0/fixwave/installer-deploy/wtp-rise/docker-compose.yml",
-      "directory": "/home/nodez3r0/fixwave/installer-deploy/wtp-rise"
-    },
-    {
-      "name": "backlot",
-      "path": "/home/nodez3r0/backlot/docker-compose.yml",
-      "directory": "/home/nodez3r0/backlot"
-    },
-    {
-      "name": "review-barter-aKmnI4",
-      "path": "/home/nodez3r0/review-barter-aKmnI4/docker-compose.yml",
-      "directory": "/home/nodez3r0/review-barter-aKmnI4"
-    },
-    {
-      "name": "rig-compose",
-      "path": "/home/nodez3r0/review-barter-aKmnI4/rig-compose/docker-compose.yml",
-      "directory": "/home/nodez3r0/review-barter-aKmnI4/rig-compose"
-    },
-    {
-      "name": "wopr-manifesto",
-      "path": "/home/nodez3r0/w253/wopr-manifesto/docker-compose.yml",
-      "directory": "/home/nodez3r0/w253/wopr-manifesto"
-    },
-    {
-      "name": "binkerd-us",
-      "path": "/home/nodez3r0/w253/binkerd-us/docker-compose.yml",
-      "directory": "/home/nodez3r0/w253/binkerd-us"
+      "image": "wopr-systems-next:latest",
+      "critical": false,
+      "expected_state": "running"
     },
     {
       "name": "wopr-systems-preview",
-      "path": "/home/nodez3r0/w253/wopr-systems-preview/docker-compose.yml",
-      "directory": "/home/nodez3r0/w253/wopr-systems-preview"
+      "image": "wopr-systems-preview:latest",
+      "critical": false,
+      "expected_state": "running"
     },
     {
-      "name": "wopr-seo",
-      "path": "/home/nodez3r0/w253/wopr-seo/docker-compose.yml",
-      "directory": "/home/nodez3r0/w253/wopr-seo"
+      "name": "wopr-umami",
+      "image": "ghcr.io/umami-software/umami@sha256:e69d1a7932e9dab0fc523edc7be1f3a53f3c261f57856fc2167ae74a8fc022e8",
+      "critical": false,
+      "expected_state": "running",
+      "depends_on": [
+        "wopr-umami-db"
+      ]
     },
     {
-      "name": "n8n-data",
-      "path": "/home/nodez3r0/n8n-data/docker-compose.yml",
-      "directory": "/home/nodez3r0/n8n-data"
-    },
-    {
-      "name": "meme-engine-promo",
-      "path": "/home/nodez3r0/wopr-work/meme-engine-promo/docker-compose.yml",
-      "directory": "/home/nodez3r0/wopr-work/meme-engine-promo"
-    },
-    {
-      "name": "infisical",
-      "path": "/home/nodez3r0/rigmove/prod-1/infisical/docker-compose.yml",
-      "directory": "/home/nodez3r0/rigmove/prod-1/infisical"
-    },
-    {
-      "name": "site",
-      "path": "/home/nodez3r0/claude-bear/bear-wtprise-sso/site/docker-compose.yml",
-      "directory": "/home/nodez3r0/claude-bear/bear-wtprise-sso/site"
-    },
-    {
-      "name": "wopr-installer",
-      "path": "/home/nodez3r0/claude-bear/wopr-installer/docker-compose.yml",
-      "directory": "/home/nodez3r0/claude-bear/wopr-installer"
-    },
-    {
-      "name": "wopr-theblock-prod",
-      "path": "/home/nodez3r0/claude-bear/wopr-installer/wopr-theblock-prod/docker-compose.yml",
-      "directory": "/home/nodez3r0/claude-bear/wopr-installer/wopr-theblock-prod"
-    },
-    {
-      "name": "wtp-rise",
-      "path": "/home/nodez3r0/claude-bear/wopr-installer/wtp-rise/docker-compose.yml",
-      "directory": "/home/nodez3r0/claude-bear/wopr-installer/wtp-rise"
-    },
-    {
-      "name": "wopr-installer-sentinel",
-      "path": "/home/nodez3r0/claude-bear/wopr-installer-sentinel/docker-compose.yml",
-      "directory": "/home/nodez3r0/claude-bear/wopr-installer-sentinel"
-    },
-    {
-      "name": "wopr-theblock-prod",
-      "path": "/home/nodez3r0/claude-bear/wopr-installer-sentinel/wopr-theblock-prod/docker-compose.yml",
-      "directory": "/home/nodez3r0/claude-bear/wopr-installer-sentinel/wopr-theblock-prod"
-    },
-    {
-      "name": "wtp-rise",
-      "path": "/home/nodez3r0/claude-bear/wopr-installer-sentinel/wtp-rise/docker-compose.yml",
-      "directory": "/home/nodez3r0/claude-bear/wopr-installer-sentinel/wtp-rise"
+      "name": "wopr-umami-db",
+      "image": "postgres@sha256:10a5c69a83035ab5239f5620d708520e8b28f5aa1f2b20143e6024532edadfb5",
+      "critical": false,
+      "expected_state": "running"
     }
   ],
-  "discovery_stats": {
-    "listening_ports": 256,
-    "caddy_backends": 2,
-    "containers_total": 156,
-    "services_total": 195,
-    "timers_total": 61,
-    "cron_jobs_total": 385,
-    "compose_projects": 192,
-    "public_endpoints": 2,
-    "backend_endpoints": 159
-  }
+  "http_endpoints": {
+    "public": [],
+    "backend": [
+      {
+        "name": "docker-3004",
+        "url": "http://127.0.0.1:3004/health",
+        "expected_status": [
+          200
+        ],
+        "critical": true,
+        "discovered_via": "prod1_manifest",
+        "unit": "docker"
+      },
+      {
+        "name": "lovejoos-frontend-3400",
+        "url": "http://127.0.0.1:3400/health",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "prod1_manifest",
+        "container": "lovejoos-frontend"
+      },
+      {
+        "name": "wopr-systems-next-3413",
+        "url": "http://127.0.0.1:3413/",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "prod1_manifest",
+        "container": "wopr-systems-next"
+      },
+      {
+        "name": "wopr-systems-preview-3415",
+        "url": "http://127.0.0.1:3415/",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "prod1_manifest",
+        "container": "wopr-systems-preview"
+      },
+      {
+        "name": "binkerd-us-3416",
+        "url": "http://127.0.0.1:3416/",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "prod1_manifest",
+        "container": "binkerd-us"
+      },
+      {
+        "name": "wopr-manifesto-3417",
+        "url": "http://127.0.0.1:3417/",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "prod1_manifest",
+        "container": "wopr-manifesto"
+      },
+      {
+        "name": "seonaut-3802",
+        "url": "http://127.0.0.1:3802/health",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "prod1_manifest",
+        "container": "seonaut"
+      },
+      {
+        "name": "lnbits-5001",
+        "url": "http://127.0.0.1:5001/",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "prod1_manifest",
+        "container": "lnbits"
+      },
+      {
+        "name": "nedry-dashboard-5556",
+        "url": "http://127.0.0.1:5556/",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "prod1_manifest",
+        "unit": "nedry-dashboard"
+      },
+      {
+        "name": "sso-bridge-5591",
+        "url": "http://127.0.0.1:5591/healthz",
+        "expected_status": [
+          200
+        ],
+        "critical": true,
+        "discovered_via": "prod1_manifest",
+        "unit": "sso-bridge"
+      },
+      {
+        "name": "nedry-honeypot-5599",
+        "url": "http://127.0.0.1:5599/health",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "prod1_manifest",
+        "unit": "nedry-honeypot"
+      },
+      {
+        "name": "bugtrkr-5602",
+        "url": "http://127.0.0.1:5602/healthz",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "prod1_manifest",
+        "unit": "bugtrkr"
+      },
+      {
+        "name": "n8n-5678",
+        "url": "http://127.0.0.1:5678/health",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "prod1_manifest",
+        "container": "n8n"
+      },
+      {
+        "name": "crowdsec-6062",
+        "url": "http://127.0.0.1:6062/",
+        "expected_status": [
+          200,
+          404
+        ],
+        "critical": true,
+        "discovered_via": "prod1_manifest",
+        "unit": "crowdsec"
+      },
+      {
+        "name": "printful-sync-printful-sync-1-8055",
+        "url": "http://127.0.0.1:8055/health",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "prod1_manifest",
+        "container": "printful-sync-printful-sync-1"
+      },
+      {
+        "name": "barter-web-1-8070",
+        "url": "http://127.0.0.1:8070/",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "prod1_manifest",
+        "container": "barter-web-1"
+      },
+      {
+        "name": "nextcloud-8090",
+        "url": "http://127.0.0.1:8090/",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "prod1_manifest",
+        "container": "nextcloud"
+      },
+      {
+        "name": "lovejoos-api-8096",
+        "url": "http://127.0.0.1:8096/health",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "prod1_manifest",
+        "container": "lovejoos-api"
+      },
+      {
+        "name": "commiesocialists-og-prerender-8097",
+        "url": "http://127.0.0.1:8097/health",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "prod1_manifest",
+        "unit": "commiesocialists-og-prerender"
+      },
+      {
+        "name": "dudeabides-og-prerender-8098",
+        "url": "http://127.0.0.1:8098/health",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "prod1_manifest",
+        "unit": "dudeabides-og-prerender"
+      },
+      {
+        "name": "dudeabides-reg-8099",
+        "url": "http://127.0.0.1:8099/",
+        "expected_status": [
+          200,
+          404
+        ],
+        "critical": false,
+        "discovered_via": "prod1_manifest",
+        "unit": "dudeabides-reg"
+      },
+      {
+        "name": "wopr-user-registry-8201",
+        "url": "http://127.0.0.1:8201/",
+        "expected_status": [
+          200,
+          404
+        ],
+        "critical": true,
+        "discovered_via": "prod1_manifest",
+        "unit": "wopr-user-registry"
+      },
+      {
+        "name": "crowdsec-8642",
+        "url": "http://127.0.0.1:8642/health",
+        "expected_status": [
+          200
+        ],
+        "critical": true,
+        "discovered_via": "prod1_manifest",
+        "unit": "crowdsec"
+      },
+      {
+        "name": "wopr-headless-prerender-8788",
+        "url": "http://127.0.0.1:8788/",
+        "expected_status": [
+          200,
+          404
+        ],
+        "critical": false,
+        "discovered_via": "prod1_manifest",
+        "unit": "wopr-headless-prerender"
+      },
+      {
+        "name": "authentik-server-1-9091",
+        "url": "http://127.0.0.1:9091/",
+        "expected_status": [
+          200
+        ],
+        "critical": true,
+        "discovered_via": "prod1_manifest",
+        "container": "authentik-server-1"
+      },
+      {
+        "name": "listmonk-9110",
+        "url": "http://127.0.0.1:9110/health",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "prod1_manifest",
+        "container": "listmonk"
+      },
+      {
+        "name": "lovejoos-minio-9200",
+        "url": "http://127.0.0.1:9200/health",
+        "expected_status": [
+          200,
+          403
+        ],
+        "critical": false,
+        "discovered_via": "prod1_manifest",
+        "container": "lovejoos-minio"
+      },
+      {
+        "name": "lovejoos-minio-9201",
+        "url": "http://127.0.0.1:9201/health",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "prod1_manifest",
+        "container": "lovejoos-minio"
+      },
+      {
+        "name": "wopr-umami-13001",
+        "url": "http://127.0.0.1:13001/",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "prod1_manifest",
+        "container": "wopr-umami"
+      },
+      {
+        "name": "miniflux-18070",
+        "url": "http://127.0.0.1:18070/health",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "prod1_manifest",
+        "container": "miniflux"
+      },
+      {
+        "name": "wopr-ntfy-18081",
+        "url": "http://127.0.0.1:18081/health",
+        "expected_status": [
+          200
+        ],
+        "critical": true,
+        "discovered_via": "prod1_manifest",
+        "container": "wopr-ntfy"
+      },
+      {
+        "name": "buylocal-18096",
+        "url": "http://127.0.0.1:18096/",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "prod1_manifest",
+        "container": "buylocal"
+      },
+      {
+        "name": "saleor-dashboard-dude-19002",
+        "url": "http://127.0.0.1:19002/health",
+        "expected_status": [
+          200
+        ],
+        "critical": false,
+        "discovered_via": "prod1_manifest",
+        "container": "saleor-dashboard-dude"
+      },
+      {
+        "name": "saleor-api-dude-28000",
+        "url": "http://127.0.0.1:28000/",
+        "expected_status": [
+          200,
+          404
+        ],
+        "critical": false,
+        "discovered_via": "prod1_manifest",
+        "container": "saleor-api-dude"
+      },
+      {
+        "name": "caddy-18080",
+        "url": "http://127.0.0.1:18080/",
+        "container": "wopr-caddy-rig",
+        "critical": true,
+        "expected_status": [
+          200,
+          503
+        ],
+        "discovered_via": "prod1_manifest"
+      }
+    ]
+  },
+  "log_noise_filters": []
 }

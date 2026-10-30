@@ -3,6 +3,9 @@ Description=WOPR Support Plane Watchdog Timer (every 5 min)
 
 [Timer]
 OnBootSec=120
+# Also fire 2 min after the timer itself starts: installed mid-boot (or restarted), OnBootSec is
+# already past and OnUnitActiveSec has no previous run to count from, so it would never fire.
+OnActiveSec=120
 OnUnitActiveSec=300
 Persistent=true
 
