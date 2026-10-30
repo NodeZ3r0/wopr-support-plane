@@ -1,7 +1,7 @@
 {
   "version": "5.0-autodiscovery",
   "host": "nodez3ro",
-  "generated": "2026-10-30T05:55:14.679775",
+  "generated": "2026-10-30T08:10:19.699563",
   "container_runtime": "docker",
   "autodiscovery": true,
   "services": [
@@ -951,11 +951,6 @@
       "critical": false
     },
     {
-      "name": "wopr-vuln-sweep-feeds",
-      "type": "systemd",
-      "critical": false
-    },
-    {
       "name": "wopr-web",
       "type": "systemd",
       "critical": false
@@ -988,13 +983,38 @@
   ],
   "containers": [
     {
-      "name": "saleor-api-dude",
-      "image": "ghcr.io/saleor/saleor:3.23",
+      "name": "wopr-sso-redis",
+      "image": "redis:8-alpine",
+      "critical": false
+    },
+    {
+      "name": "barter-web-1",
+      "image": "barter-web:latest",
       "critical": false
     },
     {
       "name": "saleor-worker-dude",
       "image": "ghcr.io/saleor/saleor:3.23",
+      "critical": false
+    },
+    {
+      "name": "saleor-api-dude",
+      "image": "ghcr.io/saleor/saleor:3.23",
+      "critical": false
+    },
+    {
+      "name": "n8n",
+      "image": "n8nio/n8n:latest",
+      "critical": false
+    },
+    {
+      "name": "searxng",
+      "image": "searxng/searxng:latest",
+      "critical": false
+    },
+    {
+      "name": "crowdsec-dashboard-metabase-1",
+      "image": "metabase/metabase:latest",
       "critical": false
     },
     {
@@ -1045,21 +1065,6 @@
     {
       "name": "open-webui",
       "image": "ghcr.io/open-webui/open-webui:main",
-      "critical": false
-    },
-    {
-      "name": "crowdsec-dashboard-metabase-1",
-      "image": "metabase/metabase:latest",
-      "critical": false
-    },
-    {
-      "name": "searxng",
-      "image": "searxng/searxng:latest",
-      "critical": false
-    },
-    {
-      "name": "n8n",
-      "image": "n8nio/n8n:latest",
       "critical": false
     },
     {
@@ -1115,11 +1120,6 @@
     {
       "name": "barter-scanner-1",
       "image": "barter-scanner:latest",
-      "critical": false
-    },
-    {
-      "name": "barter-web-1",
-      "image": "barter-web:latest",
       "critical": false
     },
     {
@@ -1285,11 +1285,6 @@
     {
       "name": "buylocal-postgres",
       "image": "buylocal-postgres-custom:pg18",
-      "critical": false
-    },
-    {
-      "name": "wopr-sso-redis",
-      "image": "redis:8-alpine",
       "critical": false
     },
     {
@@ -3334,6 +3329,17 @@
         "discovered_via": "port_scan"
       },
       {
+        "url": "http://127.0.0.1:28000/",
+        "name": "saleor-api-dude-28000",
+        "expected_status": [
+          200,
+          404
+        ],
+        "critical": false,
+        "discovered_via": "port_scan",
+        "container": "saleor-api-dude"
+      },
+      {
         "url": "http://127.0.0.1:28100/health",
         "name": "folkmoot-api-28100",
         "expected_status": [
@@ -3400,60 +3406,8 @@
   },
   "timers": [
     {
-      "timer": "comfyui-idle-release.timer",
-      "service": "comfyui-idle-release"
-    },
-    {
-      "timer": "protovision-ingest.timer",
-      "service": "protovision-ingest"
-    },
-    {
       "timer": "protovision-tick.timer",
       "service": "protovision-tick"
-    },
-    {
-      "timer": "wopr-watchdog.timer",
-      "service": "wopr-watchdog"
-    },
-    {
-      "timer": "crowdsec-metabase-export.timer",
-      "service": "crowdsec-metabase-export"
-    },
-    {
-      "timer": "nedry-abuse-reporter.timer",
-      "service": "nedry-abuse-reporter"
-    },
-    {
-      "timer": "wopr-sp-watchdog.timer",
-      "service": "wopr-sp-watchdog"
-    },
-    {
-      "timer": "grc-selfheal.timer",
-      "service": "grc-selfheal"
-    },
-    {
-      "timer": "fwupd-refresh.timer",
-      "service": "fwupd-refresh"
-    },
-    {
-      "timer": "lovejoos-secrets-sync.timer",
-      "service": "lovejoos-secrets-sync"
-    },
-    {
-      "timer": "gpu-scheduler-watchdog.timer",
-      "service": "gpu-scheduler-watchdog"
-    },
-    {
-      "timer": "folkmoot-watchdog.timer",
-      "service": "folkmoot-watchdog"
-    },
-    {
-      "timer": "prometheus-node-exporter-apt.timer",
-      "service": "prometheus-node-exporter-apt"
-    },
-    {
-      "timer": "prometheus-node-exporter-nvme.timer",
-      "service": "prometheus-node-exporter-nvme"
     },
     {
       "timer": "protovision-email.timer",
@@ -3464,72 +3418,108 @@
       "service": "sysstat-collect"
     },
     {
-      "timer": "wopr-git-cred-sync.timer",
-      "service": "wopr-git-cred-sync"
+      "timer": "comfyui-idle-release.timer",
+      "service": "comfyui-idle-release"
     },
     {
-      "timer": "stonesoup-remind.timer",
-      "service": "stonesoup-remind"
+      "timer": "protovision-ingest.timer",
+      "service": "protovision-ingest"
     },
     {
-      "timer": "update-watcher.timer",
-      "service": "update-watcher"
+      "timer": "nedry-abuse-reporter.timer",
+      "service": "nedry-abuse-reporter"
     },
     {
-      "timer": "barterra-verified-sync.timer",
-      "service": "barterra-verified-sync"
+      "timer": "wopr-watchdog.timer",
+      "service": "wopr-watchdog"
     },
     {
-      "timer": "wopr-dup-reconcile.timer",
-      "service": "wopr-dup-reconcile"
+      "timer": "crowdsec-metabase-export.timer",
+      "service": "crowdsec-metabase-export"
+    },
+    {
+      "timer": "wopr-sp-watchdog.timer",
+      "service": "wopr-sp-watchdog"
+    },
+    {
+      "timer": "grc-selfheal.timer",
+      "service": "grc-selfheal"
     },
     {
       "timer": "dude-abandoned-cart-monitor.timer",
       "service": "dude-abandoned-cart-monitor"
     },
     {
-      "timer": "phpsessionclean.timer",
-      "service": "phpsessionclean"
+      "timer": "gpu-scheduler-watchdog.timer",
+      "service": "gpu-scheduler-watchdog"
+    },
+    {
+      "timer": "prometheus-node-exporter-apt.timer",
+      "service": "prometheus-node-exporter-apt"
+    },
+    {
+      "timer": "prometheus-node-exporter-nvme.timer",
+      "service": "prometheus-node-exporter-nvme"
+    },
+    {
+      "timer": "wopr-git-cred-sync.timer",
+      "service": "wopr-git-cred-sync"
+    },
+    {
+      "timer": "wopr-dup-reconcile.timer",
+      "service": "wopr-dup-reconcile"
     },
     {
       "timer": "cross-pollinate.timer",
       "service": "cross-pollinate"
     },
     {
-      "timer": "dude-stripe-keys.timer",
-      "service": "dude-stripe-keys"
+      "timer": "lovejoos-secrets-sync.timer",
+      "service": "lovejoos-secrets-sync"
     },
     {
-      "timer": "wopr-secret-sweep.timer",
-      "service": "wopr-secret-sweep"
-    },
-    {
-      "timer": "wopr-verified-sync.timer",
-      "service": "wopr-verified-sync"
-    },
-    {
-      "timer": "apt-daily-upgrade.timer",
-      "service": "apt-daily-upgrade"
-    },
-    {
-      "timer": "anacron.timer",
-      "service": "anacron"
-    },
-    {
-      "timer": "asscast-watchdog.timer",
-      "service": "asscast-watchdog"
+      "timer": "folkmoot-watchdog.timer",
+      "service": "folkmoot-watchdog"
     },
     {
       "timer": "wopr-vuln-sweep.timer",
       "service": "wopr-vuln-sweep"
     },
     {
-      "timer": "apt-daily.timer",
-      "service": "apt-daily"
+      "timer": "wopr-vuln-sweep-feeds.timer",
+      "service": "wopr-vuln-sweep-feeds"
     },
     {
-      "timer": "motd-news.timer",
-      "service": "motd-news"
+      "timer": "anacron.timer",
+      "service": "anacron"
+    },
+    {
+      "timer": "phpsessionclean.timer",
+      "service": "phpsessionclean"
+    },
+    {
+      "timer": "fwupd-refresh.timer",
+      "service": "fwupd-refresh"
+    },
+    {
+      "timer": "barterra-verified-sync.timer",
+      "service": "barterra-verified-sync"
+    },
+    {
+      "timer": "wopr-verified-sync.timer",
+      "service": "wopr-verified-sync"
+    },
+    {
+      "timer": "stonesoup-remind.timer",
+      "service": "stonesoup-remind"
+    },
+    {
+      "timer": "asscast-watchdog.timer",
+      "service": "asscast-watchdog"
+    },
+    {
+      "timer": "apt-daily.timer",
+      "service": "apt-daily"
     },
     {
       "timer": "update-notifier-download.timer",
@@ -3548,6 +3538,10 @@
       "service": "certbot"
     },
     {
+      "timer": "motd-news.timer",
+      "service": "motd-news"
+    },
+    {
       "timer": "dpkg-db-backup.timer",
       "service": "dpkg-db-backup"
     },
@@ -3556,12 +3550,12 @@
       "service": "logrotate"
     },
     {
-      "timer": "crowdsec-hubupdate.timer",
-      "service": "crowdsec-hubupdate"
-    },
-    {
       "timer": "barterra-abuse-cleanup.timer",
       "service": "barterra-abuse-cleanup"
+    },
+    {
+      "timer": "crowdsec-hubupdate.timer",
+      "service": "crowdsec-hubupdate"
     },
     {
       "timer": "sysstat-summary.timer",
@@ -3592,6 +3586,22 @@
       "service": "falken-overnight-stop"
     },
     {
+      "timer": "update-watcher.timer",
+      "service": "update-watcher"
+    },
+    {
+      "timer": "apt-daily-upgrade.timer",
+      "service": "apt-daily-upgrade"
+    },
+    {
+      "timer": "dude-stripe-keys.timer",
+      "service": "dude-stripe-keys"
+    },
+    {
+      "timer": "wopr-secret-sweep.timer",
+      "service": "wopr-secret-sweep"
+    },
+    {
       "timer": "man-db.timer",
       "service": "man-db"
     },
@@ -3604,12 +3614,12 @@
       "service": "grc-catalog-sweep"
     },
     {
-      "timer": "update-notifier-motd.timer",
-      "service": "update-notifier-motd"
-    },
-    {
       "timer": "fstrim.timer",
       "service": "fstrim"
+    },
+    {
+      "timer": "update-notifier-motd.timer",
+      "service": "update-notifier-motd"
     },
     {
       "timer": "apport-autoreport.timer",
@@ -3638,10 +3648,6 @@
     {
       "timer": "wopr-sp-autodiscovery.timer",
       "service": "wopr-sp-autodiscovery"
-    },
-    {
-      "timer": "wopr-vuln-sweep-feeds.timer",
-      "service": "wopr-vuln-sweep-feeds"
     }
   ],
   "cron_jobs": [
@@ -6490,6 +6496,26 @@
       "directory": "/home/nodez3r0/review-barter-aKmnI4/rig-compose"
     },
     {
+      "name": "wopr-manifesto",
+      "path": "/home/nodez3r0/w253/wopr-manifesto/docker-compose.yml",
+      "directory": "/home/nodez3r0/w253/wopr-manifesto"
+    },
+    {
+      "name": "binkerd-us",
+      "path": "/home/nodez3r0/w253/binkerd-us/docker-compose.yml",
+      "directory": "/home/nodez3r0/w253/binkerd-us"
+    },
+    {
+      "name": "wopr-systems-preview",
+      "path": "/home/nodez3r0/w253/wopr-systems-preview/docker-compose.yml",
+      "directory": "/home/nodez3r0/w253/wopr-systems-preview"
+    },
+    {
+      "name": "wopr-seo",
+      "path": "/home/nodez3r0/w253/wopr-seo/docker-compose.yml",
+      "directory": "/home/nodez3r0/w253/wopr-seo"
+    },
+    {
       "name": "n8n-data",
       "path": "/home/nodez3r0/n8n-data/docker-compose.yml",
       "directory": "/home/nodez3r0/n8n-data"
@@ -6498,6 +6524,11 @@
       "name": "meme-engine-promo",
       "path": "/home/nodez3r0/wopr-work/meme-engine-promo/docker-compose.yml",
       "directory": "/home/nodez3r0/wopr-work/meme-engine-promo"
+    },
+    {
+      "name": "infisical",
+      "path": "/home/nodez3r0/rigmove/prod-1/infisical/docker-compose.yml",
+      "directory": "/home/nodez3r0/rigmove/prod-1/infisical"
     },
     {
       "name": "site",
@@ -6539,11 +6570,11 @@
     "listening_ports": 256,
     "caddy_backends": 2,
     "containers_total": 156,
-    "services_total": 196,
+    "services_total": 195,
     "timers_total": 61,
     "cron_jobs_total": 385,
-    "compose_projects": 187,
+    "compose_projects": 192,
     "public_endpoints": 2,
-    "backend_endpoints": 158
+    "backend_endpoints": 159
   }
 }

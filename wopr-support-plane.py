@@ -125,6 +125,7 @@ SERVICE_IGNORE = {
 
     # Activation-driven/on-demand services; inactive/dead is normal until invoked
     "blueman-mechanism",
+    "dm-event",  # socket-activated (dm-event.socket); LVM starts it when it needs it
     "lvm2-lvmpolld",
     "packagekit",
 }
@@ -169,8 +170,9 @@ LOG_NOISE_PATTERNS = [
 LOG_NOISE_COMPILED = [re.compile(p, re.IGNORECASE) for p in LOG_NOISE_PATTERNS]
 
 # Tighter critical log patterns (word boundaries)
+# Not a bare "OOM": Redis 8 logs "oom policy: return" at every start.
 CRITICAL_LOG_PATTERNS = re.compile(
-    r"(?i)\b(OOM|out of memory)\b|"
+    r"(?i)\b(out of memory|oom[-_ ]?kill\w*|oom command not allowed)\b|"
     r"(?<![a-zA-Z])(panic|segfault)(?![a-zA-Z])"
 )
 
