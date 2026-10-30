@@ -1,7 +1,7 @@
 {
   "version": "5.0-autodiscovery",
   "host": "nodez3ro",
-  "generated": "2026-10-07T09:49:01.028994",
+  "generated": "2026-10-30T05:55:14.679775",
   "container_runtime": "docker",
   "autodiscovery": true,
   "services": [
@@ -31,17 +31,22 @@
       "critical": false
     },
     {
-      "name": "\u25cf",
-      "type": "systemd",
-      "critical": false
-    },
-    {
       "name": "apport",
       "type": "systemd",
       "critical": false
     },
     {
       "name": "atd",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "\u25cf",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "authentik-logtail",
       "type": "systemd",
       "critical": false
     },
@@ -77,6 +82,11 @@
     },
     {
       "name": "bolt",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "bugtrkr",
       "type": "systemd",
       "critical": false
     },
@@ -121,6 +131,11 @@
       "critical": false
     },
     {
+      "name": "crowdsec-firewall-bouncer",
+      "type": "systemd",
+      "critical": false
+    },
+    {
       "name": "crowdsec",
       "type": "systemd",
       "critical": true
@@ -132,11 +147,6 @@
     },
     {
       "name": "cups",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "deepseek",
       "type": "systemd",
       "critical": false
     },
@@ -192,11 +202,6 @@
     },
     {
       "name": "falken-canary-monitor",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "falken-pg-tunnel",
       "type": "systemd",
       "critical": false
     },
@@ -276,16 +281,6 @@
       "critical": false
     },
     {
-      "name": "joshcore",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "joshua",
-      "type": "systemd",
-      "critical": false
-    },
-    {
       "name": "kafka",
       "type": "systemd",
       "critical": true
@@ -331,6 +326,11 @@
       "critical": false
     },
     {
+      "name": "mosquitto-authfail",
+      "type": "systemd",
+      "critical": false
+    },
+    {
       "name": "mosquitto",
       "type": "systemd",
       "critical": false
@@ -346,17 +346,17 @@
       "critical": true
     },
     {
-      "name": "nedry-abuse",
-      "type": "systemd",
-      "critical": false
-    },
-    {
       "name": "nedry-dashboard",
       "type": "systemd",
       "critical": false
     },
     {
       "name": "nedry-honeypot",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "nedry-trap",
       "type": "systemd",
       "critical": false
     },
@@ -422,11 +422,6 @@
     },
     {
       "name": "pftp-flask",
-      "type": "systemd",
-      "critical": false
-    },
-    {
-      "name": "php8.3-fpm",
       "type": "systemd",
       "critical": false
     },
@@ -531,6 +526,11 @@
       "critical": false
     },
     {
+      "name": "rig-comfyui-bridge",
+      "type": "systemd",
+      "critical": false
+    },
+    {
       "name": "rsyslog",
       "type": "systemd",
       "critical": false
@@ -542,6 +542,11 @@
     },
     {
       "name": "samba-ad-dc",
+      "type": "systemd",
+      "critical": false
+    },
+    {
+      "name": "secret-drop",
       "type": "systemd",
       "critical": false
     },
@@ -641,6 +646,11 @@
       "critical": false
     },
     {
+      "name": "snap.wekan.wekan",
+      "type": "systemd",
+      "critical": false
+    },
+    {
       "name": "snapd.apparmor",
       "type": "systemd",
       "critical": false
@@ -659,6 +669,11 @@
       "name": "ssh",
       "type": "systemd",
       "critical": true
+    },
+    {
+      "name": "sso-bridge",
+      "type": "systemd",
+      "critical": false
     },
     {
       "name": "sso-notifications",
@@ -936,6 +951,11 @@
       "critical": false
     },
     {
+      "name": "wopr-vuln-sweep-feeds",
+      "type": "systemd",
+      "critical": false
+    },
+    {
       "name": "wopr-web",
       "type": "systemd",
       "critical": false
@@ -968,83 +988,23 @@
   ],
   "containers": [
     {
-      "name": "lovejoos-api",
-      "image": "registry.wopr.systems/lovejoos/api:latest",
-      "critical": false
-    },
-    {
-      "name": "lovejoos-frontend",
-      "image": "registry.wopr.systems/lovejoos/frontend:latest",
-      "critical": false
-    },
-    {
-      "name": "barter-web-1",
-      "image": "barter-web:latest",
-      "critical": false
-    },
-    {
-      "name": "barter-scanner-1",
-      "image": "barter-scanner:latest",
-      "critical": false
-    },
-    {
-      "name": "wopr-meme-engine",
-      "image": "meme-engine-meme-engine",
-      "critical": false
-    },
-    {
-      "name": "wopr-systems-preview",
-      "image": "wopr-systems-preview:latest",
-      "critical": false
-    },
-    {
-      "name": "open-webui",
-      "image": "ghcr.io/open-webui/open-webui:main",
-      "critical": false
-    },
-    {
-      "name": "wopr-sso-redis",
-      "image": "redis:7-alpine",
-      "critical": false
-    },
-    {
-      "name": "barter-postgres",
-      "image": "postgres:16-alpine",
-      "critical": false
-    },
-    {
-      "name": "gsc-puller",
-      "image": "wopr-seo-gsc-puller",
-      "critical": false
-    },
-    {
-      "name": "seo-db",
-      "image": "postgres:16-alpine",
+      "name": "saleor-api-dude",
+      "image": "ghcr.io/saleor/saleor:3.23",
       "critical": false
     },
     {
       "name": "saleor-worker-dude",
-      "image": "ghcr.io/saleor/saleor:3.20",
+      "image": "ghcr.io/saleor/saleor:3.23",
       "critical": false
     },
     {
-      "name": "saleor-api-dude",
-      "image": "ghcr.io/saleor/saleor:3.20",
+      "name": "serpbear",
+      "image": "wopr-local/serpbear-latest:node-22.23.4",
       "critical": false
     },
     {
-      "name": "reactor_demo_ui",
-      "image": "reactor-demo-ui:latest",
-      "critical": false
-    },
-    {
-      "name": "reactor_ui",
-      "image": "reactor-ui-reactor-ui",
-      "critical": false
-    },
-    {
-      "name": "reactor_demo_api",
-      "image": "reactor-demo-api:latest",
+      "name": "mastodon-streaming",
+      "image": "wopr-local/mastodon-streaming-v4.7.3:node-24.22.1",
       "critical": false
     },
     {
@@ -1053,283 +1013,8 @@
       "critical": false
     },
     {
-      "name": "wopr-assessment-postgres",
-      "image": "postgres:16-alpine",
-      "critical": false
-    },
-    {
-      "name": "protovision-web",
-      "image": "protovision-web:latest",
-      "critical": false
-    },
-    {
-      "name": "wopr-api-postgres",
-      "image": "postgres:16-alpine",
-      "critical": false
-    },
-    {
-      "name": "joshcore-postgres",
-      "image": "postgres:16-alpine",
-      "critical": false
-    },
-    {
-      "name": "joshua-postgres",
-      "image": "postgres:16-alpine",
-      "critical": false
-    },
-    {
-      "name": "wopr-systems-next",
-      "image": "wopr-systems-next:latest",
-      "critical": false
-    },
-    {
-      "name": "wopr-manifesto",
-      "image": "wopr-manifesto:latest",
-      "critical": false
-    },
-    {
-      "name": "printful-sync-printful-sync-1",
-      "image": "printful-sync-printful-sync",
-      "critical": false
-    },
-    {
-      "name": "matrix-synapse",
-      "image": "matrix-synapse-wopr:latest",
-      "critical": false
-    },
-    {
-      "name": "ward6-canvass",
-      "image": "ward6-canvass:latest",
-      "critical": false
-    },
-    {
-      "name": "ward6-vote-api",
-      "image": "ward6-vote-api:latest",
-      "critical": false
-    },
-    {
-      "name": "ward6-vote-web",
-      "image": "ward6-vote-web:latest",
-      "critical": false
-    },
-    {
-      "name": "wopr-foundation-next",
-      "image": "wopr-foundation-next:latest",
-      "critical": false
-    },
-    {
-      "name": "ward6-vote-db",
-      "image": "postgres:16-alpine",
-      "critical": false
-    },
-    {
-      "name": "ward6-vote-redis",
-      "image": "redis:7-alpine",
-      "critical": false
-    },
-    {
-      "name": "folkmoot-web",
-      "image": "folkmoot-foundation-folkmoot-web",
-      "critical": false
-    },
-    {
-      "name": "group7-peertube",
-      "image": "chocobozzz/peertube:v8.0.1",
-      "critical": false
-    },
-    {
-      "name": "peertube-postgres",
-      "image": "postgres:15",
-      "critical": false
-    },
-    {
-      "name": "peertube-redis",
-      "image": "redis:7",
-      "critical": false
-    },
-    {
-      "name": "nostr-toolkit",
-      "image": "nostr-toolkit-nostr-toolkit",
-      "critical": false
-    },
-    {
-      "name": "brainjoos-api-node",
-      "image": "node:20",
-      "critical": false
-    },
-    {
-      "name": "theblock-api",
-      "image": "wopr-theblock-theblock-api",
-      "critical": false
-    },
-    {
-      "name": "foundation-folkmoot-folkmoot-web-1",
-      "image": "foundation-folkmoot-folkmoot-web",
-      "critical": false
-    },
-    {
-      "name": "foundation-folkmoot-folkmoot-api-1",
-      "image": "foundation-folkmoot-folkmoot-api",
-      "critical": false
-    },
-    {
-      "name": "foundation-folkmoot-folkmoot-db-1",
-      "image": "postgres:16-alpine",
-      "critical": false
-    },
-    {
-      "name": "foundation-folkmoot-folkmoot-redis-1",
-      "image": "redis:7-alpine",
-      "critical": false
-    },
-    {
-      "name": "folkmoot-api",
-      "image": "folkmoot-foundation-folkmoot-api",
-      "critical": false
-    },
-    {
-      "name": "authentik-worker-1",
-      "image": "ghcr.io/goauthentik/server:2025.12",
-      "critical": false
-    },
-    {
-      "name": "infisical-redis",
-      "image": "redis:7-alpine",
-      "critical": false
-    },
-    {
-      "name": "serpbear",
-      "image": "towfiqi/serpbear:latest",
-      "critical": false
-    },
-    {
-      "name": "crowdsec-dashboard-metabase-1",
-      "image": "metabase/metabase:latest",
-      "critical": false
-    },
-    {
-      "name": "theblock-db",
-      "image": "postgres:16-alpine",
-      "critical": false
-    },
-    {
-      "name": "miniflux",
-      "image": "miniflux/miniflux:latest",
-      "critical": false
-    },
-    {
-      "name": "miniflux-db",
-      "image": "postgres:16-alpine",
-      "critical": false
-    },
-    {
-      "name": "adams-dsa-web-1",
-      "image": "adams-dsa-web:latest",
-      "critical": false
-    },
-    {
-      "name": "adams-dsa-folkmoot-api",
-      "image": "adams-dsa-folkmoot-api:latest",
-      "critical": false
-    },
-    {
-      "name": "adams-dsa-folkmoot-db",
-      "image": "postgres:16-alpine",
-      "critical": false
-    },
-    {
-      "name": "adams-dsa-folkmoot-redis",
-      "image": "redis:7-alpine",
-      "critical": false
-    },
-    {
-      "name": "folkmoot-backend-1",
-      "image": "folkmoot-backend",
-      "critical": false
-    },
-    {
-      "name": "folkmoot-postgres-1",
-      "image": "postgres:16-alpine",
-      "critical": false
-    },
-    {
-      "name": "folkmoot-db",
-      "image": "postgres:16-alpine",
-      "critical": false
-    },
-    {
-      "name": "greenbone-gvmd-1",
-      "image": "registry.community.greenbone.net/community/gvmd:stable",
-      "critical": false
-    },
-    {
-      "name": "greenbone-pg-gvm-1",
-      "image": "registry.community.greenbone.net/community/pg-gvm:stable",
-      "critical": false
-    },
-    {
-      "name": "infisical",
-      "image": "infisical/infisical:latest",
-      "critical": false
-    },
-    {
-      "name": "wopr-ai-engine",
-      "image": "wopr-ai-engine:latest",
-      "critical": false
-    },
-    {
-      "name": "artjoos-artjoos-storefront-1",
-      "image": "wopr-systems/artjoos-storefront:latest",
-      "critical": false
-    },
-    {
-      "name": "protovision-postgres",
-      "image": "pgvector/pgvector:pg16",
-      "critical": false
-    },
-    {
-      "name": "protovision-redis",
-      "image": "redis:7-alpine",
-      "critical": false
-    },
-    {
-      "name": "mastodon-web",
-      "image": "tootsuite/mastodon:v4.3.23",
-      "critical": false
-    },
-    {
-      "name": "mastodon-sidekiq",
-      "image": "tootsuite/mastodon:v4.3.23",
-      "critical": false
-    },
-    {
-      "name": "mastodon-streaming",
-      "image": "ghcr.io/mastodon/mastodon-streaming:v4.3.23",
-      "critical": false
-    },
-    {
-      "name": "app",
-      "image": "local_discourse/app",
-      "critical": false
-    },
-    {
-      "name": "artjoos-artjoos-verification-1",
-      "image": "wopr-systems/artjoos-verification:latest",
-      "critical": false
-    },
-    {
-      "name": "artjoos-artjoos-commissions-1",
-      "image": "wopr-systems/artjoos-commissions:latest",
-      "critical": false
-    },
-    {
       "name": "artjoos-artjoos-federation-1",
       "image": "wopr-systems/artjoos-federation:latest",
-      "critical": false
-    },
-    {
-      "name": "artjoos-artjoos-analytics-1",
-      "image": "wopr-systems/artjoos-analytics:latest",
       "critical": false
     },
     {
@@ -1338,53 +1023,33 @@
       "critical": false
     },
     {
-      "name": "listmonk",
-      "image": "listmonk/listmonk:v3.0.0",
+      "name": "artjoos-artjoos-commissions-1",
+      "image": "wopr-systems/artjoos-commissions:latest",
       "critical": false
     },
     {
-      "name": "listmonk-db",
-      "image": "postgres:16-alpine",
+      "name": "artjoos-artjoos-analytics-1",
+      "image": "wopr-systems/artjoos-analytics:latest",
       "critical": false
     },
     {
-      "name": "mastodon-redis",
-      "image": "redis:7-alpine",
+      "name": "artjoos-artjoos-verification-1",
+      "image": "wopr-systems/artjoos-verification:latest",
       "critical": false
     },
     {
-      "name": "mastodon-db",
-      "image": "postgres:15-alpine",
+      "name": "artjoos-artjoos-storefront-1",
+      "image": "wopr-systems/artjoos-storefront:latest",
       "critical": false
     },
     {
-      "name": "akkoma",
-      "image": "akkoma:latest",
+      "name": "open-webui",
+      "image": "ghcr.io/open-webui/open-webui:main",
       "critical": false
     },
     {
-      "name": "brainjoos-api",
-      "image": "backend-api",
-      "critical": false
-    },
-    {
-      "name": "wopr-bind",
-      "image": "internetsystemsconsortium/bind9:9.20",
-      "critical": false
-    },
-    {
-      "name": "lovejoos-postgres",
-      "image": "667495ca2ac3",
-      "critical": false
-    },
-    {
-      "name": "authentik-server-1",
-      "image": "ghcr.io/goauthentik/server:2025.12",
-      "critical": false
-    },
-    {
-      "name": "wopr_ollama_chat-postgres-1",
-      "image": "ankane/pgvector:latest",
+      "name": "crowdsec-dashboard-metabase-1",
+      "image": "metabase/metabase:latest",
       "critical": false
     },
     {
@@ -1393,53 +1058,43 @@
       "critical": false
     },
     {
-      "name": "wopr-pds",
-      "image": "ghcr.io/bluesky-social/pds:latest",
-      "critical": false
-    },
-    {
-      "name": "akkoma-db",
-      "image": "postgres:15-alpine",
-      "critical": false
-    },
-    {
-      "name": "single-node-wazuh.indexer-1",
-      "image": "wazuh/wazuh-indexer:4.7.5",
-      "critical": false
-    },
-    {
-      "name": "single-node-wazuh.dashboard-1",
-      "image": "wazuh/wazuh-dashboard:4.7.5",
-      "critical": false
-    },
-    {
-      "name": "single-node-wazuh.manager-1",
-      "image": "wazuh/wazuh-manager:4.7.5",
-      "critical": false
-    },
-    {
-      "name": "wopr-caddy-rig",
-      "image": "wopr-caddy-replace:latest",
-      "critical": false
-    },
-    {
-      "name": "greenbone-gsa-1",
-      "image": "registry.community.greenbone.net/community/gsa:stable",
+      "name": "n8n",
+      "image": "n8nio/n8n:latest",
       "critical": false
     },
     {
       "name": "castopod-mariadb",
-      "image": "mariadb:11",
+      "image": "mariadb:13.0",
       "critical": false
     },
     {
-      "name": "wopr-sydent",
-      "image": "matrixdotorg/sydent:latest",
+      "name": "buylocal",
+      "image": "buylocal-buylocal:latest",
       "critical": false
     },
     {
-      "name": "lk-jwt-service",
-      "image": "ghcr.io/element-hq/lk-jwt-service:0.4.1",
+      "name": "wopr-multiverse",
+      "image": "wopr-multiverse-multiverse",
+      "critical": false
+    },
+    {
+      "name": "printful-sync-printful-sync-1",
+      "image": "printful-sync-printful-sync",
+      "critical": false
+    },
+    {
+      "name": "noise-lab",
+      "image": "noise-lab:latest",
+      "critical": false
+    },
+    {
+      "name": "binkerd-us",
+      "image": "binkerd-us:latest",
+      "critical": false
+    },
+    {
+      "name": "wopr-systems-preview",
+      "image": "wopr-systems-preview:latest",
       "critical": false
     },
     {
@@ -1453,48 +1108,53 @@
       "critical": false
     },
     {
-      "name": "matrix-element",
-      "image": "13a94e7a572c",
+      "name": "matrix-synapse",
+      "image": "matrix-synapse-wopr:latest",
       "critical": false
     },
     {
-      "name": "element-call",
-      "image": "ghcr.io/element-hq/element-call:v0.16.3",
+      "name": "barter-scanner-1",
+      "image": "barter-scanner:latest",
       "critical": false
     },
     {
-      "name": "synapse-admin",
-      "image": "awesometechnologies/synapse-admin:latest",
+      "name": "barter-web-1",
+      "image": "barter-web:latest",
       "critical": false
     },
     {
-      "name": "livekit-server",
-      "image": "livekit/livekit-server:v1.9.11",
+      "name": "lovejoos-api",
+      "image": "registry.wopr.systems/lovejoos/api:latest",
       "critical": false
     },
     {
-      "name": "matrix-postgres",
-      "image": "postgres:15-alpine",
+      "name": "sst-backend",
+      "image": "statestreettheater-backend",
       "critical": false
     },
     {
-      "name": "folkmoot-falken-bridge",
-      "image": "folkmoot-foundation-falken-bridge",
+      "name": "ward6-vote-api",
+      "image": "ward6-vote-api:latest",
       "critical": false
     },
     {
-      "name": "folkmoot-trust-graph",
-      "image": "folkmoot-foundation-trust-graph",
+      "name": "nostr-toolkit",
+      "image": "nostr-toolkit-nostr-toolkit",
       "critical": false
     },
     {
-      "name": "folkmoot-nedry-ingest",
-      "image": "folkmoot-foundation-nedry-ingest",
+      "name": "adams-dsa-folkmoot-api",
+      "image": "adams-dsa-folkmoot-api:latest",
       "critical": false
     },
     {
-      "name": "folkmoot-deliberation",
-      "image": "folkmoot-foundation-deliberation",
+      "name": "foundation-folkmoot-folkmoot-api-1",
+      "image": "foundation-folkmoot-folkmoot-api",
+      "critical": false
+    },
+    {
+      "name": "folkmoot-backend-1",
+      "image": "folkmoot-backend",
       "critical": false
     },
     {
@@ -1503,73 +1163,383 @@
       "critical": false
     },
     {
+      "name": "folkmoot-api",
+      "image": "folkmoot-foundation-folkmoot-api",
+      "critical": false
+    },
+    {
+      "name": "wopr-ai-engine",
+      "image": "wopr-ai-engine:latest",
+      "critical": false
+    },
+    {
+      "name": "wopr-systems-next",
+      "image": "wopr-systems-next:latest",
+      "critical": false
+    },
+    {
+      "name": "wopr-assessment-postgres",
+      "image": "postgres:18-alpine",
+      "critical": false
+    },
+    {
+      "name": "greenbone-gsa-1",
+      "image": "registry.community.greenbone.net/community/gsa:stable",
+      "critical": false
+    },
+    {
+      "name": "greenbone-gvmd-1",
+      "image": "registry.community.greenbone.net/community/gvmd:stable",
+      "critical": false
+    },
+    {
+      "name": "greenbone-pg-gvm-1",
+      "image": "registry.community.greenbone.net/community/pg-gvm:stable",
+      "critical": false
+    },
+    {
+      "name": "nextcloud",
+      "image": "nextcloud:35-apache",
+      "critical": false
+    },
+    {
+      "name": "infisical",
+      "image": "infisical/infisical:latest",
+      "critical": false
+    },
+    {
+      "name": "brainjoos-api-node",
+      "image": "node:26",
+      "critical": false
+    },
+    {
+      "name": "wopr-meme-engine",
+      "image": "meme-engine-meme-engine",
+      "critical": false
+    },
+    {
+      "name": "folkmoot-trust-graph",
+      "image": "folkmoot-foundation-trust-graph",
+      "critical": false
+    },
+    {
       "name": "folkmoot-proposal-review",
       "image": "folkmoot-foundation-proposal-review",
       "critical": false
     },
     {
-      "name": "folkmoot-redis",
-      "image": "redis:7-alpine",
+      "name": "folkmoot-nedry-ingest",
+      "image": "folkmoot-foundation-nedry-ingest",
       "critical": false
     },
     {
-      "name": "nostr-relay",
-      "image": "scsibug/nostr-rs-relay:latest",
+      "name": "folkmoot-falken-bridge",
+      "image": "folkmoot-foundation-falken-bridge",
       "critical": false
     },
     {
-      "name": "lnbits",
-      "image": "lnbits/lnbits:latest",
+      "name": "folkmoot-deliberation",
+      "image": "folkmoot-foundation-deliberation",
       "critical": false
     },
     {
-      "name": "n8n",
-      "image": "8e9c9bbcb32a",
+      "name": "ward6-canvass",
+      "image": "ward6-canvass:latest",
       "critical": false
     },
     {
-      "name": "brainjoos-db",
-      "image": "667495ca2ac3",
+      "name": "matrix-element",
+      "image": "vectorim/element-web:latest",
       "critical": false
     },
     {
-      "name": "castopod-app",
-      "image": "fb36fe40135d",
+      "name": "peertube-postgres",
+      "image": "postgres:18",
+      "critical": false
+    },
+    {
+      "name": "authentik-postgresql-1",
+      "image": "postgres:18",
+      "critical": false
+    },
+    {
+      "name": "artcraft-selfhost-redis-1",
+      "image": "redis:8",
+      "critical": false
+    },
+    {
+      "name": "authentik_redis",
+      "image": "redis:8",
+      "critical": false
+    },
+    {
+      "name": "peertube-redis",
+      "image": "redis:8",
+      "critical": false
+    },
+    {
+      "name": "saleor-redis-dude",
+      "image": "redis:8",
       "critical": false
     },
     {
       "name": "buylocal-postgres",
-      "image": "buylocal-postgres-custom:latest",
+      "image": "buylocal-postgres-custom:pg18",
       "critical": false
     },
     {
-      "name": "buylocal",
-      "image": "buylocal-buylocal:latest",
+      "name": "wopr-sso-redis",
+      "image": "redis:8-alpine",
       "critical": false
     },
     {
-      "name": "buylocal-redis",
-      "image": "redis:7-alpine",
-      "critical": false
-    },
-    {
-      "name": "barter-redis-1",
-      "image": "redis:7-alpine",
-      "critical": false
-    },
-    {
-      "name": "elk-web",
-      "image": "elk-wopr:latest",
-      "critical": false
-    },
-    {
-      "name": "wopr-multiverse",
-      "image": "wopr-multiverse-multiverse",
+      "name": "ward6-vote-redis",
+      "image": "redis:8-alpine",
       "critical": false
     },
     {
       "name": "sonicforge-redis-1",
-      "image": "redis:7-alpine",
+      "image": "redis:8-alpine",
+      "critical": false
+    },
+    {
+      "name": "protovision-redis",
+      "image": "redis:8-alpine",
+      "critical": false
+    },
+    {
+      "name": "lovejoos-redis",
+      "image": "redis:8-alpine",
+      "critical": false
+    },
+    {
+      "name": "infisical-redis",
+      "image": "redis:8-alpine",
+      "critical": false
+    },
+    {
+      "name": "foundation-folkmoot-folkmoot-redis-1",
+      "image": "redis:8-alpine",
+      "critical": false
+    },
+    {
+      "name": "folkmoot-redis-1",
+      "image": "redis:8-alpine",
+      "critical": false
+    },
+    {
+      "name": "folkmoot-redis",
+      "image": "redis:8-alpine",
+      "critical": false
+    },
+    {
+      "name": "buylocal-redis",
+      "image": "redis:8-alpine",
+      "critical": false
+    },
+    {
+      "name": "barter-redis-1",
+      "image": "redis:8-alpine",
+      "critical": false
+    },
+    {
+      "name": "artjoos-artjoos-redis-1",
+      "image": "redis:8-alpine",
+      "critical": false
+    },
+    {
+      "name": "adams-dsa-folkmoot-redis",
+      "image": "redis:8-alpine",
+      "critical": false
+    },
+    {
+      "name": "nextcloud-redis",
+      "image": "redis:8-alpine",
+      "critical": false
+    },
+    {
+      "name": "mastodon-redis",
+      "image": "redis:8-alpine",
+      "critical": false
+    },
+    {
+      "name": "wopr-pds",
+      "image": "ghcr.io/bluesky-social/pds:latest",
+      "critical": false
+    },
+    {
+      "name": "authentik-server-1",
+      "image": "ghcr.io/goauthentik/server:2026.8",
+      "critical": false
+    },
+    {
+      "name": "authentik-worker-1",
+      "image": "ghcr.io/goauthentik/server:2026.8",
+      "critical": false
+    },
+    {
+      "name": "livekit-server",
+      "image": "livekit/livekit-server:v1.13.11",
+      "critical": false
+    },
+    {
+      "name": "artcraft-selfhost-mysql-1",
+      "image": "mysql:26.7",
+      "critical": false
+    },
+    {
+      "name": "seonaut-db",
+      "image": "mysql:26.7",
+      "critical": false
+    },
+    {
+      "name": "brainjoos-db",
+      "image": "postgres:18-alpine",
+      "critical": false
+    },
+    {
+      "name": "mastodon-db",
+      "image": "postgres:18-alpine",
+      "critical": false
+    },
+    {
+      "name": "protovision-postgres",
+      "image": "pgvector/pgvector:pg18",
+      "critical": false
+    },
+    {
+      "name": "akkoma-db",
+      "image": "postgres:18-alpine",
+      "critical": false
+    },
+    {
+      "name": "saleor-postgres-dude",
+      "image": "postgres:18-alpine",
+      "critical": false
+    },
+    {
+      "name": "wopr-api-postgres",
+      "image": "postgres:18-alpine",
+      "critical": false
+    },
+    {
+      "name": "matrix-postgres",
+      "image": "postgres:18-alpine",
+      "critical": false
+    },
+    {
+      "name": "ward6-vote-db",
+      "image": "postgres:18-alpine",
+      "critical": false
+    },
+    {
+      "name": "nextcloud-db",
+      "image": "postgres:18-alpine",
+      "critical": false
+    },
+    {
+      "name": "miniflux-db",
+      "image": "postgres:18-alpine",
+      "critical": false
+    },
+    {
+      "name": "joshua-postgres",
+      "image": "postgres:18-alpine",
+      "critical": false
+    },
+    {
+      "name": "folkmoot-db",
+      "image": "postgres:18-alpine",
+      "critical": false
+    },
+    {
+      "name": "lovejoos-postgres",
+      "image": "postgres:18-alpine",
+      "critical": false
+    },
+    {
+      "name": "barter-postgres",
+      "image": "postgres:18-alpine",
+      "critical": false
+    },
+    {
+      "name": "listmonk-db",
+      "image": "postgres:18-alpine",
+      "critical": false
+    },
+    {
+      "name": "seo-db",
+      "image": "postgres:18-alpine",
+      "critical": false
+    },
+    {
+      "name": "wopr_ollama_chat-postgres-1",
+      "image": "pgvector/pgvector:pg18",
+      "critical": false
+    },
+    {
+      "name": "adams-dsa-folkmoot-db",
+      "image": "postgres:18-alpine",
+      "critical": false
+    },
+    {
+      "name": "folkmoot-postgres-1",
+      "image": "postgres:18-alpine",
+      "critical": false
+    },
+    {
+      "name": "foundation-folkmoot-folkmoot-db-1",
+      "image": "postgres:18-alpine",
+      "critical": false
+    },
+    {
+      "name": "joshcore-postgres",
+      "image": "postgres:18-alpine",
+      "critical": false
+    },
+    {
+      "name": "theblock-db",
+      "image": "postgres:18-alpine",
+      "critical": false
+    },
+    {
+      "name": "wopr-umami-db",
+      "image": "postgres:18-alpine",
+      "critical": false
+    },
+    {
+      "name": "lovejoos-frontend",
+      "image": "registry.wopr.systems/lovejoos/frontend:latest",
+      "critical": false
+    },
+    {
+      "name": "group7-peertube",
+      "image": "chocobozzz/peertube:v8.3.1",
+      "critical": false
+    },
+    {
+      "name": "wopr-manifesto",
+      "image": "wopr-manifesto:latest",
+      "critical": false
+    },
+    {
+      "name": "wopr-foundation-next",
+      "image": "wopr-foundation-next:latest",
+      "critical": false
+    },
+    {
+      "name": "ward6-vote-web",
+      "image": "ward6-vote-web:latest",
+      "critical": false
+    },
+    {
+      "name": "theblock-api",
+      "image": "wopr-theblock-theblock-api",
+      "critical": false
+    },
+    {
+      "name": "sst-frontend",
+      "image": "statestreettheater-frontend",
       "critical": false
     },
     {
@@ -1583,63 +1553,33 @@
       "critical": false
     },
     {
-      "name": "sst-frontend",
-      "image": "statestreettheater-frontend",
+      "name": "reactor_ui",
+      "image": "reactor-ui-reactor-ui",
       "critical": false
     },
     {
-      "name": "sst-backend",
-      "image": "statestreettheater-backend",
+      "name": "reactor_demo_ui",
+      "image": "reactor-demo-ui:latest",
       "critical": false
     },
     {
-      "name": "saleor-dashboard-dude",
-      "image": "ghcr.io/saleor/saleor-dashboard:3.20",
+      "name": "reactor_demo_api",
+      "image": "reactor-demo-api:latest",
       "critical": false
     },
     {
-      "name": "saleor-redis-dude",
-      "image": "redis:7",
+      "name": "gsc-puller",
+      "image": "wopr-seo-gsc-puller",
       "critical": false
     },
     {
-      "name": "saleor-postgres-dude",
-      "image": "667495ca2ac3",
+      "name": "foundation-folkmoot-folkmoot-web-1",
+      "image": "foundation-folkmoot-folkmoot-web",
       "critical": false
     },
     {
-      "name": "seonaut",
-      "image": "ghcr.io/stjudewashere/seonaut:latest",
-      "critical": false
-    },
-    {
-      "name": "seonaut-db",
-      "image": "mysql:8.4",
-      "critical": false
-    },
-    {
-      "name": "wopr-ntfy",
-      "image": "binwiederhier/ntfy:v2.8.0",
-      "critical": false
-    },
-    {
-      "name": "wopr-umami",
-      "image": "ghcr.io/umami-software/umami:postgresql-latest",
-      "critical": false
-    },
-    {
-      "name": "wopr-umami-db",
-      "image": "d7ead3a9d3fe",
-      "critical": false
-    },
-    {
-      "name": "folkmoot-prometheus-1",
-      "image": "prom/prometheus:v2.51.2",
-      "critical": false
-    },
-    {
-      "name": "folkmoot-redis-1",
-      "image": "redis:7-alpine",
+      "name": "folkmoot-web",
+      "image": "folkmoot-foundation-folkmoot-web",
       "critical": false
     },
     {
@@ -1648,28 +1588,38 @@
       "critical": false
     },
     {
-      "name": "folkmoot-grafana-1",
-      "image": "grafana/grafana:11.4.0",
+      "name": "artcraft-selfhost-thumbnailer-1",
+      "image": "artcraft-thumbnailer:local",
       "critical": false
     },
     {
-      "name": "lovejoos-redis",
-      "image": "redis:7-alpine",
+      "name": "artcraft-selfhost-storyteller-web-1",
+      "image": "artcraft-services:local",
       "critical": false
     },
     {
-      "name": "lovejoos-minio",
-      "image": "minio/minio:latest",
+      "name": "akkoma",
+      "image": "akkoma:latest",
       "critical": false
     },
     {
-      "name": "lovejoos-emqx",
-      "image": "emqx/emqx:5.8",
+      "name": "adams-dsa-web-1",
+      "image": "adams-dsa-web:latest",
       "critical": false
     },
     {
-      "name": "wopr-static-multi",
-      "image": "nginx:alpine",
+      "name": "mastodon-web",
+      "image": "ghcr.io/mastodon/mastodon:v4.7.3",
+      "critical": false
+    },
+    {
+      "name": "mastodon-sidekiq",
+      "image": "ghcr.io/mastodon/mastodon:v4.7.3",
+      "critical": false
+    },
+    {
+      "name": "app",
+      "image": "local_discourse/app",
       "critical": false
     },
     {
@@ -1678,33 +1628,143 @@
       "critical": false
     },
     {
-      "name": "authentik-postgresql-1",
-      "image": "postgres:15",
+      "name": "wopr-static-multi",
+      "image": "nginx:alpine",
       "critical": false
     },
     {
-      "name": "authentik_redis",
-      "image": "redis:7",
+      "name": "wopr-caddy-rig",
+      "image": "wopr-caddy-replace:latest",
       "critical": false
     },
     {
-      "name": "nextcloud",
-      "image": "nextcloud:30-apache",
+      "name": "saleor-dashboard-dude",
+      "image": "ghcr.io/saleor/saleor-dashboard:3.23",
       "critical": false
     },
     {
-      "name": "nextcloud-redis",
-      "image": "487efc061638",
+      "name": "artcraft-selfhost-elasticsearch-1",
+      "image": "docker.elastic.co/elasticsearch/elasticsearch:9.5.5",
       "critical": false
     },
     {
-      "name": "nextcloud-db",
-      "image": "52f87503b2fe",
+      "name": "folkmoot-grafana-1",
+      "image": "grafana/grafana:13.2.4",
       "critical": false
     },
     {
-      "name": "promtail",
-      "image": "grafana/promtail:latest",
+      "name": "folkmoot-prometheus-1",
+      "image": "prom/prometheus:v3.15.1",
+      "critical": false
+    },
+    {
+      "name": "element-call",
+      "image": "ghcr.io/element-hq/element-call:v0.26.1",
+      "critical": false
+    },
+    {
+      "name": "lk-jwt-service",
+      "image": "ghcr.io/element-hq/lk-jwt-service:0.9.0",
+      "critical": false
+    },
+    {
+      "name": "wopr-ntfy",
+      "image": "binwiederhier/ntfy:v2.33.1",
+      "critical": false
+    },
+    {
+      "name": "moodshot",
+      "image": "caddy:2",
+      "critical": false
+    },
+    {
+      "name": "seonaut",
+      "image": "ghcr.io/stjudewashere/seonaut:latest",
+      "critical": false
+    },
+    {
+      "name": "nostr-relay",
+      "image": "scsibug/nostr-rs-relay:latest",
+      "critical": false
+    },
+    {
+      "name": "lnbits",
+      "image": "lnbits/lnbits:latest",
+      "critical": false
+    },
+    {
+      "name": "miniflux",
+      "image": "miniflux/miniflux:latest",
+      "critical": false
+    },
+    {
+      "name": "wopr-umami",
+      "image": "ghcr.io/umami-software/umami:postgresql-latest",
+      "critical": false
+    },
+    {
+      "name": "wopr-bind",
+      "image": "internetsystemsconsortium/bind9:9.20",
+      "critical": false
+    },
+    {
+      "name": "listmonk",
+      "image": "listmonk/listmonk:v6.2.0",
+      "critical": false
+    },
+    {
+      "name": "single-node-wazuh.dashboard-1",
+      "image": "wazuh/wazuh-dashboard:4.14.9",
+      "critical": false
+    },
+    {
+      "name": "single-node-wazuh.manager-1",
+      "image": "wazuh/wazuh-manager:4.14.9",
+      "critical": false
+    },
+    {
+      "name": "single-node-wazuh.indexer-1",
+      "image": "wazuh/wazuh-indexer:4.14.9",
+      "critical": false
+    },
+    {
+      "name": "castopod-app",
+      "image": "castopod/castopod:latest",
+      "critical": false
+    },
+    {
+      "name": "artcraft-selfhost-seaweedfs-1",
+      "image": "chrislusf/seaweedfs:3.97",
+      "critical": false
+    },
+    {
+      "name": "artcraft-selfhost-migrate-1",
+      "image": "1487abffa4fa",
+      "critical": false
+    },
+    {
+      "name": "artcraft-selfhost-storage-init-1",
+      "image": "chrislusf/seaweedfs:3.97",
+      "critical": false
+    },
+    {
+      "name": "brainjoos-api",
+      "image": "backend-api",
+      "critical": false
+    },
+    {
+      "name": "wopr-sydent",
+      "image": "matrixdotorg/sydent:latest",
+      "critical": false
+    },
+    {
+      "name": "synapse-admin",
+      "image": "awesometechnologies/synapse-admin:latest",
+      "critical": false
+    },
+    {
+      "name": "lovejoos-minio",
+      "image": "minio/minio:latest",
       "critical": false
     }
   ],
@@ -1754,6 +1814,16 @@
         ],
         "critical": false,
         "discovered_via": "caddy"
+      },
+      {
+        "url": "http://127.0.0.1:81/health",
+        "name": "node-MainThread-81",
+        "expected_status": [
+          200,
+          404
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
       },
       {
         "url": "http://127.0.0.1:2021/",
@@ -1824,22 +1894,12 @@
       },
       {
         "url": "http://127.0.0.1:3101/api/health",
-        "name": "node-3101",
+        "name": "node-MainThread-3101",
         "expected_status": [
           200
         ],
         "critical": false,
         "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:3110/api/health",
-        "name": "brainjoos-api-3110",
-        "expected_status": [
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "brainjoos-api"
       },
       {
         "url": "http://127.0.0.1:3200/",
@@ -1860,16 +1920,6 @@
         "critical": false,
         "discovered_via": "port_scan",
         "container": "folkmoot-grafana-1"
-      },
-      {
-        "url": "http://127.0.0.1:3217/",
-        "name": "unknown-3217",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
       },
       {
         "url": "http://127.0.0.1:3300/",
@@ -1897,6 +1947,7 @@
         "url": "http://127.0.0.1:3333/health",
         "name": "mastodon-web-3333",
         "expected_status": [
+          200,
           200
         ],
         "critical": false,
@@ -1969,6 +2020,17 @@
         "container": "wopr-systems-preview"
       },
       {
+        "url": "http://127.0.0.1:3416/",
+        "name": "binkerd-us-3416",
+        "expected_status": [
+          200,
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan",
+        "container": "binkerd-us"
+      },
+      {
         "url": "http://127.0.0.1:3417/",
         "name": "wopr-manifesto-3417",
         "expected_status": [
@@ -1981,14 +2043,14 @@
       },
       {
         "url": "http://127.0.0.1:3420/api/health",
-        "name": "protovision-web-3420",
+        "name": "noise-lab-3420",
         "expected_status": [
           200,
           200
         ],
         "critical": false,
         "discovered_via": "port_scan",
-        "container": "protovision-web"
+        "container": "noise-lab"
       },
       {
         "url": "http://127.0.0.1:3801/",
@@ -2036,6 +2098,7 @@
         "url": "http://127.0.0.1:4002/",
         "name": "app-4002",
         "expected_status": [
+          200,
           200
         ],
         "critical": false,
@@ -2134,16 +2197,6 @@
         "container": "reactor_demo_api"
       },
       {
-        "url": "http://127.0.0.1:5314/health",
-        "name": "elk-web-5314",
-        "expected_status": [
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "elk-web"
-      },
-      {
         "url": "http://127.0.0.1:5555/health",
         "name": "python3-5555",
         "expected_status": [
@@ -2163,8 +2216,8 @@
         "discovered_via": "port_scan"
       },
       {
-        "url": "http://127.0.0.1:5557/health",
-        "name": "python3-5557",
+        "url": "http://127.0.0.1:5580/health",
+        "name": "python-5580",
         "expected_status": [
           200
         ],
@@ -2172,9 +2225,31 @@
         "discovered_via": "port_scan"
       },
       {
-        "url": "http://127.0.0.1:5580/health",
-        "name": "python-5580",
+        "url": "http://127.0.0.1:5590/health",
+        "name": "python3-5590",
         "expected_status": [
+          200,
+          401,
+          403
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://127.0.0.1:5591/healthz",
+        "name": "python3-5591",
+        "expected_status": [
+          200,
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://127.0.0.1:5598/health",
+        "name": "python3-5598",
+        "expected_status": [
+          200,
           200
         ],
         "critical": false,
@@ -2191,7 +2266,18 @@
         "discovered_via": "port_scan"
       },
       {
-        "url": "http://127.0.0.1:5678/healthz",
+        "url": "http://127.0.0.1:5602/api/health",
+        "name": "python3-5602",
+        "expected_status": [
+          200,
+          401,
+          403
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://127.0.0.1:5678/health",
         "name": "n8n-5678",
         "expected_status": [
           200
@@ -2410,17 +2496,6 @@
         "discovered_via": "port_scan"
       },
       {
-        "url": "http://127.0.0.1:8083/",
-        "name": "lovejoos-emqx-8083",
-        "expected_status": [
-          200,
-          404
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "lovejoos-emqx"
-      },
-      {
         "url": "http://127.0.0.1:8085/",
         "name": "wopr-nodez3r0-static-8085",
         "expected_status": [
@@ -2448,6 +2523,17 @@
         ],
         "critical": false,
         "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://127.0.0.1:8090/",
+        "name": "nextcloud-8090",
+        "expected_status": [
+          200,
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan",
+        "container": "nextcloud"
       },
       {
         "url": "http://127.0.0.1:8091/health",
@@ -2541,8 +2627,8 @@
         "container": "sst-frontend"
       },
       {
-        "url": "http://127.0.0.1:8188/",
-        "name": "python3-8188",
+        "url": "http://10.220.0.1:8188/",
+        "name": "socat-8188",
         "expected_status": [
           200,
           200
@@ -2632,7 +2718,7 @@
       },
       {
         "url": "http://127.0.0.1:8581/health",
-        "name": "node-8581",
+        "name": "node-MainThread-8581",
         "expected_status": [
           200,
           200
@@ -2701,14 +2787,25 @@
         "container": "folkmoot-nedry-ingest"
       },
       {
-        "url": "http://127.0.0.1:8888/healthz",
-        "name": "searxng-8888",
+        "url": "http://127.0.0.1:8898/healthz",
+        "name": "artcraft-selfhost-seaweedfs-1-8898",
         "expected_status": [
+          200,
           200
         ],
         "critical": false,
         "discovered_via": "port_scan",
-        "container": "searxng"
+        "container": "artcraft-selfhost-seaweedfs-1"
+      },
+      {
+        "url": "http://127.0.0.1:8899/health",
+        "name": "python3-8899",
+        "expected_status": [
+          200,
+          405
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
       },
       {
         "url": "http://127.0.0.1:8900/health",
@@ -2729,15 +2826,6 @@
         "critical": false,
         "discovered_via": "port_scan",
         "container": "group7-peertube"
-      },
-      {
-        "url": "http://127.0.0.1:9080/ready",
-        "name": "promtail-9080",
-        "expected_status": [
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
       },
       {
         "url": "http://127.0.0.1:9090/status",
@@ -2771,6 +2859,7 @@
         "url": "http://127.0.0.1:9101/health",
         "name": "python3-9101",
         "expected_status": [
+          200,
           200
         ],
         "critical": false,
@@ -2780,6 +2869,7 @@
         "url": "http://127.0.0.1:9110/health",
         "name": "listmonk-9110",
         "expected_status": [
+          200,
           200
         ],
         "critical": false,
@@ -2827,39 +2917,29 @@
         "container": "lovejoos-minio"
       },
       {
-        "url": "http://127.0.0.1:9338/",
-        "name": "chrome-9338",
+        "url": "http://127.0.0.1:9392/health",
+        "name": "greenbone-gsa-1-9392",
         "expected_status": [
           200,
           200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:9339/",
-        "name": "chrome-9339",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:9445/",
-        "name": "authentik-server-1-9445",
-        "expected_status": [
-          200,
-          400
         ],
         "critical": false,
         "discovered_via": "port_scan",
-        "container": "authentik-server-1"
+        "container": "greenbone-gsa-1"
       },
       {
         "url": "http://127.0.0.1:9876/health",
         "name": "crowdsec-9876",
+        "expected_status": [
+          200,
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://127.0.0.1:9900/health",
+        "name": "caddy-9900",
         "expected_status": [
           200,
           200
@@ -2918,6 +2998,17 @@
         "discovered_via": "port_scan"
       },
       {
+        "url": "http://127.0.0.1:12345/",
+        "name": "artcraft-selfhost-storyteller-web-1-12345",
+        "expected_status": [
+          200,
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan",
+        "container": "artcraft-selfhost-storyteller-web-1"
+      },
+      {
         "url": "http://127.0.0.1:13000/",
         "name": "unknown-13000",
         "expected_status": [
@@ -2948,16 +3039,6 @@
         "container": "crowdsec-dashboard-metabase-1"
       },
       {
-        "url": "http://127.0.0.1:13099/",
-        "name": "unknown-13099",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
         "url": "http://127.0.0.1:14000/api/health",
         "name": "artjoos-artjoos-storefront-1-14000",
         "expected_status": [
@@ -2972,7 +3053,7 @@
         "name": "artjoos-artjoos-verification-1-14200",
         "expected_status": [
           200,
-          400
+          404
         ],
         "critical": false,
         "discovered_via": "port_scan",
@@ -2983,7 +3064,7 @@
         "name": "artjoos-artjoos-analytics-1-14201",
         "expected_status": [
           200,
-          400
+          404
         ],
         "critical": false,
         "discovered_via": "port_scan",
@@ -2994,7 +3075,7 @@
         "name": "artjoos-artjoos-commissions-1-14202",
         "expected_status": [
           200,
-          400
+          404
         ],
         "critical": false,
         "discovered_via": "port_scan",
@@ -3005,7 +3086,7 @@
         "name": "artjoos-artjoos-provenance-1-14203",
         "expected_status": [
           200,
-          400
+          404
         ],
         "critical": false,
         "discovered_via": "port_scan",
@@ -3016,7 +3097,7 @@
         "name": "artjoos-artjoos-federation-1-14204",
         "expected_status": [
           200,
-          400
+          404
         ],
         "critical": false,
         "discovered_via": "port_scan",
@@ -3092,16 +3173,6 @@
         "container": "wopr-ntfy"
       },
       {
-        "url": "http://127.0.0.1:18083/status",
-        "name": "lovejoos-emqx-18083",
-        "expected_status": [
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan",
-        "container": "lovejoos-emqx"
-      },
-      {
         "url": "http://127.0.0.1:18090/",
         "name": "wopr-sydent-18090",
         "expected_status": [
@@ -3122,7 +3193,7 @@
         "discovered_via": "port_scan"
       },
       {
-        "url": "http://127.0.0.1:18096/",
+        "url": "http://127.0.0.1:18096/api/v1/health",
         "name": "buylocal-18096",
         "expected_status": [
           200
@@ -3183,6 +3254,26 @@
         "discovered_via": "port_scan"
       },
       {
+        "url": "http://127.0.0.1:18470/health",
+        "name": "soundcraft-rig-18470",
+        "expected_status": [
+          200,
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
+        "url": "http://127.0.0.1:18472/health",
+        "name": "soundcraft-rig-18472",
+        "expected_status": [
+          200,
+          200
+        ],
+        "critical": false,
+        "discovered_via": "port_scan"
+      },
+      {
         "url": "http://127.0.0.1:18789/health",
         "name": "MainThread-18789",
         "expected_status": [
@@ -3213,16 +3304,6 @@
         "discovered_via": "port_scan"
       },
       {
-        "url": "http://127.0.0.1:18971/api/health",
-        "name": "python3-18971",
-        "expected_status": [
-          200,
-          200
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
         "url": "http://127.0.0.1:19002/health",
         "name": "saleor-dashboard-dude-19002",
         "expected_status": [
@@ -3243,14 +3324,14 @@
         "pinned": true
       },
       {
-        "url": "http://127.0.0.1:28000/",
-        "name": "saleor-api-dude-28000",
+        "url": "http://127.0.0.1:27020/health",
+        "name": "ferretdb-27020",
         "expected_status": [
+          200,
           200
         ],
         "critical": false,
-        "discovered_via": "port_scan",
-        "container": "saleor-api-dude"
+        "discovered_via": "port_scan"
       },
       {
         "url": "http://127.0.0.1:28100/health",
@@ -3306,32 +3387,11 @@
         "discovered_via": "port_scan"
       },
       {
-        "url": "http://127.0.0.1:38783/",
-        "name": "MainThread-38783",
+        "url": "http://127.0.0.1:42087/",
+        "name": "MainThread-42087",
         "expected_status": [
           200,
           400
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:40289/health",
-        "name": "code-645f29cc31-40289",
-        "expected_status": [
-          200,
-          401,
-          403
-        ],
-        "critical": false,
-        "discovered_via": "port_scan"
-      },
-      {
-        "url": "http://127.0.0.1:56197/healthz",
-        "name": "python3-56197",
-        "expected_status": [
-          200,
-          200
         ],
         "critical": false,
         "discovered_via": "port_scan"
@@ -3339,14 +3399,6 @@
     ]
   },
   "timers": [
-    {
-      "timer": "protovision-tick.timer",
-      "service": "protovision-tick"
-    },
-    {
-      "timer": "sysstat-collect.timer",
-      "service": "sysstat-collect"
-    },
     {
       "timer": "comfyui-idle-release.timer",
       "service": "comfyui-idle-release"
@@ -3356,8 +3408,20 @@
       "service": "protovision-ingest"
     },
     {
-      "timer": "gpu-scheduler-watchdog.timer",
-      "service": "gpu-scheduler-watchdog"
+      "timer": "protovision-tick.timer",
+      "service": "protovision-tick"
+    },
+    {
+      "timer": "wopr-watchdog.timer",
+      "service": "wopr-watchdog"
+    },
+    {
+      "timer": "crowdsec-metabase-export.timer",
+      "service": "crowdsec-metabase-export"
+    },
+    {
+      "timer": "nedry-abuse-reporter.timer",
+      "service": "nedry-abuse-reporter"
     },
     {
       "timer": "wopr-sp-watchdog.timer",
@@ -3368,24 +3432,20 @@
       "service": "grc-selfheal"
     },
     {
+      "timer": "fwupd-refresh.timer",
+      "service": "fwupd-refresh"
+    },
+    {
       "timer": "lovejoos-secrets-sync.timer",
       "service": "lovejoos-secrets-sync"
     },
     {
-      "timer": "dude-abandoned-cart-monitor.timer",
-      "service": "dude-abandoned-cart-monitor"
-    },
-    {
-      "timer": "wopr-watchdog.timer",
-      "service": "wopr-watchdog"
+      "timer": "gpu-scheduler-watchdog.timer",
+      "service": "gpu-scheduler-watchdog"
     },
     {
       "timer": "folkmoot-watchdog.timer",
       "service": "folkmoot-watchdog"
-    },
-    {
-      "timer": "protovision-email.timer",
-      "service": "protovision-email"
     },
     {
       "timer": "prometheus-node-exporter-apt.timer",
@@ -3396,24 +3456,36 @@
       "service": "prometheus-node-exporter-nvme"
     },
     {
+      "timer": "protovision-email.timer",
+      "service": "protovision-email"
+    },
+    {
+      "timer": "sysstat-collect.timer",
+      "service": "sysstat-collect"
+    },
+    {
       "timer": "wopr-git-cred-sync.timer",
       "service": "wopr-git-cred-sync"
     },
     {
-      "timer": "asscast-watchdog.timer",
-      "service": "asscast-watchdog"
+      "timer": "stonesoup-remind.timer",
+      "service": "stonesoup-remind"
     },
     {
-      "timer": "wopr-dup-reconcile.timer",
-      "service": "wopr-dup-reconcile"
+      "timer": "update-watcher.timer",
+      "service": "update-watcher"
     },
     {
       "timer": "barterra-verified-sync.timer",
       "service": "barterra-verified-sync"
     },
     {
-      "timer": "stonesoup-remind.timer",
-      "service": "stonesoup-remind"
+      "timer": "wopr-dup-reconcile.timer",
+      "service": "wopr-dup-reconcile"
+    },
+    {
+      "timer": "dude-abandoned-cart-monitor.timer",
+      "service": "dude-abandoned-cart-monitor"
     },
     {
       "timer": "phpsessionclean.timer",
@@ -3424,20 +3496,40 @@
       "service": "cross-pollinate"
     },
     {
-      "timer": "fwupd-refresh.timer",
-      "service": "fwupd-refresh"
+      "timer": "dude-stripe-keys.timer",
+      "service": "dude-stripe-keys"
+    },
+    {
+      "timer": "wopr-secret-sweep.timer",
+      "service": "wopr-secret-sweep"
     },
     {
       "timer": "wopr-verified-sync.timer",
       "service": "wopr-verified-sync"
     },
     {
+      "timer": "apt-daily-upgrade.timer",
+      "service": "apt-daily-upgrade"
+    },
+    {
       "timer": "anacron.timer",
       "service": "anacron"
     },
     {
-      "timer": "apport-autoreport.timer",
-      "service": "apport-autoreport"
+      "timer": "asscast-watchdog.timer",
+      "service": "asscast-watchdog"
+    },
+    {
+      "timer": "wopr-vuln-sweep.timer",
+      "service": "wopr-vuln-sweep"
+    },
+    {
+      "timer": "apt-daily.timer",
+      "service": "apt-daily"
+    },
+    {
+      "timer": "motd-news.timer",
+      "service": "motd-news"
     },
     {
       "timer": "update-notifier-download.timer",
@@ -3448,20 +3540,12 @@
       "service": "systemd-tmpfiles-clean"
     },
     {
-      "timer": "motd-news.timer",
-      "service": "motd-news"
-    },
-    {
-      "timer": "certbot.timer",
-      "service": "certbot"
-    },
-    {
       "timer": "serpbear-wopr-gsc-refresh.timer",
       "service": "serpbear-wopr-gsc-refresh"
     },
     {
-      "timer": "apt-daily.timer",
-      "service": "apt-daily"
+      "timer": "certbot.timer",
+      "service": "certbot"
     },
     {
       "timer": "dpkg-db-backup.timer",
@@ -3472,24 +3556,28 @@
       "service": "logrotate"
     },
     {
-      "timer": "dude-sitemap-sync.timer",
-      "service": "dude-sitemap-sync"
-    },
-    {
       "timer": "crowdsec-hubupdate.timer",
       "service": "crowdsec-hubupdate"
-    },
-    {
-      "timer": "sysstat-summary.timer",
-      "service": "sysstat-summary"
     },
     {
       "timer": "barterra-abuse-cleanup.timer",
       "service": "barterra-abuse-cleanup"
     },
     {
+      "timer": "sysstat-summary.timer",
+      "service": "sysstat-summary"
+    },
+    {
+      "timer": "dude-sitemap-sync.timer",
+      "service": "dude-sitemap-sync"
+    },
+    {
       "timer": "falken-overnight-start.timer",
       "service": "falken-overnight-start"
+    },
+    {
+      "timer": "wopr-pg-backup.timer",
+      "service": "wopr-pg-backup"
     },
     {
       "timer": "forgejo-backup.timer",
@@ -3504,14 +3592,6 @@
       "service": "falken-overnight-stop"
     },
     {
-      "timer": "wopr-secret-sweep.timer",
-      "service": "wopr-secret-sweep"
-    },
-    {
-      "timer": "apt-daily-upgrade.timer",
-      "service": "apt-daily-upgrade"
-    },
-    {
       "timer": "man-db.timer",
       "service": "man-db"
     },
@@ -3520,12 +3600,20 @@
       "service": "e2scrub_all"
     },
     {
-      "timer": "fstrim.timer",
-      "service": "fstrim"
+      "timer": "grc-catalog-sweep.timer",
+      "service": "grc-catalog-sweep"
     },
     {
       "timer": "update-notifier-motd.timer",
       "service": "update-notifier-motd"
+    },
+    {
+      "timer": "fstrim.timer",
+      "service": "fstrim"
+    },
+    {
+      "timer": "apport-autoreport.timer",
+      "service": "apport-autoreport"
     },
     {
       "timer": "prometheus-node-exporter-ipmitool-sensor.timer",
@@ -3550,6 +3638,10 @@
     {
       "timer": "wopr-sp-autodiscovery.timer",
       "service": "wopr-sp-autodiscovery"
+    },
+    {
+      "timer": "wopr-vuln-sweep-feeds.timer",
+      "service": "wopr-vuln-sweep-feeds"
     }
   ],
   "cron_jobs": [
@@ -3659,9 +3751,34 @@
       "source": "crontab"
     },
     {
+      "user": "nodez3r0",
+      "command": "17 */6 * * * /usr/bin/python3 /opt/gpu-scheduler/registry/build_registry.py >> /opt/gpu-scheduler/registry/out/build.log 2>&1",
+      "source": "crontab"
+    },
+    {
+      "user": "nodez3r0",
+      "command": "23 4 * * * /usr/bin/python3 /opt/artcraft-dev/artcraft-services/build/selfhost/rig/rig_cleanup.py --prune-days 7 >> /opt/artcraft-dev/tools/rig_cleanup_prune.log 2>&1",
+      "source": "crontab"
+    },
+    {
+      "user": "nodez3r0",
+      "command": "17 4 * * * /usr/local/bin/prune-cargo-targets >> /home/nodez3r0/.cache/prune-cargo-targets.log 2>&1",
+      "source": "crontab"
+    },
+    {
+      "user": "nodez3r0",
+      "command": "*/15 * * * * /home/nodez3r0/wopr-kanban/autocommit.sh >> /tmp/wopr-kanban-autocommit.log 2>&1",
+      "source": "crontab"
+    },
+    {
       "user": "system",
       "command": "*/3 * * * * root /opt/wopr-dsa-sites/scripts/autodeploy.sh >> /var/log/dsa-autodeploy.log 2>&1",
       "source": "/etc/cron.d/dsa-template-autodeploy"
+    },
+    {
+      "user": "system",
+      "command": "*/3 * * * * nodez3r0 /usr/bin/python3 -I /opt/sitrep/status/probe.py 2>&1 | logger -t sitrep-status",
+      "source": "/etc/cron.d/sitrep-status"
     },
     {
       "user": "system",
@@ -5465,18 +5582,18 @@
         "type": "physical"
       },
       {
+        "name": "wwan0",
+        "state": "DOWN",
+        "addresses": [],
+        "type": "physical"
+      },
+      {
         "name": "nebula0",
         "state": "UNKNOWN",
         "addresses": [
           "10.0.0.3"
         ],
         "type": "nebula"
-      },
-      {
-        "name": "wwan0",
-        "state": "DOWN",
-        "addresses": [],
-        "type": "physical"
       }
     ],
     "nebula_active": true
@@ -5593,6 +5710,11 @@
       "directory": "/opt/nostr-toolkit"
     },
     {
+      "name": "protovision-wt-battery",
+      "path": "/opt/protovision-wt-battery/docker-compose.yml",
+      "directory": "/opt/protovision-wt-battery"
+    },
+    {
       "name": "adams-dsa",
       "path": "/opt/adams-dsa/docker-compose.yml",
       "directory": "/opt/adams-dsa"
@@ -5648,6 +5770,11 @@
       "directory": "/opt/group7-peertube"
     },
     {
+      "name": "backup-20261023-0657",
+      "path": "/opt/group7-peertube/backup-20261023-0657/docker-compose.yml",
+      "directory": "/opt/group7-peertube/backup-20261023-0657"
+    },
+    {
       "name": "n8n",
       "path": "/opt/n8n/docker-compose.yml",
       "directory": "/opt/n8n"
@@ -5656,6 +5783,11 @@
       "name": "listmonk",
       "path": "/opt/listmonk/docker-compose.yml",
       "directory": "/opt/listmonk"
+    },
+    {
+      "name": "backup-20261023-0714",
+      "path": "/opt/listmonk/backup-20261023-0714/docker-compose.yml",
+      "directory": "/opt/listmonk/backup-20261023-0714"
     },
     {
       "name": "printful-sync.preBLT_1779710036",
@@ -5671,6 +5803,11 @@
       "name": "lovejoos",
       "path": "/opt/lovejoos/docker-compose.yml",
       "directory": "/opt/lovejoos"
+    },
+    {
+      "name": "binkerd-us",
+      "path": "/opt/binkerd-us/docker-compose.yml",
+      "directory": "/opt/binkerd-us"
     },
     {
       "name": "open-webui",
@@ -5696,11 +5833,6 @@
       "name": "standalone",
       "path": "/opt/wopr-systems-preview/.next/standalone/docker-compose.yml",
       "directory": "/opt/wopr-systems-preview/.next/standalone"
-    },
-    {
-      "name": "buylocal",
-      "path": "/opt/buylocal/docker-compose.yml",
-      "directory": "/opt/buylocal"
     },
     {
       "name": "rig-compose",
@@ -5731,6 +5863,11 @@
       "name": "wopr-systems-next",
       "path": "/opt/wopr-systems-next/docker-compose.yml",
       "directory": "/opt/wopr-systems-next"
+    },
+    {
+      "name": "crowdsec-dashboard",
+      "path": "/opt/wopr-security-config/crowdsec-dashboard/docker-compose.yml",
+      "directory": "/opt/wopr-security-config/crowdsec-dashboard"
     },
     {
       "name": "foundation-folkmoot",
@@ -5768,6 +5905,11 @@
       "directory": "/opt/barter/rig-compose"
     },
     {
+      "name": "protovision-wt-voice",
+      "path": "/opt/protovision-wt-voice/docker-compose.yml",
+      "directory": "/opt/protovision-wt-voice"
+    },
+    {
       "name": "akkoma",
       "path": "/opt/akkoma/docker-compose.yml",
       "directory": "/opt/akkoma"
@@ -5776,6 +5918,16 @@
       "name": "elasticsearch",
       "path": "/opt/akkoma/deps/elasticsearch/docker-compose.yml",
       "directory": "/opt/akkoma/deps/elasticsearch"
+    },
+    {
+      "name": "selfhost",
+      "path": "/opt/artcraft-dev/artcraft-services/build/selfhost/docker-compose.yml",
+      "directory": "/opt/artcraft-dev/artcraft-services/build/selfhost"
+    },
+    {
+      "name": "Applio",
+      "path": "/opt/artcraft-dev/Applio/docker-compose.yaml",
+      "directory": "/opt/artcraft-dev/Applio"
     },
     {
       "name": "elk",
@@ -5803,6 +5955,11 @@
       "directory": "/opt/sonicforge"
     },
     {
+      "name": "src",
+      "path": "/opt/matrix-onboard/src/docker-compose.yml",
+      "directory": "/opt/matrix-onboard/src"
+    },
+    {
       "name": "folkmoot",
       "path": "/opt/folkmoot/docker-compose.yml",
       "directory": "/opt/folkmoot"
@@ -5816,6 +5973,11 @@
       "name": "matrix-mqtt-bridge",
       "path": "/opt/matrix-mqtt-bridge/docker-compose.yml",
       "directory": "/opt/matrix-mqtt-bridge"
+    },
+    {
+      "name": "protovision-wt-app",
+      "path": "/opt/protovision-wt-app/docker-compose.yml",
+      "directory": "/opt/protovision-wt-app"
     },
     {
       "name": "wopr-sydent",
@@ -5841,6 +6003,11 @@
       "name": "wopr-ai-engine",
       "path": "/opt/wopr-ai-engine/docker-compose.yml",
       "directory": "/opt/wopr-ai-engine"
+    },
+    {
+      "name": "deploy",
+      "path": "/opt/grc/deploy/docker-compose.yml",
+      "directory": "/opt/grc/deploy"
     },
     {
       "name": "ward6-canvass",
@@ -5896,6 +6063,16 @@
       "name": "mastodon",
       "path": "/opt/mastodon/docker-compose.yml",
       "directory": "/opt/mastodon"
+    },
+    {
+      "name": "backup-sec-20261023-0822",
+      "path": "/opt/mastodon/backup-sec-20261023-0822/docker-compose.yml",
+      "directory": "/opt/mastodon/backup-sec-20261023-0822"
+    },
+    {
+      "name": "backup-sec-20261023-0718",
+      "path": "/opt/mastodon/backup-sec-20261023-0718/docker-compose.yml",
+      "directory": "/opt/mastodon/backup-sec-20261023-0718"
     },
     {
       "name": "wopr-seo",
@@ -5958,6 +6135,11 @@
       "directory": "/home/nodez3r0/lj-check"
     },
     {
+      "name": "bear-wtp-rise",
+      "path": "/home/nodez3r0/bear-wtp-rise/docker-compose.yml",
+      "directory": "/home/nodez3r0/bear-wtp-rise"
+    },
+    {
       "name": "hermes-webui",
       "path": "/home/nodez3r0/.hermes-wopr/home/hermes-webui/docker-compose.yml",
       "directory": "/home/nodez3r0/.hermes-wopr/home/hermes-webui"
@@ -5966,6 +6148,26 @@
       "name": "hermes-agent",
       "path": "/home/nodez3r0/.hermes-wopr/hermes-agent/docker-compose.yml",
       "directory": "/home/nodez3r0/.hermes-wopr/hermes-agent"
+    },
+    {
+      "name": "installer-wopr232",
+      "path": "/home/nodez3r0/wt/installer-wopr232/docker-compose.yml",
+      "directory": "/home/nodez3r0/wt/installer-wopr232"
+    },
+    {
+      "name": "wopr-theblock-prod",
+      "path": "/home/nodez3r0/wt/installer-wopr232/wopr-theblock-prod/docker-compose.yml",
+      "directory": "/home/nodez3r0/wt/installer-wopr232/wopr-theblock-prod"
+    },
+    {
+      "name": "wtp-rise",
+      "path": "/home/nodez3r0/wt/installer-wopr232/wtp-rise/docker-compose.yml",
+      "directory": "/home/nodez3r0/wt/installer-wopr232/wtp-rise"
+    },
+    {
+      "name": "nextcloud-backup-20261023-0654",
+      "path": "/home/nodez3r0/nextcloud-backup-20261023-0654/docker-compose.yml",
+      "directory": "/home/nodez3r0/nextcloud-backup-20261023-0654"
     },
     {
       "name": "ACE-Step",
@@ -6223,6 +6425,11 @@
       "directory": "/home/nodez3r0/kohya_ss"
     },
     {
+      "name": "nextcloud-backup-20261023-0723",
+      "path": "/home/nodez3r0/nextcloud-backup-20261023-0723/docker-compose.yml",
+      "directory": "/home/nodez3r0/nextcloud-backup-20261023-0723"
+    },
+    {
       "name": "installer-wopr065",
       "path": "/home/nodez3r0/fixwave/installer-wopr065/docker-compose.yml",
       "directory": "/home/nodez3r0/fixwave/installer-wopr065"
@@ -6288,6 +6495,11 @@
       "directory": "/home/nodez3r0/n8n-data"
     },
     {
+      "name": "meme-engine-promo",
+      "path": "/home/nodez3r0/wopr-work/meme-engine-promo/docker-compose.yml",
+      "directory": "/home/nodez3r0/wopr-work/meme-engine-promo"
+    },
+    {
       "name": "site",
       "path": "/home/nodez3r0/claude-bear/bear-wtprise-sso/site/docker-compose.yml",
       "directory": "/home/nodez3r0/claude-bear/bear-wtprise-sso/site"
@@ -6324,14 +6536,14 @@
     }
   ],
   "discovery_stats": {
-    "listening_ports": 258,
+    "listening_ports": 256,
     "caddy_backends": 2,
-    "containers_total": 148,
-    "services_total": 192,
-    "timers_total": 53,
-    "cron_jobs_total": 380,
-    "compose_projects": 168,
+    "containers_total": 156,
+    "services_total": 196,
+    "timers_total": 61,
+    "cron_jobs_total": 385,
+    "compose_projects": 187,
     "public_endpoints": 2,
-    "backend_endpoints": 159
+    "backend_endpoints": 158
   }
 }
