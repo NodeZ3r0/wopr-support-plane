@@ -2,9 +2,9 @@
   "_meta": {
     "version": "3.0",
     "description": "WOPR Support Plane Knowledge Base v3.0 - Known issues, patterns, remediation, log noise filters",
-    "updated": "2026-09-01",
+    "updated": "2026-10-20",
     "format": "Each entry has a pattern (what the support plane detects), root_cause (why it happens), fix (automated remediation), and notes (context for AI reasoning)",
-    "auto_synced": "2026-09-01T09:18:30.704249"
+    "auto_synced": "2026-10-20T19:43:53.961218"
   },
   "service_issues": [
     {
@@ -502,6 +502,14 @@
       "root_cause": "",
       "fix": "systemctl restart bluetooth",
       "notes": "Auto-learned by support plane. Success rate: 3/3. First seen: 2026-07-02T14:57:30.098197"
+    },
+    {
+      "id": "AUTO-034",
+      "pattern": "backend_unhealthy on http://127.0.0.1:9000/",
+      "host": "nodez3ro",
+      "root_cause": "",
+      "fix": "systemctl restart defcon-backend",
+      "notes": "Auto-learned by support plane. Success rate: 3/5. First seen: 2026-07-24T05:20:11.146869"
     }
   ],
   "theme_and_branding": [
