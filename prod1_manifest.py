@@ -17,6 +17,7 @@ Usage (root):
   prod1_manifest.py              dry run: print what the manifest would hold and the diff
   prod1_manifest.py --write      write services-manifest.json (backup: services-manifest.json.prev)
   prod1_manifest.py --switched   switch night: release the until_switch hold, then write
+  prod1_manifest.py --preview-switched   dry run as if the hold were released (writes nothing)
 Exit 1 if the result would hold anything on hold, is empty, or the write fails.
 """
 import json
@@ -245,6 +246,11 @@ def main():
             print("hold: until_switch released (kept under released_at_switch)")
         else:
             print("hold: until_switch already empty")
+    if "--preview-switched" in sys.argv:
+        # dry run as if the until_switch hold were already released (nothing written)
+        write = False
+        hold = dict(hold, until_switch={})
+        print("preview: as if the until_switch hold were released")
     hn = held(hold)
     svc = services(hn)
     ctr, skipped = containers(hn)
