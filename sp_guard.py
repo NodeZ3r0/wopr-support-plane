@@ -10,18 +10,32 @@ the failsafe may restart a systemd unit or a container ONLY when all of these ho
     has no enabled .timer (a timer-driven job is the timer's business);
   - a container: it has a restart policy. To stop one on purpose: take it out of the manifest, or
     `docker update --restart=no NAME && docker stop NAME`.
+  - it was not stopped on purpose: a container Docker marks HasBeenManuallyStopped (`docker stop`,
+    `docker kill`, `docker compose stop`), or a unit that ran this boot and went inactive with
+    Result=success (`systemctl stop`), is left alone. Crashed / failed ones are healed (Docker's own
+    restart policy already restarts crashed containers).
+  - the plane is not paused: /etc/wopr/support-plane.PAUSED (switch night: the final syncs stop
+    containers on Prod-1 to copy their data; a restart in the middle would corrupt the copy).
 nebula is never restarted through these checks: restart_mesh_if_down() is the only thing that may
-touch it, a plain `systemctl restart nebula` when it is down. Nothing here reads or writes /etc/nebula.
+touch it, a plain `systemctl restart nebula` when it is down (also while paused). Nothing here reads
+or writes /etc/nebula.
 
 Without the flag (the Rig) every check answers True, so the Rig behaves exactly as before.
 """
 import json
+import os
 import subprocess
 import urllib.request
+from datetime import datetime, timezone
 
 MANIFEST_FILE = "/opt/wopr/support-plane/services-manifest.json"
 HOLD_FILE = "/opt/wopr/support-plane/hold-until-switch.json"
+PAUSE_FILE = "/etc/wopr/support-plane.PAUSED"
 MESH_UNIT = "nebula"
+
+
+def paused():
+    return os.path.exists(PAUSE_FILE)
 
 
 def _load(path):
@@ -82,12 +96,48 @@ def may_restart_unit(name, m=None):
         return False, "hold file unreadable (fail closed)"
     if u in held:
         return False, "on hold until the switch"
+    if paused():
+        return False, "paused (%s)" % PAUSE_FILE
     state = _out(["systemctl", "is-enabled", u])
     if state != "enabled":
         return False, "is-enabled=%s" % (state or "?")
     if _out(["systemctl", "is-enabled", u + ".timer"]) == "enabled":
         return False, "timer-driven"
+    if unit_stopped_on_purpose(u):
+        return False, "stopped on purpose (ran this boot, inactive, Result=success)"
     return True, "ok"
+
+
+def unit_stopped_on_purpose(u):
+    props = {}
+    for line in _out(["systemctl", "show", u, "-p", "ActiveState", "-p", "Result",
+                      "-p", "ActiveEnterTimestampMonotonic"]).splitlines():
+        k, _, v = line.partition("=")
+        props[k] = v
+    return (props.get("ActiveState") == "inactive" and props.get("Result") == "success"
+            and props.get("ActiveEnterTimestampMonotonic", "0") not in ("", "0"))
+
+
+def container_stopped_on_purpose(name, runtime="docker"):
+    st = _out([runtime, "inspect", "-f", "{{.State.Status}} {{.State.FinishedAt}} {{.Id}}", name]).split()
+    if len(st) < 3 or st[0] in ("running", "restarting", "paused"):
+        return False
+    if st[0] == "created":
+        return True  # never started: created to be started later (switch-night containers)
+    # Docker persists this flag (it is what makes unless-stopped stay down): true after
+    # `docker stop`/`docker kill`/`compose stop`, false after a crash and again after `docker start`.
+    root = _out([runtime, "info", "-f", "{{.DockerRootDir}}"]) or "/var/lib/docker"
+    cfg = _load(os.path.join(root, "containers", st[2], "config.v2.json"))
+    if isinstance(cfg, dict) and "HasBeenManuallyStopped" in cfg:
+        return bool(cfg["HasBeenManuallyStopped"])
+    # Fallback: a "stop" event around the exit (Docker keeps only the last few hundred events).
+    try:
+        t = datetime.strptime(st[1][:19], "%Y-%m-%dT%H:%M:%S").replace(tzinfo=timezone.utc).timestamp()
+    except ValueError:
+        return False
+    acts = _out([runtime, "events", "--since", str(int(t) - 30), "--until", str(int(t) + 30),
+                 "--filter", "container=" + name, "--format", "{{.Action}}"], timeout=20).split()
+    return "stop" in acts
 
 
 def may_restart_container(name, runtime="docker", m=None):
@@ -102,9 +152,13 @@ def may_restart_container(name, runtime="docker", m=None):
         return False, "hold file unreadable (fail closed)"
     if name in held:
         return False, "on hold until the switch"
+    if paused():
+        return False, "paused (%s)" % PAUSE_FILE
     pol = _out([runtime, "inspect", "-f", "{{.HostConfig.RestartPolicy.Name}}", name]).lower()
     if pol in ("", "no"):
         return False, "no restart policy (stopped on purpose)"
+    if container_stopped_on_purpose(name, runtime):
+        return False, "stopped on purpose (docker stop)"
     return True, "ok"
 
 
