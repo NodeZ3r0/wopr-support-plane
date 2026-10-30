@@ -1,0 +1,68 @@
+{
+  "_about": "Prod-1 support plane (WOPR-260): names it must NEVER start or restart. until_switch = the side-effect jobs from ~/rigmove/SWITCH-ENABLE.md that stay off until the tunnel moves; enable/90-support-plane.sh releases them on switch night (prod1_manifest.py --switched). off_for_good = never, also after the switch. sp_guard.py reads this file; if it cannot be read, nothing is restarted.",
+  "until_switch": {
+    "services": [
+      "cloudflared",
+      "protonmail-bridge",
+      "wopr-sms-gateway",
+      "wopr-alert-sms",
+      "nedry-trap",
+      "secret-drop",
+      "wopr-git-cred-sync",
+      "wopr-control-plane",
+      "wopr-yourspace-fed",
+      "wopr-yourspace-fed-you",
+      "wopr-yourspace-fed-wtprn",
+      "wopr-dup-reconcile",
+      "wopr-verified-sync",
+      "yourspace-backup",
+      "lovejoos-secrets-sync",
+      "barterra-abuse-cleanup",
+      "barterra-verified-sync",
+      "dude-saleor-secrets",
+      "dude-abandoned-cart-monitor",
+      "dude-sitemap-sync",
+      "dude-stripe-keys",
+      "wopr-form",
+      "serpbear-wopr-gsc-refresh",
+      "nedry-abuse-reporter",
+      "wopr-vuln-sweep",
+      "wopr-vuln-sweep-feeds",
+      "wopr-vuln-sweep-approved"
+    ],
+    "containers": [
+      "authentik-worker-1",
+      "saleor-worker-dude",
+      "barter-scanner-1",
+      "serpbear",
+      "gsc-puller"
+    ],
+    "timers": [
+      "wopr-git-cred-sync.timer",
+      "wopr-dup-reconcile.timer",
+      "wopr-verified-sync.timer",
+      "yourspace-backup.timer",
+      "lovejoos-secrets-sync.timer",
+      "barterra-abuse-cleanup.timer",
+      "barterra-verified-sync.timer",
+      "dude-abandoned-cart-monitor.timer",
+      "dude-sitemap-sync.timer",
+      "dude-stripe-keys.timer",
+      "serpbear-wopr-gsc-refresh.timer",
+      "nedry-abuse-reporter.timer",
+      "wopr-vuln-sweep.timer",
+      "wopr-vuln-sweep-feeds.timer"
+    ]
+  },
+  "off_for_good": {
+    "services": [
+      "caddy",
+      "caddy-api",
+      "printful-notifications",
+      "sso-notifications",
+      "wopr-sydent",
+      "wopr-sp-autodiscovery"
+    ],
+    "containers": []
+  }
+}

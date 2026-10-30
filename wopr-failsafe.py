@@ -18,6 +18,21 @@ LOG_PREFIX = datetime.now().strftime("%Y-%m-%d %H:%M:%S") + " [FAILSAFE]"
 
 NO_AUTO_RESTART = {"sshd", "ssh", "nebula", "systemd-journald", "systemd-logind"}
 
+# Restart guard (WOPR-260): on a strict-manifest host (Prod-1) restart only manifest units that are
+# enabled now and not on hold until the switch. Missing guard on a strict host = no restarts.
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+try:
+    import sp_guard
+    _may_unit = sp_guard.may_restart_unit
+except Exception:
+    def _may_unit(name, m=None):
+        try:
+            with open(MANIFEST_FILE) as f:
+                strict = bool(json.load(f).get("strict_manifest"))
+        except Exception:
+            strict = False
+        return (not strict, "sp_guard missing")
+
 
 def log(msg):
     print("%s %s" % (LOG_PREFIX, msg), flush=True)
@@ -101,6 +116,10 @@ def main():
                                 continue
                         except Exception:
                             pass
+                        allowed, why = _may_unit(name, manifest)
+                        if not allowed:
+                            log("Critical service %s is down - not restarting (%s)" % (name, why))
+                            continue
                         log("Critical service %s is DOWN" % name)
                         restart(name)
                         fixed += 1

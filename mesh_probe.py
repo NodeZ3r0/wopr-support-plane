@@ -13,6 +13,14 @@ NODES = {
     "10.0.0.20": "Bear's beacon",   # Contabo 144.126.143.227
     "10.0.0.101": "BINK beacon",
 }
+# A host-local node list overrides the one above (WOPR-260): Prod-1 is the lighthouse and probes
+# the beacons; the Rig is left out while it is dark so a flaky move-house link never pages Scott.
+_NODES_FILE = "/opt/wopr/support-plane/mesh_nodes.json"
+if os.path.exists(_NODES_FILE):
+    try:
+        NODES = {k: v for k, v in json.load(open(_NODES_FILE)).items() if not k.startswith("_")}
+    except Exception:
+        pass
 FAIL_THRESHOLD = 2  # consecutive */5 misses before alerting (~10 min)
 
 def ping(ip):

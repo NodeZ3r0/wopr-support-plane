@@ -1,0 +1,9 @@
+[Unit]
+Description=WOPR Support Plane Watchdog (heartbeat + critical manifest services, guarded)
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/python3 /opt/wopr/support-plane/wopr-watchdog.py
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=wopr-sp-watchdog

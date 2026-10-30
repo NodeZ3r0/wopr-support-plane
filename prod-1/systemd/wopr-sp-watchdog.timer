@@ -1,0 +1,10 @@
+[Unit]
+Description=WOPR Support Plane Watchdog Timer (every 5 min)
+
+[Timer]
+OnBootSec=120
+OnUnitActiveSec=300
+Persistent=true
+
+[Install]
+WantedBy=timers.target

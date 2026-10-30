@@ -137,6 +137,9 @@ class Handler(BaseHTTPRequestHandler):
     def log_message(self, format, *args): pass
 
 if __name__ == "__main__":
-    server = HTTPServer(("0.0.0.0", PORT), Handler)
-    print("WOPR SP Metrics+Actions on :%d (host=%s)" % (PORT, HOSTNAME))
+    # Loopback by default (WOPR-260): SITREP reaches it through Caddy (host network) at
+    # 127.0.0.1:9101; nothing else needs it. SP_METRICS_BIND=0.0.0.0 restores the old bind.
+    bind = os.environ.get("SP_METRICS_BIND", "127.0.0.1")
+    server = HTTPServer((bind, PORT), Handler)
+    print("WOPR SP Metrics+Actions on %s:%d (host=%s)" % (bind, PORT, HOSTNAME))
     server.serve_forever()

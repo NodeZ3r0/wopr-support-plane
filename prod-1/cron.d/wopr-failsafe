@@ -1,0 +1,3 @@
+# WOPR support plane failsafe (Prod-1, WOPR-260): restarts the support plane if it is down, starts the
+# watchdog timer, restarts critical manifest units (guarded: enabled + listed + not on hold).
+*/2 * * * * root /usr/bin/python3 /opt/wopr/support-plane/wopr-failsafe.py >> /var/log/wopr-failsafe.log 2>&1

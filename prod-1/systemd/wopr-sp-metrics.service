@@ -1,0 +1,16 @@
+[Unit]
+Description=WOPR Support Plane Metrics Exporter (127.0.0.1:9101, read by SITREP ops via Caddy /api/sp/)
+After=network.target wopr-support-plane.service
+
+[Service]
+Type=simple
+Environment=SP_METRICS_BIND=127.0.0.1
+ExecStart=/usr/bin/python3 /opt/wopr/support-plane/metrics-exporter.py
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=wopr-sp-metrics
+
+[Install]
+WantedBy=multi-user.target

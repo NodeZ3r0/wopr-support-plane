@@ -1,0 +1,5 @@
+{
+  "_about": "mesh_probe.py node list on Prod-1 (WOPR-260). Prod-1 (10.0.0.1) is the lighthouse itself. The Rig (10.0.0.3) is left out while it is dark during the move; add it back when it is online for good.",
+  "10.0.0.20": "Bear's beacon",
+  "10.0.0.101": "BINK beacon"
+}

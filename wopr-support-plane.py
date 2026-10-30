@@ -42,8 +42,44 @@ import ssl
 from datetime import datetime, timedelta
 from pathlib import Path
 
+# Restart guard (WOPR-260). With "strict_manifest": true in the manifest (Prod-1) nothing is
+# restarted unless the manifest lists it, it is enabled now and not on hold until the switch.
+# If the guard module is missing on a strict host, every restart is refused (fail closed).
+try:
+    import sp_guard
+except Exception:  # pragma: no cover
+    class sp_guard:  # noqa: N801
+        @staticmethod
+        def strict(m=None):
+            try:
+                with open("/opt/wopr/support-plane/services-manifest.json") as f:
+                    return bool(json.load(f).get("strict_manifest"))
+            except Exception:
+                return False
+
+        @staticmethod
+        def may_restart_unit(name, m=None):
+            return (not sp_guard.strict(), "sp_guard missing")
+
+        @staticmethod
+        def may_restart_container(name, runtime="docker", m=None):
+            return (not sp_guard.strict(), "sp_guard missing")
+
+        @staticmethod
+        def restart_mesh_if_down():
+            return False
+
+        @staticmethod
+        def alerts_conf(m=None):
+            return {"ntfy_url": "http://127.0.0.1:18081", "topic": "wopr-alerts",
+                    "urgent_topic": "wopr-texts", "defcon2_email": True}
+
+        @staticmethod
+        def ntfy(*a, **k):
+            return False
+
 # ========== CONFIG ==========
-VERSION = "4.2-defcon-fix"
+VERSION = "4.3-guarded"  # 4.2-defcon-fix + the strict-manifest restart guard (WOPR-260)
 HOSTNAME = socket.gethostname()
 CHECK_INTERVAL = 300  # 5 min when running as daemon
 HEARTBEAT_FILE = "/var/lib/wopr-support-plane-heartbeat"
@@ -624,6 +660,9 @@ def try_learned_fix(issue, state):
 
     Returns: (tried, success, command) - tried=True if we attempted a fix
     """
+    if sp_guard.strict():
+        # Strict hosts (Prod-1) never replay stored shell commands; only guarded restarts run.
+        return False, False, ""
     key = _issue_key(issue)
     db = load_learned_fixes()
 
@@ -883,6 +922,15 @@ def send_alert(subject, body):
     if not _should_send(issue_key):
         log.info("Email suppressed (cooldown): %s", subject)
         return
+    if sp_guard.strict():
+        # Prod-1: DEFCON-2 goes to ntfy wopr-alerts (the alert forwarder decides what becomes a
+        # wopr-texts push). Email only if the manifest turns it on: Scott muted the support plane's
+        # DEFCON-2 / REMEDIATION FAILED mail on 10-25 (WOPR-175), so it stays off by default.
+        conf = sp_guard.alerts_conf()
+        ok = sp_guard.ntfy(conf["topic"], "[%s] %s" % (HOSTNAME, subject), body, "default", "warning")
+        log.info("Alert ntfy %s: %s (%s)", conf["topic"], subject, "sent" if ok else "FAILED")
+        if not conf["defcon2_email"]:
+            return
     try:
         import smtplib
         from email.mime.text import MIMEText
@@ -969,7 +1017,9 @@ def discover_wopr_services():
         )
         services = []
         seen_names = set()
-        for line in r.stdout.strip().split("\n"):
+        # Strict hosts (Prod-1): no prefix discovery; only the manifest's services are watched.
+        prefix_lines = [] if sp_guard.strict() else r.stdout.strip().split("\n")
+        for line in prefix_lines:
             parts = line.split()
             if not parts:
                 continue
@@ -1091,6 +1141,31 @@ def tier1_check_services():
                 log.info("T1: %s is DOWN but marked protected in manifest - skipping", svc["name"])
                 continue
 
+            if sp_guard.strict() and svc_base == "nebula":
+                # Prod-1 is the mesh lighthouse: a plain restart when it is down, nothing else,
+                # at most once per FIX_COOLDOWN after a failed try. /etc/nebula is never touched.
+                if not should_attempt_fix("nebula", "service_down"):
+                    issues.append({"tier": 1, "type": "service_down", "target": svc["name"],
+                                   "detail": "nebula down; last plain restart failed, waiting out the cooldown"})
+                    continue
+                log.warning("T1: nebula is DOWN (%s/%s) - plain systemctl restart nebula", svc["active"], svc["sub"])
+                ok = sp_guard.restart_mesh_if_down()
+                if ok is None:
+                    continue
+                record_fix("nebula", "service_down", "systemctl restart nebula", "success" if ok else "failed")
+                log_action("service_restart", "nebula", "Mesh lighthouse was %s/%s" % (svc["active"], svc["sub"]),
+                           "success" if ok else "failed", "plain systemctl restart nebula")
+                if not ok:
+                    issues.append({"tier": 1, "type": "service_restart_failed", "target": "nebula",
+                                   "detail": "nebula (mesh lighthouse) down and a plain restart did not bring it back"})
+                continue
+
+            if sp_guard.strict():
+                allowed, why = sp_guard.may_restart_unit(svc["name"])
+                if not allowed:
+                    log.info("T1: %s is %s/%s - not restarting (%s)", svc["name"], svc["active"], svc["sub"], why)
+                    continue
+
             if any(n in svc_base for n in NO_AUTO_RESTART):
                 log.warning("T1: %s is DOWN but in no-auto-restart list", svc["name"])
                 issues.append({
@@ -1167,9 +1242,13 @@ def tier1_check_containers():
 
     # Process in dependency order (root cause services first)
     names_to_check = dep_order if dep_order else [c["name"] for c in containers]
-    # Also add any containers not in manifest
+    # Also add any containers not in manifest (never on a strict host: created-but-not-started
+    # containers there are switch-night jobs such as the Saleor worker)
+    strict = sp_guard.strict()
+    if strict:
+        names_to_check = [n for n in names_to_check if n in manifest_containers]
     for c in containers:
-        if c["name"] not in names_to_check:
+        if not strict and c["name"] not in names_to_check:
             names_to_check.append(c["name"])
 
     restarted_groups = set()  # Track restart groups to avoid double-restarts
@@ -1211,6 +1290,17 @@ def tier1_check_containers():
 
             # Restart the container (or the whole restart group)
             targets = restart_group if restart_group else [name]
+            if strict:
+                allowed_targets = []
+                for t in targets:
+                    allowed, why = sp_guard.may_restart_container(t, runtime)
+                    if allowed:
+                        allowed_targets.append(t)
+                    else:
+                        log.info("T1: Container %s is down - not restarting (%s)", t, why)
+                targets = allowed_targets
+                if not targets:
+                    continue
             log.warning("T1: Container %s is DOWN - restarting %s", name, targets)
 
             for t in targets:
@@ -1321,7 +1411,10 @@ def proactive_memory_check():
             new_state[name] = {"pct": mem_pct, "usage": mem_usage}
 
             # Check for containers approaching their memory limit
-            if mem_pct >= CONTAINER_MEM_WARN_PCT:
+            if mem_pct >= CONTAINER_MEM_WARN_PCT and not sp_guard.may_restart_container(name, runtime)[0]:
+                log.warning("PROACTIVE: Container %s at %.1f%% memory (%s) - not in the manifest, not restarting",
+                            name, mem_pct, mem_usage)
+            elif mem_pct >= CONTAINER_MEM_WARN_PCT:
                 log.warning("PROACTIVE: Container %s at %.1f%% memory (%s) - restarting BEFORE OOM",
                             name, mem_pct, mem_usage)
                 restart = subprocess.run(
@@ -1549,6 +1642,16 @@ def _smart_disk_cleanup(hog_report, aggressive=False):
             cleaned.append(name)
 
     if not aggressive:
+        return ", ".join(cleaned)
+
+    if sp_guard.strict():
+        # Prod-1: no Kafka/LM Studio/ace-step there, and never `docker volume prune` on the
+        # production box (named data volumes of stopped switch-night containers live there).
+        if runtime:
+            for name, cmd in (("docker_builder_prune", "%s builder prune -af 2>/dev/null" % runtime),
+                              ("docker_image_prune", "%s image prune -f 2>/dev/null" % runtime)):
+                subprocess.run(cmd, shell=True, capture_output=True, timeout=120)
+                cleaned.append(name)
         return ", ".join(cleaned)
 
     # AGGRESSIVE: targeted cleanup based on known offenders
@@ -1829,6 +1932,9 @@ def tier2_check_endpoints():
             remediated = False
             if port and should_attempt_fix(desc, "backend_unhealthy"):
                 container = _map_port_to_container(port)
+                if container and not sp_guard.may_restart_container(container, _container_runtime() or "docker")[0]:
+                    log.info("T2: %s unhealthy; container %s is not restartable here - alert only", desc, container)
+                    container = None
                 if container:
                     runtime = _container_runtime()
                     log.warning("T2: %s unhealthy - auto-restarting container %s", desc, container)
@@ -1882,6 +1988,8 @@ def tier2_check_endpoints():
 def tier2_functional_checks():
     """Deep functional health checks - verifies services actually work, not just port open.
     Failures are DEFCON-2 (email with cooldown) and trigger auto-remediation."""
+    if sp_guard.strict():
+        return tier2_functional_checks_strict()
     issues = []
 
     # --- 1. Mastodon/Akkoma functional check ---
@@ -2033,6 +2141,26 @@ def tier2_functional_checks():
     return issues
 
 
+def tier2_functional_checks_strict():
+    """Prod-1 (strict manifest): the Rig's checks (Mastodon, meme engine, Castopod, Falken) are
+    Rig-only. Mail relay: the manifest's mail_units, but only the ones the guard lets us restart, so
+    a disabled-until-switch Proton Bridge is not even looked at before the switch."""
+    issues = []
+    units = load_manifest().get("mail_units", ["postfix", "opendkim"])
+    watched = [u for u in units if sp_guard.may_restart_unit(u)[0]]
+    down = []
+    for unit in watched:
+        r = subprocess.run(["systemctl", "is-active", unit], capture_output=True, text=True, timeout=10)
+        if r.stdout.strip() != "active":
+            down.append(unit)
+    if not down:
+        log.info("T2.5: Mail relay (%s) functional - OK", "+".join(watched) or "none watched")
+    else:
+        log.warning("T2.5: Mail relay units down: %s", down)
+        _functional_remediate_mail(down, issues)
+    return issues
+
+
 def _functional_remediate_local(service_name, container_names, issues):
     """Try to restart local containers for a failed functional check."""
     runtime = _container_runtime()
@@ -2042,6 +2170,8 @@ def _functional_remediate_local(service_name, container_names, issues):
         return
     restarted_any = False
     for cname in container_names:
+        if not sp_guard.may_restart_container(cname, runtime)[0]:
+            continue
         try:
             r = subprocess.run([runtime, "restart", cname], capture_output=True, text=True, timeout=60)
             if r.returncode == 0:
@@ -2063,6 +2193,11 @@ def _functional_remediate_mail(down_units, issues):
     """Restart local mail-relay units (postfix -> Proton bridge) on the Rig."""
     failed = []
     for unit in down_units:
+        allowed, why = sp_guard.may_restart_unit(unit)
+        if not allowed:
+            log.info("T2.5: Mail unit %s down - not restarting (%s)", unit, why)
+            failed.append(unit)
+            continue
         try:
             r = subprocess.run(["systemctl", "restart", unit],
                                capture_output=True, text=True, timeout=30)
@@ -2327,6 +2462,8 @@ DANGEROUS_PATTERNS = [
     r"fdisk|parted|gdisk",            # Partition tools
     r"\bchmod\s+777\s+/",           # World-writable root
     r"curl.*\|\s*(ba)?sh",           # Pipe URL to shell
+    r"/etc/nebula",                    # Mesh config: never touched by the support plane (WOPR-260)
+    r"\bnebula\b.*\b(reload|stop|disable|mask|edit|kill)\b|\b(reload|stop|disable|mask|edit|kill)\b.*\bnebula\b",
 ]
 DANGEROUS_COMPILED = [re.compile(p, re.IGNORECASE) for p in DANGEROUS_PATTERNS]
 
@@ -2346,6 +2483,9 @@ def _check_ollama():
     old one pointed at a DigitalOcean box that no longer exists, and a single
     failed check switched OLLAMA_URL to it for good. WOPR-113."""
     global _ollama_available, _ollama_checked_at
+    if sp_guard.strict() and not load_manifest().get("llm_remediation", False):
+        # Prod-1: no model-written root commands on the production box (and the GPU is on the Rig).
+        return False
     now = time.time()
     if now - _ollama_checked_at < 300:
         return _ollama_available
@@ -2622,6 +2762,8 @@ def _try_deterministic_fix(issue, state=None):
     # Container restart failed - restart it
     if itype == "container_restart_failed":
         container = target
+        if not sp_guard.may_restart_container(container)[0]:
+            return False, False, ""
         cmd = "docker restart %s" % container
         r = subprocess.run(cmd, shell=True, capture_output=True, text=True, timeout=60)
         success = r.returncode == 0
@@ -2634,6 +2776,8 @@ def _try_deterministic_fix(issue, state=None):
         if port_match:
             port = port_match.group(1)
             container = _map_port_to_container(int(port))
+            if container and not sp_guard.may_restart_container(container)[0]:
+                container = None
             if container:
                 cmd = "docker restart %s" % container
                 r = subprocess.run(cmd, shell=True, capture_output=True, text=True, timeout=60)
@@ -3070,7 +3214,10 @@ def run_scan():
                         ["systemctl", "is-enabled", _fs_name],
                         capture_output=True, text=True, timeout=10,
                     )
-                    if _fs_en.stdout.strip() in ("enabled", "static"):
+                    _fs_ok, _fs_why = sp_guard.may_restart_unit(_fs_name, _fs_manifest)
+                    if not _fs_ok:
+                        log.info("FAILSAFE: Critical service %s is down - not restarting (%s)", _fs_name, _fs_why)
+                    elif _fs_en.stdout.strip() in ("enabled", "static"):
                         log.warning("FAILSAFE: Critical service %s is DOWN - restarting", _fs_name)
                         _fs_r = subprocess.run(
                             ["systemctl", "restart", _fs_name],
@@ -3139,6 +3286,16 @@ def run_scan():
                 log.info("DEFCON-1 alert sent: %d critical issues", len(defcon1))
             except Exception as e:
                 log.warning("DEFCON-1 email failed: %s", e)
+            if sp_guard.strict():
+                # Prod-1: DEFCON-1 is urgent; it goes straight to wopr-texts (priority 5, the push
+                # that replaced SMS) as well as mail. A 2-hour cooldown per issue set so a
+                # stuck disk does not buzz the phone every 5 minutes.
+                _d1_key = "ntfy_defcon1_" + "_".join(sorted("%s:%s" % (i["type"], i["target"]) for i in defcon1))[:120]
+                if _should_send(_d1_key):
+                    _conf = sp_guard.alerts_conf()
+                    _ok = sp_guard.ntfy(_conf["urgent_topic"], "%s DEFCON-1: %d critical" % (HOSTNAME, len(defcon1)),
+                                        "\n".join(d1_lines), "5", "rotating_light")
+                    log.info("DEFCON-1 ntfy %s: %s", _conf["urgent_topic"], "sent" if _ok else "FAILED")
         elif defcon2:
             # DEFCON-2: Only email issues NOT being auto-remediated
             unremediated = [i for i in defcon2

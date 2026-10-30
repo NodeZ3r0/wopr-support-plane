@@ -13,6 +13,26 @@ import subprocess
 import time
 from datetime import datetime, timedelta
 
+# Restart guard (WOPR-260): on a strict-manifest host (Prod-1) restart only manifest units that are
+# enabled now and not on hold until the switch. Missing guard on a strict host = no restarts.
+try:
+    import sp_guard
+    _may_unit = sp_guard.may_restart_unit
+    _may_ctr = sp_guard.may_restart_container
+except Exception:
+    def _strict_fallback():
+        try:
+            with open("/opt/wopr/support-plane/services-manifest.json") as f:
+                return bool(json.load(f).get("strict_manifest"))
+        except Exception:
+            return False
+
+    def _may_unit(name, m=None):
+        return (not _strict_fallback(), "sp_guard missing")
+
+    def _may_ctr(name, runtime="docker", m=None):
+        return (not _strict_fallback(), "sp_guard missing")
+
 HEARTBEAT_FILE = "/var/lib/wopr-support-plane-heartbeat"
 SP_SERVICE = "wopr-support-plane.service"
 MANIFEST_FILE = "/opt/wopr/support-plane/services-manifest.json"
@@ -114,6 +134,11 @@ def check_critical_services():
             if timer_check.stdout.strip() == "enabled":
                 continue
 
+            allowed, why = _may_unit(name, manifest)
+            if not allowed:
+                log.info("Critical service %s is %s - not restarting (%s)", name, status, why)
+                continue
+
             log.warning("CRITICAL SERVICE DOWN: %s (%s) - restarting", name, status)
             restart_service(name, "critical service down (%s)" % status)
             fixed += 1
@@ -150,6 +175,10 @@ def check_critical_containers():
                 capture_output=True, text=True, timeout=10,
             )
             if "true" not in r.stdout.lower():
+                allowed, why = _may_ctr(name, runtime, manifest)
+                if not allowed:
+                    log.info("Critical container %s is down - not restarting (%s)", name, why)
+                    continue
                 log.warning("CRITICAL CONTAINER DOWN: %s - restarting", name)
                 subprocess.run(
                     [runtime, "restart", name],

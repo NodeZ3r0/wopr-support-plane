@@ -864,6 +864,12 @@ def main():
     log(f"WOPR SP Autodiscovery v1.0 - {HOSTNAME}")
     log("=" * 60)
 
+    if load_existing_manifest().get("strict_manifest"):
+        # Prod-1 (WOPR-260): autodiscovery would add every created-but-not-started container and
+        # every disabled unit, and drop the strict flag. That manifest is built by prod1_manifest.py.
+        log("strict_manifest host: autodiscovery refuses to run; use prod1_manifest.py")
+        return
+
     runtime = detect_container_runtime()
     log(f"Container runtime: {runtime or 'none'}")
 

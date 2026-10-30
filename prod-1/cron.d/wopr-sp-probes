@@ -1,0 +1,8 @@
+# Support-plane probes on Prod-1 (WOPR-260). SWITCH NIGHT ONLY: enable/90-support-plane.sh installs this
+# into /etc/cron.d after the tunnel is on Prod-1. Rollback: rm /etc/cron.d/wopr-sp-probes.
+#   mesh_probe       pings the beacons in mesh_nodes.json, ntfy wopr-alerts on a state change
+#   tunnel_watchdog  restarts cloudflared after 15 min of degraded edge connections (max once an hour)
+SHELL=/bin/bash
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+*/5 * * * * root /usr/bin/python3 /opt/wopr/support-plane/mesh_probe.py >/dev/null 2>&1
+*/5 * * * * root /usr/bin/python3 /opt/wopr/support-plane/tunnel_watchdog.py >> /var/log/wopr-tunnel-watchdog.log 2>&1

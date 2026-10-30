@@ -1,0 +1,9 @@
+/var/log/wopr-support-plane.log /var/log/wopr-watchdog.log /var/log/wopr-failsafe.log /var/log/wopr-tunnel-watchdog.log {
+    weekly
+    rotate 4
+    compress
+    delaycompress
+    missingok
+    notifempty
+    copytruncate
+}
