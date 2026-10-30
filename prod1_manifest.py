@@ -54,8 +54,20 @@ CRITICAL_CONTAINERS = {
 NOT_HTTP = {25, 465, 587, 1883, 2021, 3306, 5432, 5433, 6379, 6380, 6390, 9101, 9445, 55440, 8883}
 PROBE_PATHS = ("/health", "/healthz", "/api/health", "/")
 EXTRA_BACKENDS = [  # host-network containers (no published port in docker ps)
+    # Caddy's no-vhost catch-all answers the offline test card with 503: any HTTP answer = Caddy is up.
     {"name": "caddy-18080", "url": "http://127.0.0.1:18080/", "container": "wopr-caddy-rig", "critical": True},
 ]
+
+
+def probe_any(url):
+    """-> HTTP status of a single GET (any code), or None if nothing answers HTTP."""
+    try:
+        req = urllib.request.Request(url, method="GET", headers={"User-Agent": "WOPR-SP-manifest/prod-1"})
+        return urllib.request.urlopen(req, timeout=4).getcode()
+    except urllib.error.HTTPError as e:
+        return e.code
+    except Exception:
+        return None
 
 
 def sh(cmd, timeout=30):
@@ -205,14 +217,11 @@ def backends(svc_list, ctr_list):
     for extra in EXTRA_BACKENDS:
         if extra.get("container") and extra["container"] not in ctr_names:
             continue
-        port = int(re.search(r":(\d+)/", extra["url"]).group(1))
-        res = probe(port)
-        if not res:
+        code = probe_any(extra["url"])
+        if code is None:
             broken.append(extra["url"])
             continue
-        e = dict(extra, expected_status=sorted({200, res[1]}), discovered_via="prod1_manifest")
-        e["url"] = res[0]
-        out.append(e)
+        out.append(dict(extra, expected_status=sorted({200, code}), discovered_via="prod1_manifest"))
     return out, broken
 
 
